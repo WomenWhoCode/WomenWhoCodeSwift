@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
+		E46EB5541C854C7000E9C41B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* ViewController.swift */; };
+		E46EB5571C854C7000E9C41B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46EB5551C854C7000E9C41B /* Main.storyboard */; };
+		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
+		E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46EB55B1C854C7100E9C41B /* Assets.xcassets */; };
+		E46EB55F1C854C7100E9C41B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */; };
+		E46EB56A1C854C7100E9C41B /* WomenWhoCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */; };
+		E46EB5751C854C7100E9C41B /* WomenWhoCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E46EB5661C854C7100E9C41B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E46EB5461C854C7000E9C41B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E46EB54D1C854C7000E9C41B;
+			remoteInfo = WomenWhoCode;
+		};
+		E46EB5711C854C7100E9C41B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E46EB5461C854C7000E9C41B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E46EB54D1C854C7000E9C41B;
+			remoteInfo = WomenWhoCode;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E46EB5531C854C7000E9C41B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E46EB5561C854C7000E9C41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E46EB5591C854C7000E9C41B /* WomenWhoCode.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WomenWhoCode.xcdatamodel; sourceTree = "<group>"; };
+		E46EB55B1C854C7100E9C41B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E46EB55E1C854C7100E9C41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E46EB5601C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E46EB5651C854C7100E9C41B /* WomenWhoCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomenWhoCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WomenWhoCodeTests.swift; sourceTree = "<group>"; };
+		E46EB56B1C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E46EB5701C854C7100E9C41B /* WomenWhoCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomenWhoCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WomenWhoCodeUITests.swift; sourceTree = "<group>"; };
+		E46EB5761C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E46EB54B1C854C7000E9C41B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB5621C854C7100E9C41B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB56D1C854C7100E9C41B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E46EB5451C854C7000E9C41B = {
+			isa = PBXGroup;
+			children = (
+				E46EB5501C854C7000E9C41B /* WomenWhoCode */,
+				E46EB5681C854C7100E9C41B /* WomenWhoCodeTests */,
+				E46EB5731C854C7100E9C41B /* WomenWhoCodeUITests */,
+				E46EB54F1C854C7000E9C41B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E46EB54F1C854C7000E9C41B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */,
+				E46EB5651C854C7100E9C41B /* WomenWhoCodeTests.xctest */,
+				E46EB5701C854C7100E9C41B /* WomenWhoCodeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E46EB5501C854C7000E9C41B /* WomenWhoCode */ = {
+			isa = PBXGroup;
+			children = (
+				E46EB5511C854C7000E9C41B /* AppDelegate.swift */,
+				E46EB5531C854C7000E9C41B /* ViewController.swift */,
+				E46EB5551C854C7000E9C41B /* Main.storyboard */,
+				E46EB55B1C854C7100E9C41B /* Assets.xcassets */,
+				E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */,
+				E46EB5601C854C7100E9C41B /* Info.plist */,
+				E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */,
+			);
+			path = WomenWhoCode;
+			sourceTree = "<group>";
+		};
+		E46EB5681C854C7100E9C41B /* WomenWhoCodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */,
+				E46EB56B1C854C7100E9C41B /* Info.plist */,
+			);
+			path = WomenWhoCodeTests;
+			sourceTree = "<group>";
+		};
+		E46EB5731C854C7100E9C41B /* WomenWhoCodeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */,
+				E46EB5761C854C7100E9C41B /* Info.plist */,
+			);
+			path = WomenWhoCodeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E46EB54D1C854C7000E9C41B /* WomenWhoCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E46EB5791C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCode" */;
+			buildPhases = (
+				E46EB54A1C854C7000E9C41B /* Sources */,
+				E46EB54B1C854C7000E9C41B /* Frameworks */,
+				E46EB54C1C854C7000E9C41B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WomenWhoCode;
+			productName = WomenWhoCode;
+			productReference = E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E46EB5641C854C7100E9C41B /* WomenWhoCodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E46EB57C1C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCodeTests" */;
+			buildPhases = (
+				E46EB5611C854C7100E9C41B /* Sources */,
+				E46EB5621C854C7100E9C41B /* Frameworks */,
+				E46EB5631C854C7100E9C41B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E46EB5671C854C7100E9C41B /* PBXTargetDependency */,
+			);
+			name = WomenWhoCodeTests;
+			productName = WomenWhoCodeTests;
+			productReference = E46EB5651C854C7100E9C41B /* WomenWhoCodeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E46EB56F1C854C7100E9C41B /* WomenWhoCodeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E46EB57F1C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCodeUITests" */;
+			buildPhases = (
+				E46EB56C1C854C7100E9C41B /* Sources */,
+				E46EB56D1C854C7100E9C41B /* Frameworks */,
+				E46EB56E1C854C7100E9C41B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E46EB5721C854C7100E9C41B /* PBXTargetDependency */,
+			);
+			name = WomenWhoCodeUITests;
+			productName = WomenWhoCodeUITests;
+			productReference = E46EB5701C854C7100E9C41B /* WomenWhoCodeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E46EB5461C854C7000E9C41B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = WomenWhoCode;
+				TargetAttributes = {
+					E46EB54D1C854C7000E9C41B = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					E46EB5641C854C7100E9C41B = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = E46EB54D1C854C7000E9C41B;
+					};
+					E46EB56F1C854C7100E9C41B = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = E46EB54D1C854C7000E9C41B;
+					};
+				};
+			};
+			buildConfigurationList = E46EB5491C854C7000E9C41B /* Build configuration list for PBXProject "WomenWhoCode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E46EB5451C854C7000E9C41B;
+			productRefGroup = E46EB54F1C854C7000E9C41B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E46EB54D1C854C7000E9C41B /* WomenWhoCode */,
+				E46EB5641C854C7100E9C41B /* WomenWhoCodeTests */,
+				E46EB56F1C854C7100E9C41B /* WomenWhoCodeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E46EB54C1C854C7000E9C41B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E46EB55F1C854C7100E9C41B /* LaunchScreen.storyboard in Resources */,
+				E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */,
+				E46EB5571C854C7000E9C41B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB5631C854C7100E9C41B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB56E1C854C7100E9C41B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E46EB54A1C854C7000E9C41B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */,
+				E46EB5541C854C7000E9C41B /* ViewController.swift in Sources */,
+				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB5611C854C7100E9C41B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E46EB56A1C854C7100E9C41B /* WomenWhoCodeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E46EB56C1C854C7100E9C41B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E46EB5751C854C7100E9C41B /* WomenWhoCodeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E46EB5671C854C7100E9C41B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E46EB54D1C854C7000E9C41B /* WomenWhoCode */;
+			targetProxy = E46EB5661C854C7100E9C41B /* PBXContainerItemProxy */;
+		};
+		E46EB5721C854C7100E9C41B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E46EB54D1C854C7000E9C41B /* WomenWhoCode */;
+			targetProxy = E46EB5711C854C7100E9C41B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E46EB5551C854C7000E9C41B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E46EB5561C854C7000E9C41B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E46EB55E1C854C7100E9C41B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E46EB5771C854C7100E9C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E46EB5781C854C7100E9C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E46EB57A1C854C7100E9C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WomenWhoCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E46EB57B1C854C7100E9C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WomenWhoCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E46EB57D1C854C7100E9C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WomenWhoCodeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WomenWhoCode.app/WomenWhoCode";
+			};
+			name = Debug;
+		};
+		E46EB57E1C854C7100E9C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WomenWhoCodeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WomenWhoCode.app/WomenWhoCode";
+			};
+			name = Release;
+		};
+		E46EB5801C854C7100E9C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WomenWhoCodeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCodeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WomenWhoCode;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		E46EB5811C854C7100E9C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WomenWhoCodeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.womenwhocode.WomenWhoCodeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WomenWhoCode;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E46EB5491C854C7000E9C41B /* Build configuration list for PBXProject "WomenWhoCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E46EB5771C854C7100E9C41B /* Debug */,
+				E46EB5781C854C7100E9C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E46EB5791C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E46EB57A1C854C7100E9C41B /* Debug */,
+				E46EB57B1C854C7100E9C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E46EB57C1C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E46EB57D1C854C7100E9C41B /* Debug */,
+				E46EB57E1C854C7100E9C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E46EB57F1C854C7100E9C41B /* Build configuration list for PBXNativeTarget "WomenWhoCodeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E46EB5801C854C7100E9C41B /* Debug */,
+				E46EB5811C854C7100E9C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E46EB5591C854C7000E9C41B /* WomenWhoCode.xcdatamodel */,
+			);
+			currentVersion = E46EB5591C854C7000E9C41B /* WomenWhoCode.xcdatamodel */;
+			path = WomenWhoCode.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E46EB5461C854C7000E9C41B /* Project object */;
+}
