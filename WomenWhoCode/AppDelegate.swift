@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
+        
+        let eventStoryBoard = UIStoryboard(name: "Events", bundle: nil)
+        let eventsVC = eventStoryBoard.instantiateInitialViewController()
+        window?.rootViewController = eventsVC
+        
         return true
     }
 
