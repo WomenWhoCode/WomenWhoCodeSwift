@@ -1,0 +1,6 @@
+framework module Pods_WomenWhoCodeTests {
+  umbrella header "Pods-WomenWhoCodeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
