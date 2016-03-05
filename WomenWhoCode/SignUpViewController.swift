@@ -37,6 +37,9 @@ class SignUpViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 print("User Registered successfully")
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
+                vc.message = "Signed Up Successfully"
+                self.navigationController?.pushViewController(vc, animated:true)
             }
         }
     }

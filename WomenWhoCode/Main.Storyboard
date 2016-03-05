@@ -171,6 +171,47 @@
             </objects>
             <point key="canvasLocation" x="1319" y="228"/>
         </scene>
+        <!--Success View Controller-->
+        <scene sceneID="JdO-kO-Ylp">
+            <objects>
+                <viewController storyboardIdentifier="SuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XlA-Cn-whs" customClass="SuccessViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3S-QC-86W"/>
+                        <viewControllerLayoutGuide type="bottom" id="mMa-N3-uAS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="38I-K4-fdc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oG-up-iqe">
+                                <rect key="frame" x="139" y="274" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrL-h8-YBV">
+                                <rect key="frame" x="130" y="371" width="60" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <segue destination="izw-Ie-9P4" kind="push" id="Vbb-SD-wF1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2oG-up-iqe" firstAttribute="centerX" secondItem="38I-K4-fdc" secondAttribute="centerX" id="G1C-4N-f5g"/>
+                            <constraint firstItem="2oG-up-iqe" firstAttribute="centerY" secondItem="38I-K4-fdc" secondAttribute="centerY" id="R2P-rg-3EN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="2oG-up-iqe" id="mHL-kS-a4m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jjM-CX-Jbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Item" id="j5B-ex-8TX"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="228"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vpk-Ci-pXS">
             <objects>
@@ -193,4 +234,7 @@
     <resources>
         <image name="wwc_icon" width="240" height="240"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vbb-SD-wF1"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -1,26 +1,32 @@
 //
-//  ViewController.swift
+//  SuccessViewController.swift
 //  WomenWhoCode
 //
-//  Created by Vinu Charanya on 2/29/16.
+//  Created by Maha Govindarajan on 3/5/16.
 //  Copyright © 2016 WomenWhoCode. All rights reserved.
 //
 
 import UIKit
+import Parse
 
-class LandingViewController: UIViewController {
+class SuccessViewController: UIViewController {
 
+    @IBOutlet var messageLabel: UILabel!
+    var message : String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.text = message
         self.navigationItem.setHidesBackButton(true, animated: true)
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       PFUser.logOut()
+    }
 
 
 }
-

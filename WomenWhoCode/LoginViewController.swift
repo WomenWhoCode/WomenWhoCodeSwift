@@ -35,7 +35,9 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 print("User logged in successfully")
-                // display view controller that needs to shown after successful login
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
+                vc.message = "Logged in Successfully"
+                self.navigationController?.pushViewController(vc, animated:true)
             }
         }
     }
