@@ -40,6 +40,10 @@ class EventCell: UITableViewCell {
         eventDate.text = "2"
         eventDescription.text = "Introduction to Swift2.0, basic data types, functions, closures and otehr interesting topics"
         
+        eventImageView.image = UIImage(named: "iOSTeal")
+        eventImageView.clipsToBounds = true
+        eventImageView.layer.cornerRadius = 10
+        
         
     }
 
