@@ -85,11 +85,19 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-WomenWhoCodeTests/AFNetworking.framework"
+  install_framework "Pods-WomenWhoCodeTests/ActiveLabel.framework"
+  install_framework "Pods-WomenWhoCodeTests/BDBOAuth1Manager.framework"
   install_framework "Pods-WomenWhoCodeTests/Bolts.framework"
+  install_framework "Pods-WomenWhoCodeTests/LTMorphingLabel.framework"
   install_framework "Pods-WomenWhoCodeTests/Parse.framework"
+  install_framework "Pods-WomenWhoCodeTests/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WomenWhoCodeTests/AFNetworking.framework"
+  install_framework "Pods-WomenWhoCodeTests/ActiveLabel.framework"
+  install_framework "Pods-WomenWhoCodeTests/BDBOAuth1Manager.framework"
   install_framework "Pods-WomenWhoCodeTests/Bolts.framework"
+  install_framework "Pods-WomenWhoCodeTests/LTMorphingLabel.framework"
   install_framework "Pods-WomenWhoCodeTests/Parse.framework"
+  install_framework "Pods-WomenWhoCodeTests/SwiftDate.framework"
 fi

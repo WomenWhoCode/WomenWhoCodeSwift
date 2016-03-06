@@ -36,6 +36,8 @@
 		E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46EB55B1C854C7100E9C41B /* Assets.xcassets */; };
 		E46EB56A1C854C7100E9C41B /* WomenWhoCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */; };
 		E46EB5751C854C7100E9C41B /* WomenWhoCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */; };
+		E4F4EFD11C8CD98500B480AC /* ParseHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD01C8CD98500B480AC /* ParseHTTPClient.swift */; };
+		E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD21C8CD99F00B480AC /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		E46EB5701C854C7100E9C41B /* WomenWhoCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomenWhoCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WomenWhoCodeUITests.swift; sourceTree = "<group>"; };
 		E46EB5761C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4F4EFD01C8CD98500B480AC /* ParseHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHTTPClient.swift; sourceTree = "<group>"; };
+		E4F4EFD21C8CD99F00B480AC /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 		E46EB5501C854C7000E9C41B /* WomenWhoCode */ = {
 			isa = PBXGroup;
 			children = (
+				E4F4EFCF1C8CD96B00B480AC /* API */,
 				CA3B6CA71C854EDD00D8FF25 /* Storyboards */,
 				CA3B6CA61C854DDB00D8FF25 /* Views */,
 				CA3B6CA51C854DD500D8FF25 /* Models */,
@@ -242,6 +247,15 @@
 				E46EB5761C854C7100E9C41B /* Info.plist */,
 			);
 			path = WomenWhoCodeUITests;
+			sourceTree = "<group>";
+		};
+		E4F4EFCF1C8CD96B00B480AC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E4F4EFD01C8CD98500B480AC /* ParseHTTPClient.swift */,
+				E4F4EFD21C8CD99F00B480AC /* PersistenceManager.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,12 +456,14 @@
 				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
+				E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */,
 				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,
 				CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
 				CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */,
 				CA3B6CB51C85532500D8FF25 /* EventsViewController.swift in Sources */,
+				E4F4EFD11C8CD98500B480AC /* ParseHTTPClient.swift in Sources */,
 				1039FD661C8B93A800360991 /* SuccessViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

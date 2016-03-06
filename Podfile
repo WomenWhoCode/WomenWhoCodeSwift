@@ -4,7 +4,11 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Parse'
-pod 'AFNetworking', '~> 2.5'
+pod 'AFNetworking'
+pod 'BDBOAuth1Manager'
+pod 'SwiftDate'
+pod 'LTMorphingLabel'
+pod 'ActiveLabel'
 
 target 'WomenWhoCode' do
 
