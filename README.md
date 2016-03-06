@@ -15,7 +15,6 @@ Some of these might feel redundant, but on the long run, if you wanted to show c
 
 
 ## Open Source License
-----
 
 [The Non-Profit Open Software License version 3.0 (NPOSL-3.0)](https://opensource.org/licenses/NPOSL-3.0)
 
