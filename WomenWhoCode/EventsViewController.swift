@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class EventsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    var events:[Event]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +30,43 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.reloadData()
         
         // Do any additional setup after loading the view.
+        
+        //Do a PFQuery to see if you are getting all the events
+        retrieveEvents()
+        
+        
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func retrieveEvents() {
+        var query = PFQuery(className:"Event")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        print(object.objectId)
+                        let title = object["title"] as! String
+                        print(title)
+                        
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
