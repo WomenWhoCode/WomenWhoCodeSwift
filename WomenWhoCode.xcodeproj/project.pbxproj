@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
+		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
+		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
+		1039FD661C8B93A800360991 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD651C8B93A800360991 /* SuccessViewController.swift */; };
 		8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62852FA7CA4FCC1D8897D92B /* Pods.framework */; };
 		CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */; };
 		CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */; };
@@ -24,11 +28,9 @@
 		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
-		E46EB5541C854C7000E9C41B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* ViewController.swift */; };
-		E46EB5571C854C7000E9C41B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46EB5551C854C7000E9C41B /* Main.storyboard */; };
+		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
 		E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46EB55B1C854C7100E9C41B /* Assets.xcassets */; };
-		E46EB55F1C854C7100E9C41B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */; };
 		E46EB56A1C854C7100E9C41B /* WomenWhoCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */; };
 		E46EB5751C854C7100E9C41B /* WomenWhoCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
+		1039FD651C8B93A800360991 /* SuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		3C9159A580BE9148980AFF0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62852FA7CA4FCC1D8897D92B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7751CAA29E4E6B7E26399067 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,11 +77,9 @@
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E46EB5531C854C7000E9C41B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E46EB5561C854C7000E9C41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		E46EB5591C854C7000E9C41B /* WomenWhoCode.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WomenWhoCode.xcdatamodel; sourceTree = "<group>"; };
 		E46EB55B1C854C7100E9C41B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E46EB55E1C854C7100E9C41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E46EB5601C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E46EB5651C854C7100E9C41B /* WomenWhoCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomenWhoCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5691C854C7100E9C41B /* WomenWhoCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WomenWhoCodeTests.swift; sourceTree = "<group>"; };
@@ -123,7 +127,7 @@
 		CA3B6CA41C854DC800D8FF25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E46EB5531C854C7000E9C41B /* ViewController.swift */,
+				E46EB5531C854C7000E9C41B /* LandingViewController.swift */,
 				CA3B6CB21C85530C00D8FF25 /* TimelineViewController.swift */,
 				CA3B6CB41C85532500D8FF25 /* EventsViewController.swift */,
 				CA3B6CB61C85533600D8FF25 /* EventDetailsViewController.swift */,
@@ -131,6 +135,9 @@
 				CA3B6CBA1C85536500D8FF25 /* ProfileViewController.swift */,
 				CA3B6CBC1C85537800D8FF25 /* TopicsViewController.swift */,
 				CA3B6CBE1C85538700D8FF25 /* TopicDetailsViewController.swift */,
+				1039FD5F1C8B625800360991 /* SignUpViewController.swift */,
+				1039FD611C8B626F00360991 /* LoginViewController.swift */,
+				1039FD651C8B93A800360991 /* SuccessViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -202,11 +209,10 @@
 				CA3B6CA51C854DD500D8FF25 /* Models */,
 				CA3B6CA41C854DC800D8FF25 /* Controllers */,
 				E46EB5511C854C7000E9C41B /* AppDelegate.swift */,
-				E46EB5551C854C7000E9C41B /* Main.storyboard */,
 				E46EB55B1C854C7100E9C41B /* Assets.xcassets */,
-				E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */,
 				E46EB5601C854C7100E9C41B /* Info.plist */,
 				E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */,
+				1039FD631C8B6ADD00360991 /* Main.Storyboard */,
 			);
 			path = WomenWhoCode;
 			sourceTree = "<group>";
@@ -336,15 +342,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E46EB55F1C854C7100E9C41B /* LaunchScreen.storyboard in Resources */,
 				CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */,
 				CA3B6CB11C85519400D8FF25 /* Topics.storyboard in Resources */,
 				E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */,
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
-				E46EB5571C854C7000E9C41B /* Main.storyboard in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
 				CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */,
 				CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */,
+				1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,18 +422,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */,
+				1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
 				CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */,
 				CA3B6CB71C85533600D8FF25 /* EventDetailsViewController.swift in Sources */,
 				E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */,
 				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
-				E46EB5541C854C7000E9C41B /* ViewController.swift in Sources */,
+				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
 				CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
 				CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */,
 				CA3B6CB51C85532500D8FF25 /* EventsViewController.swift in Sources */,
+				1039FD661C8B93A800360991 /* SuccessViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,25 +470,6 @@
 			targetProxy = E46EB5711C854C7100E9C41B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E46EB5551C854C7000E9C41B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E46EB5561C854C7000E9C41B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E46EB55D1C854C7100E9C41B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E46EB55E1C854C7100E9C41B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E46EB5771C854C7100E9C41B /* Debug */ = {
