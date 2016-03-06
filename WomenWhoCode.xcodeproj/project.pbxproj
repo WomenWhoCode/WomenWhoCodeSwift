@@ -27,6 +27,9 @@
 		CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBA1C85536500D8FF25 /* ProfileViewController.swift */; };
 		CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBC1C85537800D8FF25 /* TopicsViewController.swift */; };
 		CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBE1C85538700D8FF25 /* TopicDetailsViewController.swift */; };
+		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
+		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
+		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -75,6 +78,9 @@
 		CA3B6CBA1C85536500D8FF25 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CA3B6CBC1C85537800D8FF25 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		CA3B6CBE1C85538700D8FF25 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
+		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 				1039FD671C8C9E2100360991 /* Profile.swift */,
 				1039FD691C8C9E3100360991 /* User.swift */,
 				1039FD6B1C8C9E6100360991 /* Network.swift */,
+				CAC049FC1C8BC50C00996932 /* Event.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -155,6 +162,8 @@
 		CA3B6CA61C854DDB00D8FF25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CAC049F41C8B63BA00996932 /* EventCell.xib */,
+				CAC049F61C8B6DAD00996932 /* EventCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */,
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
+				CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */,
 				CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */,
 				1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */,
 			);
@@ -426,8 +436,10 @@
 				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
 				1039FD681C8C9E2100360991 /* Profile.swift in Sources */,
+				CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */,
 				CA3B6CB71C85533600D8FF25 /* EventDetailsViewController.swift in Sources */,
 				E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */,
+				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
 				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,
