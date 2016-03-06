@@ -11,7 +11,7 @@ import UIKit
 class Profile: NSObject {
     var objectId : String?
     var fullName: String?
-    var image_url: String?
+    var imageUrl: String?
     var user : User?
     var networkName : String?
     var themeType : Int?
@@ -22,7 +22,7 @@ class Profile: NSObject {
         
         objectId = "uyR8kDpdN0"
         fullName = "Test User"
-        image_url = ""
+        imageUrl = ""
         user = User()
         networkName  = "Atlanta"
         themeType = 0
@@ -33,7 +33,7 @@ class Profile: NSObject {
     init(dictionary: NSDictionary) {
         objectId = dictionary["objectId"] as? String
         fullName = dictionary["fullName"] as? String
-        image_url = dictionary["image_url"] as? String
+        imageUrl = dictionary["imageUrl"] as? String
         user  = dictionary["user"] as? User
         networkName = dictionary["networkName"] as? String
         themeType = dictionary["themeType"] as? Int
