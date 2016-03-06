@@ -11,15 +11,22 @@ import UIKit
 class EventCell: UITableViewCell {
 
     @IBOutlet weak var eventImageView: UIImageView!
-    
     @IBOutlet weak var eventTitle: UILabel!
-    
     @IBOutlet weak var eventLocation: UILabel!
-    
     @IBOutlet weak var eventMonth: UILabel!
-    
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var eventDate: UILabel!
+    
+    var event: Event! {
+        didSet {
+            eventTitle.text = event.name
+            eventLocation.text = event.location
+            eventMonth.text = event.eventMonth
+            eventDate.text = event.eventDay
+            eventDescription.text = event.description
+            
+        }
+    }
     
     
     override func awakeFromNib() {
@@ -27,7 +34,6 @@ class EventCell: UITableViewCell {
         // Initialization code
         
         //FIXME: Update this code once we have a Event Model. For now, put placeholder text
-        
         eventTitle.text = "Intro to Swift2.0"
         eventLocation.text = "Realm, San Francisco,CA"
         eventMonth.text = "MAR"
