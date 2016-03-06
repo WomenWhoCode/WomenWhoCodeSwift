@@ -17,6 +17,10 @@ class Profile: NSObject {
     var themeType : Int?
     var jobTitle : String?
     var network : Network
+    var followingCount :Int?
+    var followersCount :Int?
+    var badges :String?
+    var awesomeCount :Int?
     
     override init() {
         
@@ -28,6 +32,10 @@ class Profile: NSObject {
         themeType = 0
         jobTitle = "Software Developer"
         network = Network()
+        followingCount = 0
+        followersCount = 0
+        badges = ""
+        awesomeCount = 0
     }
     
     init(dictionary: NSDictionary) {
@@ -38,7 +46,11 @@ class Profile: NSObject {
         networkName = dictionary["networkName"] as? String
         themeType = dictionary["themeType"] as? Int
         jobTitle = dictionary["jobTitle"] as? String
-        network = (dictionary["network"] as? Network)!    
+        badges = dictionary["badges"] as? String
+        network = (dictionary["network"] as? Network)!
+        followingCount = dictionary["followingCount"] as? Int
+        followersCount = dictionary["followersCount"] as? Int
+        awesomeCount = dictionary["awesomeCount"] as? Int
         
     }
     

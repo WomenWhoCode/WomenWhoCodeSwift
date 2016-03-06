@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class ProfileViewController: UIViewController {
 
@@ -18,10 +19,27 @@ class ProfileViewController: UIViewController {
     @IBOutlet var awesomeCount: UILabel!
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var networkImage: UIImageView!
+    var profile: Profile! {
+        didSet {
+            name.text = profile.fullName
+            jobDescription.text = profile.jobTitle
+            followingCount.text = "\(profile.followingCount)"
+            followersCount.text = "\(profile.followersCount)"
+            badges.text = profile.badges
+            awesomeCount.text = "\(profile.awesomeCount)"
+            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
+            networkImage.setImageWithURL(NSURL(string: profile.network.imageUrl!)!)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        name.text = "Test User"
+        jobDescription.text = "Software Developer"
+        badges.text = ""
+        profileImage.setImageWithURL(NSURL(string: "https://www.filepicker.io/api/file/TO9j8U0uRpa8UtpOQf7l")!)
+        networkImage.setImageWithURL(NSURL(string: "https://www.filepicker.io/api/file/GTduf9H3RyyXW8YGxpv9")!)
 
-        // Do any additional setup after loading the view.
+       
     }
 
     override func didReceiveMemoryWarning() {
