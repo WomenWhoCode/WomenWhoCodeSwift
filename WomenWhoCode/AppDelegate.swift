@@ -16,16 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var appId = "sW8VXwGAEeq8FYaKMgcbPfliodb8XA7wx0QXLdx9"
     var clientKey = "HTVvl8X9szeaOlXzI8jEUx0MENGlzDTrCIrPCnIy"
+    var displayEvents = true
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-        if PFUser.currentUser() != nil {
-              let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
-            vc.message = "Logged in Successfully"
-            window?.rootViewController = storyboard.instantiateInitialViewController()! as UIViewController
-        }
+
+//        if PFUser.currentUser() != nil {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
+//            vc.message = "Logged in Successfully"
+        
+            let eventStoryBoard = UIStoryboard(name: "Events", bundle: nil)
+            let eventsVC = eventStoryBoard.instantiateInitialViewController()
+            
+            if(displayEvents) {
+                window?.rootViewController = eventsVC
+            }
+//            else {
+//                window?.rootViewController = storyboard.instantiateInitialViewController()! as UIViewController
+//            }
+        
+            
+            
+            
+//        }
+
         return true
     }
 
