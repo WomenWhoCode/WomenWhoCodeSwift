@@ -11,6 +11,9 @@
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
 		1039FD661C8B93A800360991 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD651C8B93A800360991 /* SuccessViewController.swift */; };
+		1039FD681C8C9E2100360991 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD671C8C9E2100360991 /* Profile.swift */; };
+		1039FD6A1C8C9E3100360991 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD691C8C9E3100360991 /* User.swift */; };
+		1039FD6C1C8C9E6100360991 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD6B1C8C9E6100360991 /* Network.swift */; };
 		8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62852FA7CA4FCC1D8897D92B /* Pods.framework */; };
 		CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */; };
 		CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */; };
@@ -24,6 +27,9 @@
 		CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBA1C85536500D8FF25 /* ProfileViewController.swift */; };
 		CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBC1C85537800D8FF25 /* TopicsViewController.swift */; };
 		CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B6CBE1C85538700D8FF25 /* TopicDetailsViewController.swift */; };
+		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
+		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
+		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -56,6 +62,9 @@
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
 		1039FD651C8B93A800360991 /* SuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		1039FD671C8C9E2100360991 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		1039FD691C8C9E3100360991 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1039FD6B1C8C9E6100360991 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3C9159A580BE9148980AFF0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62852FA7CA4FCC1D8897D92B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7751CAA29E4E6B7E26399067 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +80,9 @@
 		CA3B6CBA1C85536500D8FF25 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CA3B6CBC1C85537800D8FF25 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		CA3B6CBE1C85538700D8FF25 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
+		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +155,10 @@
 		CA3B6CA51C854DD500D8FF25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1039FD671C8C9E2100360991 /* Profile.swift */,
+				1039FD691C8C9E3100360991 /* User.swift */,
+				1039FD6B1C8C9E6100360991 /* Network.swift */,
+				CAC049FC1C8BC50C00996932 /* Event.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -152,6 +168,8 @@
 			children = (
 				E4F4EFCB1C8CA3F500B480AC /* UserSearchTableViewCell.swift */,
 				E4F4EFCC1C8CA3F500B480AC /* UserSearchTableViewCell.xib */,
+				CAC049F41C8B63BA00996932 /* EventCell.xib */,
+				CAC049F61C8B6DAD00996932 /* EventCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -345,6 +363,7 @@
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
 				E4F4EFCE1C8CA3F500B480AC /* UserSearchTableViewCell.xib in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
+				CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */,
 				CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */,
 				1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */,
 			);
@@ -422,11 +441,16 @@
 				E4F4EFCD1C8CA3F500B480AC /* UserSearchTableViewCell.swift in Sources */,
 				1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */,
 				1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */,
+				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
+				1039FD681C8C9E2100360991 /* Profile.swift in Sources */,
+				CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */,
 				CA3B6CB71C85533600D8FF25 /* EventDetailsViewController.swift in Sources */,
 				E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */,
+				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
+				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,
 				CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
