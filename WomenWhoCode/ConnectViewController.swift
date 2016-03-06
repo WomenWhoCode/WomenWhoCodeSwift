@@ -2,7 +2,7 @@
 //  ConnectViewController.swift
 //  WomenWhoCode
 //
-//  Created by Prasanthi Relangi on 2/29/16.
+//  Created by Vinu Charanya on 2/29/16.
 //  Copyright © 2016 WomenWhoCode. All rights reserved.
 //
 
