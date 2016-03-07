@@ -15,6 +15,7 @@
 		1039FD6A1C8C9E3100360991 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD691C8C9E3100360991 /* User.swift */; };
 		1039FD6C1C8C9E6100360991 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD6B1C8C9E6100360991 /* Network.swift */; };
 		8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62852FA7CA4FCC1D8897D92B /* Pods.framework */; };
+		CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */; };
 		CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */; };
 		CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */; };
 		CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */; };
@@ -69,6 +70,7 @@
 		3C9159A580BE9148980AFF0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62852FA7CA4FCC1D8897D92B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7751CAA29E4E6B7E26399067 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+extension.swift"; sourceTree = "<group>"; };
 		CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 				7751CAA29E4E6B7E26399067 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CA0ABE4D1C8D175400F2315D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		CA3B6CA41C854DC800D8FF25 /* Controllers */ = {
@@ -219,7 +229,8 @@
 		E46EB5501C854C7000E9C41B /* WomenWhoCode */ = {
 			isa = PBXGroup;
 			children = (
-				E4F4EFCF1C8CD96B00B480AC /* API */,
+				CA0ABE4D1C8D175400F2315D /* Extensions */,
+                E4F4EFCF1C8CD96B00B480AC /* API */,
 				CA3B6CA71C854EDD00D8FF25 /* Storyboards */,
 				CA3B6CA61C854DDB00D8FF25 /* Views */,
 				CA3B6CA51C854DD500D8FF25 /* Models */,
@@ -459,6 +470,7 @@
 				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				E4F4EFD51C8CEAA800B480AC /* ParseAPI.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
+				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
 				E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */,
 				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,

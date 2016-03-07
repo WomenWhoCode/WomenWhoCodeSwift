@@ -23,7 +23,7 @@ class EventCell: UITableViewCell {
             eventLocation.text = event.location
             eventMonth.text = event.eventMonth
             eventDate.text = event.eventDay
-            eventDescription.text = event.description
+            eventDescription.text = event.eventDescription
             
         }
     }
