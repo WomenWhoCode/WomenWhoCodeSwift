@@ -13,11 +13,20 @@ class UserSearchViewController: UIViewController {
     //Identifiers
     let userSearchCellId = "WWC_UserSearchCell"
     
+    var searchBar: UISearchBar!
+    
     @IBOutlet weak var userSearchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initUserCell()
+        initSearchBar()
+    }
+    
+    func initSearchBar(){
+        searchBar = UISearchBar()
+        searchBar?.sizeToFit()
+        navigationItem.titleView = searchBar
     }
     
     func initUserCell(){

@@ -28,20 +28,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initializeTabBar() {
         
         let storyboard = UIStoryboard(name: "Events", bundle: nil)
+        //Events Page
         let eventsNavigationController = storyboard.instantiateViewControllerWithIdentifier("eventsNavController") as! UINavigationController
-        let eventsViewController = eventsNavigationController.topViewController as! EventsViewController
+        _ = eventsNavigationController.topViewController as! EventsViewController
                 eventsNavigationController.tabBarItem.title = "Events"
         
+        //Connect Page
         let storyboard2 = UIStoryboard(name: "Connect", bundle: nil)
-        let connectViewController = storyboard2.instantiateViewControllerWithIdentifier("UserSearchViewController") as! UserSearchViewController
-        connectViewController.tabBarItem.title = "User Search"
+        let connectNavigationController = storyboard2.instantiateViewControllerWithIdentifier("connectNavController") as! UINavigationController
+            _ = connectNavigationController.topViewController as! UserSearchViewController
+        connectNavigationController.tabBarItem.title = "User Search"
         
+        //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         profileViewController.tabBarItem.title = "Profile"
         
+        //Setup TabBar
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [eventsNavigationController, connectViewController, profileViewController]
+        tabBarController.viewControllers = [eventsNavigationController, connectNavigationController, profileViewController]
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = UIColor.blackColor()
