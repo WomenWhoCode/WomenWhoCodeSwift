@@ -27,19 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let vc = storyboard.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
 //            vc.message = "Logged in Successfully"
         
-            let eventStoryBoard = UIStoryboard(name: "Events", bundle: nil)
-            let eventsVC = eventStoryBoard.instantiateInitialViewController()
-            
+            let profileStoryBoard = UIStoryboard(name: "Profile", bundle: nil)
+            let profileVC = profileStoryBoard.instantiateInitialViewController()
             if(displayEvents) {
-                window?.rootViewController = eventsVC
+                window?.rootViewController = profileVC
             }
 //            else {
 //                window?.rootViewController = storyboard.instantiateInitialViewController()! as UIViewController
 //            }
-        
-            
-            
-            
 //        }
 
         return true
