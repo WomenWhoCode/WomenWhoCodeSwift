@@ -38,6 +38,7 @@
 		E46EB5751C854C7100E9C41B /* WomenWhoCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5741C854C7100E9C41B /* WomenWhoCodeUITests.swift */; };
 		E4F4EFCD1C8CA3F500B480AC /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFCB1C8CA3F500B480AC /* UserSearchTableViewCell.swift */; };
 		E4F4EFCE1C8CA3F500B480AC /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F4EFCC1C8CA3F500B480AC /* UserSearchTableViewCell.xib */; };
+		E4F4EFD91C8CF2BD00B480AC /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E46EB5761C854C7100E9C41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4F4EFCB1C8CA3F500B480AC /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		E4F4EFCC1C8CA3F500B480AC /* UserSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTableViewCell.xib; sourceTree = "<group>"; };
+		E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				1039FD5F1C8B625800360991 /* SignUpViewController.swift */,
 				1039FD611C8B626F00360991 /* LoginViewController.swift */,
 				1039FD651C8B93A800360991 /* SuccessViewController.swift */,
+				E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */,
 				CA3B6CB71C85533600D8FF25 /* EventDetailsViewController.swift in Sources */,
 				E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */,
+				E4F4EFD91C8CF2BD00B480AC /* UserSearchViewController.swift in Sources */,
 				CAC049FD1C8BC50C00996932 /* Event.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Connect View Controller-->
+        <!--User Search View Controller-->
         <scene sceneID="F1c-61-vBP">
             <objects>
-                <viewController id="0J4-tr-4AT" customClass="ConnectViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0J4-tr-4AT" customClass="UserSearchViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LJc-zJ-0s0"/>
                         <viewControllerLayoutGuide type="bottom" id="Kad-RR-6rR"/>
@@ -31,6 +31,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userSearchTableView" destination="O9v-xX-5dq" id="Ljw-vm-Hsb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhh-OA-sfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

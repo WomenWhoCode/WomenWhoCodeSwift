@@ -35,8 +35,32 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Java, iOS, Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHw-Zu-E3C">
+                        <rect key="frame" x="88" y="41" width="105" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJk-g6-AeX">
+                        <rect key="frame" x="296" y="41" width="16" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jft-p5-6fd">
+                        <rect key="frame" x="268" y="39" width="20" height="20"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="awesomeCountLabel" destination="cJk-g6-AeX" id="0Tk-Gn-1Lj"/>
+                <outlet property="awesomeImage" destination="jft-p5-6fd" id="53Y-ow-Wdr"/>
+                <outlet property="featuresLabel" destination="AHw-Zu-E3C" id="0Id-Y8-L5Q"/>
+                <outlet property="nameLabel" destination="wsV-gV-YOU" id="2zO-gf-XYs"/>
+                <outlet property="networkLabel" destination="Bkx-Ce-A3N" id="Dzp-fB-2Ss"/>
+                <outlet property="profileImage" destination="hi4-vW-lz5" id="SDm-Fr-qz1"/>
+                <outlet property="usernameLabel" destination="pBa-id-fMi" id="aIC-SU-gPJ"/>
+            </connections>
             <point key="canvasLocation" x="423" y="393.5"/>
         </tableViewCell>
     </objects>
