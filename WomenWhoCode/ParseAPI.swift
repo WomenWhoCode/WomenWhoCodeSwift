@@ -35,4 +35,8 @@ class ParseAPI{
     func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
         parseHttpClient.getEvents(completion)
     }
+    
+    func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
+        parseHttpClient.getProfiles(completion)
+    }
 }

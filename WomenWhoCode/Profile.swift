@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class Profile: NSObject {
     var objectId : String?
@@ -51,6 +52,36 @@ class Profile: NSObject {
         followingCount = dictionary["followingCount"] as? Int
         followersCount = dictionary["followersCount"] as? Int
         awesomeCount = dictionary["awesomeCount"] as? Int
+        
+    }
+    
+    init(object: PFObject) {
+        objectId = object["objectId"] as? String
+        fullName = object["full_name"] as? String
+        imageUrl = object["image_url"] as? String
+        user  = object["user"] as? User
+        
+        themeType = object["theme_type"] as? Int
+        jobTitle = object["job_title"] as? String
+        
+        //FIXME: We need to have an array of badges
+        badges = object["badges"] as? String
+        
+        
+        network = Network()
+        //network = (object["Network_Details"] as? Network)!
+        //network = Network(object: (object["Network_Details"] as? PFObject)!)
+        
+        //FIXME: Should this be a derived object? 
+        networkName = object["network"] as? String
+        followingCount = object["following_count"] as? Int
+        followersCount = object["followers_count"] as? Int
+        awesomeCount = object["awesome_count"] as? Int
+        
+        print("fullName: \(fullName)")
+        print("followingCount: \(followingCount)")
+        print("followersCount: \(followersCount)")
+        print("NetworkName   : \(networkName)")
         
     }
     

@@ -39,6 +39,16 @@ class Network: NSObject {
         PFLocation = dictionary["PFLocation"] as? PFGeoPoint
     }
     
+    init(object: PFObject) {
+        
+        title = object["title"] as? String
+        objectId = object["objectId"] as? String
+        imageUrl = object["image_url"] as? String
+        meetUpUrl = object["meetup_url"] as? String
+        PFLocation = object["PFLocation"] as? PFGeoPoint
+        
+    }
+    
     func convertGeoPointToLocation () -> CLLocationCoordinate2D {
         
         location = CLLocationCoordinate2D()

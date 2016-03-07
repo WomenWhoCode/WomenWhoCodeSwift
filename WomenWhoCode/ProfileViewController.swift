@@ -39,7 +39,12 @@ class ProfileViewController: UIViewController {
         profileImage.setImageWithURL(NSURL(string: "https://www.filepicker.io/api/file/TO9j8U0uRpa8UtpOQf7l")!)
         networkImage.setImageWithURL(NSURL(string: "https://www.filepicker.io/api/file/GTduf9H3RyyXW8YGxpv9")!)
 
-       
+        //FIXME: Temp call
+        ParseAPI.sharedInstance.getProfiles { (profiles, error) -> () in
+            if error != nil {
+                print("Error retrieving profiles from Parse")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
