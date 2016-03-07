@@ -12,7 +12,8 @@ import Parse
 class EventsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var events:[Event]?
+    var events:[Event] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +28,12 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView.reloadData()
-        
+        //tableView.reloadData()
         // Do any additional setup after loading the view.
+        //event = Event()
         
         //Do a PFQuery to see if you are getting all the events
         retrieveEvents()
-        
-        
     }
     
     
@@ -44,42 +43,28 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
+    // events in a sorted manner
     func retrieveEvents() {
-        var query = PFQuery(className:"Event")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                if let objects = objects {
-                    for object in objects {
-                        print(object.objectId)
-                        let title = object["title"] as! String
-                        print(title)
-                        
-                    }
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
+        ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
+            self.events = events!
+//            print("In VC: Retrieved \(self.events.count) events")
+            self.tableView.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         //FIXME: Change this according to the number of events we have
-        return 10
+        return events.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
-        
+        if events.count > 0 {
+            cell.event = events[indexPath.row]
+//            print("row: \(indexPath.row) name: \(cell.event.name)")
+        }
         return cell
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

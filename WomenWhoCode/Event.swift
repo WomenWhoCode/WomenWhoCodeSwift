@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class Event: NSObject {
     
     var name: String?
     var location: String?
     var eventDate : NSDate?  //will contain the complete event time details (month,date and time)
+    var eventDateString: String?
     var createdAt: NSDate?
     var eventDescription: String? //description is already present in the super class and gives an error
     var type: String?  //Can be Mobile, Web, Social ; Will be used to load the correct image in the Event listing
@@ -26,6 +28,8 @@ class Event: NSObject {
     var eventDay: String?
     
     override init() {
+        
+        super.init()
         
         //FIXME: Temporary initialization
         name = "Intro to Swift2.0"
@@ -41,22 +45,65 @@ class Event: NSObject {
         //Derived objects temporary initialization
         eventMonth = "MAR"
         eventDay = "2"
-        
-        
     }
     
-    init(dictionary: NSDictionary) {
-        name = dictionary["name"] as? String
-        location = dictionary["location"] as? String
-        eventDate = dictionary["event_date"] as? NSDate
-        createdAt  = dictionary["created_at"] as? NSDate
-        eventDescription = dictionary["description"] as? String
-        type = dictionary["type"] as? String
-        attendeeLimit = dictionary["attendee_limit"] as? Int
-        rsvpCount = dictionary["rsvp_count"] as? Int
-        chapter = dictionary["chapter"] as? String
+//    init(dictionary: NSDictionary) {
+//        name = dictionary["name"] as? String
+//        location = dictionary["location"] as? String
+//        eventDate = dictionary["event_date"] as? NSDate
+//        createdAt  = dictionary["created_at"] as? NSDate
+//        eventDescription = dictionary["description"] as? String
+//        type = dictionary["type"] as? String
+//        attendeeLimit = dictionary["attendee_limit"] as? Int
+//        rsvpCount = dictionary["rsvp_count"] as? Int
+//        chapter = dictionary["chapter"] as? String
+//        eventDateString = dictionary["event_date_string"] as? String
+//        
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSSxxx"
+//        let date = dateFormatter.dateFromString(eventDateString!)
+//        let calendar = NSCalendar.currentCalendar()
+//        let components = calendar.components([.Day , .Month , .Year], fromDate: date!)
+//        
+//        let year =  components.year
+//        let month = components.month
+//        let day = components.day
+//        eventMonth = date?.month
+//        eventDay = date?.day
+//        
+//       
+//        
+//    }
+    
+    init(object: PFObject) {
         
+        super.init()
+        
+        name = object["title"] as? String
+        location = object["location"] as? String
+        //eventDate = object["event_date"] as? NSDate
+        createdAt  = object["createdAt"] as? NSDate
+        eventDescription = object["eventDescription"] as? String
+        type = object["type"] as? String
+        attendeeLimit = object["attendee_limit"] as? Int
+        rsvpCount = object["rsvp_count"] as? Int
+        chapter = object["chapter"] as? String
+        eventDateString = object["event_date"] as? String
+        
+        setDerivedValues()
+    }
+    
+    func setDerivedValues() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        print("eventDateString: \(self.eventDateString)")
+        let date = dateFormatter.dateFromString(self.eventDateString!)
+        print("date: \(date)")
+        eventMonth = date?.month
+        eventDay = date?.day
         
     }
     
 }
+
+

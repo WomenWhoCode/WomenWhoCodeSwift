@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (0.4.1)
   - AFNetworking (2.6.3):
     - AFNetworking/NSURLConnection (= 2.6.3)
     - AFNetworking/NSURLSession (= 2.6.3)
@@ -20,17 +21,30 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BDBOAuth1Manager (1.6.0):
+    - AFNetworking/NSURLConnection (~> 2.6.0)
+    - AFNetworking/NSURLSession (~> 2.6.0)
   - Bolts/Tasks (1.6.0)
+  - LTMorphingLabel (0.1.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
+  - SwiftDate (3.0.6)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5)
+  - ActiveLabel
+  - AFNetworking
+  - BDBOAuth1Manager
+  - LTMorphingLabel
   - Parse
+  - SwiftDate
 
 SPEC CHECKSUMS:
+  ActiveLabel: 087705276e6e83c98deb3c22e6fef22b10317b16
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Bolts: f52a250053bb517ca874523c3913776359ab3def
+  LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
 
 COCOAPODS: 0.39.0
