@@ -53,4 +53,31 @@ class ParseHTTPClient{
         }
         
     }
+    
+    func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Profile")
+        var profiles: [Profile] = []
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) profiles.")
+                if let objects = objects {
+                    for object in objects {
+                        let profile = Profile(object: object)
+                        print("Profile fullname: \(profile.fullName)")
+                        profiles.append(profile)
+                    }
+                }
+                completion(profiles: profiles, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(profiles: nil, error: error)
+            }
+        }
+        
+    }
 }
