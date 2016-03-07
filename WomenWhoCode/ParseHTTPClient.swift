@@ -37,7 +37,7 @@ class ParseHTTPClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
+//                print("Successfully retrieved \(objects!.count) scores.")
                 if let objects = objects {
                     for object in objects {
                        let event = Event(object: object)
