@@ -21,28 +21,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-
-//        if PFUser.currentUser() != nil {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewControllerWithIdentifier("SuccessViewController") as! SuccessViewController
-//            vc.message = "Logged in Successfully"
-        
-            let eventStoryBoard = UIStoryboard(name: "Events", bundle: nil)
-            let eventsVC = eventStoryBoard.instantiateInitialViewController()
-            
-            if(displayEvents) {
-                window?.rootViewController = eventsVC
-            }
-//            else {
-//                window?.rootViewController = storyboard.instantiateInitialViewController()! as UIViewController
-//            }
-        
-            
-            
-            
-//        }
-
+        initializeTabBar()
         return true
+    }
+    
+    func initializeTabBar() {
+        
+        let storyboard = UIStoryboard(name: "Events", bundle: nil)
+        let eventsNavigationController = storyboard.instantiateViewControllerWithIdentifier("eventsNavController") as! UINavigationController
+        let eventsViewController = eventsNavigationController.topViewController as! EventsViewController
+                eventsNavigationController.tabBarItem.title = "Events"
+        
+        let storyboard2 = UIStoryboard(name: "Connect", bundle: nil)
+        let connectViewController = storyboard2.instantiateViewControllerWithIdentifier("UserSearchViewController") as! UserSearchViewController
+        connectViewController.tabBarItem.title = "User Search"
+        
+        let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
+        let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        profileViewController.tabBarItem.title = "Profile"
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [eventsNavigationController, connectViewController, profileViewController]
+        
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.cyanColor()]
+        UINavigationBar.appearance().tintColor = UIColor.cyanColor()
+        UITabBar.appearance().tintColor = UIColor.cyanColor()
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(application: UIApplication) {
