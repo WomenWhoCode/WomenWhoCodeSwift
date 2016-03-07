@@ -45,8 +45,6 @@ class Event: NSObject {
         //Derived objects temporary initialization
         eventMonth = "MAR"
         eventDay = "2"
-        
-        
     }
     
 //    init(dictionary: NSDictionary) {

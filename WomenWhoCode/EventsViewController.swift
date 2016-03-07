@@ -34,8 +34,6 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         //Do a PFQuery to see if you are getting all the events
         retrieveEvents()
-        
-        
     }
     
     
@@ -48,37 +46,25 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
     //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
     // events in a sorted manner
     func retrieveEvents() {
-        
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
             self.events = events!
-            print("In VC: Retrieved \(self.events.count) events")
+//            print("In VC: Retrieved \(self.events.count) events")
             self.tableView.reloadData()
-            
-            
         }
-
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         //FIXME: Change this according to the number of events we have
         return events.count
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
-        
         if events.count > 0 {
             cell.event = events[indexPath.row]
-            print("row: \(indexPath.row) name: \(cell.event.name)")
+//            print("row: \(indexPath.row) name: \(cell.event.name)")
         }
-        
-        
         return cell
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
