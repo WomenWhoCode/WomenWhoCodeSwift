@@ -10,23 +10,37 @@ import UIKit
 
 class UserSearchViewController: UIViewController {
     
+    //Identifiers
+    let userSearchCellId = "WWC_UserSearchCell"
+    
     @IBOutlet weak var userSearchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUserSearch()
+        initUserCell()
     }
     
-    func initUserSearch(){
-        let cellNib = UINib(nibName: "UserSearchTableViewCell", bundle: NSBundle.mainBundle())
-        userSearchTableView.registerNib(cellNib, forCellReuseIdentifier: "WWC_UserSearchCell")
+    func initUserCell(){
+        let cellNib = UINib(nibName: "UserProfileCell", bundle: NSBundle.mainBundle())
+        userSearchTableView.registerNib(cellNib, forCellReuseIdentifier: userSearchCellId)
         userSearchTableView.estimatedRowHeight = 200
         userSearchTableView.rowHeight = UITableViewAutomaticDimension
-
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(userSearchCellId, forIndexPath: indexPath) as! UserProfileCell
+//        cell.profile = Profile()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
 }

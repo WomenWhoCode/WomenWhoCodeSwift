@@ -28,10 +28,4 @@ class ParseHTTPClient{
         parseObject.saveInBackgroundWithBlock(callback)
     }
     
-    
-    func getEvents() -> [Event] {
-        
-    }
-    
-    
 }
