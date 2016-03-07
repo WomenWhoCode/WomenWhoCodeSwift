@@ -29,7 +29,6 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.rowHeight = UITableViewAutomaticDimension
         
         //tableView.reloadData()
-        
         // Do any additional setup after loading the view.
         //event = Event()
         
@@ -49,47 +48,16 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
     //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
     // events in a sorted manner
     func retrieveEvents() {
-        var query = PFQuery(className:"Event")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        
+        ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
+            self.events = events!
+            print("In VC: Retrieved \(self.events.count) events")
+            self.tableView.reloadData()
             
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                
-                
-                if let objects = objects {
-                    for object in objects {
-                        
-                        
-                        var event = Event(object: object)
-//                        print(object.objectId)
-//                        event.name = object["title"] as? String
-//                        event.eventDescription = object["eventDescription"] as? String
-//                        event.location = object["location"] as? String
-//                        event.eventDateString = object["event_date"] as? String
-//                        
-//                        //FIXME: Somehow setting it through the init(dictionary:..) method does not work
-//                        //So, this is a hack!
-//                        event.setDerivedValues();
-
-                        
-                        print("name: \(object["title"])")
-                        //self.events.append(event)
-                        self.events.append(event)
-                        
-                        //print(event)
-                        
-                    }
-                }
-                self.tableView.reloadData()
-                
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
+            
         }
+
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

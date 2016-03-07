@@ -31,4 +31,22 @@ class ParseAPI{
     func create(object: PFObject, callback: PFBooleanResultBlock?){
         parseHttpClient.create(object, callback: callback)
     }
+    
+    func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
+        parseHttpClient.getEvents { (events, error) -> () in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(events!.count) scores.")
+                completion(events: events, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(events: nil, error: error)
+            }
+
+        }
+    }
+    
+    
+    
 }
