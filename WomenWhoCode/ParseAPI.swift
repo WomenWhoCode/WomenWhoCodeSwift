@@ -24,8 +24,8 @@ class ParseAPI{
         persistenceManager = PersistenceManager()
     }
     
-    func query(objectName: String){
-        parseHttpClient.query(objectName)
+    func query(className: String){
+        parseHttpClient.query(className)
     }
     
     func create(object: PFObject, callback: PFBooleanResultBlock?){

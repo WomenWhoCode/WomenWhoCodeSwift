@@ -20,12 +20,17 @@ class ParseHTTPClient{
         Parse.setApplicationId(appId, clientKey: clientKey)
     }
     
-    func query(objectName: String) -> PFQuery{
-        return PFQuery(className: objectName)
+    func query(className: String) -> PFQuery{
+        return PFQuery(className: className)
     }
     
     func create(parseObject: PFObject, callback: PFBooleanResultBlock?){
         parseObject.saveInBackgroundWithBlock(callback)
+    }
+    
+    
+    func getEvents() -> [Event] {
+        
     }
     
     
