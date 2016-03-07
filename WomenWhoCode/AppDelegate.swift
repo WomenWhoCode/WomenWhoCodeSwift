@@ -32,17 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let eventsNavigationController = storyboard.instantiateViewControllerWithIdentifier("eventsNavController") as! UINavigationController
         _ = eventsNavigationController.topViewController as! EventsViewController
                 eventsNavigationController.tabBarItem.title = "Events"
+         eventsNavigationController.tabBarItem.image = UIImage(named: "event")
         
         //Connect Page
         let storyboard2 = UIStoryboard(name: "Connect", bundle: nil)
         let connectNavigationController = storyboard2.instantiateViewControllerWithIdentifier("connectNavController") as! UINavigationController
             _ = connectNavigationController.topViewController as! UserSearchViewController
         connectNavigationController.tabBarItem.title = "User Search"
+        connectNavigationController.tabBarItem.image = UIImage(named: "search")
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         profileViewController.tabBarItem.title = "Profile"
+        profileViewController.tabBarItem.image = UIImage(named: "profile")
         
         //Setup TabBar
         let tabBarController = UITabBarController()
