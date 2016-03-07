@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AFNetworking
 
-class UserSearchTableViewCell: UITableViewCell {
+class UserProfileCell: UITableViewCell {
 
     
+
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
@@ -22,14 +24,10 @@ class UserSearchTableViewCell: UITableViewCell {
     var profile: Profile!{
         didSet{
             nameLabel.text = profile.fullName
-            usernameLabel.text = profile.user
-            
+            networkLabel.text = profile.network.title
+            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
         }
     }
-    
-    
-
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
