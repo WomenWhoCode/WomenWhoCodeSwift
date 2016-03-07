@@ -12,7 +12,8 @@ import Parse
 class EventsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var events:[Event]?
+    var events:[Event] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,10 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView.reloadData()
+        //tableView.reloadData()
         
         // Do any additional setup after loading the view.
+        //event = Event()
         
         //Do a PFQuery to see if you are getting all the events
         retrieveEvents()
@@ -44,6 +46,8 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
+    // events in a sorted manner
     func retrieveEvents() {
         var query = PFQuery(className:"Event")
         query.findObjectsInBackgroundWithBlock {
@@ -53,14 +57,34 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
                 // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
                 // Do something with the found objects
+                
+                
                 if let objects = objects {
                     for object in objects {
-                        print(object.objectId)
-                        let title = object["title"] as! String
-                        print(title)
+                        
+                        
+                        var event = Event(object: object)
+//                        print(object.objectId)
+//                        event.name = object["title"] as? String
+//                        event.eventDescription = object["eventDescription"] as? String
+//                        event.location = object["location"] as? String
+//                        event.eventDateString = object["event_date"] as? String
+//                        
+//                        //FIXME: Somehow setting it through the init(dictionary:..) method does not work
+//                        //So, this is a hack!
+//                        event.setDerivedValues();
+
+                        
+                        print("name: \(object["title"])")
+                        //self.events.append(event)
+                        self.events.append(event)
+                        
+                        //print(event)
                         
                     }
                 }
+                self.tableView.reloadData()
+                
             } else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
@@ -71,12 +95,19 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //FIXME: Change this according to the number of events we have
-        return 10
+        return events.count
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
+        
+        if events.count > 0 {
+            cell.event = events[indexPath.row]
+            print("row: \(indexPath.row) name: \(cell.event.name)")
+        }
+        
         
         return cell
         
