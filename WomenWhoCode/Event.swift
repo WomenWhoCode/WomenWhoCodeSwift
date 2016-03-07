@@ -96,9 +96,7 @@ class Event: NSObject {
     func setDerivedValues() {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        print("eventDateString: \(self.eventDateString)")
         let date = dateFormatter.dateFromString(self.eventDateString!)
-        print("date: \(date)")
         eventMonth = date?.month
         eventDay = date?.day
         

@@ -9,11 +9,13 @@
 import UIKit
 import Parse
 
-class EventsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class EventsViewController: UIViewController{
 
+    //Identifiers
+    let eventDetailsSegueId = "WWC_EventDetailsSegue"
+    
     @IBOutlet weak var tableView: UITableView!
     var events:[Event] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +30,11 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        //tableView.reloadData()
-        // Do any additional setup after loading the view.
-        //event = Event()
-        
-        //Do a PFQuery to see if you are getting all the events
         retrieveEvents()
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
@@ -48,37 +42,50 @@ class EventsViewController: UIViewController,UITableViewDelegate,UITableViewData
     func retrieveEvents() {
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
             self.events = events!
-//            print("In VC: Retrieved \(self.events.count) events")
             self.tableView.reloadData()
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //FIXME: Change this according to the number of events we have
-        return events.count
+  
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == eventDetailsSegueId {
+            if let destination = segue.destinationViewController as? EventDetailsViewController {
+                if let cell = sender as? EventCell{
+                    let indexPath = self.tableView!.indexPathForCell(cell)
+                    let index = indexPath!.row
+                    destination.event = events[index]
+                    
+                }
+                destination.hidesBottomBarWhenPushed = true
+            }
+        }
     }
+}
+
+extension EventsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
         if events.count > 0 {
             cell.event = events[indexPath.row]
-//            print("row: \(indexPath.row) name: \(cell.event.name)")
         }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! EventCell
+        self.performSegueWithIdentifier(eventDetailsSegueId, sender: selectedCell)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 120
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
     }
-    */
-
 }
+
+

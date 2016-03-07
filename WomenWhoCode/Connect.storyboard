@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0J4-tr-4AT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GFG-cw-khn">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--User Search View Controller-->
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-xX-5dq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="0J4-tr-4AT" id="0Fv-Cd-Vkl"/>
@@ -28,18 +28,38 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O9v-xX-5dq" firstAttribute="top" secondItem="LJc-zJ-0s0" secondAttribute="bottom" id="1vt-Ja-QZ9"/>
                             <constraint firstItem="Kad-RR-6rR" firstAttribute="top" secondItem="O9v-xX-5dq" secondAttribute="bottom" id="Kvp-m6-cRx"/>
                             <constraint firstItem="O9v-xX-5dq" firstAttribute="leading" secondItem="J3X-e7-jf1" secondAttribute="leading" id="Qbz-UR-Kag"/>
-                            <constraint firstItem="O9v-xX-5dq" firstAttribute="top" secondItem="J3X-e7-jf1" secondAttribute="top" id="XZF-mf-KK8"/>
                             <constraint firstAttribute="trailing" secondItem="O9v-xX-5dq" secondAttribute="trailing" id="wsv-Q2-Z8T"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="BhS-RF-pw8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="userSearchTableView" destination="O9v-xX-5dq" id="Ljw-vm-Hsb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhh-OA-sfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880.5" y="358.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F3K-Qs-M1n">
+            <objects>
+                <navigationController storyboardIdentifier="connectNavController" automaticallyAdjustsScrollViewInsets="NO" id="GFG-cw-khn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3pz-m4-wfQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0J4-tr-4AT" kind="relationship" relationship="rootViewController" id="Pz1-8g-f95"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5OS-Ao-ucu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384" y="385"/>
         </scene>
