@@ -1,5 +1,9 @@
+### Currently this project is part of Codepath final project and is not opensourced. If you'd like to contribute, please wait until after the final demo.
+
 # WomenWhoCodeSwift
 Women Who Code Swift App
+
+
 
 ### Coding Guidelines
 + Breakdown huge issues to smaller ones to show progress.  
@@ -12,12 +16,3 @@ Women Who Code Swift App
 + Attach images and screenshots wherever possible, so it is easier to quickly visualize what you've done.
 
 Some of these might feel redundant, but on the long run, if you wanted to show case this work this is a better start :)
-
-
-## Open Source License
-
-[The Non-Profit Open Software License version 3.0 (NPOSL-3.0)](https://opensource.org/licenses/NPOSL-3.0)
-
-contact@womenwhocode.com for any questions
-
-*WWCode reserve the right to change the open source license at anytime*
