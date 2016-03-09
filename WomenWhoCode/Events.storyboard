@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F2b-Ov-eaa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F2b-Ov-eaa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -19,21 +19,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-aR-Bnk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Xgy-Xt-gx8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Xgy-Xt-gx8" firstAttribute="leading" secondItem="7rq-ob-8Sg" secondAttribute="leading" id="1es-uO-tf6"/>
+                            <constraint firstAttribute="trailing" secondItem="Xgy-Xt-gx8" secondAttribute="trailing" id="7su-Zh-oyd"/>
                             <constraint firstItem="KeR-aR-Bnk" firstAttribute="leading" secondItem="7rq-ob-8Sg" secondAttribute="leading" id="9sJ-dP-5co"/>
+                            <constraint firstItem="Xgy-Xt-gx8" firstAttribute="top" secondItem="MR6-cP-rrv" secondAttribute="bottom" id="INs-51-PmT"/>
                             <constraint firstAttribute="trailing" secondItem="KeR-aR-Bnk" secondAttribute="trailing" id="OHa-Uw-hhd"/>
                             <constraint firstItem="uPj-Er-KXI" firstAttribute="top" secondItem="KeR-aR-Bnk" secondAttribute="bottom" id="i4J-8Y-Wi5"/>
-                            <constraint firstItem="KeR-aR-Bnk" firstAttribute="top" secondItem="MR6-cP-rrv" secondAttribute="bottom" id="xkd-nM-2z7"/>
+                            <constraint firstItem="KeR-aR-Bnk" firstAttribute="top" secondItem="MR6-cP-rrv" secondAttribute="bottom" constant="44" id="xkd-nM-2z7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="npR-Jr-WAV"/>
+                    <navigationItem key="navigationItem" title="Events" id="npR-Jr-WAV">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="6Bz-te-Zzt"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="searchBar" destination="Xgy-Xt-gx8" id="0bY-6B-P9b"/>
                         <outlet property="tableView" destination="KeR-aR-Bnk" id="UYV-RR-3fT"/>
                         <segue destination="3tr-Iq-yed" kind="show" identifier="WWC_EventDetailsSegue" id="K3w-L5-CDD"/>
                     </connections>

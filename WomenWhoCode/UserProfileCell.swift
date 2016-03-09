@@ -23,10 +23,10 @@ class UserProfileCell: UITableViewCell {
     
     var profile: Profile!{
         didSet{
-            nameLabel.text = profile.fullName!
-            networkLabel.text = profile.network.title!
+            nameLabel.text = profile.fullName ?? " "
+            networkLabel.text = profile.network.title! ?? " "
             //FixMe: Update the label name and some other columns of user to match Parse
-            awesomeCountLabel.text = "\(profile.followingCount!)"
+            awesomeCountLabel.text = "\(profile.awesomeCount ?? 0)"
             
 //            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
         }
