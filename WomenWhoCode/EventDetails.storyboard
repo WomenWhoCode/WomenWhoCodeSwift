@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Event Details View Controller-->
+        <scene sceneID="TmL-sY-Kv6">
+            <objects>
+                <viewController storyboardIdentifier="eventDetailsController" id="7g6-jd-5Oc" customClass="EventDetailsViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2L5-xw-koq"/>
+                        <viewControllerLayoutGuide type="bottom" id="zYo-9l-rqz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jG2-fY-7h2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gg_bridge3" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-YB-Zkd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fCg-oe-lS3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exE-WQ-uSF">
+                                <rect key="frame" x="16" y="169" width="268" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-sa-ocz">
+                                <rect key="frame" x="16" y="195" width="90" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" text="EventDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UP-V3-FFH">
+                                <rect key="frame" x="288" y="169" width="71" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="San Francisco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-qx-2cC">
+                                <rect key="frame" x="64" y="91" width="247" height="46"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41K-Yw-Um6">
+                                <rect key="frame" x="312" y="191" width="47" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
+                                <rect key="frame" x="16" y="219" width="343" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4UP-V3-FFH" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="trailing" constant="4" id="5OH-sh-myJ"/>
+                            <constraint firstItem="k9q-YB-Zkd" firstAttribute="leading" secondItem="jG2-fY-7h2" secondAttribute="leading" id="9cc-tp-92b"/>
+                            <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="jG2-fY-7h2" secondAttribute="trailingMargin" id="CFf-hS-q1D"/>
+                            <constraint firstItem="4UP-V3-FFH" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="5" id="Efn-Qz-vYb"/>
+                            <constraint firstItem="41K-Yw-Um6" firstAttribute="top" secondItem="4UP-V3-FFH" secondAttribute="bottom" constant="4" id="FRA-xD-mnT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f5l-He-P1K" secondAttribute="trailing" id="IRk-Rq-DNu"/>
+                            <constraint firstItem="exE-WQ-uSF" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="5" id="Ngh-89-mnx"/>
+                            <constraint firstItem="k9q-YB-Zkd" firstAttribute="top" secondItem="2L5-xw-koq" secondAttribute="bottom" id="XgL-aW-4Bf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="41K-Yw-Um6" secondAttribute="trailing" id="a6f-MX-Laa"/>
+                            <constraint firstItem="vQM-sa-ocz" firstAttribute="top" secondItem="exE-WQ-uSF" secondAttribute="bottom" constant="8" id="cG8-t4-UmS"/>
+                            <constraint firstAttribute="trailing" secondItem="k9q-YB-Zkd" secondAttribute="trailing" id="gPJ-W4-2XQ"/>
+                            <constraint firstItem="exE-WQ-uSF" firstAttribute="leading" secondItem="jG2-fY-7h2" secondAttribute="leadingMargin" id="kQx-2X-Xsw"/>
+                            <constraint firstItem="vQM-sa-ocz" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="o5P-HN-vp1"/>
+                            <constraint firstItem="gfr-qx-2cC" firstAttribute="centerY" secondItem="k9q-YB-Zkd" secondAttribute="centerY" id="rnK-aC-o96"/>
+                            <constraint firstItem="f5l-He-P1K" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="uA6-Gg-XF3"/>
+                            <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="vQM-sa-ocz" secondAttribute="bottom" constant="8" id="wO4-Q0-1n2"/>
+                            <constraint firstItem="gfr-qx-2cC" firstAttribute="centerX" secondItem="k9q-YB-Zkd" secondAttribute="centerX" id="zrq-wn-TfV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QRx-66-dbb"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="attendeeLabel" destination="41K-Yw-Um6" id="ap2-kj-RsZ"/>
+                        <outlet property="descriptionLabel" destination="f5l-He-P1K" id="ROP-QF-ekg"/>
+                        <outlet property="eventDate" destination="4UP-V3-FFH" id="wyy-LT-gB3"/>
+                        <outlet property="eventImage" destination="k9q-YB-Zkd" id="uoG-NN-As6"/>
+                        <outlet property="locationLabel" destination="vQM-sa-ocz" id="8Yd-p0-Gi2"/>
+                        <outlet property="nameLabel" destination="exE-WQ-uSF" id="jFy-ZZ-gwM"/>
+                        <outlet property="networkLabel" destination="gfr-qx-2cC" id="5fj-m2-JHb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wov-KF-ftD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="538.5" y="435.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gg_bridge3" width="1024" height="684"/>
+    </resources>
+</document>
