@@ -10,9 +10,6 @@ import UIKit
 import Parse
 
 class EventsViewController: UIViewController{
-
-    //Identifiers
-    let eventDetailsSegueId = "WWC_EventDetailsSegue"
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +21,7 @@ class EventsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -40,7 +37,7 @@ class EventsViewController: UIViewController{
         
         retrieveEvents()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -54,21 +51,14 @@ class EventsViewController: UIViewController{
         }
     }
     
-  
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == eventDetailsSegueId {
-            if let destination = segue.destinationViewController as? EventDetailsViewController {
-                if let cell = sender as? EventCell{
-                    let indexPath = self.tableView!.indexPathForCell(cell)
-                    let index = indexPath!.row
-                    destination.event = events[index]
-                    
-                }
-                destination.hidesBottomBarWhenPushed = true
-            }
-        }
+    func showEventDetails(event: Event){
+        let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
+        let destination = eventDetailsStoryboard.instantiateViewControllerWithIdentifier("eventDetailsController") as! EventDetailsViewController
+        destination.event = event
+        destination.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(destination, animated: true)
     }
+    
     
     func get_events_count()-> Int {
         if searchActive == true {
@@ -98,8 +88,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! EventCell
-        self.performSegueWithIdentifier(eventDetailsSegueId, sender: selectedCell)
+        showEventDetails(events[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -152,14 +141,14 @@ extension EventsViewController: UISearchBarDelegate {
         }
         
         print("Filtered count \(filtered.count) searchText = \(searchText)")
-//        if(filtered.count == 0){
-//            searchActive = false;
-//        } else {
-//            searchActive = true;
-//        }
+        //        if(filtered.count == 0){
+        //            searchActive = false;
+        //        } else {
+        //            searchActive = true;
+        //        }
         
         if(filtered.count >= 0) {
-                searchActive = true
+            searchActive = true
         }
         
         self.tableView.reloadData()

@@ -46,6 +46,7 @@
 		E4F4EFD91C8CF2BD00B480AC /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */; };
 		E4F4EFDB1C90F8BF00B480AC /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */; };
 		E4F4EFDD1C90FC5A00B480AC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFDC1C90FC5A00B480AC /* Constants.swift */; };
+		E4F4EFDF1C9107B700B480AC /* EventDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		E4F4EFDC1C90FC5A00B480AC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetails.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */,
 				CA3B6CAE1C85517200D8FF25 /* Profile.storyboard */,
 				CA3B6CB01C85519400D8FF25 /* Topics.storyboard */,
+				E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
 				E4F4EFCE1C8CA3F500B480AC /* UserProfileCell.xib in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
+				E4F4EFDF1C9107B700B480AC /* EventDetails.storyboard in Resources */,
 				CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */,
 				CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */,
 				1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */,
