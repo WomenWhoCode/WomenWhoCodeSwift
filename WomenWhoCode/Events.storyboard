@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="F2b-Ov-eaa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="F2b-Ov-eaa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Events-->
@@ -49,12 +48,11 @@
                     <connections>
                         <outlet property="searchBar" destination="Xgy-Xt-gx8" id="0bY-6B-P9b"/>
                         <outlet property="tableView" destination="KeR-aR-Bnk" id="UYV-RR-3fT"/>
-                        <segue destination="3tr-Iq-yed" kind="push" identifier="WWC_EventDetailsSegue" id="K3w-L5-CDD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdp-nF-Rx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="365.5" y="390.5"/>
+            <point key="canvasLocation" x="293.5" y="352.5"/>
         </scene>
         <!--Filters-->
         <scene sceneID="8GV-y6-4Df">
@@ -76,7 +74,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c1q-rE-BTV" id="8Ez-pp-H7n">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -109,99 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQb-hu-J84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166.5" y="-354.5"/>
-        </scene>
-        <!--Event Details View Controller-->
-        <scene sceneID="5XQ-y6-fKi">
-            <objects>
-                <viewController id="3tr-Iq-yed" customClass="EventDetailsViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EZJ-OF-xxK"/>
-                        <viewControllerLayoutGuide type="bottom" id="9UL-Qa-P7t"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GU5-PL-rlw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gg_bridge3" translatesAutoresizingMaskIntoConstraints="NO" id="qQI-Ew-qa8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="ftL-MM-hOa"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZq-fZ-ViZ">
-                                <rect key="frame" x="16" y="169" width="268" height="18"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkR-Te-rgg">
-                                <rect key="frame" x="16" y="195" width="89.5" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="EventDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzM-6G-gtW">
-                                <rect key="frame" x="288" y="169" width="71" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-XV-N0F">
-                                <rect key="frame" x="64" y="91" width="247" height="45.5"/>
-                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-vK-zpb">
-                                <rect key="frame" x="312" y="191" width="46.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-Pp-P6r">
-                                <rect key="frame" x="16" y="219" width="343" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FEQ-XV-N0F" firstAttribute="centerX" secondItem="qQI-Ew-qa8" secondAttribute="centerX" id="2fB-2q-kxA"/>
-                            <constraint firstItem="tzM-6G-gtW" firstAttribute="top" secondItem="qQI-Ew-qa8" secondAttribute="bottom" constant="5" id="4SK-fy-tOa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9WM-vK-zpb" secondAttribute="trailing" id="7LK-zg-1Ob"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GE4-Pp-P6r" secondAttribute="trailing" id="7pH-5B-5X0"/>
-                            <constraint firstItem="9WM-vK-zpb" firstAttribute="top" secondItem="tzM-6G-gtW" secondAttribute="bottom" constant="4" id="9YH-T2-CoD"/>
-                            <constraint firstItem="GE4-Pp-P6r" firstAttribute="leading" secondItem="hZq-fZ-ViZ" secondAttribute="leading" id="BD4-y0-1KN"/>
-                            <constraint firstItem="tzM-6G-gtW" firstAttribute="trailing" secondItem="GU5-PL-rlw" secondAttribute="trailingMargin" id="GHR-3g-sk8"/>
-                            <constraint firstAttribute="trailing" secondItem="qQI-Ew-qa8" secondAttribute="trailing" id="GkA-LC-th9"/>
-                            <constraint firstItem="hZq-fZ-ViZ" firstAttribute="leading" secondItem="GU5-PL-rlw" secondAttribute="leadingMargin" id="JBG-OS-CRN"/>
-                            <constraint firstItem="GE4-Pp-P6r" firstAttribute="top" secondItem="ZkR-Te-rgg" secondAttribute="bottom" constant="8" id="JsP-mS-BBi"/>
-                            <constraint firstItem="hZq-fZ-ViZ" firstAttribute="top" secondItem="qQI-Ew-qa8" secondAttribute="bottom" constant="5" id="KSY-Ae-EzX"/>
-                            <constraint firstItem="ZkR-Te-rgg" firstAttribute="top" secondItem="hZq-fZ-ViZ" secondAttribute="bottom" constant="8" id="TA7-Lo-TaM"/>
-                            <constraint firstItem="FEQ-XV-N0F" firstAttribute="centerY" secondItem="qQI-Ew-qa8" secondAttribute="centerY" id="XhI-4f-xSC"/>
-                            <constraint firstItem="qQI-Ew-qa8" firstAttribute="leading" secondItem="GU5-PL-rlw" secondAttribute="leading" id="alY-o3-dFZ"/>
-                            <constraint firstItem="tzM-6G-gtW" firstAttribute="leading" secondItem="hZq-fZ-ViZ" secondAttribute="trailing" constant="4" id="man-Ky-gXA"/>
-                            <constraint firstItem="qQI-Ew-qa8" firstAttribute="top" secondItem="EZJ-OF-xxK" secondAttribute="bottom" id="qX7-zb-D6p"/>
-                            <constraint firstItem="ZkR-Te-rgg" firstAttribute="leading" secondItem="hZq-fZ-ViZ" secondAttribute="leading" id="zFd-dl-ok4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="uVo-e7-9UP"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="attendeeLabel" destination="9WM-vK-zpb" id="Fug-2F-rmz"/>
-                        <outlet property="descriptionLabel" destination="GE4-Pp-P6r" id="8ZN-A1-cYI"/>
-                        <outlet property="eventDate" destination="tzM-6G-gtW" id="vyA-32-CHU"/>
-                        <outlet property="eventImage" destination="qQI-Ew-qa8" id="ul9-is-uFt"/>
-                        <outlet property="locationLabel" destination="ZkR-Te-rgg" id="xUw-w6-d32"/>
-                        <outlet property="nameLabel" destination="hZq-fZ-ViZ" id="JCN-CJ-1GE"/>
-                        <outlet property="networkLabel" destination="FEQ-XV-N0F" id="bdD-L3-NEP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FPP-5g-Hec" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1120.5" y="395.5"/>
+            <point key="canvasLocation" x="1256.5" y="-354.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kxe-8S-r5c">
@@ -220,7 +126,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFa-YF-Kum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44.5" y="382.5"/>
+            <point key="canvasLocation" x="-151.5" y="352.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AQu-Mx-IWU">
@@ -241,7 +147,4 @@
             <point key="canvasLocation" x="730.5" y="-354.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="gg_bridge3" width="1024" height="684"/>
-    </resources>
 </document>

@@ -52,10 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [eventsNavigationController, connectNavigationController, profileViewController]
         
         UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.cyanColor()]
-        UINavigationBar.appearance().tintColor = UIColor.cyanColor()
-        UITabBar.appearance().tintColor = UIColor.cyanColor()
+        UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Color.Teal.light]
+        UINavigationBar.appearance().tintColor = Constants.Color.Teal.light
+        UITabBar.appearance().tintColor = Constants.Color.Teal.light
         UITabBar.appearance().barTintColor = UIColor.blackColor()
         
         window?.rootViewController = tabBarController

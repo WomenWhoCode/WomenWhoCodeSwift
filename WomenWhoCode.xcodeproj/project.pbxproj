@@ -44,6 +44,9 @@
 		E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD21C8CD99F00B480AC /* PersistenceManager.swift */; };
 		E4F4EFD51C8CEAA800B480AC /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD41C8CEAA800B480AC /* ParseAPI.swift */; };
 		E4F4EFD91C8CF2BD00B480AC /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */; };
+		E4F4EFDB1C90F8BF00B480AC /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */; };
+		E4F4EFDD1C90FC5A00B480AC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFDC1C90FC5A00B480AC /* Constants.swift */; };
+		E4F4EFDF1C9107B700B480AC /* EventDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		E4F4EFD21C8CD99F00B480AC /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		E4F4EFD41C8CEAA800B480AC /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 		E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		E4F4EFDC1C90FC5A00B480AC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetails.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */,
+				E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */,
+				E4F4EFDC1C90FC5A00B480AC /* Constants.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 				CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */,
 				CA3B6CAE1C85517200D8FF25 /* Profile.storyboard */,
 				CA3B6CB01C85519400D8FF25 /* Topics.storyboard */,
+				E4F4EFDE1C9107B700B480AC /* EventDetails.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -397,6 +406,7 @@
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
 				E4F4EFCE1C8CA3F500B480AC /* UserProfileCell.xib in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
+				E4F4EFDF1C9107B700B480AC /* EventDetails.storyboard in Resources */,
 				CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */,
 				CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */,
 				1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */,
@@ -475,6 +485,7 @@
 				E4F4EFCD1C8CA3F500B480AC /* UserProfileCell.swift in Sources */,
 				1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */,
 				1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */,
+				E4F4EFDB1C90F8BF00B480AC /* UIColor+extension.swift in Sources */,
 				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
 				1039FD681C8C9E2100360991 /* Profile.swift in Sources */,
@@ -497,6 +508,7 @@
 				CA3B6CB51C85532500D8FF25 /* EventsViewController.swift in Sources */,
 				E4F4EFD11C8CD98500B480AC /* ParseHTTPClient.swift in Sources */,
 				1039FD661C8B93A800360991 /* SuccessViewController.swift in Sources */,
+				E4F4EFDD1C90FC5A00B480AC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
