@@ -40,10 +40,10 @@ class EventCell2: UITableViewCell {
             
             //Display waitlist count or openSpots
             if (event.waitlistCount != 0) {
-                eventSpots.text = "\(event.waitlistCount!) waitlisted"
+                eventSpots.text = " \(event.waitlistCount!) waitlisted"
             }
             else {
-                eventSpots.text = "\(event.openSpotsCount!) spots left"
+                eventSpots.text = " \(event.openSpotsCount!) spots left"
             }
             
         }
@@ -52,6 +52,13 @@ class EventCell2: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        eventTag1.layer.cornerRadius = 10
+        eventTag1.clipsToBounds = true
+        
+        eventTag2.layer.cornerRadius = 10
+        eventTag2.clipsToBounds = true
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
