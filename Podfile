@@ -9,6 +9,8 @@ pod 'BDBOAuth1Manager'
 pod 'SwiftDate'
 pod 'LTMorphingLabel'
 pod 'ActiveLabel'
+pod 'OAuthSwift'
+pod 'SlackTextViewController'
 
 target 'WomenWhoCode' do
 

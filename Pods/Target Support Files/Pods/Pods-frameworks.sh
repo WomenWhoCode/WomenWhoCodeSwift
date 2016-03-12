@@ -89,7 +89,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/BDBOAuth1Manager.framework"
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/LTMorphingLabel.framework"
+  install_framework "Pods/OAuthSwift.framework"
   install_framework "Pods/Parse.framework"
+  install_framework "Pods/SlackTextViewController.framework"
   install_framework "Pods/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -98,6 +100,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BDBOAuth1Manager.framework"
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/LTMorphingLabel.framework"
+  install_framework "Pods/OAuthSwift.framework"
   install_framework "Pods/Parse.framework"
+  install_framework "Pods/SlackTextViewController.framework"
   install_framework "Pods/SwiftDate.framework"
 fi

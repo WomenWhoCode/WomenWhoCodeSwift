@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
+        let slack = SlackAPIClient()
+        slack.login()
+        slack.readGen()
         initializeTabBar()
+
         return true
     }
     
@@ -148,6 +153,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
+        }
+        return true
+    }
+
 
 }
 

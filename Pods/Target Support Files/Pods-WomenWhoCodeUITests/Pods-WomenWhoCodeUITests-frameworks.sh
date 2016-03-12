@@ -89,7 +89,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-WomenWhoCodeUITests/BDBOAuth1Manager.framework"
   install_framework "Pods-WomenWhoCodeUITests/Bolts.framework"
   install_framework "Pods-WomenWhoCodeUITests/LTMorphingLabel.framework"
+  install_framework "Pods-WomenWhoCodeUITests/OAuthSwift.framework"
   install_framework "Pods-WomenWhoCodeUITests/Parse.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SlackTextViewController.framework"
   install_framework "Pods-WomenWhoCodeUITests/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -98,6 +100,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WomenWhoCodeUITests/BDBOAuth1Manager.framework"
   install_framework "Pods-WomenWhoCodeUITests/Bolts.framework"
   install_framework "Pods-WomenWhoCodeUITests/LTMorphingLabel.framework"
+  install_framework "Pods-WomenWhoCodeUITests/OAuthSwift.framework"
   install_framework "Pods-WomenWhoCodeUITests/Parse.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SlackTextViewController.framework"
   install_framework "Pods-WomenWhoCodeUITests/SwiftDate.framework"
 fi
