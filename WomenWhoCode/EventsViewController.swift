@@ -26,8 +26,11 @@ class EventsViewController: UIViewController{
         tableView.delegate = self
         
         //register tableView cell xib
-        let eventNib = UINib(nibName: "EventCell", bundle: nil)
-        tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell")
+//        let eventNib = UINib(nibName: "EventCell", bundle: nil)
+//        tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell")
+        
+        let eventNib = UINib(nibName: "EventCell2", bundle: nil)
+        tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell2")
         
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -73,7 +76,7 @@ class EventsViewController: UIViewController{
 extension EventsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventCell2", forIndexPath: indexPath) as! EventCell2
         if searchActive {
             if filtered.count > 0 {
                 cell.event = filtered[indexPath.row]
