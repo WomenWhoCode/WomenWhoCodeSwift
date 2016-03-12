@@ -39,4 +39,7 @@ class ParseAPI{
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         parseHttpClient.getProfiles(completion)
     }
+    func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
+    parseHttpClient.getProfileWithUserId(objectID, completion: completion)
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class User: NSObject {
     
@@ -33,5 +34,15 @@ class User: NSObject {
         updatedAt = dictionary["updatedAt"] as? NSDate
         username = dictionary["username"] as? String
         email = dictionary["email"] as? String
-    }  
+    }
+    
+    init(object: PFObject) {
+        objectId = object["objectId"] as? String
+        profile = object["profile"] as? Profile
+        updatedAt = object["updatedAt"] as? NSDate
+        username = object["username"] as? String
+        email = object["email"] as? String
+
+    }
+
 }
