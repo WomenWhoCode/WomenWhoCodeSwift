@@ -14,6 +14,7 @@ class Network: NSObject {
     var objectId: String?
     var imageUrl: String?
     var meetUpUrl : String?
+    var meetupUrlName: String?
     var title: String?
     var PFLocation : PFGeoPoint?
     
@@ -46,6 +47,7 @@ class Network: NSObject {
         imageUrl = object["image_url"] as? String
         meetUpUrl = object["meetup_url"] as? String
         PFLocation = object["PFLocation"] as? PFGeoPoint
+        meetupUrlName = object["meetup_url_name"] as? String
         
     }
     

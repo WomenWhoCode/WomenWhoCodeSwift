@@ -35,6 +35,7 @@ class Event: NSObject {
     var eventDay: String?
     var eventDateInMMMDD: String?
     var meetupEvent: MeetupEvent?
+    var network: Network?
     
     override init() {
         
@@ -100,8 +101,9 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
-        if let network = object.objectForKey("network"){
-            meetupUrlName = network["meetup_url_name"] as? String
+        if object.objectForKey("network") != nil{
+            self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
+            meetupUrlName = self.network!.meetupUrlName
         }
         setDerivedValues()
     }
