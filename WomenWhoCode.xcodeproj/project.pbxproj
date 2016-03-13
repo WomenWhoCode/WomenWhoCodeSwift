@@ -32,6 +32,7 @@
 		CA6276471C94A21A001C4C50 /* EventCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6276451C94A21A001C4C50 /* EventCell2.swift */; };
 		CA6276481C94A21A001C4C50 /* EventCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6276461C94A21A001C4C50 /* EventCell2.xib */; };
 		CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6276491C94F73A001C4C50 /* Feature.swift */; };
+		CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62764B1C954339001C4C50 /* EventFilters.swift */; };
 		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
 		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
@@ -97,6 +98,7 @@
 		CA6276451C94A21A001C4C50 /* EventCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell2.swift; sourceTree = "<group>"; };
 		CA6276461C94A21A001C4C50 /* EventCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell2.xib; sourceTree = "<group>"; };
 		CA6276491C94F73A001C4C50 /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		CA62764B1C954339001C4C50 /* EventFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilters.swift; sourceTree = "<group>"; };
 		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1039FD6B1C8C9E6100360991 /* Network.swift */,
 				CAC049FC1C8BC50C00996932 /* Event.swift */,
 				CA6276491C94F73A001C4C50 /* Feature.swift */,
+				CA62764B1C954339001C4C50 /* EventFilters.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */,
 				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,
 				CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */,
+				CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
 				CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */,
