@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserSearchViewController: UIViewController {
+class UserSearchViewController: UIViewController,UserProfileCellDelegate {
     
     //Identifiers
     let userSearchCellId = "WWC_UserSearchCell"
@@ -46,6 +46,12 @@ class UserSearchViewController: UIViewController {
 //        navigationItem.titleView = searchBar
 //    }
     
+    func userProfileCell(userProfileCell: UserProfileCell, onFollow followButtonSet: Bool) {
+        if followButtonSet == true {
+            retrieveProfiles()
+        }
+    }
+    
     func initUserCell(){
         let cellNib = UINib(nibName: "UserProfileCell", bundle: NSBundle.mainBundle())
         userSearchTableView.registerNib(cellNib, forCellReuseIdentifier: userSearchCellId)
@@ -72,6 +78,7 @@ class UserSearchViewController: UIViewController {
 extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(userSearchCellId, forIndexPath: indexPath) as! UserProfileCell
+        cell.delegate = self
         
         if searchActive {
             if filtered.count > 0 {
