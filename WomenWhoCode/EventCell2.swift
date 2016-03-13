@@ -27,7 +27,10 @@ class EventCell2: UITableViewCell {
     
     @IBOutlet weak var eventTag2: UILabel!
     
+    @IBOutlet weak var rsvpLabel: UILabel!
     @IBOutlet weak var eventSpots: UILabel!
+    @IBOutlet weak var rsvpConfirmedLabel: UILabel!
+    
     var eventObjectId:String?
     var rsvpd: Bool = false
     
@@ -37,8 +40,8 @@ class EventCell2: UITableViewCell {
             eventLocation.text = event.location
             eventDate.text = event.eventDateString
             eventDescription.text = event.eventDescription
-            eventTag1.text = "iOS" //FIXME: Change it to event tag
-            eventTag2.text = "Swift"
+            eventTag1.text = event.eventTags[1]
+            eventTag2.text = event.eventTags[0]
             eventObjectId = event.objectId
             
             //Display waitlist count or openSpots
@@ -70,16 +73,43 @@ class EventCell2: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func attributedText(string: String)->NSAttributedString{
+        
+        let attributedString = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15.0)])
+        
+        let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFontOfSize(15.0)]
+        
+        // Part of string to be bold
+        let range1 = NSRange(location: 4, length: 10)//string.rangeOfString("RSVP: YES") as? NSRange
+        attributedString.addAttributes(boldFontAttribute, range: range1)
+
+        return attributedString
+    }
+    
+    
     @IBAction func onRSVP(sender: AnyObject) {
         
         rsvpd = !rsvpd
         
         let loggedInUser = "h0VjEs2aql" //FIXME: Change this to get the current User
-        var userEvent = PFObject(className:"UserEvents")
+        let userEvent = PFObject(className:"UserEvents")
         
         
         let predicate = NSPredicate(format:"event_id == '\(eventObjectId!)' AND user_id == '\(loggedInUser)'")
         let query = PFQuery(className: "UserEvents", predicate: predicate)
+        
+        if rsvpd == true {
+            rsvpConfirmedLabel.hidden = false
+            rsvpConfirmedLabel.textAlignment = .Center
+            rsvpConfirmedLabel.attributedText = attributedText("Your RSVP: YES")
+            rsvpLabel.hidden = true
+            eventSpots.hidden = true
+        }
+        else {
+            rsvpConfirmedLabel.hidden = true
+            rsvpLabel.hidden = false
+            eventSpots.hidden = false
+        }
         
         //FIXME: prelangi : Refactor this code!!
         query.findObjectsInBackgroundWithBlock {

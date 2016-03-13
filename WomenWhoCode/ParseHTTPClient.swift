@@ -54,6 +54,35 @@ class ParseHTTPClient{
         
     }
     
+    func getEventWithEventId(objectID: String, completion: (event: Event?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Event")
+        query.whereKey("objectId", equalTo: objectID)
+        
+
+        var event: Event?
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) events with the eventId: \(objectID).")
+                if let objects = objects {
+                    for object in objects {
+                        event = Event(object: object)
+                    }
+                }
+                completion(event: event, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(event: nil, error: error)
+            }
+        }
+        
+    }
+
+    
     func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Profile")
         var profile: Profile?
@@ -131,6 +160,57 @@ class ParseHTTPClient{
         
     }
     
+    
+    func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Post")
+        var posts: [Post] = []
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) posts.")
+                if let objects = objects {
+                    for object in objects {
+                        let post = Post(object: object)
+                        posts.append(post)
+                    }
+                }
+                completion(posts: posts, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(posts: nil, error: error)
+            }
+        }
+        
+    }
+    
+    func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Subscribe")
+        var subscriptions: [Subscribed] = []
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) subscriptions.")
+                if let objects = objects {
+                    for object in objects {
+                        let subscribe = Subscribed(object: object)
+                        subscriptions.append(subscribe)
+                    }
+                }
+                completion(subscribed: subscriptions, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(subscribed: nil, error: error)
+            }
+        }
+        
+    }
+
     
     func getFeatures(completion: (features: [Feature]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Feature")

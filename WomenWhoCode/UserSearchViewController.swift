@@ -8,31 +8,48 @@
 
 import UIKit
 
-class UserSearchViewController: UIViewController {
+class UserSearchViewController: UIViewController,UserProfileCellDelegate {
     
     //Identifiers
     let userSearchCellId = "WWC_UserSearchCell"
     
-    var searchBar: UISearchBar!
+    //var searchBar: UISearchBar!
+    
+    @IBOutlet weak var userSearchBar: UISearchBar!
     
     var profiles:[Profile] = []
+    var filtered: [Profile] = []
+    
+    //variables for searchBar support
+    var searchActive : Bool = false
     
     @IBOutlet weak var userSearchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //searchBar functions
+        userSearchBar.delegate = self
+        
         userSearchTableView.dataSource = self
         userSearchTableView.delegate = self
         initUserCell()
-        initSearchBar()
+        //initSearchBar()
         retrieveProfiles()
+        
+        self.navigationItem.title = "User Search"
     }
     
-    func initSearchBar(){
-        searchBar = UISearchBar()
-        searchBar?.sizeToFit()
-        navigationItem.titleView = searchBar
+//    func initSearchBar(){
+//        searchBar = UISearchBar()
+//        searchBar?.sizeToFit()
+//        navigationItem.titleView = searchBar
+//    }
+    
+    func userProfileCell(userProfileCell: UserProfileCell, onFollow followButtonSet: Bool) {
+        if followButtonSet == true {
+            retrieveProfiles()
+        }
     }
     
     func initUserCell(){
@@ -61,12 +78,29 @@ class UserSearchViewController: UIViewController {
 extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(userSearchCellId, forIndexPath: indexPath) as! UserProfileCell
-        cell.profile = profiles[indexPath.row]
+        cell.delegate = self
+        
+        if searchActive {
+            if filtered.count > 0 {
+                cell.profile = filtered[indexPath.row]
+            }
+        }
+        else {
+            if profiles.count > 0 {
+                cell.profile = profiles[indexPath.row]
+            }
+        }
+        //cell.profile = profiles[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profiles.count
+        if searchActive == true {
+            return filtered.count
+        }
+        else {
+            return profiles.count
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -77,4 +111,55 @@ extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     }
+}
+
+extension UserSearchViewController: UISearchBarDelegate {
+    
+    //******  Search Bar functions
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        searchActive = true;
+        self.userSearchBar.showsCancelButton = true
+        searchBar.becomeFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+        self.view.endEditing(true)
+        userSearchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+        userSearchBar.resignFirstResponder()
+    }
+    
+    func searchBar(searchBar: UISearchBar,  textDidChange searchText: String) {
+        
+        if(searchText=="") {
+            filtered = profiles
+        }
+        else {
+            filtered = profiles.filter({ (text) -> Bool in
+                let tmp: NSString = text.fullName as String!
+                let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                return range.location != NSNotFound
+            })
+        }
+        
+        print("Filtered count \(filtered.count) searchText = \(searchText)")
+
+        
+        if(filtered.count >= 0) {
+            searchActive = true
+        }
+        
+        self.userSearchTableView.reloadData()
+    }
+    
 }

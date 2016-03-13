@@ -33,6 +33,7 @@ class Event: NSObject {
     var eventMonth: String?
     var eventDay: String?
     var eventDateInMMMDD: String?
+    var eventTags:[String] = []
     
     override init() {
         
@@ -54,6 +55,9 @@ class Event: NSObject {
         //Derived objects temporary initialization
         eventMonth = "MAR"
         eventDay = "2"
+        eventTags.append("iOS")
+        eventTags.append("Mobile")
+        
     }
     
 //    init(dictionary: NSDictionary) {
@@ -98,6 +102,8 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
+        eventTags = (object["event_tags"] as? [String])!
+        
         
         setDerivedValues()
     }

@@ -36,6 +36,10 @@ class ParseAPI{
         parseHttpClient.getEvents(completion)
     }
     
+    func getEventWithEventId(objectID: String, completion: (event: Event?, error: NSError?) -> ()) {
+        parseHttpClient.getEventWithEventId(objectID, completion: completion)
+    }
+    
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         parseHttpClient.getProfiles(completion)
     }
@@ -53,4 +57,13 @@ class ParseAPI{
         parseHttpClient.getNetworkWithNetworkName(name, completion: completion)
 
     }
+    
+     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
+         parseHttpClient.getSubscriptions(completion)
+    }
+    
+      func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
+        parseHttpClient.getPosts(completion)
+    }    
 }
+
