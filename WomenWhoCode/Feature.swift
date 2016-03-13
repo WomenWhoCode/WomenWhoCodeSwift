@@ -12,9 +12,12 @@ import Parse
 class Feature: NSObject {
     
     var objectId: String?
-    var auto_subscribe: Bool? //FIXME: Do we need this ? 
+    var auto_subscribe: Bool?
     var title: String?
-    var subscribe_count: Int? //FIXME: Do we need this ? May be for topics
+    var subscribe_count: Int?
+    var desc : String?
+    var hex_color : String?
+    var image_url :String?
     
     override init() {
         super.init()
@@ -23,8 +26,9 @@ class Feature: NSObject {
         auto_subscribe  = false
         title           = "Swift"
         subscribe_count = 0
-        
-
+        desc = ""
+        hex_color = ""
+        image_url = ""
     }
     
     init(dictionary: NSDictionary) {
@@ -32,8 +36,9 @@ class Feature: NSObject {
         auto_subscribe  = dictionary["auto_subscribe"] as? Bool
         title           = dictionary["title"] as? String
         subscribe_count = dictionary["subscribe_count"] as? Int
-        
-        
+        desc = dictionary["description"] as? String
+        hex_color = dictionary["hex_color"] as? String
+        image_url = dictionary["image_url"] as? String
     }
     
     init(object: PFObject) {
@@ -42,9 +47,8 @@ class Feature: NSObject {
         auto_subscribe  = object["auto_subscribe"] as? Bool
         title           = object["title"] as? String
         subscribe_count = object["subscribe_count"] as? Int
-
-        
+        desc = object["description"] as? String
+        hex_color = object["hex_color"] as? String
+        image_url = object["image_url"] as? String
     }
-    
-    
 }
