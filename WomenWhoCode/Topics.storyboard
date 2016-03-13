@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Topics-->
         <scene sceneID="Ub3-5f-fzc">
             <objects>
-                <viewController id="Ih4-MI-z8F" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopicsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ih4-MI-z8F" customClass="TopicsViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cPJ-iy-Wjs"/>
                         <viewControllerLayoutGuide type="bottom" id="W65-Z4-JEc"/>
@@ -16,12 +17,64 @@
                     <view key="view" contentMode="scaleToFill" id="S2I-ER-cg1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Cu-eU-K5O">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopicCell" rowHeight="60" id="pXZ-5j-c5G" customClass="TopicCell" customModule="WomenWhoCode" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="pXZ-5j-c5G" id="Dbd-ct-qKE">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Topic Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwQ-UJ-qpz">
+                                                    <rect key="frame" x="66" y="23" width="218" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLr-24-ww4">
+                                                    <rect key="frame" x="13" y="13" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="tWG-YW-SH6"/>
+                                                        <constraint firstAttribute="height" constant="40" id="zzM-j6-HBa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="follow" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-Dj-QDE">
+                                                    <rect key="frame" x="292" y="23" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="xEN-bd-DnH"/>
+                                                        <constraint firstAttribute="height" constant="20" id="z6S-dE-P0a"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dLr-24-ww4" firstAttribute="leading" secondItem="Dbd-ct-qKE" secondAttribute="leadingMargin" constant="5" id="fbF-5t-EAI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dLr-24-ww4" secondAttribute="bottom" constant="5" id="nDN-qv-R4s"/>
+                                                <constraint firstItem="dLr-24-ww4" firstAttribute="top" secondItem="Dbd-ct-qKE" secondAttribute="topMargin" constant="5" id="v57-gr-MCW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followImage" destination="PuN-Dj-QDE" id="TXb-zq-zJW"/>
+                                            <outlet property="topicImage" destination="dLr-24-ww4" id="Kac-PB-OCW"/>
+                                            <outlet property="topicName" destination="IwQ-UJ-qpz" id="GWU-Xt-C5x"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Topics" id="EUr-D0-UKN"/>
+                    <connections>
+                        <outlet property="tableView" destination="0Cu-eU-K5O" id="b0S-mf-PxY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16f-Jj-VOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190" y="385"/>
+            <point key="canvasLocation" x="722" y="383"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xFb-Di-8n6">
@@ -39,7 +92,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVV-Vc-zco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="378"/>
+            <point key="canvasLocation" x="1099" y="378"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a1m-p5-vKI">
+            <objects>
+                <navigationController storyboardIdentifier="topicsNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MyE-35-gpi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xxd-ND-3ra">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ih4-MI-z8F" kind="relationship" relationship="rootViewController" id="Nj3-WR-FGM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MN4-vK-NmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="385"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="follow" width="20" height="20"/>
+    </resources>
 </document>

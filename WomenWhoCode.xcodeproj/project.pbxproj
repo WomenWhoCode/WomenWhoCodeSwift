@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100341241C955FA3005C2D3B /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341231C955FA3005C2D3B /* TopicCell.swift */; };
+		100341261C957509005C2D3B /* Subscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341251C957509005C2D3B /* Subscribed.swift */; };
 		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
@@ -31,6 +33,8 @@
 		CA41C9C91C9013AD0045ECC9 /* EventsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41C9C81C9013AD0045ECC9 /* EventsFilterViewController.swift */; };
 		CA6276471C94A21A001C4C50 /* EventCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6276451C94A21A001C4C50 /* EventCell2.swift */; };
 		CA6276481C94A21A001C4C50 /* EventCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6276461C94A21A001C4C50 /* EventCell2.xib */; };
+		CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6276491C94F73A001C4C50 /* Feature.swift */; };
+		CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62764B1C954339001C4C50 /* EventFilters.swift */; };
 		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
 		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
@@ -80,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100341231C955FA3005C2D3B /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		100341251C957509005C2D3B /* Subscribed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribed.swift; sourceTree = "<group>"; };
 		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
@@ -106,6 +112,8 @@
 		CA41C9C81C9013AD0045ECC9 /* EventsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFilterViewController.swift; sourceTree = "<group>"; };
 		CA6276451C94A21A001C4C50 /* EventCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell2.swift; sourceTree = "<group>"; };
 		CA6276461C94A21A001C4C50 /* EventCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell2.xib; sourceTree = "<group>"; };
+		CA6276491C94F73A001C4C50 /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		CA62764B1C954339001C4C50 /* EventFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilters.swift; sourceTree = "<group>"; };
 		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -218,6 +226,9 @@
 				1039FD691C8C9E3100360991 /* User.swift */,
 				1039FD6B1C8C9E6100360991 /* Network.swift */,
 				CAC049FC1C8BC50C00996932 /* Event.swift */,
+				CA6276491C94F73A001C4C50 /* Feature.swift */,
+				CA62764B1C954339001C4C50 /* EventFilters.swift */,
+				100341251C957509005C2D3B /* Subscribed.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 				E4CF13F71C94EB2500A271B9 /* MessageCell.xib */,
 				CA6276451C94A21A001C4C50 /* EventCell2.swift */,
 				CA6276461C94A21A001C4C50 /* EventCell2.xib */,
+				100341231C955FA3005C2D3B /* TopicCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -550,14 +562,18 @@
 				E4CF14021C954C6100A271B9 /* SlackChannel.swift in Sources */,
 				E4F4EFD51C8CEAA800B480AC /* ParseAPI.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
+				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
+				100341261C957509005C2D3B /* Subscribed.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
 				CA41C9C91C9013AD0045ECC9 /* EventsFilterViewController.swift in Sources */,
 				E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */,
 				1039FD6A1C8C9E3100360991 /* User.swift in Sources */,
 				CA3B6CBD1C85537800D8FF25 /* TopicsViewController.swift in Sources */,
+				CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
+				100341241C955FA3005C2D3B /* TopicCell.swift in Sources */,
 				CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */,
 				CA3B6CB51C85532500D8FF25 /* EventsViewController.swift in Sources */,
 				E4CF13FB1C9506C900A271B9 /* SlackAPI.swift in Sources */,

@@ -26,9 +26,6 @@ class EventsViewController: UIViewController{
         tableView.delegate = self
         
         //register tableView cell xib
-//        let eventNib = UINib(nibName: "EventCell", bundle: nil)
-//        tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell")
-        
         let eventNib = UINib(nibName: "EventCell2", bundle: nil)
         tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell2")
         

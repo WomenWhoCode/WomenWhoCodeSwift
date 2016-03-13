@@ -62,11 +62,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fr4-lB-cTd">
                         <rect key="frame" x="30" y="127" width="317" height="23.5"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg2-gs-z9c">
-                                <rect key="frame" x="0.0" y="-5" width="180" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg2-gs-z9c">
+                                <rect key="frame" x="0.0" y="-5" width="317" height="30"/>
+                                <connections>
+                                    <action selector="onRSVP:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3x6-rH-1Yl"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 22 spots left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-nq-0Ug">
-                                <rect key="frame" x="158.5" y="2" width="158.5" height="19.5"/>
+                                <rect key="frame" x="158" y="2" width="158.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

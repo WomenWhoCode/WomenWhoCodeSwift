@@ -56,7 +56,7 @@ class Profile: NSObject {
     }
     
     init(object: PFObject) {
-        objectId = object["objectId"] as? String
+        objectId = object.objectId
         fullName = object["full_name"] as? String
         imageUrl = object["image_url"] as? String
         user  = object["user"] as? User
@@ -78,10 +78,10 @@ class Profile: NSObject {
         followersCount = object["followers_count"] as? Int
         awesomeCount = object["awesome_count"] as? Int
         
-        print("fullName: \(fullName)")
-        print("followingCount: \(followingCount)")
-        print("followersCount: \(followersCount)")
-        print("NetworkName   : \(networkName)")
+//        print("fullName: \(fullName)")
+//        print("followingCount: \(followingCount)")
+//        print("followersCount: \(followersCount)")
+//        print("NetworkName   : \(networkName)")
         
     }
     
