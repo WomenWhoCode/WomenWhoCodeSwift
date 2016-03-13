@@ -48,10 +48,6 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
-        func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-            return 120
-        }
-        
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return topics.count
         }
