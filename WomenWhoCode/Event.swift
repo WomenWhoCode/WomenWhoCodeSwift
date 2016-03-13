@@ -27,6 +27,7 @@ class Event: NSObject {
     var openSpotsCount: Int?
     var waitlistCount: Int?
     var chapter: String? //FIXME: Do we need this ?
+    var meetupUrlName: String?
     
     //Derived Objects
     var timeInString: String?
@@ -98,22 +99,26 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
-        
+        if let network = object.objectForKey("network"){
+            meetupUrlName = network["meetup_url_name"] as? String
+        }
         setDerivedValues()
     }
     
     func setDerivedValues() {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a"
         let date = dateFormatter.dateFromString(self.eventDateString!)
+        
+        dateFormatter.dateFormat = "MMM dd, hh:mma"
+        if let dateFound =  date{
+            eventDateInMMMDD = dateFormatter.stringFromDate(dateFound)
+        }else{
+            eventDateInMMMDD = ""
+        }
+
         eventMonth = date?.month
-        eventDay = date?.day
-        
-        
-//        dateFormatter.dateFormat = "MMM dd hh:mm"
-//        let newDate = dateFormatter.dateFromString(self.eventDateString!)
-//        eventDateInMMMDD = dateFormatter.stringFromDate(newDate!)
-        
+        eventDay = date?.day        
         
         if rsvpCount > attendeeLimit {
             waitlistCount = rsvpCount! - attendeeLimit!

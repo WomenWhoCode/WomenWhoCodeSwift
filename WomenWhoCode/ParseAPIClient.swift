@@ -30,6 +30,7 @@ class ParseAPIClient{
     
     func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Event")
+        query.includeKey("network")
         var events: [Event] = []
         
         query.findObjectsInBackgroundWithBlock {

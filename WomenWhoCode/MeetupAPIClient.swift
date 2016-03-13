@@ -43,64 +43,21 @@ class MeetupAPIClient {
     }
     
     func fetchEvent(urlParams: [String: String], successCallback: (MeetupEvent) -> Void){
-        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
+        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/ngchrlyvfbcc"
+//        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in
                 switch response.result {
                 case .Success:
                     print("Validation Successful")
-                    if let JSON = response.result.value {
-                        print("JSON: \(JSON)")
-                        //Create meetupGroup
+                    if let JSON = response.result.value as? NSDictionary {
+                        let event = MeetupEvent(dict: JSON)
+                        successCallback(event)
                     }
                 case .Failure(let error):
-                    print("Error in MeetupFetchGroup: \(error)")
+                    print("Error in MeetupFetchEvent: \(error)")
                 }
         }
-    }
-    
-    func readGen(succesCallback: ([Message]) -> Void){
-        oauthswift!.client.get("https://slack.com/api/channels.history",
-            parameters: ["token": oauthToken, "channel": "C0PBTN49W"],
-            success: {
-                data, response in
-                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                if let dataFromString = dataString!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-                    let jsonData = JSON(data: dataFromString)
-                    //If json is .Dictionary
-                    for (key,json):(String, JSON) in jsonData {
-                        if (key == "messages"){
-                            let messages = Message.initWithJSONArray(json.array!)
-                            succesCallback(messages)
-                        }
-                    }
-                }
-            }
-            , failure: { error in
-                print(error)
-            }
-        )
-    }
-    
-    func login(){
-        oauthswift = OAuth2Swift(
-            consumerKey:    clientId,
-            consumerSecret: clientSecret,
-            authorizeUrl:   "https://slack.com/oauth/authorize",
-            accessTokenUrl: "https://slack.com/api/oauth.access",
-            responseType:   "code"
-        )
-        oauthswift!.authorizeWithCallbackURL(
-            NSURL(string: "womenwhocode://oauth-callback/slack")!,
-            scope: "channels:read,channels:history,users:read", state:"SLACK",
-            success: { credential, response, parameters in
-                self.oauthToken = credential.oauth_token
-            },
-            failure: { error in
-                print(error.localizedDescription, terminator: "")
-                
-            }
-        )
     }
 }
