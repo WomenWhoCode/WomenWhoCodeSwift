@@ -80,12 +80,6 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Awesome " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aS9-Rb-xIO">
-                                <rect key="frame" x="51" y="245" width="125" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbG-6N-qqE">
                                 <rect key="frame" x="13" y="272" width="23" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -96,6 +90,9 @@
                                 <rect key="frame" x="287" y="36" width="20" height="20"/>
                                 <state key="normal" image="settings"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-W2-Srg">
+                                <rect key="frame" x="53" y="248" width="20" height="20"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -116,6 +113,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="like" width="20" height="20"/>
         <image name="settings" width="30" height="30"/>
     </resources>
 </document>
