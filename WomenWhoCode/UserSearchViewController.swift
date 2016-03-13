@@ -21,6 +21,9 @@ class UserSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userSearchTableView.dataSource = self
+        userSearchTableView.delegate = self
         initUserCell()
         initSearchBar()
         retrieveProfiles()
@@ -64,5 +67,14 @@ extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profiles.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        profileViewController.profile = profiles[indexPath.row]
+        self.navigationController!.pushViewController(profileViewController, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
     }
 }
