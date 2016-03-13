@@ -25,26 +25,41 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Bolts/Tasks (1.6.0)
+  - Emoji-swift (0.0.2)
   - LTMorphingLabel (0.1.1)
+  - OAuthSwift (0.5.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
+  - SlackTextViewController (1.9.1)
+  - SnapKit (0.19.1)
   - SwiftDate (3.0.6)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - ActiveLabel
   - AFNetworking
   - BDBOAuth1Manager
+  - Emoji-swift
   - LTMorphingLabel
+  - OAuthSwift
   - Parse
+  - SlackTextViewController
+  - SnapKit
   - SwiftDate
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   ActiveLabel: 087705276e6e83c98deb3c22e6fef22b10317b16
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Bolts: f52a250053bb517ca874523c3913776359ab3def
+  Emoji-swift: 2bd665445d3663ec44648d34d75a650a7aeb3a22
   LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
+  OAuthSwift: d63f7f329f49787319a7e35974c18b10865fe636
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  SlackTextViewController: 6b0d1030c53937226fc5358f217af2a34fc211cf
+  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
