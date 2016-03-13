@@ -40,8 +40,8 @@ class EventCell2: UITableViewCell {
             eventLocation.text = event.location
             eventDate.text = event.eventDateString
             eventDescription.text = event.eventDescription
-            eventTag1.text = "iOS" //FIXME: Change it to event tag
-            eventTag2.text = "Swift"
+            eventTag1.text = event.eventTags[1]
+            eventTag2.text = event.eventTags[0]
             eventObjectId = event.objectId
             
             //Display waitlist count or openSpots
