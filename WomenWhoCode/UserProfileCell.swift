@@ -27,7 +27,13 @@ class UserProfileCell: UITableViewCell {
             networkLabel.text = profile.networkName! ?? " "
 //            FixMe: Update the username and features label  
             
-            awesomeCountLabel.text = "\(profile.awesomeCount! ?? 0)"
+            if let awesomeCount = profile.awesomeCount {
+                awesomeCountLabel.text = "\(profile.awesomeCount!)"
+            }
+            else {
+                awesomeCountLabel.text = "0"
+            }
+            
             if(profile.imageUrl != nil) {
             profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
             }
