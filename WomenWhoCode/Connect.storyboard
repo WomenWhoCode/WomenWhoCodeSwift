@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GFG-cw-khn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GFG-cw-khn">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--User Search View Controller-->
@@ -18,25 +18,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-xX-5dq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="0J4-tr-4AT" id="0Fv-Cd-Vkl"/>
                                     <outlet property="delegate" destination="0J4-tr-4AT" id="IDT-tF-Lqe"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search for any user..." translatesAutoresizingMaskIntoConstraints="NO" id="Afd-Hp-fOR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O9v-xX-5dq" firstAttribute="top" secondItem="LJc-zJ-0s0" secondAttribute="bottom" id="1vt-Ja-QZ9"/>
+                            <constraint firstItem="O9v-xX-5dq" firstAttribute="top" secondItem="LJc-zJ-0s0" secondAttribute="bottom" constant="44" id="1vt-Ja-QZ9"/>
                             <constraint firstItem="Kad-RR-6rR" firstAttribute="top" secondItem="O9v-xX-5dq" secondAttribute="bottom" id="Kvp-m6-cRx"/>
+                            <constraint firstItem="Afd-Hp-fOR" firstAttribute="leading" secondItem="J3X-e7-jf1" secondAttribute="leading" id="PuU-ho-pMm"/>
                             <constraint firstItem="O9v-xX-5dq" firstAttribute="leading" secondItem="J3X-e7-jf1" secondAttribute="leading" id="Qbz-UR-Kag"/>
+                            <constraint firstAttribute="trailing" secondItem="Afd-Hp-fOR" secondAttribute="trailing" id="S57-s5-SL4"/>
+                            <constraint firstItem="Afd-Hp-fOR" firstAttribute="top" secondItem="LJc-zJ-0s0" secondAttribute="bottom" id="d7v-jE-o8f"/>
                             <constraint firstAttribute="trailing" secondItem="O9v-xX-5dq" secondAttribute="trailing" id="wsv-Q2-Z8T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BhS-RF-pw8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="userSearchBar" destination="Afd-Hp-fOR" id="esu-2K-tx2"/>
                         <outlet property="userSearchTableView" destination="O9v-xX-5dq" id="Ljw-vm-Hsb"/>
                     </connections>
                 </viewController>
