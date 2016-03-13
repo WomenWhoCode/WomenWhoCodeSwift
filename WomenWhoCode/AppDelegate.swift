@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
+//        SlackAPI.sharedInstance.login()
         initializeTabBar()
         return true
     }
@@ -46,6 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(named: "profile")
+        
+        //Chat Page
+        let chatStoryboard = UIStoryboard(name: "Chat", bundle: nil)
+        let chatViewController = chatStoryboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
+        chatViewController.tabBarItem.title = "Chat"
+
         
         let storyboard4 = UIStoryboard(name: "Timeline", bundle: nil)
         //Timeline Page
@@ -162,6 +170,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
+        }
+        return true
+    }
+
 
 }
 
