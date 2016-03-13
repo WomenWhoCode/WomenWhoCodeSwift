@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		100341241C955FA3005C2D3B /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341231C955FA3005C2D3B /* TopicCell.swift */; };
 		100341261C957509005C2D3B /* Subscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341251C957509005C2D3B /* Subscribed.swift */; };
+		100341281C95F0BC005C2D3B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341271C95F0BC005C2D3B /* Post.swift */; };
 		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		100341231C955FA3005C2D3B /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		100341251C957509005C2D3B /* Subscribed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribed.swift; sourceTree = "<group>"; };
+		100341271C95F0BC005C2D3B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				CA6276491C94F73A001C4C50 /* Feature.swift */,
 				CA62764B1C954339001C4C50 /* EventFilters.swift */,
 				100341251C957509005C2D3B /* Subscribed.swift */,
+				100341271C95F0BC005C2D3B /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				E4F4EFCD1C8CA3F500B480AC /* UserProfileCell.swift in Sources */,
 				1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */,
 				1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */,
+				100341281C95F0BC005C2D3B /* Post.swift in Sources */,
 				E4F4EFDB1C90F8BF00B480AC /* UIColor+extension.swift in Sources */,
 				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
