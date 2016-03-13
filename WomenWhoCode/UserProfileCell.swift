@@ -24,11 +24,13 @@ class UserProfileCell: UITableViewCell {
     var profile: Profile!{
         didSet{
             nameLabel.text = profile.fullName ?? " "
-            networkLabel.text = profile.network.title! ?? " "
-            //FixMe: Update the label name and some other columns of user to match Parse
-            awesomeCountLabel.text = "\(profile.awesomeCount ?? 0)"
+            networkLabel.text = profile.networkName! ?? " "
+//            FixMe: Update the username and features label  
             
-//            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
+            awesomeCountLabel.text = "\(profile.awesomeCount! ?? 0)"
+            if(profile.imageUrl != nil) {
+            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
+            }
         }
     }
     

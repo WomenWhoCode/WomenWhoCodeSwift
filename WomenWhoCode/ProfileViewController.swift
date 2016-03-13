@@ -21,18 +21,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var networkImage: UIImageView!
     var loggedInUserId = "h0VjEs2aql"
-    var profile: Profile! {
-        didSet {
-            name.text = profile.fullName
-            jobDescription.text = profile.jobTitle
-            followingCount.text = "\(profile!.followingCount!)"
-            followersCount.text = "\(profile!.followersCount!)"
-            badges.text = profile!.badges
-            awesomeCount.text = "\(profile!.awesomeCount!)"
-            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
-            networkImage.setImageWithURL(NSURL(string: profile.network.imageUrl!)!)
-        }
-    }
+    var profile: Profile!
     override func viewDidLoad() {
         super.viewDidLoad()
         if(profile == nil) {
@@ -41,10 +30,44 @@ class ProfileViewController: UIViewController {
                     print("Error retrieving logged in user from Parse")
                 } else {
                     self.profile = profile
+                    self.populateFields()
                 }
             }
+        } else {
+            populateFields()
         }
+       
            }
+    
+    func populateFields() {
+        name.text = profile.fullName! ?? ""
+        jobDescription.text = profile.jobTitle! ?? ""
+        followingCount.text = "\(profile.followingCount! ?? 0)"
+        followersCount.text = "\(profile.followersCount! ?? 0)"
+        badges.text = profile!.badges
+        awesomeCount.text = "\(profile.awesomeCount! ?? 0)"
+        if(profile.imageUrl != nil) {
+            profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
+        } else {
+            profileImage.image = UIImage(named: "professional")
+        }
+        if ( profile.network.imageUrl != nil && profile.network.imageUrl != "") {
+            networkImage.setImageWithURL(NSURL(string: profile.network.imageUrl!)!)
+        } else {
+            // Network object is not linked
+             ParseAPI.sharedInstance.getNetworkWithNetworkName(profile.networkName!, completion: { (network, error) -> () in
+                if(error != nil ) {
+                    print("Error retreiving Network")
+                } else {
+                      if(network?.imageUrl != nil) {
+                     self.networkImage.setImageWithURL(NSURL(string: (network?.imageUrl)!)!)
+                      } else {
+                          self.networkImage.image = UIImage(named: "gg_bridge3")
+                    }
+                }
+             })
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
