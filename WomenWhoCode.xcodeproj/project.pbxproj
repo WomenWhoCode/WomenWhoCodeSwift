@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100341241C955FA3005C2D3B /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341231C955FA3005C2D3B /* TopicCell.swift */; };
 		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100341231C955FA3005C2D3B /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				CAC049F61C8B6DAD00996932 /* EventCell.swift */,
 				CA6276451C94A21A001C4C50 /* EventCell2.swift */,
 				CA6276461C94A21A001C4C50 /* EventCell2.xib */,
+				100341231C955FA3005C2D3B /* TopicCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */,
 				CA3B6CBF1C85538700D8FF25 /* TopicDetailsViewController.swift in Sources */,
 				E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */,
+				100341241C955FA3005C2D3B /* TopicCell.swift in Sources */,
 				CA3B6CBB1C85536500D8FF25 /* ProfileViewController.swift in Sources */,
 				CA3B6CB51C85532500D8FF25 /* EventsViewController.swift in Sources */,
 				E4F4EFD11C8CD98500B480AC /* ParseHTTPClient.swift in Sources */,
