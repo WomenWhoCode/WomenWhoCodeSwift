@@ -40,17 +40,17 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJk-g6-AeX">
-                        <rect key="frame" x="296" y="50" width="16" height="16"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="jft-p5-6fd">
+                        <rect key="frame" x="292" y="48" width="20" height="20"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-id-fMi">
+                        <rect key="frame" x="91" y="30" width="204" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jft-p5-6fd">
-                        <rect key="frame" x="275" y="48" width="20" height="20"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-id-fMi">
-                        <rect key="frame" x="91" y="30" width="51" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ht-f7-NJS">
+                        <rect key="frame" x="266" y="47" width="21" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="awesomeCountLabel" destination="cJk-g6-AeX" id="0Tk-Gn-1Lj"/>
+                <outlet property="awesomeCountLabel" destination="9ht-f7-NJS" id="wqV-dx-V5v"/>
                 <outlet property="awesomeImage" destination="jft-p5-6fd" id="53Y-ow-Wdr"/>
                 <outlet property="featuresLabel" destination="AHw-Zu-E3C" id="0Id-Y8-L5Q"/>
                 <outlet property="nameLabel" destination="wsV-gV-YOU" id="2zO-gf-XYs"/>
@@ -75,6 +75,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="like" width="20" height="20"/>
         <image name="professional" width="224" height="225"/>
     </resources>
 </document>

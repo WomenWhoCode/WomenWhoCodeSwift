@@ -24,10 +24,10 @@ class Network: NSObject {
        override init() {
   
         //FIXME: Temporary initialization
-        objectId = "TUiDFpXFc2"
-        imageUrl = "https://www.filepicker.io/api/file/GTduf9H3RyyXW8YGxpv9"
-        meetUpUrl = "http://www.meetup.com/Women-Who-Code-Atlanta"
-        title = "Atlanta"
+        objectId = ""
+        imageUrl = ""
+        meetUpUrl = ""
+        title = ""
         PFLocation = PFGeoPoint()
     }
     

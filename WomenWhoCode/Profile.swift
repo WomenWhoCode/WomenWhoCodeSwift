@@ -78,10 +78,10 @@ class Profile: NSObject {
         followersCount = object["followers_count"] as? Int
         awesomeCount = object["awesome_count"] as? Int
         
-        print("fullName: \(fullName)")
-        print("followingCount: \(followingCount)")
-        print("followersCount: \(followersCount)")
-        print("NetworkName   : \(networkName)")
+//        print("fullName: \(fullName)")
+//        print("followingCount: \(followingCount)")
+//        print("followersCount: \(followersCount)")
+//        print("NetworkName   : \(networkName)")
         
     }
     
