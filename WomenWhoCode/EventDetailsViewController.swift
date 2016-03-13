@@ -28,7 +28,16 @@ class EventDetailsViewController: UIViewController {
     
     func initEvent(){
         nameLabel.text = event.name
-        eventDate.text = "\(event.eventMonth!) \(event.eventDay!)"
+        if let date = event.eventDate  {
+            if let month = event.eventMonth {
+                eventDate.text = "\(event.eventMonth!) \(event.eventDay!)"
+            }
+            
+        }
+        else {
+            eventDate.text = event.eventDateString
+        }
+        
         descriptionLabel.text = event.eventDescription!
         locationLabel.text = event.location!
         //FixMe: Currently nil values. Handle them later
