@@ -56,7 +56,7 @@ class Profile: NSObject {
     }
     
     init(object: PFObject) {
-        objectId = object["objectId"] as? String
+        objectId = object.objectId
         fullName = object["full_name"] as? String
         imageUrl = object["image_url"] as? String
         user  = object["user"] as? User
