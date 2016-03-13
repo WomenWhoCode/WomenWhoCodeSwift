@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ParseHTTPClient{
+class ParseAPIClient{
     
     //API KEYS
     
