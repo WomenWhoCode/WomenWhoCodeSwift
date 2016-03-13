@@ -34,12 +34,6 @@ class EventsViewController: UIViewController{
         
         //searchBar functions
         searchBar.delegate = self
-        
-        //RetrieveEventFromMeetup
-        MeetupAPI.sharedInstance.fetchEvent(["hey":"test"]) { (meetupEvent: MeetupEvent) -> Void in
-            print(meetupEvent)
-        }
-        
         retrieveEvents()
     }
     

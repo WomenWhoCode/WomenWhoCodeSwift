@@ -23,6 +23,7 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        event.fetchMeetupEvent(setMeetupEvent)
         initEvent()
     }
     
@@ -35,8 +36,26 @@ class EventDetailsViewController: UIViewController {
         
         print(event.attendeeLimit)
         print(event.rsvpCount)
-
-//        attendeeLabel.text = "\(event.attendeeLimit! - event.rsvpCount!)/ \(event.attendeeLimit)"
+        
+        //        attendeeLabel.text = "\(event.attendeeLimit! - event.rsvpCount!)/ \(event.attendeeLimit)"
+    }
+    
+    func setMeetupEvent(meetupEvent: MeetupEvent){
+        event.meetupEvent = meetupEvent
+        nameLabel.text = meetupEvent.meetupName
+        setMeetupDescription()
+    }
+    
+    func setMeetupDescription(){
+        do{
+            let attrStr = try NSAttributedString(
+                data: (event.meetupEvent?.eventDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!)!,
+                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                documentAttributes: nil)
+            descriptionLabel.attributedText = attrStr
+        }catch{
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {

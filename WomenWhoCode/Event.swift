@@ -34,6 +34,7 @@ class Event: NSObject {
     var eventMonth: String?
     var eventDay: String?
     var eventDateInMMMDD: String?
+    var meetupEvent: MeetupEvent?
     
     override init() {
         
@@ -127,10 +128,16 @@ class Event: NSObject {
         else {
             waitlistCount = 0
             openSpotsCount = attendeeLimit! - rsvpCount!
-            
         }
-        
-        
+    }
+    
+}
+
+//Meetup Related
+extension Event{
+    
+    func fetchMeetupEvent(successCallback: (MeetupEvent) -> Void){
+        MeetupAPI.sharedInstance.fetchEvent(["hey":"test"], successCallback: successCallback)
     }
     
 }
