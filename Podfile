@@ -13,6 +13,7 @@ pod 'OAuthSwift'
 pod 'SlackTextViewController'
 pod 'SnapKit'
 pod 'SwiftyJSON'
+pod 'Emoji-swift'
 
 target 'WomenWhoCode' do
 

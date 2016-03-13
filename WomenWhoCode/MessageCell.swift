@@ -8,6 +8,7 @@
 
 import UIKit
 import ActiveLabel
+import Emoji
 
 class MessageCell: UITableViewCell {
     
@@ -17,7 +18,7 @@ class MessageCell: UITableViewCell {
     
     var message: Message!{
         didSet{
-            messageLabel.text = message.text
+            messageLabel.text = message.text!.emojiUnescapedString
         }
     }
     
