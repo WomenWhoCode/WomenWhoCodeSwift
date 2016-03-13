@@ -92,7 +92,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-WomenWhoCodeUITests/OAuthSwift.framework"
   install_framework "Pods-WomenWhoCodeUITests/Parse.framework"
   install_framework "Pods-WomenWhoCodeUITests/SlackTextViewController.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SnapKit.framework"
   install_framework "Pods-WomenWhoCodeUITests/SwiftDate.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WomenWhoCodeUITests/AFNetworking.framework"
@@ -103,5 +105,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WomenWhoCodeUITests/OAuthSwift.framework"
   install_framework "Pods-WomenWhoCodeUITests/Parse.framework"
   install_framework "Pods-WomenWhoCodeUITests/SlackTextViewController.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SnapKit.framework"
   install_framework "Pods-WomenWhoCodeUITests/SwiftDate.framework"
+  install_framework "Pods-WomenWhoCodeUITests/SwiftyJSON.framework"
 fi

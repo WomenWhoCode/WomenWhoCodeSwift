@@ -92,7 +92,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/OAuthSwift.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SlackTextViewController.framework"
+  install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftDate.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/AFNetworking.framework"
@@ -103,5 +105,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/OAuthSwift.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SlackTextViewController.framework"
+  install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftDate.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi

@@ -8,6 +8,7 @@
 
 import UIKit
 import OAuthSwift
+import SwiftyJSON
 
 class SlackAPIClient {
     let clientId = "23398940453.26339368899"
@@ -26,6 +27,9 @@ class SlackAPIClient {
             parameters: ["token": oauthToken, "channel": "C0PBTN49W"],
             success: {
                 data, response in
+//                let jsonData = JSON(data)
+//                var messages:[Message] = []
+//                
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 print(dataString)
             }

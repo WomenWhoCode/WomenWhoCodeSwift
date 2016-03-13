@@ -11,6 +11,8 @@ pod 'LTMorphingLabel'
 pod 'ActiveLabel'
 pod 'OAuthSwift'
 pod 'SlackTextViewController'
+pod 'SnapKit'
+pod 'SwiftyJSON'
 
 target 'WomenWhoCode' do
 

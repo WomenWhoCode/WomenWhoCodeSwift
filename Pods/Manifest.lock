@@ -30,7 +30,9 @@ PODS:
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - SlackTextViewController (1.9.1)
+  - SnapKit (0.19.1)
   - SwiftDate (3.0.6)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -40,7 +42,9 @@ DEPENDENCIES:
   - OAuthSwift
   - Parse
   - SlackTextViewController
+  - SnapKit
   - SwiftDate
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   ActiveLabel: 087705276e6e83c98deb3c22e6fef22b10317b16
@@ -51,6 +55,8 @@ SPEC CHECKSUMS:
   OAuthSwift: d63f7f329f49787319a7e35974c18b10865fe636
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   SlackTextViewController: 6b0d1030c53937226fc5358f217af2a34fc211cf
+  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
