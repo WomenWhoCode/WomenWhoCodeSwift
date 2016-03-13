@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class EventCell2: UITableViewCell {
-
+    
     
     @IBOutlet weak var eventImageView: UIImageView!
     
@@ -27,7 +28,8 @@ class EventCell2: UITableViewCell {
     @IBOutlet weak var eventTag2: UILabel!
     
     @IBOutlet weak var eventSpots: UILabel!
-    
+    var eventObjectId:String?
+    var rsvpd: Bool = false
     
     var event: Event! {
         didSet {
@@ -37,6 +39,7 @@ class EventCell2: UITableViewCell {
             eventDescription.text = event.eventDescription
             eventTag1.text = "iOS" //FIXME: Change it to event tag
             eventTag2.text = "Swift"
+            eventObjectId = event.objectId
             
             //Display waitlist count or openSpots
             if (event.waitlistCount != 0) {
@@ -60,11 +63,62 @@ class EventCell2: UITableViewCell {
         eventTag2.clipsToBounds = true
         
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
+    @IBAction func onRSVP(sender: AnyObject) {
+        
+        rsvpd = !rsvpd
+        
+        let loggedInUser = "h0VjEs2aql" //FIXME: Change this to get the current User
+        var userEvent = PFObject(className:"UserEvents")
+        
+        
+        let predicate = NSPredicate(format:"event_id == '\(eventObjectId!)' AND user_id == '\(loggedInUser)'")
+        let query = PFQuery(className: "UserEvents", predicate: predicate)
+        
+        //FIXME: prelangi : Refactor this code!!
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) profiles.")
+                
+                if objects!.count == 0 {
+                    userEvent["user_id"] = loggedInUser
+                    // Add a relation between the Post and Comment
+                    userEvent["event_id"] = self.eventObjectId
+                    userEvent["rsvpd"] = self.rsvpd
+                    
+                    // This will save both myPost and myComment
+                    userEvent.saveInBackground()
+                    
+                }
+                else {
+                    if let objects = objects {
+                        for object in objects {
+                            object["rsvpd"] = self.rsvpd
+                            
+                            object.saveInBackground()
+                        }
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!)")
+                
+                
+                
+            }
+        }
+        
+        
+    }
+    
     
 }

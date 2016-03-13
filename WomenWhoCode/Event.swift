@@ -12,6 +12,9 @@ import SwiftDate
 
 class Event: NSObject {
     
+    //Parse objectId
+    var objectId: String?
+    
     var name: String?
     var location: String?
     var eventDate : NSDate?  //will contain the complete event time details (month,date and time)
@@ -84,7 +87,7 @@ class Event: NSObject {
     init(object: PFObject) {
         
         super.init()
-        
+        objectId = object.objectId as String!
         name = object["title"] as? String
         location = object["location"] as? String
         //eventDate = object["event_date"] as? NSDate
