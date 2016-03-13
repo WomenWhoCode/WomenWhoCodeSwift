@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SwiftDate
 
 class Event: NSObject {
     
@@ -20,12 +21,15 @@ class Event: NSObject {
     var type: String?  //Can be Mobile, Web, Social ; Will be used to load the correct image in the Event listing
     var attendeeLimit: Int?
     var rsvpCount: Int? //number of attendees that are currently attending
+    var openSpotsCount: Int?
+    var waitlistCount: Int?
     var chapter: String? //FIXME: Do we need this ?
     
     //Derived Objects
     var timeInString: String?
     var eventMonth: String?
     var eventDay: String?
+    var eventDateInMMMDD: String?
     
     override init() {
         
@@ -40,6 +44,8 @@ class Event: NSObject {
         type = "Mobile"
         attendeeLimit = 50
         rsvpCount = 20
+        openSpotsCount = 30
+        waitlistCount = 0
         chapter = "SFO"
         
         //Derived objects temporary initialization
@@ -85,8 +91,8 @@ class Event: NSObject {
         createdAt  = object["createdAt"] as? NSDate
         eventDescription = object["eventDescription"] as? String
         type = object["type"] as? String
-        attendeeLimit = object["attendee_limit"] as? Int
-        rsvpCount = object["rsvp_count"] as? Int
+        attendeeLimit = 50 //FIXME: object["attendee_limit"] as? Int
+        rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
         
@@ -99,6 +105,23 @@ class Event: NSObject {
         let date = dateFormatter.dateFromString(self.eventDateString!)
         eventMonth = date?.month
         eventDay = date?.day
+        
+        
+//        dateFormatter.dateFormat = "MMM dd hh:mm"
+//        let newDate = dateFormatter.dateFromString(self.eventDateString!)
+//        eventDateInMMMDD = dateFormatter.stringFromDate(newDate!)
+        
+        
+        if rsvpCount > attendeeLimit {
+            waitlistCount = rsvpCount! - attendeeLimit!
+            openSpotsCount = 0
+        }
+        else {
+            waitlistCount = 0
+            openSpotsCount = attendeeLimit! - rsvpCount!
+            
+        }
+        
         
     }
     

@@ -25,13 +25,13 @@ class Profile: NSObject {
     
     override init() {
         
-        objectId = "uyR8kDpdN0"
-        fullName = "Test User"
+        objectId = ""
+        fullName = ""
         imageUrl = ""
         user = User()
-        networkName  = "Atlanta"
+        networkName  = ""
         themeType = 0
-        jobTitle = "Software Developer"
+        jobTitle = ""
         network = Network()
         followingCount = 0
         followersCount = 0

@@ -54,10 +54,34 @@ class ParseHTTPClient{
         
     }
     
+    func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Profile")
+        var profile: Profile?
+       query.whereKey("user_id", equalTo: objectID)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) profiles.")
+                if let objects = objects {
+                    for object in objects {
+                        profile = Profile(object: object)
+                    }
+                }
+                completion(profile: profile, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(profile: nil, error: error)
+            }
+        }
+        
+    }
+    
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Profile")
         var profiles: [Profile] = []
-        
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
