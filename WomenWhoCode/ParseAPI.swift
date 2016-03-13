@@ -44,7 +44,13 @@ class ParseAPI{
     parseHttpClient.getProfileWithUserId(objectID, completion: completion)
     }
     
+
+    func getFeatures(completion: (feature: [Feature]?, error: NSError?) -> ()) {
+        parseHttpClient.getFeatures(completion)
+    }
+
     func getNetworkWithNetworkName (name: String, completion: (network: Network?, error: NSError?) -> ()) {
         parseHttpClient.getNetworkWithNetworkName(name, completion: completion)
+
     }
 }

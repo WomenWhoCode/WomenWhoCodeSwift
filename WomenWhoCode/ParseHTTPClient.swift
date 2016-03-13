@@ -130,4 +130,32 @@ class ParseHTTPClient{
         }
         
     }
+    
+    
+    func getFeatures(completion: (features: [Feature]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Feature")
+        var features: [Feature] = []
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) features.")
+                if let objects = objects {
+                    for object in objects {
+                        let feature = Feature(object: object)
+                        print("Feature title: \(feature.title)")
+                        features.append(feature)
+                    }
+                }
+                completion(features: features, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(features: nil, error: error)
+            }
+        }
+        
+    }
+
 }
