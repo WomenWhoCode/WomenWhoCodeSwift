@@ -21,6 +21,16 @@ class UserProfileCell: UITableViewCell {
     @IBOutlet weak var awesomeImage: UIImageView!
     @IBOutlet weak var awesomeCountLabel: UILabel!
     
+    @IBOutlet weak var followersCount: UILabel!
+    
+    
+    @IBAction func onFollow(sender: AnyObject) {
+        
+        
+        
+    }
+    
+    
     var profile: Profile!{
         didSet{
             nameLabel.text = profile.fullName ?? " "
@@ -37,6 +47,14 @@ class UserProfileCell: UITableViewCell {
             if(profile.imageUrl != nil) {
             profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
             }
+            
+            if let followCount = profile.followersCount {
+                followersCount.text = " \(followCount) followers"
+            }
+            else {
+                followersCount.text = "No followers yet"
+            }
+            
         }
     }
     
