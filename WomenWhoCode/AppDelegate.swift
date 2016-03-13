@@ -47,9 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(named: "profile")
         
+        let storyboard4 = UIStoryboard(name: "Timeline", bundle: nil)
+        //Timeline Page
+        let timelineNavigationController = storyboard4.instantiateViewControllerWithIdentifier("timelineNavController") as! UINavigationController
+        _ = timelineNavigationController.topViewController as! TimelineViewController
+        timelineNavigationController.tabBarItem.title = "Timeline"
+        timelineNavigationController.tabBarItem.image = UIImage(named: "timeline")
+        
+        let storyboard5 = UIStoryboard(name: "Topics", bundle: nil)
+        //Topics Page
+        let topicsNavigationController = storyboard5.instantiateViewControllerWithIdentifier("topicsNavController") as! UINavigationController
+        _ = topicsNavigationController.topViewController as! TopicsViewController
+        topicsNavigationController.tabBarItem.title = "Topics"
+        topicsNavigationController.tabBarItem.image = UIImage(named: "topics")
+        
         //Setup TabBar
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [eventsNavigationController, connectNavigationController, profileViewController]
+        tabBarController.viewControllers = [timelineNavigationController, eventsNavigationController, connectNavigationController, topicsNavigationController, profileViewController]
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish
