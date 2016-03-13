@@ -50,5 +50,6 @@ class Feature: NSObject {
         desc = object["description"] as? String
         hex_color = object["hex_color"] as? String
         image_url = object["image_url"] as? String
+
     }
 }

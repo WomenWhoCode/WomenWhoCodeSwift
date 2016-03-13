@@ -66,18 +66,18 @@ class ProfileViewController: UIViewController {
                 if let objects = objects {
                     for object in objects {
                         self.eventId = object["event_id"] as! String
-                        print("Event id: \(self.eventId)")
+                    //    print("Event id: \(self.eventId)")
                         
                         ParseAPI.sharedInstance.getEventWithEventId(self.eventId!, completion: { (event, error) -> () in
                             if error == nil {
                                 //let event = Event(object: event)
                                 if let newEvent = event {
-                                    print("Event title: \(newEvent.name!)")
+                                //    print("Event title: \(newEvent.name!)")
                                     
                                     self.myEvents.append(newEvent)
-                                    print("Reloading myEvents page")
+                                //    print("Reloading myEvents page")
                                     self.tableView.reloadData()
-                                    print("myEvents cnt = \(self.myEvents.count)")
+                                //    print("myEvents cnt = \(self.myEvents.count)")
                                 }
                                 
                             }
