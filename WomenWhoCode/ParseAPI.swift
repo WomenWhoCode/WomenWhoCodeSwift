@@ -57,4 +57,9 @@ class ParseAPI{
         parseHttpClient.getNetworkWithNetworkName(name, completion: completion)
 
     }
-}
+    
+     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
+         parseHttpClient.getSubscriptions(completion)
+        }
+    }
+

@@ -12,6 +12,8 @@ class TopicsViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     var topics :[Feature] = []
+    var subscribed_topics :[Feature] = []
+    var subscription : [Subscribed] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,7 @@ class TopicsViewController: UIViewController {
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         getTopics()
+        getSubscribed()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +36,31 @@ class TopicsViewController: UIViewController {
             self.topics = feature!
             self.tableView.reloadData()
         }
+    }
+    
+    func getSubscribed()
+    {
+        ParseAPI.sharedInstance.getSubscriptions { (subscribed, error) -> () in
+            self.subscription = subscribed!
+            self.tableView.reloadData()
+            self.setSubscribedTopics()
+        }
+     
+     }
+    
+    func setSubscribedTopics() {
+        for(var i = 0 ; i < topics.count; i++) {
+            if ((topics[i].auto_subscribe != nil && topics[i].auto_subscribe!)) {
+                subscribed_topics.append(topics[i])
+                continue
+            }
+            for (var j = 0 ; j < subscription.count; j++) {
+                if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
+                    subscribed_topics.append(topics[i])
+                }
+            }
+        }
+        print("\(subscribed_topics.count)")
     }
 }
 

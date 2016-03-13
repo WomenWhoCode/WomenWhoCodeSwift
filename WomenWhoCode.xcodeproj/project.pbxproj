@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		100341241C955FA3005C2D3B /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341231C955FA3005C2D3B /* TopicCell.swift */; };
+		100341261C957509005C2D3B /* Subscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341251C957509005C2D3B /* Subscribed.swift */; };
 		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		100341231C955FA3005C2D3B /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		100341251C957509005C2D3B /* Subscribed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribed.swift; sourceTree = "<group>"; };
 		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				CAC049FC1C8BC50C00996932 /* Event.swift */,
 				CA6276491C94F73A001C4C50 /* Feature.swift */,
 				CA62764B1C954339001C4C50 /* EventFilters.swift */,
+				100341251C957509005C2D3B /* Subscribed.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
+				100341261C957509005C2D3B /* Subscribed.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
 				CA41C9C91C9013AD0045ECC9 /* EventsFilterViewController.swift in Sources */,
 				E4F4EFD31C8CD99F00B480AC /* PersistenceManager.swift in Sources */,

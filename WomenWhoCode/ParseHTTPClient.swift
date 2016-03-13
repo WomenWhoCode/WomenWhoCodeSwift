@@ -160,6 +160,30 @@ class ParseHTTPClient{
         
     }
     
+    func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Subscribe")
+        var subscriptions: [Subscribed] = []
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) subscriptions.")
+                if let objects = objects {
+                    for object in objects {
+                        let subscribe = Subscribed(object: object)
+                        subscriptions.append(subscribe)
+                    }
+                }
+                completion(subscribed: subscriptions, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(subscribed: nil, error: error)
+            }
+        }
+        
+    }
     
     func getFeatures(completion: (features: [Feature]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Feature")
