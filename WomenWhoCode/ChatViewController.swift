@@ -9,33 +9,55 @@
 import UIKit
 import SlackTextViewController
 
-
 class ChatViewController: SLKTextViewController {
-
-    @IBOutlet weak var chatTableView: UITableView!
     
     //CellID
     let messageCellId = "WWC_MessageCell"
+    let generalChannel = "C0PBTN49W"
     
     var messages:[Message] = []
+    var usersDict:[String:SlackUser] = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initMessageCell()
+        getAllUsers()
     }
     
-    func initCell(){
+    func initMessageCell(){
         let cellNib = UINib(nibName: "MessageCell", bundle: NSBundle.mainBundle())
-        chatTableView.registerNib(cellNib, forCellReuseIdentifier: messageCellId)
-        chatTableView.estimatedRowHeight = 200
-        chatTableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerNib(cellNib, forCellReuseIdentifier: messageCellId)
+        tableView.rowHeight = UITableViewAutomaticDimension //needed for autolayout
+        tableView.estimatedRowHeight = 50.0 //needed for autolayout
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
-
-
+    
+    func getAllUsers(){
+        print("Get all users")
+        SlackAPI.sharedInstance.getUsersList(loadUsers)
+    }
+    
+    func getMessages(){
+        print("Get message for channel")
+        SlackAPI.sharedInstance.getChannelHistory(generalChannel, successCallback: loadMessages)
+    }
+    
+    func loadUsers(users: [SlackUser]){
+        print("Loading Users")
+        usersDict = SlackUser.arrayToDict(users)
+        getMessages()
+    }
+    
+    func loadMessages(messages: [Message]) {
+        print("In load messages")
+        self.messages = messages
+        self.tableView.reloadData()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: UITableView Delegate
@@ -48,18 +70,10 @@ class ChatViewController: SLKTextViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier(messageCellId, forIndexPath: indexPath) as! MessageCell
-            cell.message = self.messages[indexPath.row]
+            let message = self.messages[indexPath.row]
+            cell.message = message
+            cell.user = self.usersDict[message.userId!]
+            cell.transform = self.tableView.transform;
             return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

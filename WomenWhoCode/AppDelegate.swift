@@ -22,11 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-        let slack = SlackAPIClient()
-        slack.login()
-        slack.readGen()
+        SlackAPI.sharedInstance.login()
         initializeTabBar()
-
         return true
     }
     
@@ -52,9 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(named: "profile")
         
+        
+        //Chat Page
+        let chatStoryboard = UIStoryboard(name: "Chat", bundle: nil)
+        let chatViewController = chatStoryboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
+        chatViewController.tabBarItem.title = "Chat"
+
+        
         //Setup TabBar
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [eventsNavigationController, connectNavigationController, profileViewController]
+        tabBarController.viewControllers = [eventsNavigationController, connectNavigationController, profileViewController, chatViewController]
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish
