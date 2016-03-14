@@ -148,11 +148,11 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
         cell.postDesc.text = filtered_posts[indexPath.row].desc
         for (var i = 0 ; i < subscribed_topics.count; i++) {
             if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
-                if (subscribed_topics[i].image_url != nil) {
-                    cell.imageView?.setImageWithURL(NSURL(string: subscribed_topics[i].image_url!)!)   
-                }
+//                if (subscribed_topics[i].image_url != nil) {
+//                    cell.imageView?.setImageWithURL(NSURL(string: subscribed_topics[i].image_url!)!)
+//                }
                 cell.topicTitle.text = subscribed_topics[i].title
-                cell.topicView.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
+                cell.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
                 break
             }
         }
