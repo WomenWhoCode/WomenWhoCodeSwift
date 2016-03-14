@@ -28,6 +28,7 @@ class Event: NSObject {
     var waitlistCount: Int?
     var chapter: String? //FIXME: Do we need this ?
     var meetupUrlName: String?
+    var eventFeature: String?
     
     //Derived Objects
     var timeInString: String?
@@ -54,6 +55,7 @@ class Event: NSObject {
         openSpotsCount = 30
         waitlistCount = 0
         chapter = "SFO"
+        eventFeature = "iOS"
         
         //Derived objects temporary initialization
         eventMonth = "MAR"
@@ -105,6 +107,7 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
+        eventFeature = "iOS" //FIXME: Get it from the model
         if object.objectForKey("network") != nil{
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
             meetupUrlName = self.network!.meetupUrlName
