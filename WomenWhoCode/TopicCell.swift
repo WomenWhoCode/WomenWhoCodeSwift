@@ -18,6 +18,8 @@ class TopicCell: UITableViewCell {
             topicName.text = feature.title!
             if(feature.image_url != nil) {
                 topicImage.setImageWithURL(NSURL(string:feature.image_url!)!)
+            } else {
+                topicImage.image = UIImage(named: "languages")
             }
           
             self.backgroundColor = UIColor(hexString: feature.hex_color!)
