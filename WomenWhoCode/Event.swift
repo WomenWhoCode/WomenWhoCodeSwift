@@ -150,6 +150,10 @@ extension Event{
         MeetupAPI.sharedInstance.fetchEvent(["hey":"test"], successCallback: successCallback)
     }
     
+    func fetchEventRsvps(successCallback: [MeetupMember] -> Void){
+        MeetupAPI.sharedInstance.fetchEventRsvps(["hey":"test"], successCallback: successCallback)
+    }
+    
 }
 
 

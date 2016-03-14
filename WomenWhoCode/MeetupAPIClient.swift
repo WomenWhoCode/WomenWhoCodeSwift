@@ -50,7 +50,6 @@ class MeetupAPIClient {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    print("Validation Successful")
                     if let JSON = response.result.value as? NSDictionary {
                         let event = MeetupEvent(dict: JSON)
                         successCallback(event)
@@ -59,5 +58,24 @@ class MeetupAPIClient {
                     print("Error in MeetupFetchEvent: \(error)")
                 }
         }
+    }
+    
+    func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
+        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/ngchrlyvfbcc/rsvps"
+        //        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
+        Alamofire.request(.GET, requestUrl, parameters: parameters)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if let JSON = response.result.value as? [NSDictionary] {
+                        let members = MeetupMember.initWithArray(JSON)
+                        successCallback(members)
+                    }
+                case .Failure(let error):
+                    print("Error in fetchEventRsvp: \(error)")
+                }
+        }
+        
     }
 }

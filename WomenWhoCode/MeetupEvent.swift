@@ -59,7 +59,7 @@ import Foundation
 
 class MeetupEvent: NSObject {
     
-    var createdTS: Int?
+    var createdTS: Double?
     var duration: Int?
     //SKipping Group Information for now
     var meetupLink: String?
@@ -67,27 +67,29 @@ class MeetupEvent: NSObject {
     var meetupName: String?
     var rsvpLimit: Int?
     var status: String?
-    var epochTime: Int?
-    var epochUpdated: Int?
-    var utcOffset: Int?
+    var epochTime: Double?
+    var epochUpdated: Double?
+    var utcOffset: Double?
     var yesRsvpCount: Int?
     var waitlistCount: Int?
     var eventDescription: String?
     var eventVisibility: String?
     var venue: MeetupVenue?
     var groupName: String?
+    var eventDate: String?
     
     init(dict: NSDictionary){
+        super.init()
         meetupId = dict["id"] as? String
-        createdTS = dict["created"] as? Int
+        createdTS = dict["created"] as? Double
         duration = dict["duration"] as? Int
         meetupLink = dict["link"] as? String
         meetupName = dict["name"] as? String
         rsvpLimit = dict["rsvp_limit"] as? Int
         status = dict["status"] as? String
-        epochTime = dict["time"] as? Int
-        epochUpdated = dict["updated"] as? Int
-        utcOffset = dict["utc_offset"] as? Int
+        epochTime = dict["time"] as? Double
+        epochUpdated = dict["updated"] as? Double
+        utcOffset = dict["utc_offset"] as? Double
         yesRsvpCount = dict["yes_rsvp_count"] as? Int
         waitlistCount = dict["waitlist_count"] as? Int
         eventDescription = dict["description"] as? String
@@ -97,8 +99,13 @@ class MeetupEvent: NSObject {
         if let group = dict["group"] as? NSDictionary{
             groupName = group["name"] as? String
         }
+        eventDate = getDate(epochTime!).formatTo("MMM dd, h:mma")
         //FixMe: Add Group Information
         //FixMe: Add Members/ attendees etc.,
+    }
+    
+    func getDate(epoch: Double)-> NSDate{
+        return NSDate(timeIntervalSince1970: epoch/1000)
     }
     
     override var description : String {

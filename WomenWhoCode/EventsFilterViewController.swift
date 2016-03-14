@@ -14,13 +14,24 @@ protocol EventsFilterViewControllerDelegate {
 
 class EventsFilterViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    var sectionTitles: [String] = ["Select Feature","Select Chapter"]
+    
     var features: [Feature]?
     var isSelected: [Bool] = [] //to check if the features is selected
-    var sectionTitles: [String] = ["Select Feature","Select Chapter"]
     var featuresOnDisplay: [String] = []
     var displayAllFeatures: Bool = false
+    
+    
     var delegate: EventsFilterViewControllerDelegate?
     var filters: EventFilters?
+    
+    
+    var chapters: [String] = []//["SFO", "Silicon Valley", "Seattle", "Atlanta", "Dallas"] //FIXME: Get these from Parse DB
+    var isChapterSelected: [Bool] = []
+    var chaptersOnDisplay: [String] = []
+    var displayAllChapters: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +44,8 @@ class EventsFilterViewController: UIViewController {
         filters = EventFilters()
         
         getFeatures()
+        getChapters()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,8 +53,38 @@ class EventsFilterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
-    // events in a sorted manner
+    
+    func getChapters() {
+        //FIXME: Do a network call to get all the chapters
+        ParseAPI.sharedInstance.getNetworks() {(networks,error)-> () in
+            let networks = networks!
+            
+            for network in networks {
+                print("Network title: \(network.title)")
+                self.chapters.append((network.title)!)
+            }
+            
+            var cnt = 0
+            for chapter in self.chapters {
+                
+                if(cnt<3) {
+                    self.chaptersOnDisplay.append(self.chapters[cnt])
+                }
+                if(cnt == 3) {
+                    self.chaptersOnDisplay.append("See All")
+                }
+                
+                self.isChapterSelected.append(false)
+                cnt++
+            }
+            
+            self.tableView.reloadData()
+        }
+
+        
+    }
+    
+    
     func getFeatures() {
         ParseAPI.sharedInstance.getFeatures() {(features,error)-> () in
             self.features = features!
@@ -67,6 +110,8 @@ class EventsFilterViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    
     
     
     /*
@@ -115,15 +160,12 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
         let section = indexPath.section
         let row = indexPath.row
         
-        print("Getting cell for row: \(row) section: \(section)")
+        print("Getting cell for row: \(row) section: \(section) displayAllF: \(displayAllFeatures) displayAllC: \(displayAllChapters)")
         switch section {
         case 0:
             if displayAllFeatures == true {
                 cell.textLabel!.text = features![indexPath.row].title
-                //Reset it back to normal
-                if isSeeAllCell(indexPath) == true {
-                    cell.textLabel?.textAlignment = .Left
-                }
+                cell.textLabel?.textAlignment = .Left
             }
             else { //See All is being displayed
                 cell.textLabel!.text = featuresOnDisplay[indexPath.row]
@@ -132,33 +174,56 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
                 }
                 
             }
+            
             setBorder(cell)
             cell.textLabel!.font = UIFont.boldSystemFontOfSize(16.0)
-        
+            if isSelected[indexPath.row] == true {
+                cell.accessoryType = .Checkmark
+            }
+            else {
+                cell.accessoryType = .None
+            }
             
-        
-            if isSelected[indexPath.row] == true {
-                cell.accessoryType = .Checkmark
+        case 1: //Chapters
+            cell.textLabel!.text = chapters[indexPath.row] //features![indexPath.row].title
+            if displayAllChapters == true {
+                cell.textLabel!.text = chapters[indexPath.row]
+                cell.textLabel?.textAlignment = .Left
             }
-            else {
-                cell.accessoryType = .None
+            else { //See All is being displayed
+                cell.textLabel!.text = chaptersOnDisplay[indexPath.row]
+                if isSeeAllChapterCell(indexPath) == true {
+                    cell.textLabel?.textAlignment = .Center
+                }
+                
             }
-        case 1:
-            cell.textLabel!.text = features![indexPath.row].title
+            
             setBorder(cell)
-        
-            if isSelected[indexPath.row] == true {
+            if isChapterSelected[indexPath.row] == true {
                 cell.accessoryType = .Checkmark
             }
             else {
                 cell.accessoryType = .None
             }
-        
+            //cell.textLabel?.textAlignment = .Left
+            cell.textLabel!.font = UIFont.boldSystemFontOfSize(16.0)
+            
         default: print("Trying to display cell for invalid section")
         }
         
         
         return cell
+    }
+    
+    
+    func isSeeAllChapterCell(indexPath: NSIndexPath) -> Bool {
+        
+        if indexPath.section == 1 && indexPath.row == 3 {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func isSeeAllCell(indexPath: NSIndexPath) -> Bool {
@@ -191,57 +256,80 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
                 
             }
         case 1:
-            return 2
+            if displayAllChapters == true {
+                return chapters.count
+            }
+            else {
+                return chaptersOnDisplay.count
+            }
+            
         default: print("Trying to display invalid section items")
         return 0
         }
         
     }
     
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let section = indexPath.section
+        switch section {
+        case 0:
+            if displayAllFeatures == false {
+                if isSeeAllCell(indexPath) == true {
+                    print("Selected SeeAll cell in Features section")
+                    displayAllFeatures = true
+                    tableView.reloadData()
+                }
+                else {
+                    isSelected[indexPath.row] = !isSelected[indexPath.row]
+                    print("Adding feature \(features![indexPath.row].title!) to filters feature list")
+                    filters?.features?.append(features![indexPath.row].title!)
+                    tableView.reloadData()
+                    
+                }
+            }
+            else {
+                isSelected[indexPath.row] = !isSelected[indexPath.row]
+                filters?.features?.append(features![indexPath.row].title!)
+                tableView.reloadData()
+            }
+        case 1:
+            print("Selected chapters")
+            if displayAllChapters == false {
+                if isSeeAllChapterCell(indexPath) == true {
+                    displayAllChapters = true
+                    tableView.reloadData()
+                }
+                else {
+                    isChapterSelected[indexPath.row] = !isChapterSelected[indexPath.row]
+                    tableView.reloadData()
+                }
+                
+            }
+            else {
+                isChapterSelected[indexPath.row] = !isChapterSelected[indexPath.row]
+                tableView.reloadData()
+            }
+            
+            tableView.reloadData()
+            
+        default: print("Wrong selection")
+        }
+        
+    }
+    
     func tableView(tableView: UITableView,titleForHeaderInSection section: Int) -> String? {
-            return sectionTitles[section]
+        return sectionTitles[section]
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1 //sectionTitles.count
+        return sectionTitles.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if displayAllFeatures == false {
-            if isSeeAllCell(indexPath) == true {
-                print("Selected SeeAll cell in Features section")
-                displayAllFeatures = true
-                tableView.reloadData()
-            }
-            else {
-                switch indexPath.section {
-                case 0:
-                    isSelected[indexPath.row] = !isSelected[indexPath.row]
-                    print("Adding feature \(features![indexPath.row].title!) to filters feature list")
-                    filters?.features?.append(features![indexPath.row].title!)
-
-                    tableView.reloadData()
-                default: print("Invalid section")
-                
-                }
-            }
-            
-        }
-        else {
-            switch indexPath.section {
-            case 0:
-                isSelected[indexPath.row] = !isSelected[indexPath.row]
-                filters?.features?.append(features![indexPath.row].title!)
-                tableView.reloadData()
-            default: print("Invalid section")
-            }
-            
-        }
-    }
 }
 
 
