@@ -57,7 +57,9 @@ class ParseAPIClient{
     
     func getEventWithEventId(objectID: String, completion: (event: Event?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Event")
+        query.includeKey("network")
         query.whereKey("objectId", equalTo: objectID)
+
         
 
         var event: Event?
@@ -66,8 +68,7 @@ class ParseAPIClient{
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) events with the eventId: \(objectID).")
+//                print("Successfully retrieved \(objects!.count) events with the eventId: \(objectID).")
                 if let objects = objects {
                     for object in objects {
                         event = Event(object: object)
@@ -93,7 +94,7 @@ class ParseAPIClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) profiles.")
+//                print("Successfully retrieved \(objects!.count) profiles.")
                 if let objects = objects {
                     for object in objects {
                         profile = Profile(object: object)
@@ -120,7 +121,7 @@ class ParseAPIClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) profiles.")
+//                print("Successfully retrieved \(objects!.count) profiles.")
                 if let objects = objects {
                     for object in objects {
                         network = Network(object: object)
@@ -253,7 +254,6 @@ class ParseAPIClient{
                 if let objects = objects {
                     for object in objects {
                         let feature = Feature(object: object)
-                        print("Feature title: \(feature.title)")
                         features.append(feature)
                     }
                 }
