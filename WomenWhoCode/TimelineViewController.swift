@@ -146,6 +146,16 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
         cell.postDesc.text = filtered_posts[indexPath.row].desc
+        for (var i = 0 ; i < subscribed_topics.count; i++) {
+            if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
+                if (subscribed_topics[i].image_url != nil) {
+                    cell.imageView?.setImageWithURL(NSURL(string: subscribed_topics[i].image_url!)!)   
+                }
+                cell.topicTitle.text = subscribed_topics[i].title
+                cell.topicView.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
+                break
+            }
+        }
         return cell
     }
     
