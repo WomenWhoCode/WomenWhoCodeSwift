@@ -62,6 +62,8 @@
 		E4CF140E1C95E76300A271B9 /* MeetupGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF140D1C95E76300A271B9 /* MeetupGroup.swift */; };
 		E4CF14101C95E77800A271B9 /* MeetupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF140F1C95E77800A271B9 /* MeetupEvent.swift */; };
 		E4CF14121C96039D00A271B9 /* MeetupVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14111C96039D00A271B9 /* MeetupVenue.swift */; };
+		E4CF14141C9680B900A271B9 /* MeetupMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14131C9680B900A271B9 /* MeetupMember.swift */; };
+		E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14151C9689D000A271B9 /* MeetupRsvp.swift */; };
 		E4F4EFCD1C8CA3F500B480AC /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFCB1C8CA3F500B480AC /* UserProfileCell.swift */; };
 		E4F4EFCE1C8CA3F500B480AC /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F4EFCC1C8CA3F500B480AC /* UserProfileCell.xib */; };
 		E4F4EFD11C8CD98500B480AC /* ParseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD01C8CD98500B480AC /* ParseAPIClient.swift */; };
@@ -154,6 +156,8 @@
 		E4CF140D1C95E76300A271B9 /* MeetupGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupGroup.swift; sourceTree = "<group>"; };
 		E4CF140F1C95E77800A271B9 /* MeetupEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupEvent.swift; sourceTree = "<group>"; };
 		E4CF14111C96039D00A271B9 /* MeetupVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupVenue.swift; sourceTree = "<group>"; };
+		E4CF14131C9680B900A271B9 /* MeetupMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupMember.swift; sourceTree = "<group>"; };
+		E4CF14151C9689D000A271B9 /* MeetupRsvp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupRsvp.swift; sourceTree = "<group>"; };
 		E4F4EFCB1C8CA3F500B480AC /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		E4F4EFCC1C8CA3F500B480AC /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
 		E4F4EFD01C8CD98500B480AC /* ParseAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIClient.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 		CA3B6CA61C854DDB00D8FF25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4CF14151C9689D000A271B9 /* MeetupRsvp.swift */,
 				E4F4EFCB1C8CA3F500B480AC /* UserProfileCell.swift */,
 				E4F4EFCC1C8CA3F500B480AC /* UserProfileCell.xib */,
 				CAC049F41C8B63BA00996932 /* EventCell.xib */,
@@ -390,6 +395,7 @@
 				E4CF140D1C95E76300A271B9 /* MeetupGroup.swift */,
 				E4CF140F1C95E77800A271B9 /* MeetupEvent.swift */,
 				E4CF14111C96039D00A271B9 /* MeetupVenue.swift */,
+				E4CF14131C9680B900A271B9 /* MeetupMember.swift */,
 			);
 			name = Meetup;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4CF14141C9680B900A271B9 /* MeetupMember.swift in Sources */,
 				E4F4EFCD1C8CA3F500B480AC /* UserProfileCell.swift in Sources */,
 				E4CF14061C95E30F00A271B9 /* MeetupAPI.swift in Sources */,
 				E4CF14121C96039D00A271B9 /* MeetupVenue.swift in Sources */,
@@ -620,6 +627,7 @@
 				E4CF14021C954C6100A271B9 /* SlackChannel.swift in Sources */,
 				E4F4EFD51C8CEAA800B480AC /* ParseAPI.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
+				E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */,
 				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
 				100341261C957509005C2D3B /* Subscribed.swift in Sources */,
