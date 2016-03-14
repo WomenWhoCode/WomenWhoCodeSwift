@@ -11,6 +11,7 @@ import UIKit
 class EventDetailsViewController: UIViewController {
     
     
+    @IBOutlet weak var userCollectionView: UICollectionView!
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var networkLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -63,6 +64,19 @@ class EventDetailsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+}
+
+extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WWC_UserEventCell", forIndexPath: indexPath)
+        return cell
     }
     
 }
