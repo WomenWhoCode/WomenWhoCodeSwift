@@ -12,6 +12,7 @@ import Parse
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var name: UILabel!
     @IBOutlet var jobDescription: UILabel!
     @IBOutlet var followingCount: UILabel!
@@ -20,16 +21,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet var awesomeCount: UILabel!
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var networkImage: UIImageView!
+    var subscribed_topics :[Feature] = []
+    var topics :[Feature] = []
     var loggedInUserId = "h0VjEs2aql"
     var profile: Profile!
     var myEvents: [Event] = []
     var eventId: String?
-    
+      var subscription : [Subscribed] = []
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,16 +38,14 @@ class ProfileViewController: UIViewController {
         let eventNib = UINib(nibName: "EventCell2", bundle: nil)
         tableView.registerNib(eventNib, forCellReuseIdentifier: "EventCell2")
         
-        tableView.estimatedRowHeight = 320
+        tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.reloadData()
         
         getProfile()
         getMyEvents()
-        
-        
-        
+        getTopics()
     }
     
     func getMyEvents() {
@@ -62,7 +59,7 @@ class ProfileViewController: UIViewController {
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) events for this user.")
+             //   print("Successfully retrieved \(objects!.count) events for this user.")
                 if let objects = objects {
                     for object in objects {
                         self.eventId = object["event_id"] as! String
@@ -86,10 +83,7 @@ class ProfileViewController: UIViewController {
                             }
                             
                         })
-                        
-                        
-                        
-                        
+    
                     }
                 }
                 
@@ -99,6 +93,42 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    func getTopics()
+    {
+        ParseAPI.sharedInstance.getFeatures { (feature, error) -> () in
+            self.topics = feature!
+            self.getSubscribed()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getSubscribed()
+    {
+        ParseAPI.sharedInstance.getSubscriptions { (subscribed, error) -> () in
+            self.subscription = subscribed!
+            self.tableView.reloadData()
+            self.setSubscribedTopics()
+        }
+        
+    }
+    
+    func setSubscribedTopics() {
+        for(var i = 0 ; i < topics.count; i++) {
+            var added = false
+            if ((topics[i].auto_subscribe != nil && topics[i].auto_subscribe!)) {
+                subscribed_topics.append(topics[i])
+                continue
+            }
+            for (var j = 0 ; j < subscription.count; j++) {
+                if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
+                    subscribed_topics.append(topics[i])
+                }
+                }
+            }
+           tableView.reloadData()
+    }
+
     
     func getProfile() {
         
@@ -155,37 +185,55 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func onSelectionChanged(sender: UISegmentedControl) {
+        segmentedControl.selectedSegmentIndex = sender.selectedSegmentIndex
         switch sender.selectedSegmentIndex {
         case 0:
-            print("Selected Events page; myEvents cnt = \(myEvents.count)")
+          //  print("Selected Events page; myEvents cnt = \(myEvents.count)")
             self.tableView.hidden = false
             self.tableView.reloadData()
             
         case 1:
-            print("Selected Network page")
-            self.tableView.hidden = true
-        case 2:
-            print("Selected Topics page")
-            self.tableView.hidden = true
+            print("Selected Network page \(topics.count)")
+            self.tableView.reloadData()
+           // self.tableView.hidden = true
         default: print("Wrong selection")
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("called cellForRowAtIndexPath for row: \(indexPath.row)")
+       // print("called cellForRowAtIndexPath for row: \(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell2", forIndexPath: indexPath) as! EventCell2
-        cell.event = myEvents[indexPath.row]
-        
+        if (segmentedControl.selectedSegmentIndex == 0) {
+            cell.event = myEvents[indexPath.row]
+            cell.backgroundColor = UIColor.whiteColor()
+            cell.eventTitle.textColor = UIColor.darkGrayColor()
+            cell.eventImageView.image = UIImage(named: "iOSTeal")
+
+        } else {
+            cell.eventTitle.text = self.subscribed_topics[indexPath.row].title
+            cell.eventTitle.textColor = UIColor.whiteColor()
+        cell.eventImageView.image = UIImage(named: "languages")
+            if (self.subscribed_topics[indexPath.row].image_url != nil) {
+            cell.eventImageView.setImageWithURL(NSURL(string: self.subscribed_topics[indexPath.row].image_url!)!)
+            } else {
+                cell.eventImageView.image = UIImage(named: "languages")
+            }
+            cell.eventDate.text = ""
+            cell.eventLocation.text = ""
+            cell.eventDescription.text = ""
+            cell.eventTag1.text = ""
+            cell.eventTag2.text = ""
+            cell.rsvpLabel.text = ""
+            cell.eventLocation.text = ""
+            cell.eventSpots.text = ""
+            cell.rsvpConfirmedLabel.text = ""
+            cell.backgroundColor = UIColor(hexString: topics[indexPath.row].hex_color!)
+
+            }
+
         return cell
         
     }
@@ -193,8 +241,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if (segmentedControl.selectedSegmentIndex == 0) {
         return myEvents.count
+        } else {
+            return subscribed_topics.count
+        }
     }
     
 }
