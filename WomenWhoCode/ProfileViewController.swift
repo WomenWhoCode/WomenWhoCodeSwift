@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController {
     var profile: Profile!
     var myEvents: [Event] = []
     var eventId: String?
-      var subscription : [Subscribed] = []
+    var subscription : [Subscribed] = []
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +50,8 @@ class ProfileViewController: UIViewController {
     
     func getMyEvents() {
         //let predicate = NSPredicate(format:"user_id == '\(loggedInUserId)' AND rsvpd == 'true'")
-        var predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
-        var userEventsquery = PFQuery(className: "UserEvents", predicate: predicate)
+        let predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
+        let userEventsquery = PFQuery(className: "UserEvents", predicate: predicate)
         
         //FIXME: prelangi : Refactor this code!!
         userEventsquery.findObjectsInBackgroundWithBlock {
@@ -59,20 +59,20 @@ class ProfileViewController: UIViewController {
             
             if error == nil {
                 // The find succeeded.
-             //   print("Successfully retrieved \(objects!.count) events for this user.")
+                //   print("Successfully retrieved \(objects!.count) events for this user.")
                 if let objects = objects {
                     for object in objects {
                         self.eventId = object["event_id"] as! String
-                    //    print("Event id: \(self.eventId)")
+                        //    print("Event id: \(self.eventId)")
                         
                         ParseAPI.sharedInstance.getEventWithEventId(self.eventId!, completion: { (event, error) -> () in
                             if error == nil {
                                 //let event = Event(object: event)
                                 if let newEvent = event {
-                                //    print("Event title: \(newEvent.name!)")
+                                    //    print("Event title: \(newEvent.name!)")
                                     
                                     self.myEvents.append(newEvent)
-                                //    print("Reloading myEvents page")
+                                    //    print("Reloading myEvents page")
                                     self.tableView.reloadData()
                                     print("myEvents cnt = \(self.myEvents.count)")
                                 }
@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController {
                             }
                             
                         })
-    
+                        
                     }
                 }
                 
@@ -124,11 +124,11 @@ class ProfileViewController: UIViewController {
                 if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
                     subscribed_topics.append(topics[i])
                 }
-                }
             }
-           tableView.reloadData()
+        }
+        tableView.reloadData()
     }
-
+    
     
     func getProfile() {
         
@@ -188,14 +188,14 @@ class ProfileViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = sender.selectedSegmentIndex
         switch sender.selectedSegmentIndex {
         case 0:
-           print("Selected Events page; myEvents cnt = \(myEvents.count)")
+            print("Selected Events page; myEvents cnt = \(myEvents.count)")
             self.tableView.hidden = false
             self.tableView.reloadData()
             
         case 1:
             print("Selected Network page \(topics.count)")
             self.tableView.reloadData()
-           // self.tableView.hidden = true
+            // self.tableView.hidden = true
         default: print("Wrong selection")
         }
         
@@ -204,20 +204,20 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       // print("called cellForRowAtIndexPath for row: \(indexPath.row)")
+        // print("called cellForRowAtIndexPath for row: \(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell2", forIndexPath: indexPath) as! EventCell2
         if (segmentedControl.selectedSegmentIndex == 0) {
             cell.event = myEvents[indexPath.row]
             cell.backgroundColor = UIColor.whiteColor()
             cell.eventTitle.textColor = UIColor.darkGrayColor()
             cell.eventImageView.image = UIImage(named: "iOSTeal")
-
+            
         } else {
             cell.eventTitle.text = self.subscribed_topics[indexPath.row].title
             cell.eventTitle.textColor = UIColor.whiteColor()
-        cell.eventImageView.image = UIImage(named: "languages")
+            cell.eventImageView.image = UIImage(named: "languages")
             if (self.subscribed_topics[indexPath.row].image_url != nil) {
-            cell.eventImageView.setImageWithURL(NSURL(string: self.subscribed_topics[indexPath.row].image_url!)!)
+                cell.eventImageView.setImageWithURL(NSURL(string: self.subscribed_topics[indexPath.row].image_url!)!)
             } else {
                 cell.eventImageView.image = UIImage(named: "languages")
             }
@@ -231,16 +231,16 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
             cell.eventSpots.text = ""
             cell.rsvpConfirmedLabel.text = ""
             cell.backgroundColor = UIColor(hexString: topics[indexPath.row].hex_color!)
-
-            }
-
+            
+        }
+        
         return cell
         
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (segmentedControl.selectedSegmentIndex == 0) {
-        return myEvents.count
+            return myEvents.count
         } else {
             return subscribed_topics.count
         }
