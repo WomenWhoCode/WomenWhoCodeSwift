@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ParseHTTPClient{
+class ParseAPIClient{
     
     //API KEYS
     
@@ -30,6 +30,7 @@ class ParseHTTPClient{
     
     func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Event")
+        query.includeKey("network")
         var events: [Event] = []
         
         query.findObjectsInBackgroundWithBlock {

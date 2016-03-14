@@ -43,4 +43,22 @@ struct Constants {
             static let dark = UIColor(hexString: "3d414c")
         }
     }
+    
+    struct Api{
+        struct Meetup{
+            static let apiKey = "30197727133c6196f5c1d2678271c12"
+            struct Consumer{
+                static let key = "c3ac9gl0gn114labhch4jnig95"
+                static let secret = "n85kukjjnjbs4kao2eg7714drv"
+            }
+        }
+        
+        struct Slack{
+            
+        }
+        
+        struct Parse{
+            
+        }
+    }
 }

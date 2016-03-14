@@ -14,6 +14,7 @@ pod 'SlackTextViewController'
 pod 'SnapKit'
 pod 'SwiftyJSON'
 pod 'Emoji-swift'
+pod 'Alamofire'
 
 target 'WomenWhoCode' do
 

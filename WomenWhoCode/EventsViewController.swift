@@ -48,7 +48,6 @@ class EventsViewController: UIViewController{
         
         //searchBar functions
         searchBar.delegate = self
-        
         retrieveEvents()
     }
     
