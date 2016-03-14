@@ -14,56 +14,56 @@ class ParseAPI{
     
     static let sharedInstance = ParseAPI()
     
-    private let parseHttpClient: ParseHTTPClient
+    private let httpClient: ParseAPIClient
     private let isOnline: Bool
     private let persistenceManager: PersistenceManager
     
     init(){
-        parseHttpClient = ParseHTTPClient()
+        httpClient = ParseAPIClient()
         isOnline = false
         persistenceManager = PersistenceManager()
     }
     
     func query(className: String){
-        parseHttpClient.query(className)
+        httpClient.query(className)
     }
     
     func create(object: PFObject, callback: PFBooleanResultBlock?){
-        parseHttpClient.create(object, callback: callback)
+        httpClient.create(object, callback: callback)
     }
     
     func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
-        parseHttpClient.getEvents(completion)
+        httpClient.getEvents(completion)
     }
     
     func getEventWithEventId(objectID: String, completion: (event: Event?, error: NSError?) -> ()) {
-        parseHttpClient.getEventWithEventId(objectID, completion: completion)
+        httpClient.getEventWithEventId(objectID, completion: completion)
     }
     
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
-        parseHttpClient.getProfiles(completion)
+        httpClient.getProfiles(completion)
     }
     
     func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
-    parseHttpClient.getProfileWithUserId(objectID, completion: completion)
+        httpClient.getProfileWithUserId(objectID, completion: completion)
     }
     
-
+    
     func getFeatures(completion: (feature: [Feature]?, error: NSError?) -> ()) {
-        parseHttpClient.getFeatures(completion)
+        httpClient.getFeatures(completion)
     }
-
+    
     func getNetworkWithNetworkName (name: String, completion: (network: Network?, error: NSError?) -> ()) {
-        parseHttpClient.getNetworkWithNetworkName(name, completion: completion)
+        httpClient.getNetworkWithNetworkName(name, completion: completion)
+        
+    }
+    
 
+    func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
+        httpClient.getSubscriptions(completion)
     }
-    
-     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
-         parseHttpClient.getSubscriptions(completion)
-    }
-    
       func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
-        parseHttpClient.getPosts(completion)
-    }    
+        httpClient.getPosts(completion)
+    }
 }
 

@@ -15,15 +15,29 @@ class EventsViewController: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     var events:[Event] = []
     var filtered:[Event] = []
+    var features = ["Java","Ruby","iOS","Android","JS","Python"]
     
     //variables for searchBar support
     var searchActive : Bool = false
+    
+    //Add support for refresh control
+    var refreshControl: UIRefreshControl!
+    var customView: UIView!
+    var labelsArray: Array<UILabel> = []
+    var currentColorIndex = 0
+    var currentLabelIndex = 0
+    var isAnimating = false
+    var timer: NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        //Refresh Control
+        setUpRefreshControl()
+        
         
         //register tableView cell xib
         let eventNib = UINib(nibName: "EventCell2", bundle: nil)
@@ -34,22 +48,44 @@ class EventsViewController: UIViewController{
         
         //searchBar functions
         searchBar.delegate = self
-        
         retrieveEvents()
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
     //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
     // events in a sorted manner
     func retrieveEvents() {
+        print("In retrieve Events")
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
-            self.events = events!
-            self.tableView.reloadData()
+            if error == nil {
+                if let events = events {
+                    self.events = events
+                    var cnt = 0
+                    
+                    for event in self.events {
+                        event.eventFeature = self.features[cnt%self.features.count]
+                        cnt = cnt + 1
+                    }
+                    print("Finished retrieving events")
+                    
+                    
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                    
+                }
+                
+            }
+            else {
+                print("Error retrieving events")
+            }
         }
     }
+    
     
     func showEventDetails(event: Event){
         let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
@@ -68,6 +104,125 @@ class EventsViewController: UIViewController{
             return events.count
         }
     }
+    
+    func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clearColor()
+        refreshControl.tintColor = UIColor.clearColor()
+        
+        var refreshText = "Fetching new Events"
+        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: refreshText, attributes: attrs)
+        self.refreshControl!.tintColor = Constants.Color.Teal.light
+        
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        //loadCustomRefreshContents()
+        
+        self.refreshControl.addTarget(self, action: "retrieveEvents", forControlEvents: UIControlEvents.ValueChanged)
+        
+    }
+    
+    func loadCustomRefreshContents() {
+        let refreshContents = NSBundle.mainBundle().loadNibNamed("EventRefreshControl", owner: self, options: nil)
+        
+        customView = refreshContents[0] as! UIView
+        customView.frame = refreshControl.bounds
+        
+        for var i=0; i<customView.subviews.count; ++i {
+            labelsArray.append(customView.viewWithTag(i + 1) as! UILabel)
+        }
+        
+        refreshControl.addSubview(customView)
+    }
+    
+    func animateRefreshStep1() {
+        isAnimating = true
+        
+        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            self.labelsArray[self.currentLabelIndex].transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+            self.labelsArray[self.currentLabelIndex].textColor = self.getNextColor()
+            
+            }, completion: { (finished) -> Void in
+                
+                UIView.animateWithDuration(0.05, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                    self.labelsArray[self.currentLabelIndex].transform = CGAffineTransformIdentity
+                    self.labelsArray[self.currentLabelIndex].textColor = UIColor.blackColor()
+                    
+                    }, completion: { (finished) -> Void in
+                        ++self.currentLabelIndex
+                        
+                        if self.currentLabelIndex < self.labelsArray.count {
+                            self.animateRefreshStep1()
+                        }
+                        else {
+                            self.animateRefreshStep2()
+                        }
+                })
+        })
+        
+        print("Done with Animation1")
+    }
+    
+    
+    func animateRefreshStep2() {
+        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            self.labelsArray[0].transform = CGAffineTransformMakeScale(1.5, 1.5)
+            self.labelsArray[1].transform = CGAffineTransformMakeScale(1.5, 1.5)
+            self.labelsArray[2].transform = CGAffineTransformMakeScale(1.5, 1.5)
+            
+            
+            }, completion: { (finished) -> Void in
+                UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                    self.labelsArray[0].transform = CGAffineTransformIdentity
+                    self.labelsArray[1].transform = CGAffineTransformIdentity
+                    self.labelsArray[2].transform = CGAffineTransformIdentity
+                    
+                    
+                    }, completion: { (finished) -> Void in
+                        if self.refreshControl.refreshing {
+                            self.currentLabelIndex = 0
+                            self.animateRefreshStep1()
+                        }
+                        else {
+                            self.isAnimating = false
+                            self.currentLabelIndex = 0
+                            for var i=0; i<self.labelsArray.count; ++i {
+                                self.labelsArray[i].textColor = UIColor.blackColor()
+                                self.labelsArray[i].transform = CGAffineTransformIdentity
+                            }
+                        }
+                })
+        })
+        print("Done with Animation2")
+    }
+    
+    
+    func getNextColor() -> UIColor {
+        var colorsArray: Array<UIColor> = [UIColor.magentaColor(), UIColor.brownColor(), UIColor.yellowColor(), UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.orangeColor()]
+        
+        if currentColorIndex == colorsArray.count {
+            currentColorIndex = 0
+        }
+        
+        let returnColor = colorsArray[currentColorIndex]
+        ++currentColorIndex
+        
+        return returnColor
+    }
+    
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        print("isAnimating: \(isAnimating)")
+//        if refreshControl.refreshing {
+//            if !isAnimating {
+//                self.animateRefreshStep1()
+//                retrieveEvents()
+//                
+//            }
+//        }
+//    }
+
 }
 
 extension EventsViewController: UITableViewDataSource, UITableViewDelegate{
