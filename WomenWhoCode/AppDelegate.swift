@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup TabBar
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [eventsNavigationController, timelineNavigationController, connectNavigationController, topicsNavigationController, profileViewController]
+        tabBarController.viewControllers = [ timelineNavigationController, eventsNavigationController,connectNavigationController, topicsNavigationController, profileViewController]
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish

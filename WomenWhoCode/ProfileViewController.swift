@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        segmentedControl.selectedSegmentIndex == 0
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController {
                                     self.myEvents.append(newEvent)
                                 //    print("Reloading myEvents page")
                                     self.tableView.reloadData()
-                                //    print("myEvents cnt = \(self.myEvents.count)")
+                                    print("myEvents cnt = \(self.myEvents.count)")
                                 }
                                 
                             }
@@ -188,7 +188,7 @@ class ProfileViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = sender.selectedSegmentIndex
         switch sender.selectedSegmentIndex {
         case 0:
-          //  print("Selected Events page; myEvents cnt = \(myEvents.count)")
+           print("Selected Events page; myEvents cnt = \(myEvents.count)")
             self.tableView.hidden = false
             self.tableView.reloadData()
             
@@ -237,8 +237,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         return cell
         
     }
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (segmentedControl.selectedSegmentIndex == 0) {
