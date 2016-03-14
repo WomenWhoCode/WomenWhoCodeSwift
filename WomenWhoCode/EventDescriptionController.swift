@@ -19,9 +19,9 @@ class EventDescriptionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let contentWidth = scrollView.bounds.width
-        let contentHeight = scrollView.bounds.height * 2
+        let contentHeight = scrollView.bounds.height * 1.5
         scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
-        eventDescription.text = descriptionText
+        setMeetupDescription()
     }
     
     func setMeetupDescription(){
