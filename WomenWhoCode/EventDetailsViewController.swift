@@ -35,16 +35,6 @@ class EventDetailsViewController: UIViewController {
     
     func initEvent(){
         nameLabel.text = event.name
-        if let date = event.eventDate  {
-            if let month = event.eventMonth {
-                eventDate.text = "\(event.eventMonth!) \(event.eventDay!)"
-            }
-            
-        }
-        else {
-            eventDate.text = event.eventDateString
-        }
-        
         descriptionLabel.text = event.eventDescription!
         locationLabel.text = event.location!
     }
@@ -55,6 +45,7 @@ class EventDetailsViewController: UIViewController {
         locationLabel.text = meetupEvent.venue?.venueName != nil ? meetupEvent.venue?.description : ""
         attendeeLabel.text = "\(meetupEvent.rsvpLimit! - meetupEvent.yesRsvpCount!)/\(meetupEvent.rsvpLimit!)"
         networkLabel.text = meetupEvent.groupName
+        eventDate.text = meetupEvent.eventDate
         setMeetupDescription()
     }
     
