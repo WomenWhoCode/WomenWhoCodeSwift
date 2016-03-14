@@ -58,8 +58,12 @@ class ParseAPI{
         
     }
     
+
     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
         httpClient.getSubscriptions(completion)
+    }
+      func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
+        httpClient.getPosts(completion)
     }
 }
 

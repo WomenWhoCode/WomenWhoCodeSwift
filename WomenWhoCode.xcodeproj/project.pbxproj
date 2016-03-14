@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		100341241C955FA3005C2D3B /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341231C955FA3005C2D3B /* TopicCell.swift */; };
 		100341261C957509005C2D3B /* Subscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341251C957509005C2D3B /* Subscribed.swift */; };
+		100341281C95F0BC005C2D3B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100341271C95F0BC005C2D3B /* Post.swift */; };
 		1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD5F1C8B625800360991 /* SignUpViewController.swift */; };
 		1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD611C8B626F00360991 /* LoginViewController.swift */; };
 		1039FD641C8B6ADD00360991 /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1039FD631C8B6ADD00360991 /* Main.Storyboard */; };
@@ -35,6 +36,7 @@
 		CA6276481C94A21A001C4C50 /* EventCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6276461C94A21A001C4C50 /* EventCell2.xib */; };
 		CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6276491C94F73A001C4C50 /* Feature.swift */; };
 		CA62764C1C954339001C4C50 /* EventFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62764B1C954339001C4C50 /* EventFilters.swift */; };
+		CA82E48B1C961B4200675DDA /* EventRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA82E48A1C961B4200675DDA /* EventRefreshControl.xib */; };
 		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
 		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
@@ -91,6 +93,7 @@
 /* Begin PBXFileReference section */
 		100341231C955FA3005C2D3B /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		100341251C957509005C2D3B /* Subscribed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribed.swift; sourceTree = "<group>"; };
+		100341271C95F0BC005C2D3B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1039FD5F1C8B625800360991 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1039FD611C8B626F00360991 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1039FD631C8B6ADD00360991 /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.Storyboard; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 		CA6276461C94A21A001C4C50 /* EventCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell2.xib; sourceTree = "<group>"; };
 		CA6276491C94F73A001C4C50 /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		CA62764B1C954339001C4C50 /* EventFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFilters.swift; sourceTree = "<group>"; };
+		CA82E48A1C961B4200675DDA /* EventRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventRefreshControl.xib; sourceTree = "<group>"; };
 		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				CA6276491C94F73A001C4C50 /* Feature.swift */,
 				CA62764B1C954339001C4C50 /* EventFilters.swift */,
 				100341251C957509005C2D3B /* Subscribed.swift */,
+				100341271C95F0BC005C2D3B /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				CA6276451C94A21A001C4C50 /* EventCell2.swift */,
 				CA6276461C94A21A001C4C50 /* EventCell2.xib */,
 				100341231C955FA3005C2D3B /* TopicCell.swift */,
+				CA82E48A1C961B4200675DDA /* EventRefreshControl.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				CA3B6CB11C85519400D8FF25 /* Topics.storyboard in Resources */,
 				E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */,
 				E4CF13F91C94EB2500A271B9 /* MessageCell.xib in Resources */,
+				CA82E48B1C961B4200675DDA /* EventRefreshControl.xib in Resources */,
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
 				E4F4EFCE1C8CA3F500B480AC /* UserProfileCell.xib in Resources */,
 				CA3B6CAF1C85517200D8FF25 /* Profile.storyboard in Resources */,
@@ -597,6 +604,7 @@
 				E4CF14121C96039D00A271B9 /* MeetupVenue.swift in Sources */,
 				1039FD621C8B626F00360991 /* LoginViewController.swift in Sources */,
 				1039FD601C8B625800360991 /* SignUpViewController.swift in Sources */,
+				100341281C95F0BC005C2D3B /* Post.swift in Sources */,
 				E4F4EFDB1C90F8BF00B480AC /* UIColor+extension.swift in Sources */,
 				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,

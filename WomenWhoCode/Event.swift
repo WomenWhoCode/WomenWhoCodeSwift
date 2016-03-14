@@ -36,6 +36,7 @@ class Event: NSObject {
     var eventDateInMMMDD: String?
     var meetupEvent: MeetupEvent?
     var network: Network?
+    var eventTags:[String] = []
     
     override init() {
         
@@ -57,6 +58,9 @@ class Event: NSObject {
         //Derived objects temporary initialization
         eventMonth = "MAR"
         eventDay = "2"
+        eventTags.append("iOS")
+        eventTags.append("Mobile")
+        
     }
     
 //    init(dictionary: NSDictionary) {
@@ -105,6 +109,7 @@ class Event: NSObject {
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
             meetupUrlName = self.network!.meetupUrlName
         }
+        eventTags = (object["event_tags"] as? [String])!
         setDerivedValues()
     }
     
