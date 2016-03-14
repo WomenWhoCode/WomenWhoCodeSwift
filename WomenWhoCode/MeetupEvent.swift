@@ -75,6 +75,7 @@ class MeetupEvent: NSObject {
     var eventDescription: String?
     var eventVisibility: String?
     var venue: MeetupVenue?
+    var groupName: String?
     
     init(dict: NSDictionary){
         meetupId = dict["id"] as? String
@@ -91,7 +92,11 @@ class MeetupEvent: NSObject {
         waitlistCount = dict["waitlist_count"] as? Int
         eventDescription = dict["description"] as? String
         eventVisibility = dict["visibility"] as? String
-        //Fixme: Add Venue
+        print(dict["venue"])
+        venue = MeetupVenue(dictionary: dict["venue"] as? NSDictionary)
+        if let group = dict["group"] as? NSDictionary{
+            groupName = group["name"] as? String
+        }
         //FixMe: Add Group Information
         //FixMe: Add Members/ attendees etc.,
     }

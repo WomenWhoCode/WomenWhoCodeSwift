@@ -24,7 +24,6 @@ import Foundation
 }
 */
 class MeetupVenue: NSObject {
-
     var venueId: String?
     var venueName: String?
     var lat: Double?
@@ -37,4 +36,24 @@ class MeetupVenue: NSObject {
     var localizedCountryName: String?
     var zip: String?
     var state: String?
+    
+    init(dictionary: NSDictionary?){
+        if let dict = dictionary{
+            venueId = dict["id"] as? String
+            venueName = dict["name"] as? String
+            lat = dict["lat"] as? Double
+            lon = dict["lon"] as? Double
+            repinned = dict["repinned"] as? Bool
+            address1 = dict["address_1"] as? String
+            address2 = dict["address_2"] as? String
+            city = dict["city"] as? String
+            localizedCountryName = dict["localized_country_name"] as? String
+            zip = dict["zip"] as? String
+            state = dict["state"] as? String
+        }
+    }
+    
+    override var description: String{
+        return "\(venueName), \(address1), \(city), \(state)"
+    }
 }

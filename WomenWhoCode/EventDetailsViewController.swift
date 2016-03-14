@@ -19,12 +19,18 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     var event: Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)
         initEvent()
+        let contentWidth = scrollView.bounds.width
+        let contentHeight = scrollView.bounds.height * 2
+
+        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
     
     func initEvent(){
@@ -32,17 +38,14 @@ class EventDetailsViewController: UIViewController {
         eventDate.text = "\(event.eventMonth!) \(event.eventDay!)"
         descriptionLabel.text = event.eventDescription!
         locationLabel.text = event.location!
-        //FixMe: Currently nil values. Handle them later
-        
-        print(event.attendeeLimit)
-        print(event.rsvpCount)
-        
-        //        attendeeLabel.text = "\(event.attendeeLimit! - event.rsvpCount!)/ \(event.attendeeLimit)"
     }
     
     func setMeetupEvent(meetupEvent: MeetupEvent){
         event.meetupEvent = meetupEvent
         nameLabel.text = meetupEvent.meetupName
+        locationLabel.text = meetupEvent.venue?.venueName != nil ? meetupEvent.venue?.description : ""
+        attendeeLabel.text = "\(meetupEvent.rsvpLimit! - meetupEvent.yesRsvpCount!)/\(meetupEvent.rsvpLimit!)"
+        networkLabel.text = meetupEvent.groupName
         setMeetupDescription()
     }
     
