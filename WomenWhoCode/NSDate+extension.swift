@@ -30,4 +30,11 @@ extension NSDate {
         dateFormatter.dateFormat = "mm"
         return dateFormatter.stringFromDate(self)
     }
+    
+    func formatTo(format: String) -> String?{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(self)
+    }
+    
 }

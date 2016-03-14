@@ -11,6 +11,7 @@ import UIKit
 class EventDetailsViewController: UIViewController {
     
     
+    @IBOutlet weak var userCollectionView: UICollectionView!
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var networkLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -22,29 +23,20 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     var event: Event!
+    var rsvps:[MeetupMember] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)
+        event.fetchEventRsvps(updateRsvps)
         initEvent()
         let contentWidth = scrollView.bounds.width
         let contentHeight = scrollView.bounds.height * 2
-
         scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
     
     func initEvent(){
         nameLabel.text = event.name
-        if let date = event.eventDate  {
-            if let month = event.eventMonth {
-                eventDate.text = "\(event.eventMonth!) \(event.eventDay!)"
-            }
-            
-        }
-        else {
-            eventDate.text = event.eventDateString
-        }
-        
         descriptionLabel.text = event.eventDescription!
         locationLabel.text = event.location!
     }
@@ -55,7 +47,13 @@ class EventDetailsViewController: UIViewController {
         locationLabel.text = meetupEvent.venue?.venueName != nil ? meetupEvent.venue?.description : ""
         attendeeLabel.text = "\(meetupEvent.rsvpLimit! - meetupEvent.yesRsvpCount!)/\(meetupEvent.rsvpLimit!)"
         networkLabel.text = meetupEvent.groupName
+        eventDate.text = meetupEvent.eventDate
         setMeetupDescription()
+    }
+    
+    func updateRsvps(members: [MeetupMember]){
+        self.rsvps = members
+        userCollectionView.reloadData()
     }
     
     func setMeetupDescription(){
@@ -72,6 +70,23 @@ class EventDetailsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+}
+
+extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return rsvps.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WWC_UserEventCell", forIndexPath: indexPath) as! MeetupRsvp
+        let rsvpMember = rsvps[indexPath.row]
+        if let thumbImage = rsvpMember.thumbImage{
+            cell.userImage.setImageWithURL(NSURL(string: thumbImage)!)
+        }
+        return cell
     }
     
 }

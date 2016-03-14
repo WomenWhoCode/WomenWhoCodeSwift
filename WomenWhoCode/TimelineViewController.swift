@@ -123,6 +123,7 @@ class TimelineViewController: UIViewController {
             }
         }
         print("\(filtered_posts.count)")
+         print("\(myEvents.count)")
         
     }
     /*
