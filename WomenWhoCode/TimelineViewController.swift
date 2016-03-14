@@ -19,13 +19,18 @@ class TimelineViewController: UIViewController {
     var posts : [Post] = []
     var filtered_posts : [Post] = []
 
+    @IBOutlet var tableView: UITableView!
     // filtered_posts and myEvents need to be added to timeleine
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 320
+        tableView.rowHeight = UITableViewAutomaticDimension
         getMyEvents()
         getTopics()
-          }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,7 +41,7 @@ class TimelineViewController: UIViewController {
         ParseAPI.sharedInstance.getFeatures { (feature, error) -> () in
             self.topics = feature!
             self.getSubscribed()
-          //  self.tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -44,7 +49,7 @@ class TimelineViewController: UIViewController {
     {
         ParseAPI.sharedInstance.getSubscriptions { (subscribed, error) -> () in
             self.subscription = subscribed!
-        //    self.tableView.reloadData()
+            self.tableView.reloadData()
             self.setSubscribedTopics()
         }
         
@@ -68,7 +73,6 @@ class TimelineViewController: UIViewController {
 
     
     func getMyEvents() {
-      
         var predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
         var userEventsquery = PFQuery(className: "UserEvents", predicate: predicate)
         
@@ -85,7 +89,7 @@ class TimelineViewController: UIViewController {
                             if error == nil {
                                 if let newEvent = event {
                                     self.myEvents.append(newEvent)
- //                                   self.tableView.reloadData()
+                                    self.tableView.reloadData()
                                 }
                                 
                             }
@@ -109,7 +113,7 @@ class TimelineViewController: UIViewController {
             self.posts = posts!
             print("\(self.posts.count)")
             self.getFilteredPosts()
-            //    self.tableView.reloadData()
+            self.tableView.reloadData()
         }
         
     }
@@ -137,3 +141,21 @@ class TimelineViewController: UIViewController {
     */
 
 }
+extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
+        cell.postDesc.text = filtered_posts[indexPath.row].desc
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filtered_posts.count
+       }
+}
+
+
