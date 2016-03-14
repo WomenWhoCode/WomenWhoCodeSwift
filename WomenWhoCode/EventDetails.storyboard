@@ -52,12 +52,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
                                                 <rect key="frame" x="8" y="113" width="354" height="120"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="bDr-jg-d4f"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="xbI-0e-Wsd" appends="YES" id="I7a-qE-4xz"/>
+                                                </connections>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41K-Yw-Um6">
                                                 <rect key="frame" x="320" y="90" width="47" height="18"/>
@@ -166,11 +170,53 @@
                         <outlet property="networkLabel" destination="gfr-qx-2cC" id="5fj-m2-JHb"/>
                         <outlet property="scrollView" destination="J4O-qy-JsX" id="wLG-Zg-lFX"/>
                         <outlet property="userCollectionView" destination="mPX-UJ-kGe" id="mFT-Sc-KJ4"/>
+                        <segue destination="RNJ-dD-dHb" kind="presentation" identifier="eventDescSegue" id="rNF-yQ-uCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wov-KF-ftD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xbI-0e-Wsd">
+                    <connections>
+                        <action selector="ondescTap:" destination="7g6-jd-5Oc" id="GRN-H2-ppj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="538.5" y="435.5"/>
+        </scene>
+        <!--Event Description Controller-->
+        <scene sceneID="kEb-JI-uoO">
+            <objects>
+                <viewController storyboardIdentifier="eventDescriptionController" id="RNJ-dD-dHb" customClass="EventDescriptionController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zuz-9u-XIA"/>
+                        <viewControllerLayoutGuide type="bottom" id="pcN-yM-Epa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fcn-Yf-2kr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhY-8c-9cv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-Zx-S5Z">
+                                        <rect key="frame" x="8" y="8" width="398" height="720"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="eventDescription" destination="HgA-Zx-S5Z" id="HXk-XP-tGa"/>
+                        <outlet property="scrollView" destination="UhY-8c-9cv" id="PvS-PC-aYj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0o1-lm-CD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="470"/>
         </scene>
     </scenes>
     <resources>

@@ -25,6 +25,9 @@ class EventDetailsViewController: UIViewController {
     var event: Event!
     var rsvps:[MeetupMember] = []
     
+    //EventDescSegue
+    let eventDescSegue = "eventDescSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)
@@ -72,6 +75,30 @@ class EventDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    @IBAction func ondescTap(sender: UITapGestureRecognizer) {
+        self.performSegueWithIdentifier(eventDescSegue, sender: sender)
+    }
+    
+    //Segue into Detail View
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == eventDescSegue {
+            if let destination = segue.destinationViewController as? EventDescriptionController {
+                destination.descriptionText = event.meetupEvent?.eventDescription!
+                destination.hidesBottomBarWhenPushed = true
+            }
+        }
+    }
+
+    
+    
+    func showEventDetails(event: Event){
+        let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
+        let destination = eventDetailsStoryboard.instantiateViewControllerWithIdentifier("eventDescriptionController") as! EventDetailsViewController
+        destination.event = event
+        destination.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
 }
 
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
