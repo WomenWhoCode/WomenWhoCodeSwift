@@ -9,18 +9,25 @@
 import UIKit
 import Parse
 
+
+
 class EventCell2: UITableViewCell {
+    
+    var javaImage = "Java-60.png"
+    var iosImage = "iOS2-60.png"
+    var jsImage = "JS-60.png"
+    var rubyImage = "Ruby-60.png"
+    var pythonImage = "Python-60.png"
+    var mobileDevImage = "MobileDev-60.png"
+    var codeImage = "Code-60.png"
+    var androidImage = "Android-60.png"
+    
     
     
     @IBOutlet weak var eventImageView: UIImageView!
-    
-    
     @IBOutlet weak var eventTitle: UILabel!
-    
     @IBOutlet weak var eventDate: UILabel!
-    
     @IBOutlet weak var eventLocation: UILabel!
-    
     @IBOutlet weak var eventDescription: UILabel!
     
     @IBOutlet weak var eventTag1: UILabel!
@@ -52,12 +59,32 @@ class EventCell2: UITableViewCell {
                 eventSpots.text = " \(event.openSpotsCount!) spots left"
             }
             
+            setEventImage(event.eventFeature!)
+            
+        }
+    }
+    
+    
+    //["Java","Ruby","iOS","Android","JS","Python"]
+    func setEventImage(feature: String) {
+        print("Feature: \(feature)")
+        switch feature {
+        case "iOS": eventImageView.image = UIImage(named: iosImage)
+        case "Java": eventImageView.image = UIImage(named: javaImage)
+        case "Python": eventImageView.image = UIImage(named: pythonImage)
+        case "JS": eventImageView.image = UIImage(named: jsImage)
+        case "Ruby": eventImageView.image = UIImage(named: rubyImage)
+        case "Android": eventImageView.image = UIImage(named: androidImage)
+            
+        default: eventImageView.image = UIImage(named: iosImage)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
         
         eventTag1.layer.cornerRadius = 10
         eventTag1.clipsToBounds = true
