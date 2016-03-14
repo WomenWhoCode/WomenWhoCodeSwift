@@ -15,6 +15,7 @@ class EventsViewController: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     var events:[Event] = []
     var filtered:[Event] = []
+    var features = ["Java","Ruby","iOS","Android","JS","Python"]
     
     //variables for searchBar support
     var searchActive : Bool = false
@@ -65,7 +66,12 @@ class EventsViewController: UIViewController{
             if error == nil {
                 if let events = events {
                     self.events = events
+                    var cnt = 0
                     
+                    for event in self.events {
+                        event.eventFeature = self.features[cnt%self.features.count]
+                        cnt = cnt + 1
+                    }
                     print("Finished retrieving events")
                     
                     
