@@ -17,56 +17,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4O-qy-JsX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4O-qy-JsX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-H3-ca2" userLabel="ContentView">
-                                        <rect key="frame" x="-1" y="0.0" width="375" height="613"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gg_bridge3" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-YB-Zkd">
-                                                <rect key="frame" x="1" y="0.0" width="375" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exE-WQ-uSF">
-                                                <rect key="frame" x="8" y="78" width="268" height="18"/>
+                                                <rect key="frame" x="8" y="72" width="268" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-sa-ocz">
-                                                <rect key="frame" x="8" y="97" width="89.5" height="16"/>
+                                                <rect key="frame" x="8" y="90" width="89.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="EventDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UP-V3-FFH">
-                                                <rect key="frame" x="296" y="78" width="71" height="18"/>
+                                                <rect key="frame" x="276" y="72" width="91" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Women Who Code SF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-qx-2cC">
-                                                <rect key="frame" x="68" y="17" width="291" height="35"/>
+                                                <rect key="frame" x="42" y="16" width="291" height="35"/>
                                                 <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
-                                                <rect key="frame" x="8" y="121" width="359" height="119"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
+                                                <rect key="frame" x="8" y="113" width="354" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="bDr-jg-d4f"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41K-Yw-Um6">
-                                                <rect key="frame" x="320" y="96" width="47" height="18"/>
+                                                <rect key="frame" x="320" y="90" width="47" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-u5-2ZH">
-                                                <rect key="frame" x="1" y="248" width="374" height="67"/>
+                                                <rect key="frame" x="0.0" y="268" width="374" height="67"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mPX-UJ-kGe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="67"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ADZ-gl-oyI">
                                                             <size key="itemSize" width="40" height="40"/>
@@ -75,7 +78,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WWC_UserEventCell" id="B43-F3-iGF">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WWC_UserEventCell" id="B43-F3-iGF" customClass="MeetupRsvp" customModule="WomenWhoCode" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="13.5" width="40" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -88,6 +91,12 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="userImage" destination="UCy-Fv-l52" id="UNt-kl-MpU"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                         <connections>
@@ -97,6 +106,12 @@
                                                     </collectionView>
                                                 </subviews>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attendees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmZ-dI-hv9">
+                                                <rect key="frame" x="8" y="241" width="113" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </view>
                                 </subviews>
@@ -127,19 +142,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="n5m-lO-Jyk"/>
+                                    <constraint firstAttribute="height" constant="50" id="awz-0q-eDf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VPm-Oj-WHa" firstAttribute="leading" secondItem="jG2-fY-7h2" secondAttribute="leading" id="Kqg-vx-LDj"/>
-                            <constraint firstAttribute="trailing" secondItem="J4O-qy-JsX" secondAttribute="trailing" id="KuH-yB-0uI"/>
-                            <constraint firstItem="J4O-qy-JsX" firstAttribute="top" secondItem="jG2-fY-7h2" secondAttribute="top" id="X2G-zb-foc"/>
-                            <constraint firstItem="J4O-qy-JsX" firstAttribute="leading" secondItem="jG2-fY-7h2" secondAttribute="leading" id="Y5U-ag-l6L"/>
-                            <constraint firstItem="zYo-9l-rqz" firstAttribute="top" secondItem="VPm-Oj-WHa" secondAttribute="bottom" id="YXZ-qw-osm"/>
-                            <constraint firstItem="VPm-Oj-WHa" firstAttribute="top" secondItem="J4O-qy-JsX" secondAttribute="bottom" id="d0x-80-uhr"/>
-                            <constraint firstAttribute="trailing" secondItem="VPm-Oj-WHa" secondAttribute="trailing" id="wOl-dL-aMJ"/>
+                            <constraint firstItem="zYo-9l-rqz" firstAttribute="top" secondItem="VPm-Oj-WHa" secondAttribute="bottom" id="BOC-dI-bZR"/>
+                            <constraint firstAttribute="trailing" secondItem="VPm-Oj-WHa" secondAttribute="trailing" id="GjS-rA-3P6"/>
+                            <constraint firstItem="VPm-Oj-WHa" firstAttribute="leading" secondItem="jG2-fY-7h2" secondAttribute="leading" id="Mhb-5t-QSK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QRx-66-dbb"/>

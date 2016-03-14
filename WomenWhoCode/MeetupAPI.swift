@@ -29,6 +29,10 @@ class MeetupAPI{
     func fetchEvent(urlParams: [String:String], successCallback: (MeetupEvent) -> Void){
         httpClient.fetchEvent(urlParams, successCallback: successCallback)
     }
+    
+    func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
+        httpClient.fetchEventRsvps(urlParams, successCallback: successCallback)
+    }
 
     
 }

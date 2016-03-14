@@ -23,14 +23,15 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     var event: Event!
+    var rsvps:[MeetupMember] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)
+        event.fetchEventRsvps(updateRsvps)
         initEvent()
         let contentWidth = scrollView.bounds.width
         let contentHeight = scrollView.bounds.height * 2
-
         scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
     
@@ -48,6 +49,11 @@ class EventDetailsViewController: UIViewController {
         networkLabel.text = meetupEvent.groupName
         eventDate.text = meetupEvent.eventDate
         setMeetupDescription()
+    }
+    
+    func updateRsvps(members: [MeetupMember]){
+        self.rsvps = members
+        userCollectionView.reloadData()
     }
     
     func setMeetupDescription(){
@@ -71,11 +77,15 @@ class EventDetailsViewController: UIViewController {
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return rsvps.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WWC_UserEventCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WWC_UserEventCell", forIndexPath: indexPath) as! MeetupRsvp
+        let rsvpMember = rsvps[indexPath.row]
+        if let thumbImage = rsvpMember.thumbImage{
+            cell.userImage.setImageWithURL(NSURL(string: thumbImage)!)
+        }
         return cell
     }
     
