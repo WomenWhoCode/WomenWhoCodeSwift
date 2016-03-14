@@ -38,7 +38,7 @@ class EventCell2: UITableViewCell {
         didSet {
             eventTitle.text = event.name
             eventLocation.text = event.location
-            eventDate.text = event.eventDateString
+            eventDate.text = event.eventDateInMMMDD
             eventDescription.text = event.eventDescription
             eventTag1.text = event.eventTags[1]
             eventTag2.text = event.eventTags[0]

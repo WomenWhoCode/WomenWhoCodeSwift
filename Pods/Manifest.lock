@@ -21,6 +21,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Alamofire (3.2.1)
   - BDBOAuth1Manager (1.6.0):
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - AFNetworking
+  - Alamofire
   - BDBOAuth1Manager
   - Emoji-swift
   - LTMorphingLabel
@@ -51,6 +53,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActiveLabel: 087705276e6e83c98deb3c22e6fef22b10317b16
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   Emoji-swift: 2bd665445d3663ec44648d34d75a650a7aeb3a22
