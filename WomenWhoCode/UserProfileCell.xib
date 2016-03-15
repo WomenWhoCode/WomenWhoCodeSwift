@@ -22,14 +22,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-id-fMi">
-                        <rect key="frame" x="66" y="27" width="246" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="66" y="27" width="246" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS, Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHw-Zu-E3C">
-                        <rect key="frame" x="66" y="45.5" width="246" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="66" y="44" width="246" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -52,6 +52,8 @@
                     <constraint firstItem="pBa-id-fMi" firstAttribute="top" secondItem="wsV-gV-YOU" secondAttribute="bottom" constant="1" id="Zoe-Bn-l83"/>
                     <constraint firstAttribute="trailing" secondItem="wsV-gV-YOU" secondAttribute="trailing" constant="8" id="bhx-yn-d5B"/>
                     <constraint firstItem="AHw-Zu-E3C" firstAttribute="top" secondItem="pBa-id-fMi" secondAttribute="bottom" constant="4" id="buC-2y-39f"/>
+                    <constraint firstItem="AHw-Zu-E3C" firstAttribute="top" secondItem="pBa-id-fMi" secondAttribute="bottom" constant="4" id="cj7-YC-5gA"/>
+                    <constraint firstItem="pBa-id-fMi" firstAttribute="top" secondItem="wsV-gV-YOU" secondAttribute="bottom" constant="1" id="czm-qm-drE"/>
                     <constraint firstAttribute="bottom" secondItem="AHw-Zu-E3C" secondAttribute="bottom" constant="8" id="dfR-1v-wgD"/>
                     <constraint firstItem="AHw-Zu-E3C" firstAttribute="leading" secondItem="hi4-vW-lz5" secondAttribute="trailing" constant="8" id="ho6-mL-Lfd"/>
                     <constraint firstItem="AHw-Zu-E3C" firstAttribute="leading" secondItem="wsV-gV-YOU" secondAttribute="leading" id="njI-rW-ytm"/>
@@ -61,6 +63,8 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="Zi7-aC-IFy"/>
+                        <exclude reference="Zoe-Bn-l83"/>
+                        <exclude reference="buC-2y-39f"/>
                         <exclude reference="dfR-1v-wgD"/>
                     </mask>
                 </variation>
