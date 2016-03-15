@@ -10,14 +10,9 @@ import UIKit
 import AFNetworking
 import Parse
 
-protocol UserProfileCellDelegate {
-    func userProfileCell(userProfileCell: UserProfileCell, onFollow followButtonSet: Bool)
-}
-
 class UserProfileCell: UITableViewCell {
     
     var profileId: String?
-    var delegate: UserProfileCellDelegate?
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
