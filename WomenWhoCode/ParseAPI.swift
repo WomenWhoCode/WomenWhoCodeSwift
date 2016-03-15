@@ -53,6 +53,10 @@ class ParseAPI{
         httpClient.getFeatures(completion)
     }
     
+    func getNetworks(completion: (networks: [Network]?, error: NSError?) -> ()) {
+        httpClient.getNetworks(completion)
+    }
+    
     func getNetworkWithNetworkName (name: String, completion: (network: Network?, error: NSError?) -> ()) {
         httpClient.getNetworkWithNetworkName(name, completion: completion)
         

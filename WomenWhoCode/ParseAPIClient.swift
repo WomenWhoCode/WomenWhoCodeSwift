@@ -57,7 +57,9 @@ class ParseAPIClient{
     
     func getEventWithEventId(objectID: String, completion: (event: Event?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Event")
+        query.includeKey("network")
         query.whereKey("objectId", equalTo: objectID)
+
         
 
         var event: Event?
@@ -66,8 +68,7 @@ class ParseAPIClient{
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) events with the eventId: \(objectID).")
+//                print("Successfully retrieved \(objects!.count) events with the eventId: \(objectID).")
                 if let objects = objects {
                     for object in objects {
                         event = Event(object: object)
@@ -93,7 +94,7 @@ class ParseAPIClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) profiles.")
+//                print("Successfully retrieved \(objects!.count) profiles.")
                 if let objects = objects {
                     for object in objects {
                         profile = Profile(object: object)
@@ -109,6 +110,8 @@ class ParseAPIClient{
         
     }
     
+
+    
     func getNetworkWithNetworkName (name: String, completion: (network: Network?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Network")
         var network: Network?
@@ -118,7 +121,7 @@ class ParseAPIClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) profiles.")
+//                print("Successfully retrieved \(objects!.count) profiles.")
                 if let objects = objects {
                     for object in objects {
                         network = Network(object: object)
@@ -129,6 +132,32 @@ class ParseAPIClient{
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
                 completion(network: nil, error: error)
+            }
+        }
+        
+    }
+    
+    func getNetworks(completion: (networks: [Network]?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Network")
+        var networks: [Network] = []
+
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) profiles.")
+                if let objects = objects {
+                    for object in objects {
+                        let network = Network(object: object)
+                        networks.append(network)
+                    }
+                }
+                completion(networks:networks, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(networks: nil, error: error)
             }
         }
         
@@ -225,7 +254,6 @@ class ParseAPIClient{
                 if let objects = objects {
                     for object in objects {
                         let feature = Feature(object: object)
-                        print("Feature title: \(feature.title)")
                         features.append(feature)
                     }
                 }
