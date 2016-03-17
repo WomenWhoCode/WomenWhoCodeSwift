@@ -139,6 +139,7 @@ class ParseAPIClient{
     
     func getNetworks(completion: (networks: [Network]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Network")
+        query.orderByAscending("title")
         var networks: [Network] = []
 
         query.findObjectsInBackgroundWithBlock {
