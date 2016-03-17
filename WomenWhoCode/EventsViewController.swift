@@ -68,8 +68,9 @@ class EventsViewController: UIViewController{
                     var cnt = 0
                     
                     for event in self.events {
-                        event.eventFeature = self.features[cnt%self.features.count]
-                        cnt = cnt + 1
+//                        event.eventFeature = self.features[cnt%self.features.count]
+//                        cnt = cnt + 1
+                        print("Event feature: \(event.eventFeature)")
                     }
                     print("Finished retrieving events")
                     

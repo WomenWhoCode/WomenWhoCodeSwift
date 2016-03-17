@@ -21,7 +21,7 @@ class EventCell2: UITableViewCell {
     var mobileDevImage = "MobileDev-60.png"
     var codeImage = "Code-60.png"
     var androidImage = "Android-60.png"
-    
+    var wwcImage = "wwc_icon.png"
     
     
     @IBOutlet weak var eventImageView: UIImageView!
@@ -72,9 +72,10 @@ class EventCell2: UITableViewCell {
         case "iOS": eventImageView.image = UIImage(named: iosImage)
         case "Java": eventImageView.image = UIImage(named: javaImage)
         case "Python": eventImageView.image = UIImage(named: pythonImage)
-        case "JS": eventImageView.image = UIImage(named: jsImage)
-        case "Ruby": eventImageView.image = UIImage(named: rubyImage)
+        case "Ruby and Rails": eventImageView.image = UIImage(named: rubyImage)
         case "Android": eventImageView.image = UIImage(named: androidImage)
+        case "Javascript": eventImageView.image = UIImage(named: jsImage)
+        case "Social": eventImageView.image = UIImage(named: wwcImage)
             
         default: eventImageView.image = UIImage(named: iosImage)
         }

@@ -112,6 +112,12 @@ class Event: NSObject {
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
             meetupUrlName = self.network!.meetupUrlName
         }
+        
+        if object.objectForKey("feature") != nil {
+            let feature = Feature(object: (object.objectForKey("feature") as? PFObject!)!)
+            self.eventFeature = feature.title
+        }
+        
         eventTags = (object["event_tags"] as? [String])!
         setDerivedValues()
     }
