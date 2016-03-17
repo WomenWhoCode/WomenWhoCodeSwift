@@ -31,6 +31,7 @@ class ParseAPIClient{
     func getEvents(completion: (events: [Event]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Event")
         query.includeKey("network")
+        query.includeKey("feature")
         var events: [Event] = []
         
         query.findObjectsInBackgroundWithBlock {
@@ -139,6 +140,7 @@ class ParseAPIClient{
     
     func getNetworks(completion: (networks: [Network]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Network")
+        query.orderByAscending("title")
         var networks: [Network] = []
 
         query.findObjectsInBackgroundWithBlock {
