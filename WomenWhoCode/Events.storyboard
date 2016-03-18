@@ -40,6 +40,7 @@
                     <navigationItem key="navigationItem" title="Events" id="npR-Jr-WAV">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="6Bz-te-Zzt">
                             <connections>
+                                <action selector="onFilter:" destination="Iax-Nd-WQO" id="ei5-9U-jdI"/>
                                 <segue destination="8LA-gP-xnZ" kind="modal" animates="NO" id="95c-WY-EvT"/>
                             </connections>
                         </barButtonItem>

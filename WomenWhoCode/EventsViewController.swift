@@ -9,12 +9,14 @@
 import UIKit
 import Parse
 
-class EventsViewController: UIViewController{
+class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var events:[Event] = []
     var filtered:[Event] = []
+    var filteredByFeature:[Event] = []
+    var filteredByFeatureAndEvent:[Event] = []
     var features = ["Java","Ruby","iOS","Android","JS","Python"]
     
     //variables for searchBar support
@@ -54,6 +56,71 @@ class EventsViewController: UIViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func eventsFilterViewController(eventFilters: EventFilters) {
+        print("In filters delegate method")
+        
+        
+        ParseAPI.sharedInstance.getEventsByFilter(eventFilters.networks, features: eventFilters.features) { (events, error) -> () in
+            
+            if error == nil {
+                if let events = events {
+                    self.events = events
+                    print("Finished retrieving events(cnt = \(events.count)")
+                    let features = eventFilters.features
+                    let networks = eventFilters.networks
+                    
+                    //Filter by features
+                    for event in events {
+                        for feature in features! {
+                            if event.eventFeature == feature.title! {
+                                print("Adding event with title: \(event.name) and network: \(event.network!.title!)")
+                                self.filteredByFeature.append(event)
+                            }
+                        }
+                    }
+                    print("filteredByFeature count : \(self.filteredByFeature.count)")
+                    
+                    if self.filteredByFeature.count > 0 {
+                        for event in self.filteredByFeature {
+                            for network in networks! {
+                                if event.chapter == network.title {
+                                    
+                                    self.filteredByFeatureAndEvent.append(event)
+                                }
+                            }
+                        }
+                    }
+                    print("filteredByFeatureAndEvent count : \(self.filteredByFeatureAndEvent.count)")
+                    self.events = self.filteredByFeatureAndEvent
+                    self.filteredByFeature = []
+                    self.filteredByFeatureAndEvent = []
+                    self.tableView.reloadData()
+                    
+                }
+            }
+            else {
+                print("Error retrieving events with the current filters")
+            }
+        }
+        
+    }
+    
+    
+    @IBAction func onFilter(sender: AnyObject) {
+        //let filtersVC =
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let navigationController = segue.destinationViewController as! UINavigationController
+        let filters = navigationController.topViewController as! EventsFilterViewController
+        
+        filters.delegate = self
+        
     }
     
     

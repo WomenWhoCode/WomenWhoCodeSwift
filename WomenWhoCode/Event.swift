@@ -110,6 +110,7 @@ class Event: NSObject {
         eventFeature = "iOS" //FIXME: Get it from the model
         if object.objectForKey("network") != nil{
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
+            chapter = self.network?.title
             meetupUrlName = self.network!.meetupUrlName
         }
         

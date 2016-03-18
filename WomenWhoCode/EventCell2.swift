@@ -77,7 +77,7 @@ class EventCell2: UITableViewCell {
         case "Javascript": eventImageView.image = UIImage(named: jsImage)
         case "Social": eventImageView.image = UIImage(named: wwcImage)
             
-        default: eventImageView.image = UIImage(named: iosImage)
+        default: eventImageView.image = UIImage(named: wwcImage)
         }
     }
     
