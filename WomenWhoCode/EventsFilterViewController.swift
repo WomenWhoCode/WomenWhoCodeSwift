@@ -27,7 +27,8 @@ class EventsFilterViewController: UIViewController {
     var filters: EventFilters?
     
     
-    var chapters: [String] = []//["SFO", "Silicon Valley", "Seattle", "Atlanta", "Dallas"] //FIXME: Get these from Parse DB
+    var networks: [Network] = []
+    var chapters: [String] = []
     var isChapterSelected: [Bool] = []
     var chaptersOnDisplay: [String] = []
     var displayAllChapters: Bool = false
@@ -57,9 +58,9 @@ class EventsFilterViewController: UIViewController {
     func getChapters() {
         //FIXME: Do a network call to get all the chapters
         ParseAPI.sharedInstance.getNetworks() {(networks,error)-> () in
-            let networks = networks!
+            self.networks = networks!
             
-            for network in networks {
+            for network in self.networks {
                 print("Network title: \(network.title)")
                 self.chapters.append((network.title)!)
             }
@@ -126,6 +127,23 @@ class EventsFilterViewController: UIViewController {
     
     @IBAction func onSearch(sender: AnyObject) {
         let numFeaturesSelected = filters?.features?.count
+        let numChaptersSelected = filters?.networks?.count
+        
+        //Add all chapters if none of the chapters are selected
+        if numChaptersSelected == 0 {
+            for network in networks {
+                filters?.networks?.append(network)
+            }
+            
+        }
+        
+        //Add all features in none of the features are selected
+        if numFeaturesSelected == 0 {
+            for feature in features! {
+                filters?.features?.append(feature)
+            }
+        }
+        
         print("Selected \(numFeaturesSelected!) features for Event Page")
         delegate?.eventsFilterViewController(filters!)
         dismissViewControllerAnimated(true, completion: nil)
@@ -282,15 +300,19 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
                 }
                 else {
                     isSelected[indexPath.row] = !isSelected[indexPath.row]
-                    print("Adding feature \(features![indexPath.row].title!) to filters feature list")
-                    filters?.features?.append(features![indexPath.row].title!)
+                    
+                    if isSelected[indexPath.row] == true {
+                        print("Adding feature \(features![indexPath.row].title!) to filters feature list")
+                        filters?.features?.append(features![indexPath.row])
+                    }
+                    
                     tableView.reloadData()
                     
                 }
             }
             else {
                 isSelected[indexPath.row] = !isSelected[indexPath.row]
-                filters?.features?.append(features![indexPath.row].title!)
+                filters?.features?.append(features![indexPath.row])
                 tableView.reloadData()
             }
         case 1:
@@ -302,12 +324,22 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
                 }
                 else {
                     isChapterSelected[indexPath.row] = !isChapterSelected[indexPath.row]
+                    
+                    if isChapterSelected[indexPath.row] == true {
+                        print("Adding chapter \(chapters[indexPath.row]) to selected chapters list")
+                        filters?.networks?.append(networks[indexPath.row])
+                    }
+                    
                     tableView.reloadData()
                 }
                 
             }
             else {
                 isChapterSelected[indexPath.row] = !isChapterSelected[indexPath.row]
+                if isChapterSelected[indexPath.row] == true {
+                    print("Adding chapter \(chapters[indexPath.row]) to selected chapters list")
+                    filters?.networks?.append(networks[indexPath.row])
+                }
                 tableView.reloadData()
             }
             

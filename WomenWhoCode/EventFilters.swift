@@ -11,12 +11,12 @@ import UIKit
 class EventFilters {
     
 
-    var features: [String]?
-    var network: String?
+    var features: [Feature]?
+    var networks: [Network]?
     
     init() {
         features = []
-        network = "Silicon Valley"
+        networks = []
     }
     
     
