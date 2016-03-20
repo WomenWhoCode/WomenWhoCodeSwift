@@ -34,7 +34,7 @@ class EventDetailsViewController: UIViewController {
         event.fetchEventRsvps(updateRsvps)
         initEvent()
         let contentWidth = scrollView.bounds.width
-        let contentHeight = scrollView.bounds.height * 2
+        let contentHeight = CGFloat(1000.0)//scrollView.bounds.height * 2
         scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
     
@@ -52,6 +52,7 @@ class EventDetailsViewController: UIViewController {
         networkLabel.text = meetupEvent.groupName
         eventDate.text = meetupEvent.eventDate
         setMeetupDescription()
+        updateScrollheight()
     }
     
     func updateRsvps(members: [MeetupMember]){
@@ -69,6 +70,39 @@ class EventDetailsViewController: UIViewController {
         }catch{
             
         }
+    }
+    
+    func updateScrollheight(){
+        let newSynSize  = self.descriptionLabel.sizeThatFits(CGSizeMake(self.descriptionLabel.frame.size.width, CGFloat.max))
+        var newSynFrame = self.descriptionLabel.frame
+        newSynFrame.size.height = newSynSize.height
+        
+        
+        // adjust the container view inside the scroll view
+        let newContainerHeight = max(self.contentView.frame.height, newSynFrame.origin.y + newSynFrame.size.height)
+//        self.contentView.frame.size = CGSizeMake(self.contentView.frame.width, newContainerHeight+150)
+        self.contentView.frame.size = CGSizeMake(self.contentView.frame.width, newContainerHeight)
+        
+        var newContainerFrame =  self.contentView.frame
+        newContainerFrame.size.height = newContainerHeight
+        self.contentView.frame = newContainerFrame
+                self.contentView.layoutIfNeeded()
+        self.contentView.backgroundColor = Constants.Color.Orange.light
+        
+        self.scrollView.backgroundColor = Constants.Color.Gray.dark
+        
+        // adjust the labels
+        descriptionLabel.frame = newSynFrame
+        
+        //FixMe: Also have to update the contentView frame height for this to work properly.
+        
+        // set the scroll height
+        let contentWidth = self.scrollView.bounds.width
+        let contentHeight = self.contentView.frame.origin.y + self.contentView.frame.height // some fudge factor
+        self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
+        
+        self.scrollView.layoutIfNeeded()
+
     }
     
     override func didReceiveMemoryWarning() {
