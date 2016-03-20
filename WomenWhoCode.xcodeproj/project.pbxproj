@@ -41,6 +41,8 @@
 		CAC049F51C8B63BA00996932 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC049F41C8B63BA00996932 /* EventCell.xib */; };
 		CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049F61C8B6DAD00996932 /* EventCell.swift */; };
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
+		CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC153601C9E23CD00000146 /* EventCell3.swift */; };
+		CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC153611C9E23CD00000146 /* EventCell3.xib */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -130,6 +132,8 @@
 		CAC049F41C8B63BA00996932 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		CAC049F61C8B6DAD00996932 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		CAC153601C9E23CD00000146 /* EventCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell3.swift; sourceTree = "<group>"; };
+		CAC153611C9E23CD00000146 /* EventCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell3.xib; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 				100341231C955FA3005C2D3B /* TopicCell.swift */,
 				CA82E48A1C961B4200675DDA /* EventRefreshControl.xib */,
 				100341291C968EE3005C2D3B /* TimelineCell.swift */,
+				CAC153601C9E23CD00000146 /* EventCell3.swift */,
+				CAC153611C9E23CD00000146 /* EventCell3.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */,
 				CA3B6CB11C85519400D8FF25 /* Topics.storyboard in Resources */,
 				E46EB55C1C854C7100E9C41B /* Assets.xcassets in Resources */,
+				CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */,
 				E4CF13F91C94EB2500A271B9 /* MessageCell.xib in Resources */,
 				CA82E48B1C961B4200675DDA /* EventRefreshControl.xib in Resources */,
 				CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */,
@@ -632,6 +639,7 @@
 				E4F4EFD51C8CEAA800B480AC /* ParseAPI.swift in Sources */,
 				CA3B6CB31C85530C00D8FF25 /* TimelineViewController.swift in Sources */,
 				E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */,
+				CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */,
 				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
 				100341261C957509005C2D3B /* Subscribed.swift in Sources */,
