@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appId = "sW8VXwGAEeq8FYaKMgcbPfliodb8XA7wx0QXLdx9"
     var clientKey = "HTVvl8X9szeaOlXzI8jEUx0MENGlzDTrCIrPCnIy"
     var displayEvents = true
-
+    var lightTheme = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
@@ -74,11 +74,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [ timelineNavigationController, eventsNavigationController,connectNavigationController, topicsNavigationController, profileViewController]
         
         UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Color.Teal.light]
-        UINavigationBar.appearance().tintColor = Constants.Color.Teal.light
-        UITabBar.appearance().tintColor = Constants.Color.Teal.light
-        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        if lightTheme == true {
+            UINavigationBar.appearance().barTintColor = Constants.Color.mildWhite
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Color.Teal.dark]
+            UINavigationBar.appearance().tintColor = Constants.Color.Teal.dark
+            UITabBar.appearance().tintColor = Constants.Color.Teal.dark
+            UITabBar.appearance().barTintColor = Constants.Color.mildWhite
+        }
+        else {
+            UINavigationBar.appearance().barTintColor = Constants.Color.Gray.blackish
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Color.Teal.light]
+            UINavigationBar.appearance().tintColor = Constants.Color.Teal.light
+            UITabBar.appearance().tintColor = Constants.Color.Teal.light
+            UITabBar.appearance().barTintColor = UIColor.blackColor()
+        }
+        
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
