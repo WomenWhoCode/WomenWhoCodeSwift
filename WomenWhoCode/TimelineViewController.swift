@@ -180,6 +180,11 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
         cell.postDesc.URLColor = Constants.Color.Teal.dark
         cell.postDesc.hashtagColor = UIColor.blackColor()
         cell.postDesc.mentionColor = UIColor.blackColor()
+        
+        cell.postDesc.handleURLTap { (url: NSURL) -> () in
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
         cell.postDesc.text = filtered_posts[indexPath.row].desc
         cell.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
         cell.delegate = self
@@ -206,6 +211,8 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filtered_posts.count
        }
+    
+    
 }
 
 
