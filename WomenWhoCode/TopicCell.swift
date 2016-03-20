@@ -13,6 +13,10 @@ class TopicCell: UITableViewCell {
     @IBOutlet var topicName: UILabel!
     @IBOutlet var followImage: UIImageView!
     @IBOutlet var topicImage: UIImageView!
+    
+    @IBOutlet weak var topicCellView: UIView!
+    
+    
     var feature : Feature! {
         didSet {
             topicName.text = feature.title!
@@ -22,7 +26,10 @@ class TopicCell: UITableViewCell {
                 topicImage.image = UIImage(named: "languages")
             }
           
-            self.backgroundColor = UIColor(hexString: feature.hex_color!)
+            print("feature title: \(feature.title!) hexcolor: \(feature.hex_color!)")
+            topicCellView.backgroundColor = UIColor(hexString: feature.hex_color!)
+            
+            //self.backgroundColor = UIColor(hexString: feature.hex_color!)
         }
     }
     override func awakeFromNib() {
