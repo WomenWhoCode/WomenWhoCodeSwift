@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, TimelineCellDelegate {
     var loggedInUserId = "h0VjEs2aql"
     var eventId: String?
     var myEvents: [Event] = []
@@ -130,6 +130,19 @@ class TimelineViewController: UIViewController {
          print("\(myEvents.count)")
         
     }
+    
+    func timelineCellDelegate(sender: TimelineCell, onApplaud: Bool) {
+        let indexPath = tableView.indexPathForCell(sender)!
+        var awesomeCount = filtered_posts[indexPath.row].awesome_count!
+        awesomeCount = awesomeCount+1
+        filtered_posts[indexPath.row].awesome_count = awesomeCount
+        sender.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
+        
+        //Save it to Parse as well
+        
+    }
+    
+
     /*
     // MARK: - Navigation
 
@@ -145,11 +158,21 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
+        let row = indexPath.row
+        let awesomeCount = filtered_posts[row].awesome_count!
+        
+        cell.postDesc.URLColor = Constants.Color.Teal.dark
+        cell.postDesc.hashtagColor = UIColor.blackColor()
+        cell.postDesc.mentionColor = UIColor.blackColor()
         cell.postDesc.text = filtered_posts[indexPath.row].desc
+        cell.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
+        cell.delegate = self
+        
         for (var i = 0 ; i < subscribed_topics.count; i++) {
             if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
 
                 cell.topicTitle.text = subscribed_topics[i].title
+                //cell.awesomeCountLabel.text = subscribed_topics[i].
                 cell.topicView.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
                 cell.backgroundColor = UIColor.whiteColor()
                 break

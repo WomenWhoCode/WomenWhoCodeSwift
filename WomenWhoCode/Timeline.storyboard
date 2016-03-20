@@ -36,8 +36,8 @@
                                                         <constraint firstAttribute="height" constant="43" id="Dco-Yc-hq4"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-v5-PT7">
-                                                    <rect key="frame" x="48" y="12" width="40" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-v5-PT7">
+                                                    <rect key="frame" x="48" y="13" width="40" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -49,28 +49,52 @@
                                                         <constraint firstAttribute="width" constant="30" id="ys3-K8-Hqg"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-Fm-f5K">
-                                                    <rect key="frame" x="15" y="48" width="70" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-Fm-f5K" customClass="ActiveLabel" customModule="ActiveLabel">
+                                                    <rect key="frame" x="15" y="58" width="290" height="6"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C73-9C-T4g">
+                                                    <rect key="frame" x="15" y="70" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Ad0-lk-LHf"/>
+                                                        <constraint firstAttribute="height" constant="40" id="L47-tR-9DP"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="awesome"/>
+                                                    <connections>
+                                                        <action selector="onApplaud:" destination="4hn-kE-QX7" eventType="touchUpInside" id="CX9-hZ-QH6"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AWESOME X12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDF-8B-nQE">
+                                                    <rect key="frame" x="63" y="82" width="249" height="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="s0w-Kg-XYS" firstAttribute="leading" secondItem="Vvm-QZ-QIg" secondAttribute="leadingMargin" constant="5" id="3OK-Tm-GQO"/>
                                                 <constraint firstItem="EHH-Sn-Dhx" firstAttribute="top" secondItem="Vvm-QZ-QIg" secondAttribute="top" id="6Sa-8e-wrb"/>
-                                                <constraint firstItem="cUV-Fm-f5K" firstAttribute="top" secondItem="EHH-Sn-Dhx" secondAttribute="bottom" constant="5" id="71B-cC-Xmd"/>
+                                                <constraint firstItem="cUV-Fm-f5K" firstAttribute="top" secondItem="EHH-Sn-Dhx" secondAttribute="bottom" constant="15" id="71B-cC-Xmd"/>
                                                 <constraint firstItem="XZf-v5-PT7" firstAttribute="centerY" secondItem="s0w-Kg-XYS" secondAttribute="centerY" id="8Jx-W6-HWo"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cUV-Fm-f5K" secondAttribute="bottom" constant="5" id="DFx-zh-IKn"/>
+                                                <constraint firstItem="vDF-8B-nQE" firstAttribute="centerY" secondItem="C73-9C-T4g" secondAttribute="centerY" id="A2r-rb-YhT"/>
                                                 <constraint firstItem="cUV-Fm-f5K" firstAttribute="leading" secondItem="Vvm-QZ-QIg" secondAttribute="leading" constant="15" id="EuT-Um-fE3"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cUV-Fm-f5K" secondAttribute="trailing" constant="5" id="TZc-sT-l0w"/>
+                                                <constraint firstAttribute="trailing" secondItem="cUV-Fm-f5K" secondAttribute="trailing" constant="15" id="TZc-sT-l0w"/>
+                                                <constraint firstAttribute="trailing" secondItem="vDF-8B-nQE" secondAttribute="trailing" constant="8" id="YjE-yP-sR7"/>
+                                                <constraint firstItem="C73-9C-T4g" firstAttribute="leading" secondItem="cUV-Fm-f5K" secondAttribute="leading" id="aFf-y6-Rb3"/>
+                                                <constraint firstAttribute="bottom" secondItem="C73-9C-T4g" secondAttribute="bottom" constant="5" id="bPH-ib-PRQ"/>
                                                 <constraint firstItem="XZf-v5-PT7" firstAttribute="leading" secondItem="s0w-Kg-XYS" secondAttribute="trailing" constant="5" id="fh0-Tl-OLf"/>
+                                                <constraint firstItem="vDF-8B-nQE" firstAttribute="leading" secondItem="C73-9C-T4g" secondAttribute="trailing" constant="8" id="fvq-N1-hsa"/>
                                                 <constraint firstItem="s0w-Kg-XYS" firstAttribute="centerY" secondItem="EHH-Sn-Dhx" secondAttribute="centerY" id="qwx-lo-8g0"/>
+                                                <constraint firstItem="C73-9C-T4g" firstAttribute="top" secondItem="cUV-Fm-f5K" secondAttribute="bottom" constant="6" id="rM1-KX-AHD"/>
                                                 <constraint firstItem="EHH-Sn-Dhx" firstAttribute="leading" secondItem="Vvm-QZ-QIg" secondAttribute="leading" id="vMW-YL-w6C"/>
                                                 <constraint firstAttribute="trailing" secondItem="EHH-Sn-Dhx" secondAttribute="trailing" id="xpp-l1-psu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="awesomeButton" destination="C73-9C-T4g" id="eIy-qb-vKq"/>
+                                            <outlet property="awesomeCountLabel" destination="vDF-8B-nQE" id="VVu-AP-MHm"/>
                                             <outlet property="postDesc" destination="cUV-Fm-f5K" id="dxJ-YN-SLW"/>
                                             <outlet property="topicImage" destination="s0w-Kg-XYS" id="N1m-mM-uZZ"/>
                                             <outlet property="topicTitle" destination="XZf-v5-PT7" id="OPv-OH-eW5"/>
@@ -117,6 +141,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="awesome" width="192" height="192"/>
         <image name="languages" width="60" height="60"/>
     </resources>
 </document>
