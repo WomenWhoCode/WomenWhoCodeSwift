@@ -131,14 +131,30 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         
     }
     
+    //Called whenever awesome button is pressed
     func timelineCellDelegate(sender: TimelineCell, onApplaud: Bool) {
         let indexPath = tableView.indexPathForCell(sender)!
         var awesomeCount = filtered_posts[indexPath.row].awesome_count!
+        let postObjectId = filtered_posts[indexPath.row].objectId
         awesomeCount = awesomeCount+1
         filtered_posts[indexPath.row].awesome_count = awesomeCount
         sender.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
         
-        //Save it to Parse as well
+        print("Updating awesome count of post with objectId: \(postObjectId)")
+        
+        var query = PFQuery(className:"Post")
+        query.getObjectInBackgroundWithId(postObjectId!) {
+            (post: PFObject?, error: NSError?) -> Void in
+            if error == nil && post != nil {
+                //let postActual = Post(object: post!)
+                //print("Description: \(postActual.desc!)")
+                post!["awesome_count"] = awesomeCount
+                post?.saveInBackground()
+            } else {
+                print("Error in saving awesome count: \(error)")
+            }
+        }
+        
         
     }
     
