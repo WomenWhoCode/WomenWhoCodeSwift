@@ -99,7 +99,38 @@ extension UserSearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
-        profileViewController.profile = profiles[indexPath.row]
+        var networkName = ""
+        
+        
+        if searchActive {
+            networkName = filtered[indexPath.row].networkName!
+            ParseAPI.sharedInstance.getNetworkWithNetworkName(networkName, completion: { (network, error) -> () in
+                if(error != nil ) {
+                    print("Error retreiving Network")
+                } else {
+                    self.filtered[indexPath.row].network = network!
+                }
+            })
+            
+        }
+        else {
+            networkName = profiles[indexPath.row].networkName!
+            ParseAPI.sharedInstance.getNetworkWithNetworkName(networkName, completion: { (network, error) -> () in
+                if(error != nil ) {
+                    print("Error retreiving Network")
+                } else {
+                    self.profiles[indexPath.row].network = network!
+                }
+            })
+        }
+        
+        if searchActive {
+            profileViewController.profile = filtered[indexPath.row]
+        }
+        else {
+            profileViewController.profile = profiles[indexPath.row]
+        }
+        
         self.navigationController!.pushViewController(profileViewController, animated: true)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 

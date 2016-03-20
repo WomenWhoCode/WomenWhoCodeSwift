@@ -51,6 +51,25 @@ class Network: NSObject {
         
     }
     
+    init(name: String) {
+        super.init()
+        
+        ParseAPI.sharedInstance.getNetworkWithNetworkName(name, completion: { (network, error) -> () in
+            if(error != nil ) {
+                print("Error retreiving Network")
+            } else {
+                self.objectId = network?.objectId
+                self.imageUrl = network?.imageUrl
+                self.meetUpUrl = network?.meetUpUrl
+                self.meetupUrlName = network?.meetupUrlName
+                self.title = network?.title
+                self.PFLocation = network?.PFLocation
+                
+            }
+        })
+        
+    }
+    
     func convertGeoPointToLocation () -> CLLocationCoordinate2D {
         
         location = CLLocationCoordinate2D()
