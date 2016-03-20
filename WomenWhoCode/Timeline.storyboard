@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Timeline-->
+        <!--TIMELINE-->
         <scene sceneID="1kd-ge-VLm">
             <objects>
                 <viewController storyboardIdentifier="TimelineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iNB-tZ-2f3" customClass="TimelineViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                             <constraint firstItem="Gl8-r4-iiZ" firstAttribute="top" secondItem="FIp-G9-0pr" secondAttribute="bottom" id="qjT-xG-aP2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timeline" id="dOk-1S-jup"/>
+                    <navigationItem key="navigationItem" title="TIMELINE" id="dOk-1S-jup"/>
                     <connections>
                         <outlet property="tableView" destination="FIp-G9-0pr" id="ep5-nQ-4Pv"/>
                     </connections>
