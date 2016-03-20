@@ -186,7 +186,9 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
         
         for (var i = 0 ; i < subscribed_topics.count; i++) {
             if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
-
+                
+                let postImageURL = NSURL(string: subscribed_topics[i].image_url!)
+                cell.topicImage.setImageWithURL(postImageURL!)
                 cell.topicTitle.text = subscribed_topics[i].title
                 //cell.awesomeCountLabel.text = subscribed_topics[i].
                 cell.topicView.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
