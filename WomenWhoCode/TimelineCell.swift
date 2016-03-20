@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class TimelineCell: UITableViewCell {
     @IBOutlet var topicTitle: UILabel!
 
     @IBOutlet var topicView: UIView!
     
+    @IBOutlet weak var awesomeButton: UIButton!
     
-    @IBOutlet var postDesc: UILabel!
+    @IBOutlet var postDesc: ActiveLabel!
   
     @IBOutlet var topicImage: UIImageView!
     
+    @IBOutlet weak var awesomeImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
