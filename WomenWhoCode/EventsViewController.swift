@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import EventKit
 
 class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     
@@ -17,7 +18,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     var filtered:[Event] = []
     var filteredByFeature:[Event] = []
     var filteredByFeatureAndEvent:[Event] = []
-    var features = ["Java","Ruby","iOS","Android","JS","Python"]
+
     
     //variables for searchBar support
     var searchActive : Bool = false
@@ -47,6 +48,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         
         //searchBar functions
         searchBar.delegate = self
@@ -279,17 +281,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         
         return returnColor
     }
-    
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        print("isAnimating: \(isAnimating)")
-//        if refreshControl.refreshing {
-//            if !isAnimating {
-//                self.animateRefreshStep1()
-//                retrieveEvents()
-//                
-//            }
-//        }
-//    }
 
 }
 
@@ -364,11 +355,6 @@ extension EventsViewController: UISearchBarDelegate {
         }
         
         print("Filtered count \(filtered.count) searchText = \(searchText)")
-        //        if(filtered.count == 0){
-        //            searchActive = false;
-        //        } else {
-        //            searchActive = true;
-        //        }
         
         if(filtered.count >= 0) {
             searchActive = true

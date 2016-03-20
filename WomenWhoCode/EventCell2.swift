@@ -47,8 +47,8 @@ class EventCell2: UITableViewCell {
             eventLocation.text = event.location
             eventDate.text = event.eventDateInMMMDD
             eventDescription.text = event.eventDescription
-            eventTag1.text = event.eventTags[1]
-            eventTag2.text = event.eventTags[0]
+//            eventTag1.text = event.eventTags[1]
+//            eventTag2.text = event.eventTags[0]
             eventObjectId = event.objectId
             
             //Display waitlist count or openSpots
@@ -56,7 +56,7 @@ class EventCell2: UITableViewCell {
                 eventSpots.text = " \(event.waitlistCount!) waitlisted"
             }
             else {
-                eventSpots.text = " \(event.openSpotsCount!) spots left"
+                eventSpots.text = " \(event.openSpotsCount!)/50"
             }
             
             setEventImage(event.eventFeature!)
@@ -87,11 +87,11 @@ class EventCell2: UITableViewCell {
         
         
         
-        eventTag1.layer.cornerRadius = 10
-        eventTag1.clipsToBounds = true
-        
-        eventTag2.layer.cornerRadius = 10
-        eventTag2.clipsToBounds = true
+//        eventTag1.layer.cornerRadius = 10
+//        eventTag1.clipsToBounds = true
+//        
+//        eventTag2.layer.cornerRadius = 10
+//        eventTag2.clipsToBounds = true
         
     }
     
