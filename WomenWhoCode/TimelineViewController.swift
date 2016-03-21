@@ -18,6 +18,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     var subscription : [Subscribed] = []
     var posts : [Post] = []
     var filtered_posts : [Post] = []
+    var refreshControl: UIRefreshControl!
 
     @IBOutlet var tableView: UITableView!
     // filtered_posts and myEvents need to be added to timeleine
@@ -28,8 +29,31 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         tableView.delegate = self
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //Refresh Control
+        setUpRefreshControl()
+        
         getMyEvents()
         getTopics()
+    }
+    
+    func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clearColor()
+        refreshControl.tintColor = UIColor.clearColor()
+        
+        var refreshText = "Fetching new feed"
+        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: refreshText, attributes: attrs)
+        self.refreshControl!.tintColor = Constants.Color.Teal.light
+        
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        //loadCustomRefreshContents()
+        
+        self.refreshControl.addTarget(self, action: "getTopics", forControlEvents: UIControlEvents.ValueChanged)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,6 +137,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
             self.posts = posts!
             print("\(self.posts.count)")
             self.getFilteredPosts()
+            self.refreshControl.endRefreshing()
             self.tableView.reloadData()
         }
         
