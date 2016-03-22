@@ -203,7 +203,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         customView = refreshContents[0] as! UIView
         customView.frame = refreshControl.bounds
         
-        for var i=0; i<customView.subviews.count; ++i {
+        for i in 0 ..< customView.subviews.count {
             labelsArray.append(customView.viewWithTag(i + 1) as! UILabel)
         }
         

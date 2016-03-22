@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-        //        SlackAPI.sharedInstance.login()
+        SlackAPI.sharedInstance.login()
         initializeTabBar()
         return true
     }
