@@ -20,6 +20,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var rsvpView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     var event: Event!
@@ -27,6 +28,8 @@ class EventDetailsViewController: UIViewController {
     
     //EventDescSegue
     let eventDescSegue = "eventDescSegue"
+    let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +92,7 @@ class EventDetailsViewController: UIViewController {
         
         self.scrollView.contentSize = self.contentView.frame.size
         self.scrollView.layoutIfNeeded()
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,7 +113,7 @@ class EventDetailsViewController: UIViewController {
             }
         }
     }
-
+    
     
     
     func showEventDetails(event: Event){
@@ -120,6 +123,47 @@ class EventDetailsViewController: UIViewController {
         destination.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(destination, animated: true)
     }
+    
+    @IBAction func onRSVPYesTap(sender: UIButton) {
+        showMeetupConnect(sender)
+    }
+    
+    @IBAction func onRSVPNoTap(sender: UIButton) {
+        showMeetupConnect(sender)
+    }
+}
+
+extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
+    
+    func showMeetupConnect(sender: AnyObject){
+        let meetupController = eventDetailsStoryboard.instantiateViewControllerWithIdentifier("MeetupLoginController") as! MeetupLoginViewController
+        meetupController.hidesBottomBarWhenPushed = true
+        
+        meetupController.modalPresentationStyle = .Popover
+        meetupController.preferredContentSize = CGSizeMake(210, 100)
+        
+        let popoverMenuViewController = meetupController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = .Any
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceRect = CGRect(
+            x: 0,
+            y: 0,
+            width: 1,
+            height: 1)
+        presentViewController(
+            meetupController,
+            animated: true,
+            completion: nil)
+        
+        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(
+        controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+    
 }
 
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{

@@ -21,7 +21,6 @@ class MeetupAPIClient {
     let baseUrl = "https://api.meetup.com"
     var parameters:[String:String] = ["sign": "true", "key": Constants.Api.Meetup.apiKey]
     
-    
     //Get Event Group
     func fetchGroup(groupName: String = "Women-Who-Code-SF", successCallback: (MeetupGroup) -> Void){
         let requestUrl = "\(baseUrl)/\(groupName)"
@@ -76,6 +75,13 @@ class MeetupAPIClient {
                     print("Error in fetchEventRsvp: \(error)")
                 }
         }
+        
+    }
+}
+
+//Calls for Logged in User
+extension MeetupAPIClient{
+    func loginUser(){
         
     }
 }
