@@ -50,6 +50,7 @@ class TimelineCell: UITableViewCell {
         let defaultImage = UIImage(named: "awesome.png")
         let finalImage = UIImage(named: "awed_d-7.png")
         
+        if(applauded) {
         for index in 1...7 {
             let imageName = "awed_d-\(index).png"
             let image = UIImage(named: imageName)
@@ -65,6 +66,11 @@ class TimelineCell: UITableViewCell {
         awesomeButton.imageView?.startAnimating()
         
         //Let the timeline table view know that the awesomecount has been updated
+        } else {
+            awesomeButton.setImage(defaultImage, forState: UIControlState.Normal)
+            awesomeButton.imageView?.highlighted = false
+
+        }
         delegate?.timelineCellDelegate(self, onApplaud: applauded)
 
     }

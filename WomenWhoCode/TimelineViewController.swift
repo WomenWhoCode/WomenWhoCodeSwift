@@ -161,7 +161,11 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         let indexPath = tableView.indexPathForCell(sender)!
         var awesomeCount = filtered_posts[indexPath.row].awesome_count!
         let postObjectId = filtered_posts[indexPath.row].objectId
-        awesomeCount = awesomeCount+1
+        if (onApplaud) {
+            awesomeCount = awesomeCount+1
+        } else {
+            awesomeCount = awesomeCount-1
+        }
         filtered_posts[indexPath.row].awesome_count = awesomeCount
         sender.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
         
