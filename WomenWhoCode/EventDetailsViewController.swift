@@ -33,9 +33,6 @@ class EventDetailsViewController: UIViewController {
         event.fetchMeetupEvent(setMeetupEvent)
         event.fetchEventRsvps(updateRsvps)
         initEvent()
-        let contentWidth = scrollView.bounds.width
-        let contentHeight = CGFloat(1000.0)//scrollView.bounds.height * 2
-        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
     
     func initEvent(){
