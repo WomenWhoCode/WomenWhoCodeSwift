@@ -35,20 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let eventsNavigationController = storyboard.instantiateViewControllerWithIdentifier("eventsNavController") as! UINavigationController
         _ = eventsNavigationController.topViewController as! EventsViewController
         eventsNavigationController.tabBarItem.title = "Events"
-        eventsNavigationController.tabBarItem.image = UIImage(named: "event")
+        eventsNavigationController.tabBarItem.image = UIImage(named:"Calendar-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal) //UIImage(named: "event")
         
         //Connect Page
         let storyboard2 = UIStoryboard(name: "Connect", bundle: nil)
         let connectNavigationController = storyboard2.instantiateViewControllerWithIdentifier("connectNavController") as! UINavigationController
         _ = connectNavigationController.topViewController as! UserSearchViewController
         connectNavigationController.tabBarItem.title = "User Search"
-        connectNavigationController.tabBarItem.image = UIImage(named: "search")
+        connectNavigationController.tabBarItem.image = UIImage(named:"Find User-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "search")
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         profileViewController.tabBarItem.title = "Profile"
-        profileViewController.tabBarItem.image = UIImage(named: "profile")
+        profileViewController.tabBarItem.image = UIImage(named:"User Female-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "profile")
         
         //Chat Page
         let chatStoryboard = UIStoryboard(name: "Chat", bundle: nil)
@@ -61,14 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let timelineNavigationController = storyboard4.instantiateViewControllerWithIdentifier("timelineNavController") as! UINavigationController
         _ = timelineNavigationController.topViewController as! TimelineViewController
         timelineNavigationController.tabBarItem.title = "Timeline"
-        timelineNavigationController.tabBarItem.image = UIImage(named: "timeline")
+        timelineNavigationController.tabBarItem.image = UIImage(named:"Timeline-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "timeline")
         
         let storyboard5 = UIStoryboard(name: "Topics", bundle: nil)
         //Topics Page
         let topicsNavigationController = storyboard5.instantiateViewControllerWithIdentifier("topicsNavController") as! UINavigationController
         _ = topicsNavigationController.topViewController as! TopicsViewController
         topicsNavigationController.tabBarItem.title = "Topics"
-        topicsNavigationController.tabBarItem.image = UIImage(named: "topics")
+        topicsNavigationController.tabBarItem.image = UIImage(named:"Very Popular Topic-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "topics")
         
         //Setup TabBar
         let tabBarController = UITabBarController()
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             UINavigationBar.appearance().barTintColor = Constants.Color.mildWhite
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Color.Teal.dark]
             UINavigationBar.appearance().tintColor = Constants.Color.Teal.dark
-            UITabBar.appearance().tintColor = Constants.Color.Teal.dark
+            //UITabBar.appearance().tintColor = Constants.Color.Teal.dark
             UITabBar.appearance().barTintColor = Constants.Color.mildWhite
         }
         else {
