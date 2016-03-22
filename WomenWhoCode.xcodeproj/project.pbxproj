@@ -43,6 +43,7 @@
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
 		CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC153601C9E23CD00000146 /* EventCell3.swift */; };
 		CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC153611C9E23CD00000146 /* EventCell3.xib */; };
+		E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -135,6 +136,7 @@
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CAC153601C9E23CD00000146 /* EventCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell3.swift; sourceTree = "<group>"; };
 		CAC153611C9E23CD00000146 /* EventCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell3.xib; sourceTree = "<group>"; };
+		E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupLoginViewController.swift; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				CA41C9C81C9013AD0045ECC9 /* EventsFilterViewController.swift */,
 				E4CF13EC1C94E2E300A271B9 /* ChatViewController.swift */,
 				E4CF14171C9695DA00A271B9 /* EventDescriptionController.swift */,
+				E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				E4CF14041C95D0B100A271B9 /* RegexParser.swift in Sources */,
 				E4CF13EF1C94E6F100A271B9 /* Message.swift in Sources */,
 				E4CF13ED1C94E2E300A271B9 /* ChatViewController.swift in Sources */,
+				E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */,
 				E4F4EFDD1C90FC5A00B480AC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

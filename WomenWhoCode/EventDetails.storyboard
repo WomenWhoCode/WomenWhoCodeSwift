@@ -193,6 +193,9 @@
                                         <state key="normal" title="No">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onRSVPNoTap:" destination="7g6-jd-5Oc" eventType="touchUpInside" id="5jZ-GD-p11"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3b-sH-JfV">
                                         <rect key="frame" x="194" y="10" width="80" height="30"/>
@@ -203,6 +206,9 @@
                                         <state key="normal" title="Yes">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onRSVPYesTap:" destination="7g6-jd-5Oc" eventType="touchUpInside" id="4od-ly-BQN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,6 +259,7 @@
                         <outlet property="locationLabel" destination="vQM-sa-ocz" id="8Yd-p0-Gi2"/>
                         <outlet property="nameLabel" destination="exE-WQ-uSF" id="jFy-ZZ-gwM"/>
                         <outlet property="networkLabel" destination="gfr-qx-2cC" id="5fj-m2-JHb"/>
+                        <outlet property="rsvpView" destination="VPm-Oj-WHa" id="uZ7-04-bmE"/>
                         <outlet property="scrollView" destination="J4O-qy-JsX" id="wLG-Zg-lFX"/>
                         <outlet property="userCollectionView" destination="mPX-UJ-kGe" id="mFT-Sc-KJ4"/>
                         <segue destination="RNJ-dD-dHb" kind="presentation" identifier="eventDescSegue" id="rNF-yQ-uCX"/>
@@ -306,9 +313,115 @@
             </objects>
             <point key="canvasLocation" x="987" y="470"/>
         </scene>
+        <!--Meetup Login View Controller-->
+        <scene sceneID="7Z3-Eq-ttS">
+            <objects>
+                <viewController storyboardIdentifier="MeetupLoginController" id="spL-ko-8bF" customClass="MeetupLoginViewController" customModule="WomenWhoCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zFk-1o-kOx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Olc-rQ-d5L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bi0-5Z-VF4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezl-Sw-xar" userLabel="ModalView">
+                                <rect key="frame" x="82" y="283" width="210" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-ik-Pj4">
+                                        <rect key="frame" x="190" y="0.0" width="20" height="20"/>
+                                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="ISg-2s-lOh"/>
+                                            <constraint firstAttribute="height" constant="20" id="yGn-iE-DUr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="✕">
+                                            <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onCloseTap:" destination="spL-ko-8bF" eventType="touchUpInside" id="HK6-LJ-Y9L"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTu-aa-rSE" userLabel="Meetupconnect">
+                                        <rect key="frame" x="8" y="40" width="195" height="40"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="EUn-KF-5Yq">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" red="0.38431372549999998" green="0.76078431369999999" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Scp-6A-UnZ"/>
+                                                    <constraint firstAttribute="height" constant="40" id="vOt-2l-bVt"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-HP-05L">
+                                                <rect key="frame" x="40" y="0.0" width="155" height="40"/>
+                                                <color key="backgroundColor" red="0.38431372549999998" green="0.76078431369999999" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Hs0-mx-p3g"/>
+                                                    <constraint firstAttribute="width" constant="155" id="yF5-Sm-JRZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Connect with Meetup">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onMeetupConnect:" destination="spL-ko-8bF" eventType="touchUpInside" id="kSd-gg-hqC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect now to RSVP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoR-bM-7SF">
+                                        <rect key="frame" x="8" y="20" width="195" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eTu-aa-rSE" secondAttribute="trailing" constant="7" id="0dX-fk-Ygw"/>
+                                    <constraint firstItem="eTu-aa-rSE" firstAttribute="top" secondItem="LoR-bM-7SF" secondAttribute="bottom" constant="3" id="2qn-8k-cnd"/>
+                                    <constraint firstItem="eTu-aa-rSE" firstAttribute="centerX" secondItem="LoR-bM-7SF" secondAttribute="centerX" id="AcD-mA-xMt"/>
+                                    <constraint firstAttribute="height" constant="100" id="B2b-bO-aZE"/>
+                                    <constraint firstItem="LoR-bM-7SF" firstAttribute="width" secondItem="eTu-aa-rSE" secondAttribute="width" id="EfA-Gs-WSY"/>
+                                    <constraint firstItem="eTu-aa-rSE" firstAttribute="leading" secondItem="LoR-bM-7SF" secondAttribute="leading" id="UVW-So-kWU"/>
+                                    <constraint firstItem="eTu-aa-rSE" firstAttribute="leading" secondItem="Ezl-Sw-xar" secondAttribute="leading" constant="8" id="Vm4-al-hmq"/>
+                                    <constraint firstItem="pXP-ik-Pj4" firstAttribute="top" secondItem="Ezl-Sw-xar" secondAttribute="top" id="ZWn-J5-iVQ"/>
+                                    <constraint firstItem="LoR-bM-7SF" firstAttribute="top" secondItem="Ezl-Sw-xar" secondAttribute="top" constant="20" id="bNE-nR-tAc"/>
+                                    <constraint firstAttribute="width" constant="210" id="q6h-pt-uYA"/>
+                                    <constraint firstAttribute="trailing" secondItem="pXP-ik-Pj4" secondAttribute="trailing" id="vsO-NL-Ea8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EfA-Gs-WSY"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ezl-Sw-xar" firstAttribute="centerY" secondItem="bi0-5Z-VF4" secondAttribute="centerY" id="DhL-zy-byu"/>
+                            <constraint firstItem="Ezl-Sw-xar" firstAttribute="centerX" secondItem="bi0-5Z-VF4" secondAttribute="centerX" id="wnv-0m-KSD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ks-Hm-6wN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1488.5" y="428.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="gg_bridge3" width="1024" height="684"/>
+        <image name="meetup_icon" width="64" height="64"/>
         <image name="professional" width="224" height="225"/>
     </resources>
 </document>

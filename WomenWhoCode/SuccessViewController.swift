@@ -28,5 +28,11 @@ class SuccessViewController: UIViewController {
        PFUser.logOut()
     }
 
+    @IBAction func meetupConnectTap(sender: UIButton) {
+        print("User tried to connect with meetup")
+    }
 
+    @IBAction func slackConnectTap(sender: UIButton) {
+        print("User tried to connect with slack")
+    }
 }
