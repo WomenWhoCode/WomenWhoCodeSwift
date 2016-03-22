@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         //Timeline Page
         let timelineNavigationController = storyboard4.instantiateViewControllerWithIdentifier("timelineNavController") as! UINavigationController
         _ = timelineNavigationController.topViewController as! TimelineViewController
-        timelineNavigationController.tabBarItem.title = "Timeline"
+        timelineNavigationController.tabBarItem.title = "Feed"
         timelineNavigationController.tabBarItem.image = UIImage(named:"Timeline-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "timeline")
         
         let storyboard5 = UIStoryboard(name: "Topics", bundle: nil)
