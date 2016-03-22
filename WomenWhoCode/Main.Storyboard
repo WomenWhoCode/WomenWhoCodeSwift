@@ -251,6 +251,9 @@
                                         <state key="normal" title="Connect with Meetup">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="meetupConnectTap:" destination="XlA-Cn-whs" eventType="touchUpInside" id="Jq3-me-FRb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <userDefinedRuntimeAttributes>
@@ -277,6 +280,9 @@
                                         <state key="normal" title="Connect with Slack">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="slackConnectTap:" destination="XlA-Cn-whs" eventType="touchUpInside" id="VS0-tc-XCJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <userDefinedRuntimeAttributes>

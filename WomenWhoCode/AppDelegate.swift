@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
                 return false
             }
             
-            let fromIndex = tabViewController?.indexOf(tabBarController.selectedViewController!)
+            _ = tabViewController?.indexOf(tabBarController.selectedViewController!)
             let toIndex = tabViewController?.indexOf(viewController)
             
             UIView.transitionFromView(fromView, toView: toView, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (finished: Bool) -> Void in
