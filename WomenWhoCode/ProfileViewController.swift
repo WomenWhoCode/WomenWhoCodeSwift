@@ -32,6 +32,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.selectedSegmentIndex == 0
+        self.edgesForExtendedLayout = UIRectEdge.None
+
         tableView.delegate = self
         tableView.dataSource = self
         
