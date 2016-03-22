@@ -12,7 +12,6 @@ import Parse
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var name: UILabel!
     @IBOutlet var jobDescription: UILabel!
     @IBOutlet var followingCount: UILabel!
@@ -31,7 +30,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentedControl.selectedSegmentIndex == 0
         self.edgesForExtendedLayout = UIRectEdge.None
 
         tableView.delegate = self
@@ -47,7 +45,7 @@ class ProfileViewController: UIViewController {
         
         getProfile()
         getMyEvents()
-        getTopics()
+       // getTopics()
     }
     
     func getMyEvents() {
@@ -216,65 +214,49 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onSelectionChanged(sender: UISegmentedControl) {
-        segmentedControl.selectedSegmentIndex = sender.selectedSegmentIndex
-        switch sender.selectedSegmentIndex {
-        case 0:
-            print("Selected Events page; myEvents cnt = \(myEvents.count)")
-            self.tableView.hidden = false
-            self.tableView.reloadData()
-            
-        case 1:
-            print("Selected Network page \(topics.count)")
-            self.tableView.reloadData()
-            // self.tableView.hidden = true
-        default: print("Wrong selection")
-        }
-        
-    }
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // print("called cellForRowAtIndexPath for row: \(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell2", forIndexPath: indexPath) as! EventCell2
-        if (segmentedControl.selectedSegmentIndex == 0) {
+        //if (segmentedControl.selectedSegmentIndex == 0) {
             cell.event = myEvents[indexPath.row]
             cell.backgroundColor = UIColor.whiteColor()
             cell.eventTitle.textColor = UIColor.darkGrayColor()
             cell.eventImageView.image = UIImage(named: "iOSTeal")
             
-        } else {
-            cell.eventTitle.text = self.subscribed_topics[indexPath.row].title
-            cell.eventTitle.textColor = UIColor.whiteColor()
-            cell.eventImageView.image = UIImage(named: "languages")
-            if (self.subscribed_topics[indexPath.row].image_url != nil) {
-                cell.eventImageView.setImageWithURL(NSURL(string: self.subscribed_topics[indexPath.row].image_url!)!)
-            } else {
-                cell.eventImageView.image = UIImage(named: "languages")
-            }
-            cell.accessoryType = .None
-            cell.eventDate.text = ""
-            cell.eventLocation.text = ""
-            cell.eventDescription.text = ""
-            cell.rsvpLabel.hidden = true
-            cell.eventLocation.text = ""
-            cell.eventSpots.hidden = true
-            cell.rsvpConfirmedLabel.hidden = true
-            cell.backgroundColor = UIColor(hexString: topics[indexPath.row].hex_color!)
-            
-        }
+//        } else {
+//            cell.eventTitle.text = self.subscribed_topics[indexPath.row].title
+//            cell.eventTitle.textColor = UIColor.whiteColor()
+//            cell.eventImageView.image = UIImage(named: "languages")
+//            if (self.subscribed_topics[indexPath.row].image_url != nil) {
+//                cell.eventImageView.setImageWithURL(NSURL(string: self.subscribed_topics[indexPath.row].image_url!)!)
+//            } else {
+//                cell.eventImageView.image = UIImage(named: "languages")
+//            }
+//            cell.accessoryType = .None
+//            cell.eventDate.text = ""
+//            cell.eventLocation.text = ""
+//            cell.eventDescription.text = ""
+//            cell.rsvpLabel.hidden = true
+//            cell.eventLocation.text = ""
+//            cell.eventSpots.hidden = true
+//            cell.rsvpConfirmedLabel.hidden = true
+//            cell.backgroundColor = UIColor(hexString: topics[indexPath.row].hex_color!)
+//            
+//        }
         
         return cell
         
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (segmentedControl.selectedSegmentIndex == 0) {
+        //if (segmentedControl.selectedSegmentIndex == 0) {
             return myEvents.count
-        } else {
-            return subscribed_topics.count
-        }
+//        } else {
+//            return subscribed_topics.count
+//        }
     }
     
 }
