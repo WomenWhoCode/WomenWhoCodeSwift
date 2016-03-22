@@ -53,11 +53,12 @@ class TopicsViewController: UIViewController {
         
     }
     
-//    func showChannel(channelId: String){
-    func showChannel(){
+    func showChannel(topic: Feature){
         //Chat Page
+        print("Topic: \(topic.title)")
         let chatStoryboard = UIStoryboard(name: "Chat", bundle: nil)
         let chatViewController = chatStoryboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
+        chatViewController.channelId = topic.slackChannelId
         chatViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(chatViewController, animated: true)
     }
@@ -111,7 +112,7 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showChannel()
+        showChannel(topics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
