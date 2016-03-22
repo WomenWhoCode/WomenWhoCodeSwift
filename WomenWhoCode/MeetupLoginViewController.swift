@@ -24,6 +24,7 @@ class MeetupLoginViewController: UIViewController {
     
     @IBAction func onMeetupConnect(sender: UIButton) {
         print("User tried to connect in MeetupLogin Connect")
+        MeetupAPI.sharedInstance.login()
     }
     
     @IBAction func onCloseTap(sender: UIButton) {

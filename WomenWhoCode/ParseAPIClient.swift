@@ -23,7 +23,6 @@ class ParseAPIClient{
         parseObject.saveInBackgroundWithBlock(callback)
     }
     
-    
     func getEventsByFilter(networks: [Network]?, features: [Feature]?,completion: (events: [Event]?, error: NSError?) -> ()) {
         
         let query = PFQuery(className:"Event")

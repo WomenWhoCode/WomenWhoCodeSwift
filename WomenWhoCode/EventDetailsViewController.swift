@@ -114,8 +114,6 @@ class EventDetailsViewController: UIViewController {
         }
     }
     
-    
-    
     func showEventDetails(event: Event){
         let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
         let destination = eventDetailsStoryboard.instantiateViewControllerWithIdentifier("eventDescriptionController") as! EventDetailsViewController
@@ -126,6 +124,7 @@ class EventDetailsViewController: UIViewController {
     
     @IBAction func onRSVPYesTap(sender: UIButton) {
         showMeetupConnect(sender)
+        
     }
     
     @IBAction func onRSVPNoTap(sender: UIButton) {
