@@ -40,6 +40,10 @@ class ParseAPI{
         httpClient.getEventWithEventId(objectID, completion: completion)
     }
     
+    func getEventsByFilter(networks: [Network]?, features: [Feature]?,completion: (events: [Event]?, error: NSError?) -> ()){
+        httpClient.getEventsByFilter(networks, features: features, completion: completion)
+    }
+    
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         httpClient.getProfiles(completion)
     }

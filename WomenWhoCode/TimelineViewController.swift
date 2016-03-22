@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, TimelineCellDelegate {
     var loggedInUserId = "h0VjEs2aql"
     var eventId: String?
     var myEvents: [Event] = []
@@ -18,6 +18,7 @@ class TimelineViewController: UIViewController {
     var subscription : [Subscribed] = []
     var posts : [Post] = []
     var filtered_posts : [Post] = []
+    var refreshControl: UIRefreshControl!
 
     @IBOutlet var tableView: UITableView!
     // filtered_posts and myEvents need to be added to timeleine
@@ -28,8 +29,31 @@ class TimelineViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //Refresh Control
+        setUpRefreshControl()
+        
         getMyEvents()
         getTopics()
+    }
+    
+    func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clearColor()
+        refreshControl.tintColor = UIColor.clearColor()
+        
+        var refreshText = "Fetching new feed"
+        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: refreshText, attributes: attrs)
+        self.refreshControl!.tintColor = Constants.Color.Teal.light
+        
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        //loadCustomRefreshContents()
+        
+        self.refreshControl.addTarget(self, action: "getTopics", forControlEvents: UIControlEvents.ValueChanged)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,6 +137,7 @@ class TimelineViewController: UIViewController {
             self.posts = posts!
             print("\(self.posts.count)")
             self.getFilteredPosts()
+            self.refreshControl.endRefreshing()
             self.tableView.reloadData()
         }
         
@@ -130,6 +155,35 @@ class TimelineViewController: UIViewController {
          print("\(myEvents.count)")
         
     }
+    
+    //Called whenever awesome button is pressed
+    func timelineCellDelegate(sender: TimelineCell, onApplaud: Bool) {
+        let indexPath = tableView.indexPathForCell(sender)!
+        var awesomeCount = filtered_posts[indexPath.row].awesome_count!
+        let postObjectId = filtered_posts[indexPath.row].objectId
+        awesomeCount = awesomeCount+1
+        filtered_posts[indexPath.row].awesome_count = awesomeCount
+        sender.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
+        
+        print("Updating awesome count of post with objectId: \(postObjectId)")
+        
+        var query = PFQuery(className:"Post")
+        query.getObjectInBackgroundWithId(postObjectId!) {
+            (post: PFObject?, error: NSError?) -> Void in
+            if error == nil && post != nil {
+                //let postActual = Post(object: post!)
+                //print("Description: \(postActual.desc!)")
+                post!["awesome_count"] = awesomeCount
+                post?.saveInBackground()
+            } else {
+                print("Error in saving awesome count: \(error)")
+            }
+        }
+        
+        
+    }
+    
+
     /*
     // MARK: - Navigation
 
@@ -145,14 +199,30 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
+        let row = indexPath.row
+        let awesomeCount = filtered_posts[row].awesome_count!
+        
+        cell.postDesc.URLColor = Constants.Color.Teal.dark
+        cell.postDesc.hashtagColor = UIColor.blackColor()
+        cell.postDesc.mentionColor = UIColor.blackColor()
+        
+        cell.postDesc.handleURLTap { (url: NSURL) -> () in
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
         cell.postDesc.text = filtered_posts[indexPath.row].desc
+        cell.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
+        cell.delegate = self
+        
         for (var i = 0 ; i < subscribed_topics.count; i++) {
             if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
-//                if (subscribed_topics[i].image_url != nil) {
-//                    cell.imageView?.setImageWithURL(NSURL(string: subscribed_topics[i].image_url!)!)
-//                }
+                
+                let postImageURL = NSURL(string: subscribed_topics[i].image_url!)
+                cell.topicImage.setImageWithURL(postImageURL!)
                 cell.topicTitle.text = subscribed_topics[i].title
-                cell.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
+                //cell.awesomeCountLabel.text = subscribed_topics[i].
+                cell.topicView.backgroundColor = UIColor(hexString: subscribed_topics[i].hex_color!)
+                cell.backgroundColor = UIColor.whiteColor()
                 break
             }
         }
@@ -166,6 +236,8 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filtered_posts.count
        }
+    
+    
 }
 
 

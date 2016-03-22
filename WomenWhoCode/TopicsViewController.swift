@@ -25,6 +25,7 @@ class TopicsViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         getTopics()
     }
 
@@ -64,6 +65,7 @@ class TopicsViewController: UIViewController {
                     subscribed_topics.append(topics[i])
                     added = true
                 } else  if(subscription[j].feature_id == topics[i].objectId && subscription[j].recommended != nil && subscription[j].recommended!) {
+                    //print("Topics title: \(topics[i].title!) hexcolor: \(topics[i].hex_color!)")
                     recommended_topics.append(topics[i])
                     added = true
                 }
@@ -72,13 +74,14 @@ class TopicsViewController: UIViewController {
                 other_topics.append(topics[i])
             }
         }
-        print("\(subscribed_topics.count)  \(recommended_topics.count)  \(other_topics.count)")
+        print("subscribed: \(subscribed_topics.count), recommended:  \(recommended_topics.count),other:  \(other_topics.count)")
         tableView.reloadData()
     }
 }
 
 extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
-        
+    
+    
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("TopicCell", forIndexPath: indexPath) as! TopicCell
             if(indexPath.section == 0) {
@@ -120,14 +123,20 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 40
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
+    
     
     func tableView(tableView: UITableView,
         titleForHeaderInSection section: Int) -> String? {
             return section_headers[section]
     }
-
+    
+   
     
     }
    

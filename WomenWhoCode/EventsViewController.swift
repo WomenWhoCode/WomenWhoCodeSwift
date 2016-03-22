@@ -8,14 +8,19 @@
 
 import UIKit
 import Parse
+import EventKit
 
-class EventsViewController: UIViewController{
+class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var events:[Event] = []
     var filtered:[Event] = []
-    var features = ["Java","Ruby","iOS","Android","JS","Python"]
+    var filteredByFeature:[Event] = []
+    var filteredByFeatureAndEvent:[Event] = []
+    //var savedEventId: String = ""
+    var savedEventId: [String] = []
+
     
     //variables for searchBar support
     var searchActive : Bool = false
@@ -45,6 +50,7 @@ class EventsViewController: UIViewController{
         
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         
         //searchBar functions
         searchBar.delegate = self
@@ -54,6 +60,71 @@ class EventsViewController: UIViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func eventsFilterViewController(eventFilters: EventFilters) {
+        print("In filters delegate method")
+        
+        
+        ParseAPI.sharedInstance.getEventsByFilter(eventFilters.networks, features: eventFilters.features) { (events, error) -> () in
+            
+            if error == nil {
+                if let events = events {
+                    self.events = events
+                    print("Finished retrieving events(cnt = \(events.count)")
+                    let features = eventFilters.features
+                    let networks = eventFilters.networks
+                    
+                    //Filter by features
+                    for event in events {
+                        for feature in features! {
+                            if event.eventFeature == feature.title! {
+                                print("Adding event with title: \(event.name) and network: \(event.network!.title!)")
+                                self.filteredByFeature.append(event)
+                            }
+                        }
+                    }
+                    print("filteredByFeature count : \(self.filteredByFeature.count)")
+                    
+                    if self.filteredByFeature.count > 0 {
+                        for event in self.filteredByFeature {
+                            for network in networks! {
+                                if event.chapter == network.title {
+                                    
+                                    self.filteredByFeatureAndEvent.append(event)
+                                }
+                            }
+                        }
+                    }
+                    print("filteredByFeatureAndEvent count : \(self.filteredByFeatureAndEvent.count)")
+                    self.events = self.filteredByFeatureAndEvent
+                    self.filteredByFeature = []
+                    self.filteredByFeatureAndEvent = []
+                    self.tableView.reloadData()
+                    
+                }
+            }
+            else {
+                print("Error retrieving events with the current filters")
+            }
+        }
+        
+    }
+    
+    
+    @IBAction func onFilter(sender: AnyObject) {
+        //let filtersVC =
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let navigationController = segue.destinationViewController as! UINavigationController
+        let filters = navigationController.topViewController as! EventsFilterViewController
+        
+        filters.delegate = self
+        
     }
     
     
@@ -70,6 +141,7 @@ class EventsViewController: UIViewController{
                     for event in self.events {
 //                        event.eventFeature = self.features[cnt%self.features.count]
 //                        cnt = cnt + 1
+                        self.savedEventId.append("")
                         print("Event feature: \(event.eventFeature)")
                     }
                     print("Finished retrieving events")
@@ -213,16 +285,78 @@ class EventsViewController: UIViewController{
         return returnColor
     }
     
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        print("isAnimating: \(isAnimating)")
-//        if refreshControl.refreshing {
-//            if !isAnimating {
-//                self.animateRefreshStep1()
-//                retrieveEvents()
-//                
-//            }
-//        }
-//    }
+    //EKEvent related code
+    func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate)->String {
+        
+        let event = EKEvent(eventStore: eventStore)
+        var success = false
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        
+        do {
+            try eventStore.saveEvent(event, span: .ThisEvent, commit: true)
+            success = true
+            return event.eventIdentifier
+            
+        } catch {
+            print("Could not save Event")
+            
+        }
+        
+        return ""
+        
+    }
+    
+    func deleteEvent(eventStore: EKEventStore, eventId: String) {
+        
+        let eventToRemove = eventStore.eventWithIdentifier(eventId)
+        if eventToRemove != nil {
+            do {
+                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
+            } catch {
+                print("Could not delete Event")
+            }
+        }
+    }
+    
+    func addEventToCalendar(eventDate: String, eventTitle: String)-> String {
+        
+        let eventStore = EKEventStore()
+        let dateFormatter = NSDateFormatter()
+        
+        let eventDateTZ = "\(eventDate)"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        
+        let startDate = dateFormatter.dateFromString(eventDateTZ)
+        let startDateUTC = startDate!.dateByAddingTimeInterval(0)
+        let endDate = startDate!.dateByAddingTimeInterval(60*60)
+        
+        if(EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+            eventStore.requestAccessToEntityType(.Event, completion: {
+                (granted:Bool, error: NSError?) -> Void in
+                return self.createEvent(eventStore, title: eventTitle, startDate: startDateUTC, endDate: endDate)
+                
+            })
+        }
+        else {
+            return createEvent(eventStore,title: eventTitle, startDate: startDateUTC, endDate: endDate)
+        }
+        
+        return ""
+        
+    }
+    
+    func deleteEventFromCalendar(eventId: String) {
+        
+        let eventStore = EKEventStore()
+        if(EKEventStore.authorizationStatusForEntityType(.Event) == EKAuthorizationStatus.Authorized) {
+            deleteEvent(eventStore, eventId: eventId)
+            
+        }
+    }
+
 
 }
 
@@ -255,6 +389,83 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return get_events_count()
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        
+        let addAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add to\nCalendar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            
+            let addMenu = UIAlertController(title: nil, message: "Adding to Calendar", preferredStyle: .ActionSheet)
+            //let addAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: nil)
+            let addAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) -> Void in
+                print("event title: \(self.events[indexPath.row].name!) date: \(self.events[indexPath.row].eventDateString!)")
+                let eventDate = "\(self.events[indexPath.row].eventDateForEvent!)"
+                let eventTitle = "\(self.events[indexPath.row].name!)"
+                let eventId = self.addEventToCalendar(eventDate, eventTitle: eventTitle)
+                let row = indexPath.row
+                if eventId != "" {
+                    self.savedEventId[row] = eventId
+                    let alertView = UIAlertView(title: eventTitle, message: "Event added to Calendar", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Dismiss")
+                    alertView.show()
+                }
+                self.tableView.reloadData()
+                
+            })
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action:UIAlertAction) -> Void in
+                self.onCancel()
+            })
+            
+            addMenu.addAction(addAction)
+            addMenu.addAction(cancelAction)
+            
+            
+            self.presentViewController(addMenu, animated: true, completion: nil)
+        })
+        addAction.backgroundColor = Constants.Color.Green.light
+        
+        
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete from\nCalendar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            let deleteMenu = UIAlertController(title: nil, message: "Deleting from Calendar", preferredStyle: .ActionSheet)
+            //let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler:nil)
+            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) -> Void in
+                if self.savedEventId[indexPath.row] != "" {
+                    self.deleteEventFromCalendar(self.savedEventId[indexPath.row])
+                    let alertView = UIAlertView(title: self.events[indexPath.row].name!, message: "Event removed from Calendar", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Dismiss")
+                    alertView.show()
+                }
+                self.tableView.reloadData()
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:{ (action:UIAlertAction) -> Void in
+                self.onCancel()
+            })
+
+            deleteMenu.addAction(deleteAction)
+            deleteMenu.addAction(cancelAction)
+            
+            
+            self.presentViewController(deleteMenu, animated: true, completion: nil)
+        })
+        deleteAction.backgroundColor = Constants.Color.Red.light
+        
+        
+        return [deleteAction,addAction]
+    }
+    
+    func onCancel() {
+        self.tableView.reloadData()
+    }
+    
+    
+    
+    
+    
 }
 
 extension EventsViewController: UISearchBarDelegate {
@@ -297,11 +508,6 @@ extension EventsViewController: UISearchBarDelegate {
         }
         
         print("Filtered count \(filtered.count) searchText = \(searchText)")
-        //        if(filtered.count == 0){
-        //            searchActive = false;
-        //        } else {
-        //            searchActive = true;
-        //        }
         
         if(filtered.count >= 0) {
             searchActive = true

@@ -17,11 +17,17 @@ class Profile: NSObject {
     var networkName : String?
     var themeType : Int?
     var jobTitle : String?
-    var network : Network
+    
     var followingCount :Int?
     var followersCount :Int?
     var badges :String?
     var awesomeCount :Int?
+    
+    var network : Network {
+        didSet {
+            networkName = network.title
+        }
+    }
     
     override init() {
         
@@ -38,6 +44,8 @@ class Profile: NSObject {
         badges = ""
         awesomeCount = 0
     }
+    
+    
     
     init(dictionary: NSDictionary) {
         objectId = dictionary["objectId"] as? String
@@ -68,12 +76,10 @@ class Profile: NSObject {
         badges = object["badges"] as? String
         
         
-        network = Network()
-        //network = (object["Network_Details"] as? Network)!
-        //network = Network(object: (object["Network_Details"] as? PFObject)!)
-        
         //FIXME: Should this be a derived object? 
         networkName = object["network"] as? String
+        network = Network(name: networkName!)
+        
         followingCount = object["following_count"] as? Int
         followersCount = object["followers_count"] as? Int
         awesomeCount = object["awesome_count"] as? Int

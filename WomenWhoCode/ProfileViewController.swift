@@ -150,21 +150,51 @@ class ProfileViewController: UIViewController {
     }
     
     func populateFields() {
+        
         name.text = profile.fullName! ?? ""
+        print("Populated Field for Profile: \(name.text)")
         jobDescription.text = profile.jobTitle! ?? ""
-        followingCount.text = "\(profile.followingCount! ?? 0)"
-        followersCount.text = "\(profile.followersCount! ?? 0)"
+        
+        
+        if let followingCountActual = profile.followingCount {
+            followingCount.text = "\(followingCountActual)"
+        }
+        else {
+            followingCount.text = "0"
+        }
+        
+        if let followersCountActual = profile.followersCount {
+            followersCount.text = "\(followersCountActual)"
+        }
+        else {
+            followersCount.text = "0"
+        }
+        
+        
         badges.text = profile!.badges
-        awesomeCount.text = "\(profile.awesomeCount! ?? 0)"
+        
+        if let awesomeCountActual = profile.awesomeCount {
+            awesomeCount.text = "\(awesomeCountActual)"
+        }
+        else {
+            awesomeCount.text = "0"
+        }
+        
         if(profile.imageUrl != nil) {
             profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
         } else {
             profileImage.image = UIImage(named: "professional")
         }
+        
+        print("Network for selected profile: \(profile.networkName), objectId: \(profile.network.objectId)")
+        print("Network image_url for selected profile: \(profile.network.imageUrl)")
+        
         if ( profile.network.imageUrl != nil && profile.network.imageUrl != "") {
+            print("Setting network Image")
             networkImage.setImageWithURL(NSURL(string: profile.network.imageUrl!)!)
         } else {
             // Network object is not linked
+            print("2. Network for selected profile: \(profile.networkName)")
             ParseAPI.sharedInstance.getNetworkWithNetworkName(profile.networkName!, completion: { (network, error) -> () in
                 if(error != nil ) {
                     print("Error retreiving Network")
@@ -221,15 +251,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
             } else {
                 cell.eventImageView.image = UIImage(named: "languages")
             }
+            cell.accessoryType = .None
             cell.eventDate.text = ""
             cell.eventLocation.text = ""
             cell.eventDescription.text = ""
-            cell.eventTag1.text = ""
-            cell.eventTag2.text = ""
-            cell.rsvpLabel.text = ""
+            cell.rsvpLabel.hidden = true
             cell.eventLocation.text = ""
-            cell.eventSpots.text = ""
-            cell.rsvpConfirmedLabel.text = ""
+            cell.eventSpots.hidden = true
+            cell.rsvpConfirmedLabel.hidden = true
             cell.backgroundColor = UIColor(hexString: topics[indexPath.row].hex_color!)
             
         }

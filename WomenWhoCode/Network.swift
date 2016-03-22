@@ -24,11 +24,11 @@ class Network: NSObject {
     
        override init() {
   
-        //FIXME: Temporary initialization
-        objectId = ""
-        imageUrl = ""
-        meetUpUrl = ""
-        title = ""
+        //Set it to SF by default
+        objectId = "QIk7JihCvU"
+        imageUrl = "https://www.filepicker.io/api/file/VmFxea2WQLadhXHZ9bXQ"
+        meetUpUrl = "http://www.meetup.com/Women-Who-Code-SF"
+        title = "San Francisco"
         PFLocation = PFGeoPoint()
     }
     
@@ -48,6 +48,25 @@ class Network: NSObject {
         meetUpUrl = object["meetup_url"] as? String
         PFLocation = object["PFLocation"] as? PFGeoPoint
         meetupUrlName = object["meetup_url_name"] as? String
+        
+    }
+    
+    init(name: String) {
+        super.init()
+        
+        ParseAPI.sharedInstance.getNetworkWithNetworkName(name, completion: { (network, error) -> () in
+            if(error != nil ) {
+                print("Error retreiving Network")
+            } else {
+                self.objectId = network?.objectId
+                self.imageUrl = network?.imageUrl
+                self.meetUpUrl = network?.meetUpUrl
+                self.meetupUrlName = network?.meetupUrlName
+                self.title = network?.title
+                self.PFLocation = network?.PFLocation
+                
+            }
+        })
         
     }
     

@@ -35,6 +35,7 @@ class Event: NSObject {
     var eventMonth: String?
     var eventDay: String?
     var eventDateInMMMDD: String?
+    var eventDateForEvent: String?
     var meetupEvent: MeetupEvent?
     var network: Network?
     var eventTags:[String] = []
@@ -110,6 +111,7 @@ class Event: NSObject {
         eventFeature = "iOS" //FIXME: Get it from the model
         if object.objectForKey("network") != nil{
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
+            chapter = self.network?.title
             meetupUrlName = self.network!.meetupUrlName
         }
         
@@ -132,6 +134,13 @@ class Event: NSObject {
             eventDateInMMMDD = dateFormatter.stringFromDate(dateFound)
         }else{
             eventDateInMMMDD = ""
+        }
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        if let dateFound =  date{
+            eventDateForEvent = dateFormatter.stringFromDate(dateFound)
+        }else{
+            eventDateForEvent = ""
         }
 
         eventMonth = date?.month
