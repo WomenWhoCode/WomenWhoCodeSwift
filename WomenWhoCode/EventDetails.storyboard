@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-H3-ca2" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="617"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gg_bridge3" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-YB-Zkd">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -130,7 +130,6 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="41K-Yw-Um6" firstAttribute="trailing" secondItem="4UP-V3-FFH" secondAttribute="trailing" id="3pl-tH-ORu"/>
                                             <constraint firstAttribute="trailing" secondItem="4UP-V3-FFH" secondAttribute="trailing" constant="7" id="4D6-lD-GFi"/>
@@ -146,7 +145,7 @@
                                             <constraint firstAttribute="trailing" secondItem="k9q-YB-Zkd" secondAttribute="trailing" constant="-1" id="PVZ-iS-O8e"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="2" id="Psm-fM-0bo"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="f5l-He-P1K" secondAttribute="trailing" id="SBO-8g-Y3P"/>
-                                            <constraint firstAttribute="height" constant="660" id="WEe-fn-ldF"/>
+                                            <constraint firstAttribute="height" priority="250" constant="617" id="WEe-fn-ldF"/>
                                             <constraint firstItem="gfr-qx-2cC" firstAttribute="centerY" secondItem="k9q-YB-Zkd" secondAttribute="centerY" id="Y5a-eS-1mt"/>
                                             <constraint firstAttribute="trailing" secondItem="wQL-u5-2ZH" secondAttribute="trailing" id="g2B-Vg-QEu"/>
                                             <constraint firstItem="fmZ-dI-hv9" firstAttribute="top" secondItem="vQM-sa-ocz" secondAttribute="bottom" constant="4" id="hKR-lQ-y0L"/>
@@ -172,7 +171,7 @@
                                     <constraint firstItem="r7J-H3-ca2" firstAttribute="top" secondItem="J4O-qy-JsX" secondAttribute="top" id="4Cc-hc-iT4"/>
                                     <constraint firstItem="r7J-H3-ca2" firstAttribute="leading" secondItem="J4O-qy-JsX" secondAttribute="leading" id="4mY-il-5MT"/>
                                     <constraint firstAttribute="trailing" secondItem="r7J-H3-ca2" secondAttribute="trailing" id="AtQ-ig-491"/>
-                                    <constraint firstAttribute="bottom" secondItem="r7J-H3-ca2" secondAttribute="bottom" constant="-300" id="Tuu-dM-Xg3"/>
+                                    <constraint firstAttribute="bottom" secondItem="r7J-H3-ca2" secondAttribute="bottom" id="Tuu-dM-Xg3"/>
                                     <constraint firstItem="r7J-H3-ca2" firstAttribute="centerX" secondItem="J4O-qy-JsX" secondAttribute="centerX" id="fN1-Ju-efG"/>
                                 </constraints>
                             </scrollView>

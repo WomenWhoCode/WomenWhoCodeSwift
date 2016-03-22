@@ -80,27 +80,17 @@ class EventDetailsViewController: UIViewController {
         
         // adjust the container view inside the scroll view
         let newContainerHeight = max(self.contentView.frame.height, newSynFrame.origin.y + newSynFrame.size.height)
-//        self.contentView.frame.size = CGSizeMake(self.contentView.frame.width, newContainerHeight+150)
         self.contentView.frame.size = CGSizeMake(self.contentView.frame.width, newContainerHeight)
         
         var newContainerFrame =  self.contentView.frame
         newContainerFrame.size.height = newContainerHeight
         self.contentView.frame = newContainerFrame
-                self.contentView.layoutIfNeeded()
-        self.contentView.backgroundColor = Constants.Color.Orange.light
-        
-        self.scrollView.backgroundColor = Constants.Color.Gray.dark
+        self.contentView.layoutIfNeeded()
         
         // adjust the labels
         descriptionLabel.frame = newSynFrame
         
-        //FixMe: Also have to update the contentView frame height for this to work properly.
-        
-        // set the scroll height
-        let contentWidth = self.scrollView.bounds.width
-        let contentHeight = self.contentView.frame.origin.y + self.contentView.frame.height // some fudge factor
-        self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
-        
+        self.scrollView.contentSize = self.contentView.frame.size
         self.scrollView.layoutIfNeeded()
 
     }
