@@ -112,7 +112,7 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showChannel(topics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
+      //  showChannel(topics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
