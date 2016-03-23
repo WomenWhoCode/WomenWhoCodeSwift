@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import EventKit
 
-class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
+class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,UIScrollViewDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +34,11 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     var isAnimating = false
     var timer: NSTimer!
     
+    //Support for infinite scrolling
+    var isMoreDataLoading = false
+    var loadingMoreView:EventsInfiniteScrollActivityView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +60,11 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         //searchBar functions
         searchBar.delegate = self
         retrieveEvents()
+        
+        setUpInfiniteScrollView()
     }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -128,23 +137,29 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
     }
     
     
-    //FIXME: This is a temporary function. Needs to be replaced with an API call to retrieve
-    // events in a sorted manner
+    //Retrieve Events from Parse DB
     func retrieveEvents() {
         print("In retrieve Events")
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
             if error == nil {
                 if let events = events {
-                    self.events = events
+                    
+                    if self.isMoreDataLoading == true {
+                        self.events = Event.mergeEvents(self.events, additionalEvents: events)
+                        self.isMoreDataLoading = false
+                    }
+                    else {
+                        self.events = events
+                    }
+                    
                     var cnt = 0
                     
                     for event in self.events {
-//                        event.eventFeature = self.features[cnt%self.features.count]
-//                        cnt = cnt + 1
                         self.savedEventId.append("")
                         
                     }
                     self.refreshControl.endRefreshing()
+                    self.loadingMoreView!.stopAnimating()
                     self.tableView.reloadData()
                     
                 }
@@ -353,6 +368,42 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
             
         }
     }
+    
+    //*** Infinite Scrolling related code **********
+    func setUpInfiniteScrollView() {
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, EventsInfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = EventsInfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.hidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset;
+        insets.bottom += EventsInfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                isMoreDataLoading = true
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, EventsInfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                // Code to load more results
+                retrieveEvents()
+            }
+        }
+    }
+    
 
 
 }
