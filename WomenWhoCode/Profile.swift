@@ -50,7 +50,7 @@ class Profile: NSObject {
     init(dictionary: NSDictionary) {
         objectId = dictionary["objectId"] as? String
         fullName = dictionary["fullName"] as? String
-        imageUrl = dictionary["imageUrl"] as? String
+        imageUrl = dictionary["image_url"] as? String
         user  = dictionary["user"] as? User
         networkName = dictionary["networkName"] as? String
         themeType = dictionary["themeType"] as? Int

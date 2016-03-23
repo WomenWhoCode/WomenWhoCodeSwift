@@ -42,6 +42,21 @@ struct Constants {
             static let medium = UIColor(hexString: "546e7a")
             static let dark = UIColor(hexString: "3d414c")
         }
+        
+        struct Green {
+            static let light = UIColor(hexString: "00b200")
+            static let mild = UIColor(hexString: "009900")
+            static let medium = UIColor(hexString: "007f00")
+            static let dark = UIColor(hexString: "006600")
+            
+        }
+        
+        struct Red {
+            static let light = UIColor(hexString: "e55100")
+            static let mild = UIColor(hexString: "cc4800")
+            static let medium = UIColor(hexString: "b23e00")
+            static let dark = UIColor(hexString: "993600")
+        }
     }
     
     struct Api{
@@ -54,11 +69,13 @@ struct Constants {
         }
         
         struct Slack{
-            
+            static let clientId = "23398940453.26339368899"
+            static let clientSecret = "143fc69c2b2c1007d1aa55f40c4d5e7b"
         }
         
         struct Parse{
-            
+            static let appId = "sW8VXwGAEeq8FYaKMgcbPfliodb8XA7wx0QXLdx9"
+            static let clientKey = "HTVvl8X9szeaOlXzI8jEUx0MENGlzDTrCIrPCnIy"
         }
     }
 }

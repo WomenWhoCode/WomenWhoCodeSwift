@@ -11,8 +11,7 @@ import OAuthSwift
 import SwiftyJSON
 
 class SlackAPIClient {
-    let clientId = "23398940453.26339368899"
-    let clientSecret = "143fc69c2b2c1007d1aa55f40c4d5e7b"
+    
     var oauthswift:OAuth2Swift?
     var oauthToken = ""
     let baseUrl = "https://slack.com/"
@@ -43,15 +42,15 @@ class SlackAPIClient {
     
     func login(){
             oauthswift = OAuth2Swift(
-            consumerKey:    clientId,
-            consumerSecret: clientSecret,
+            consumerKey:    Constants.Api.Slack.clientId,
+            consumerSecret: Constants.Api.Slack.clientSecret,
             authorizeUrl:   "https://slack.com/oauth/authorize",
             accessTokenUrl: "https://slack.com/api/oauth.access",
             responseType:   "code"
         )
         oauthswift!.authorizeWithCallbackURL(
             NSURL(string: "womenwhocode://oauth-callback/slack")!,
-            scope: "channels:read,channels:history,users:read", state:"SLACK",
+            scope: "channels:read,channels:history,users:read,chat:write:user", state:"SLACK",
             success: { credential, response, parameters in
                 self.oauthToken = credential.oauth_token
             },
@@ -164,6 +163,28 @@ extension SlackAPIClient{
     }
     
     //Write to a channel
+    func writeToChannel(channelId: String, textString: String, successCallback: (Message) -> Void){
+        oauthswift!.client.post("https://slack.com/api/chat.postMessage",
+                               parameters: ["token": oauthToken, "channel": channelId, "text": textString, "as_user": true],
+                               success: {
+                                data, response in
+                                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                                if let dataFromString = dataString!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                                    let jsonData = JSON(data: dataFromString)
+                                    //If json is .Dictionary
+                                    for (key,json):(String, JSON) in jsonData {
+                                        if (key == "message"){
+                                            let message = Message(dict: json)
+                                            successCallback(message)
+                                        }
+                                    }
+                                }
+            }
+            , failure: { error in
+                print(error)
+            }
+        )
+    }
     
     //Mentions and auto complete
     

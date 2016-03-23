@@ -35,6 +35,7 @@ class Event: NSObject {
     var eventMonth: String?
     var eventDay: String?
     var eventDateInMMMDD: String?
+    var eventDateForEvent: String?
     var meetupEvent: MeetupEvent?
     var network: Network?
     var eventTags:[String] = []
@@ -65,34 +66,7 @@ class Event: NSObject {
         
     }
     
-//    init(dictionary: NSDictionary) {
-//        name = dictionary["name"] as? String
-//        location = dictionary["location"] as? String
-//        eventDate = dictionary["event_date"] as? NSDate
-//        createdAt  = dictionary["created_at"] as? NSDate
-//        eventDescription = dictionary["description"] as? String
-//        type = dictionary["type"] as? String
-//        attendeeLimit = dictionary["attendee_limit"] as? Int
-//        rsvpCount = dictionary["rsvp_count"] as? Int
-//        chapter = dictionary["chapter"] as? String
-//        eventDateString = dictionary["event_date_string"] as? String
-//        
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSSxxx"
-//        let date = dateFormatter.dateFromString(eventDateString!)
-//        let calendar = NSCalendar.currentCalendar()
-//        let components = calendar.components([.Day , .Month , .Year], fromDate: date!)
-//        
-//        let year =  components.year
-//        let month = components.month
-//        let day = components.day
-//        eventMonth = date?.month
-//        eventDay = date?.day
-//        
-//       
-//        
-//    }
-    
+
     init(object: PFObject) {
         
         super.init()
@@ -107,7 +81,7 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
-        eventFeature = "iOS" //FIXME: Get it from the model
+        
         if object.objectForKey("network") != nil{
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
             chapter = self.network?.title
@@ -134,6 +108,13 @@ class Event: NSObject {
         }else{
             eventDateInMMMDD = ""
         }
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        if let dateFound =  date{
+            eventDateForEvent = dateFormatter.stringFromDate(dateFound)
+        }else{
+            eventDateForEvent = ""
+        }
 
         eventMonth = date?.month
         eventDay = date?.day        
@@ -147,6 +128,22 @@ class Event: NSObject {
             openSpotsCount = attendeeLimit! - rsvpCount!
         }
     }
+    
+    //For supporting infinite scrolling in Event
+    class func mergeEvents(originalEvents: [Event], additionalEvents: [Event]) -> [Event] {
+        var combinedEvents: [Event] = originalEvents
+        for additionalEvent in additionalEvents {
+            
+            //FIXME: Uncomment this once we have more events in the DB!
+            //if !originalEvents.contains({ $0.objectId == additionalEvent.objectId }) {
+                combinedEvents.append(additionalEvent)
+            //}
+        }
+        return combinedEvents
+    }
+    
+    
+    
     
 }
 

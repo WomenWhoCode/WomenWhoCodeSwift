@@ -18,6 +18,7 @@ class UserProfileCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
     @IBOutlet weak var featuresLabel: UILabel!
+    var features = ["ios, mobile","ruby, mobile, backend", "android, java, mobile","java","javascript, css","html, css","backend, db, sql","scala,  ruby","cucumber, automated testing , appium","c # , api , backend", "c++, gaming" , "security, sql"]
     
     var profile: Profile!{
         didSet{
@@ -33,6 +34,8 @@ class UserProfileCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let randomIndex = Int(arc4random_uniform(UInt32(features.count)))
+        featuresLabel.text = features[randomIndex]
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

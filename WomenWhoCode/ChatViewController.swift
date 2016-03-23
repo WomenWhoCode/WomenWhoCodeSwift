@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Foundation
 import SlackTextViewController
 
 class ChatViewController: SLKTextViewController {
     
     //CellID
     let messageCellId = "WWC_MessageCell"
-    let generalChannel = "C0PBTN49W"
+    var channelId: String!
     
     var messages:[Message] = []
     var usersDict:[String:SlackUser] = [:]
@@ -40,7 +41,7 @@ class ChatViewController: SLKTextViewController {
     
     func getMessages(){
         print("Get message for channel")
-        SlackAPI.sharedInstance.getChannelHistory(generalChannel, successCallback: loadMessages)
+        SlackAPI.sharedInstance.getChannelHistory(channelId, successCallback: loadMessages)
     }
     
     func loadUsers(users: [SlackUser]){
@@ -55,6 +56,13 @@ class ChatViewController: SLKTextViewController {
         self.tableView.reloadData()
     }
     
+    override func didPressRightButton(sender: AnyObject!) {
+        SlackAPI.sharedInstance.writeToChannel(self.channelId, textString: self.textView.text) { (message) in
+            self.messages.insert(message, atIndex: 0)
+            self.tableView.reloadData()
+        }
+        super.didPressRightButton(sender)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
