@@ -291,8 +291,8 @@ class ParseAPIClient{
         let query = PFObject(className:"Subscribe")
         query["user_id"] = userId
         query["feature_id"] = featureId
-        query["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
-        query["feature"] = PFObject(withoutDataWithClassName: "Feature", objectId: featureId)
+        query["user"] = PFObject(outDataWithClassName: "_User", objectId: userId)
+        query["feature"] = PFObject(outDataWithClassName:  "Feature", objectId: featureId)
         
         query.saveInBackgroundWithBlock { (success:Bool?, error: NSError?) -> Void in
             if success == true {

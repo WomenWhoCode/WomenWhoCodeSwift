@@ -157,10 +157,9 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
         let encodedAddress = eventAddress.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.symbolCharacterSet())!
         let mapUrl = "http://maps.apple.com/?address=\(encodedAddress)"
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"http://maps.apple.com/")!)) {
-            print("Came here")
             UIApplication.sharedApplication().openURL(NSURL(string: mapUrl)!)
         } else {
-            print("http://maps.apple.com/");
+            print("Error trying to open http://maps.apple.com/");
         }
         }
     }
