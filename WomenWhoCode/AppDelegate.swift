@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         initializeTabBar()
         return true
     }
@@ -89,8 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             UITabBar.appearance().tintColor = Constants.Color.Teal.light
             UITabBar.appearance().barTintColor = UIColor.blackColor()
         }
-        
-        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
@@ -115,9 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             }
             
         }
-        
         return true
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {
