@@ -308,7 +308,7 @@ class ParseAPIClient{
 
     func updateExistingSubscriptionForUser(userId: String?, featureId: String?, subscribed: Bool?, recommended: Bool?, completion: (success:Bool? , error: NSError?) -> ()) {
         
-        print("user_id = \(userId!), feature_id = \(featureId!)")
+        //print("user_id = \(userId!), feature_id = \(featureId!)")
         let subscription = PFObject(className:"Subscribe")
         let predicate = NSPredicate(format:"user_id == '\(userId!)' AND feature_id == '\(featureId!)'")
         let query = PFQuery(className: "Subscribe", predicate: predicate)
@@ -318,7 +318,7 @@ class ParseAPIClient{
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) profiles.")
+                //print("Successfully retrieved \(objects!.count) profiles.")
                 
                 if objects!.count == 0 {
                     subscription["user_id"] = userId
