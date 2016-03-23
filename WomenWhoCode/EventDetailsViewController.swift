@@ -225,6 +225,9 @@ extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        for(var i = 0 ; i < rsvps.count ; i++) {
+            print(rsvps[i].thumbImage!)
+        }
         return rsvps.count
     }
     
