@@ -129,6 +129,22 @@ class Event: NSObject {
         }
     }
     
+    //For supporting infinite scrolling in Event
+    class func mergeEvents(originalEvents: [Event], additionalEvents: [Event]) -> [Event] {
+        var combinedEvents: [Event] = originalEvents
+        for additionalEvent in additionalEvents {
+            
+            //FIXME: Uncomment this once we have more events in the DB!
+            //if !originalEvents.contains({ $0.objectId == additionalEvent.objectId }) {
+                combinedEvents.append(additionalEvent)
+            //}
+        }
+        return combinedEvents
+    }
+    
+    
+    
+    
 }
 
 //Meetup Related

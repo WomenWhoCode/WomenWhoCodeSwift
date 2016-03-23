@@ -20,6 +20,7 @@
 		1039FD6C1C8C9E6100360991 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1039FD6B1C8C9E6100360991 /* Network.swift */; };
 		8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62852FA7CA4FCC1D8897D92B /* Pods.framework */; };
 		CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */; };
+		CA387A831CA278BB00658507 /* EventsInfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA387A821CA278BB00658507 /* EventsInfiniteScrollActivityView.swift */; };
 		CA3B6CA91C85512F00D8FF25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */; };
 		CA3B6CAB1C85514E00D8FF25 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */; };
 		CA3B6CAD1C85515F00D8FF25 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */; };
@@ -114,6 +115,7 @@
 		62852FA7CA4FCC1D8897D92B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7751CAA29E4E6B7E26399067 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA0ABE4E1C8D177E00F2315D /* NSDate+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+extension.swift"; sourceTree = "<group>"; };
+		CA387A821CA278BB00658507 /* EventsInfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsInfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		CA3B6CA81C85512F00D8FF25 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		CA3B6CAA1C85514E00D8FF25 /* Events.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		CA3B6CAC1C85515F00D8FF25 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				100341291C968EE3005C2D3B /* TimelineCell.swift */,
 				CAC153601C9E23CD00000146 /* EventCell3.swift */,
 				CAC153611C9E23CD00000146 /* EventCell3.xib */,
+				CA387A821CA278BB00658507 /* EventsInfiniteScrollActivityView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				1039FD6C1C8C9E6100360991 /* Network.swift in Sources */,
 				CA3B6CB91C85535900D8FF25 /* ConnectViewController.swift in Sources */,
 				1039FD681C8C9E2100360991 /* Profile.swift in Sources */,
+				CA387A831CA278BB00658507 /* EventsInfiniteScrollActivityView.swift in Sources */,
 				E4CF13F81C94EB2500A271B9 /* MessageCell.swift in Sources */,
 				CAC049F71C8B6DAD00996932 /* EventCell.swift in Sources */,
 				E4CF140E1C95E76300A271B9 /* MeetupGroup.swift in Sources */,
