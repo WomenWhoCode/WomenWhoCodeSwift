@@ -66,7 +66,7 @@ class EventsFilterViewController: UIViewController {
             }
             
             var cnt = 0
-            for chapter in self.chapters {
+            for _ in self.chapters {
                 
                 if(cnt<3) {
                     self.chaptersOnDisplay.append(self.chapters[cnt])
@@ -76,7 +76,7 @@ class EventsFilterViewController: UIViewController {
                 }
                 
                 self.isChapterSelected.append(false)
-                cnt++
+                cnt += 1
             }
             
             self.tableView.reloadData()
@@ -102,7 +102,7 @@ class EventsFilterViewController: UIViewController {
                 
                 
                 self.isSelected.append(false)
-                cnt++
+                cnt += 1
             }
             
             print("Set isSelected for \(cnt) features")
@@ -174,7 +174,7 @@ extension EventsFilterViewController: UITableViewDataSource, UITableViewDelegate
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FilterCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FilterCell", forIndexPath: indexPath) as! EventCell2
         let section = indexPath.section
         let row = indexPath.row
         

@@ -40,7 +40,6 @@ class TopicCell: UITableViewCell {
     
     
     @IBAction func onFollow(sender: AnyObject) {
-        print("Follow button pressed")
         delegate?.topicCellDelegate(self, onFollow: true)
     }
     

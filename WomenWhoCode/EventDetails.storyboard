@@ -121,9 +121,13 @@
                                             </view>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-ga-ZP5">
                                                 <rect key="frame" x="5" y="194" width="361" height="100"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="S8w-ri-BLh"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="pC7-Jq-hhr" appends="YES" id="gZ2-qF-CTA"/>
+                                                </connections>
                                             </mapView>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
                                                 <rect key="frame" x="5" y="300" width="361.5" height="17"/>
@@ -174,12 +178,12 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="SBO-8g-Y3P"/>
                                                 <exclude reference="7U4-EN-Mnq"/>
                                                 <exclude reference="Dhh-PK-Dqt"/>
                                                 <exclude reference="Efc-fp-PgA"/>
                                                 <exclude reference="Tre-3b-3ym"/>
                                                 <exclude reference="tD3-xy-hgz"/>
+                                                <exclude reference="SBO-8g-Y3P"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -287,6 +291,11 @@
                 <tapGestureRecognizer id="xbI-0e-Wsd">
                     <connections>
                         <action selector="ondescTap:" destination="7g6-jd-5Oc" id="GRN-H2-ppj"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="pC7-Jq-hhr" userLabel="Map Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onMapTap:" destination="7g6-jd-5Oc" id="pbu-Cf-4s2"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

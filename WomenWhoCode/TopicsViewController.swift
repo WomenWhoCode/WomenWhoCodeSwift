@@ -65,13 +65,13 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     }
     
     func setSubscribedTopics() {
-        for(var i = 0 ; i < topics.count; i++) {
+        for i in 0 ..< topics.count {
             var added = false
             if ((topics[i].auto_subscribe != nil && topics[i].auto_subscribe!)) {
                 subscribed_topics.append(topics[i])
                 continue
             }
-            for (var j = 0 ; j < subscription.count; j++) {
+            for j in 0 ..< subscription.count{
                 if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
                     subscribed_topics.append(topics[i])
                     added = true
@@ -92,7 +92,6 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     //When follow button is pressed on a cell
     func topicCellDelegate(sender: TopicCell, onFollow: Bool) {
         let indexPath = tableView.indexPathForCell(sender)!
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TopicCell
         let section = indexPath.section
         let row = indexPath.row
         
@@ -116,7 +115,6 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
             let featureId = other_topics[row].objectId
             subscribed_topics.append(selectedTopic)
             
-            print("featureId: \(featureId)")
             ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
                 if success == true {
                     print("Added topic to subscribed list")

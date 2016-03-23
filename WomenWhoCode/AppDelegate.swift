@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         initializeTabBar()
         return true
     }
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
-        let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileNavController") as! UINavigationController
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(named:"User Female-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "profile")
         
@@ -89,8 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             UITabBar.appearance().tintColor = Constants.Color.Teal.light
             UITabBar.appearance().barTintColor = UIColor.blackColor()
         }
-        
-        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
@@ -115,9 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             }
             
         }
-        
         return true
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {
