@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let connectNavigationController = storyboard2.instantiateViewControllerWithIdentifier("connectNavController") as! UINavigationController
         _ = connectNavigationController.topViewController as! UserSearchViewController
         connectNavigationController.tabBarItem.title = "User Search"
-        connectNavigationController.tabBarItem.image = UIImage(named:"Find User-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "search")
+        connectNavigationController.tabBarItem.image = UIImage(named:"UserSearch-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "search")
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
