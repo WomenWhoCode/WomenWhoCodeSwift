@@ -58,7 +58,8 @@ class ChatViewController: SLKTextViewController {
     
     override func didPressRightButton(sender: AnyObject!) {
         SlackAPI.sharedInstance.writeToChannel(self.channelId, textString: self.textView.text) { (message) in
-            print("SOND")
+            self.messages.insert(message, atIndex: 0)
+            self.tableView.reloadData()
         }
         super.didPressRightButton(sender)
     }

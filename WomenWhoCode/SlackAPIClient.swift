@@ -163,7 +163,7 @@ extension SlackAPIClient{
     }
     
     //Write to a channel
-    func writeToChannel(channelId: String, textString: String, successCallback: (Message?) -> Void){
+    func writeToChannel(channelId: String, textString: String, successCallback: (Message) -> Void){
         oauthswift!.client.post("https://slack.com/api/chat.postMessage",
                                parameters: ["token": oauthToken, "channel": channelId, "text": textString, "as_user": true],
                                success: {
@@ -173,11 +173,10 @@ extension SlackAPIClient{
                                     let jsonData = JSON(data: dataFromString)
                                     //If json is .Dictionary
                                     for (key,json):(String, JSON) in jsonData {
-                                        print("\(key): \(json)")
-//                                        if (key == "messages"){
-//                                            let messages = Message.initWithJSONArray(json.array!)
-//                                            successCallback(messages)
-//                                        }
+                                        if (key == "message"){
+                                            let message = Message(dict: json)
+                                            successCallback(message)
+                                        }
                                     }
                                 }
             }
