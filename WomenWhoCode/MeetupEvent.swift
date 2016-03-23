@@ -107,6 +107,10 @@ class MeetupEvent: NSObject {
         return NSDate(timeIntervalSince1970: epoch/1000)
     }
     
+    func parseFormatDate() -> String{
+        return getDate(epochTime!).formatTo("YYYY-MM-dd, hh:mm:ss a")!
+    }
+    
     override var description : String {
         return "MeetupEvent: \(self.meetupName) -- \(self.meetupLink)"
     }

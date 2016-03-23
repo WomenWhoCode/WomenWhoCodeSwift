@@ -77,6 +77,7 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
         attendeeLabel.text = "\(meetupEvent.rsvpLimit! - meetupEvent.yesRsvpCount!)/\(meetupEvent.rsvpLimit!)"
         networkLabel.text = meetupEvent.groupName
         eventDate.text = meetupEvent.eventDate
+        print(Event.eventFromMeetupEvent(meetupEvent))
         setMeetupDescription()
         showMeetupAddress()
         updateScrollheight()
@@ -225,7 +226,7 @@ extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        for(var i = 0 ; i < rsvps.count ; i++) {
+        for i in 0 ..< rsvps.count{
             print(rsvps[i].thumbImage!)
         }
         return rsvps.count
