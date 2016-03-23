@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
-        let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        let profileViewController = storyboard3.instantiateViewControllerWithIdentifier("ProfileNavController") as! UINavigationController
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(named:"User Female-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "profile")
         

@@ -83,9 +83,14 @@ class ParseAPI{
         httpClient.getSubscriptions(completion)
     }
     
-    func updateSubscriptionForUser(userId: String?, featureId: String?, completion: (success:Bool? , error: NSError?) -> ()) {
-        httpClient.updateSubscriptionForUser(userId, featureId: featureId, completion: completion)
+    func updateSubscriptionForUser(userId: String?, featureId: String?, subscribed: Bool?, recommended: Bool?, completion: (success:Bool? , error: NSError?) -> ()) {
+        httpClient.updateSubscriptionForUser(userId, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: completion)
     }
+    
+    func updateExistingSubscriptionForUser(userId: String?, featureId: String?, subscribed: Bool?, recommended: Bool?, completion: (success:Bool? , error: NSError?) -> ()) {
+        httpClient.updateExistingSubscriptionForUser(userId, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: completion)
+    }
+    
     
     
     func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {

@@ -134,6 +134,7 @@
                             <constraint firstAttribute="trailing" secondItem="iJz-ta-piW" secondAttribute="trailing" constant="13" id="wGz-qO-OCA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Dq6-UD-rO3"/>
                     <connections>
                         <outlet property="awesomeCount" destination="gFP-rs-5V6" id="Cd7-pu-zB1"/>
                         <outlet property="badges" destination="xFl-LU-mRK" id="kfH-KI-atc"/>
@@ -147,6 +148,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeA-Zm-etH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="365"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eJr-v3-LPX">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hez-ez-ayD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yoH-ry-92H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vub-Dj-ve7" kind="relationship" relationship="rootViewController" id="Zva-Dl-4lL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5v-aV-xlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="200" y="365"/>
         </scene>

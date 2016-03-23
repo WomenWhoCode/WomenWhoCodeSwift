@@ -180,6 +180,8 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+  
+    
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
@@ -223,6 +225,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
 //        } else {
 //            return subscribed_topics.count
 //        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        showEventDetails(userEvents[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    func showEventDetails(event: Event){
+        let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
+        let destination = eventDetailsStoryboard.instantiateViewControllerWithIdentifier("eventDetailsController") as! EventDetailsViewController
+        destination.event = event
+        destination.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(destination, animated: true)
     }
     
 }
