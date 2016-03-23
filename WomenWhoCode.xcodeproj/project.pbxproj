@@ -43,6 +43,8 @@
 		CAC049FD1C8BC50C00996932 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC049FC1C8BC50C00996932 /* Event.swift */; };
 		CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC153601C9E23CD00000146 /* EventCell3.swift */; };
 		CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC153611C9E23CD00000146 /* EventCell3.xib */; };
+		E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */; };
+		E44EF6131CA235CE00297B4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EF6121CA235CE00297B4D /* MapKit.framework */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -67,6 +69,7 @@
 		E4CF14121C96039D00A271B9 /* MeetupVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14111C96039D00A271B9 /* MeetupVenue.swift */; };
 		E4CF14141C9680B900A271B9 /* MeetupMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14131C9680B900A271B9 /* MeetupMember.swift */; };
 		E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14151C9689D000A271B9 /* MeetupRsvp.swift */; };
+		E4CF14181C9695DA00A271B9 /* EventDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF14171C9695DA00A271B9 /* EventDescriptionController.swift */; };
 		E4F4EFCD1C8CA3F500B480AC /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFCB1C8CA3F500B480AC /* UserProfileCell.swift */; };
 		E4F4EFCE1C8CA3F500B480AC /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F4EFCC1C8CA3F500B480AC /* UserProfileCell.xib */; };
 		E4F4EFD11C8CD98500B480AC /* ParseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4EFD01C8CD98500B480AC /* ParseAPIClient.swift */; };
@@ -134,6 +137,8 @@
 		CAC049FC1C8BC50C00996932 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CAC153601C9E23CD00000146 /* EventCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell3.swift; sourceTree = "<group>"; };
 		CAC153611C9E23CD00000146 /* EventCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell3.xib; sourceTree = "<group>"; };
+		E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupLoginViewController.swift; sourceTree = "<group>"; };
+		E44EF6121CA235CE00297B4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 		E4CF14111C96039D00A271B9 /* MeetupVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupVenue.swift; sourceTree = "<group>"; };
 		E4CF14131C9680B900A271B9 /* MeetupMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupMember.swift; sourceTree = "<group>"; };
 		E4CF14151C9689D000A271B9 /* MeetupRsvp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupRsvp.swift; sourceTree = "<group>"; };
+		E4CF14171C9695DA00A271B9 /* EventDescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDescriptionController.swift; sourceTree = "<group>"; };
 		E4F4EFCB1C8CA3F500B480AC /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		E4F4EFCC1C8CA3F500B480AC /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
 		E4F4EFD01C8CD98500B480AC /* ParseAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIClient.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E44EF6131CA235CE00297B4D /* MapKit.framework in Frameworks */,
 				8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +245,8 @@
 				E4F4EFD81C8CF2BD00B480AC /* UserSearchViewController.swift */,
 				CA41C9C81C9013AD0045ECC9 /* EventsFilterViewController.swift */,
 				E4CF13EC1C94E2E300A271B9 /* ChatViewController.swift */,
+				E4CF14171C9695DA00A271B9 /* EventDescriptionController.swift */,
+				E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +308,7 @@
 		D11BFB1F0A481A2AC249FB79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E44EF6121CA235CE00297B4D /* MapKit.framework */,
 				62852FA7CA4FCC1D8897D92B /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -641,6 +651,7 @@
 				E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */,
 				CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */,
 				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
+				E4CF14181C9695DA00A271B9 /* EventDescriptionController.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
 				100341261C957509005C2D3B /* Subscribed.swift in Sources */,
 				E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */,
@@ -664,6 +675,7 @@
 				E4CF14041C95D0B100A271B9 /* RegexParser.swift in Sources */,
 				E4CF13EF1C94E6F100A271B9 /* Message.swift in Sources */,
 				E4CF13ED1C94E2E300A271B9 /* ChatViewController.swift in Sources */,
+				E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */,
 				E4F4EFDD1C90FC5A00B480AC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

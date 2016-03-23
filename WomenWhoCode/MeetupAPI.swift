@@ -22,6 +22,11 @@ class MeetupAPI{
         isOnline = false
     }
     
+    func login(){
+        print("Login in meetupapi client")
+        httpClient.login()
+    }
+    
     func fetchGroup(successCallback: (MeetupGroup) -> Void){
         httpClient.fetchGroup(successCallback: successCallback)
     }
@@ -33,6 +38,6 @@ class MeetupAPI{
     func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
         httpClient.fetchEventRsvps(urlParams, successCallback: successCallback)
     }
-
+    
     
 }

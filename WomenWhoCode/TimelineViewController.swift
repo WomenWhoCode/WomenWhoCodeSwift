@@ -19,10 +19,10 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     var posts : [Post] = []
     var filtered_posts : [Post] = []
     var refreshControl: UIRefreshControl!
-
+    
     @IBOutlet var tableView: UITableView!
     // filtered_posts and myEvents need to be added to timeleine
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -55,7 +55,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         self.refreshControl.addTarget(self, action: "getTopics", forControlEvents: UIControlEvents.ValueChanged)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -80,21 +80,20 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     }
     
     func setSubscribedTopics() {
-        for(var i = 0 ; i < topics.count; i++) {
+        for i in 0 ..< topics.count{
             if ((topics[i].auto_subscribe != nil && topics[i].auto_subscribe!)) {
                 subscribed_topics.append(topics[i])
                 continue
             }
-            for (var j = 0 ; j < subscription.count; j++) {
+            for j in 0 ..< subscription.count{
                 if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
                     subscribed_topics.append(topics[i])
                 }
             }
         }
-        print("\(subscribed_topics.count)")
         getPosts()
     }
-
+    
     
     func getMyEvents() {
         var predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
@@ -104,7 +103,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-
+                
                 if let objects = objects {
                     for object in objects {
                         self.eventId = object["event_id"] as! String
@@ -131,11 +130,10 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
             }
         }
     }
-
+    
     func getPosts() {
-         ParseAPI.sharedInstance.getPosts { (posts, error) -> () in
+        ParseAPI.sharedInstance.getPosts { (posts, error) -> () in
             self.posts = posts!
-            print("\(self.posts.count)")
             self.getFilteredPosts()
             self.refreshControl.endRefreshing()
             self.tableView.reloadData()
@@ -144,16 +142,13 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     }
     
     func getFilteredPosts() {
-        for(var i = 0 ; i < posts.count; i++) {
-            for (var j = 0 ; j < subscribed_topics.count; j++) {
+        for i in 0 ..< posts.count {
+            for j in 0 ..< subscribed_topics.count {
                 if(posts[i].feature_id == subscribed_topics[j].objectId) {
                     filtered_posts.append(posts[i])
                 }
             }
         }
-        print("\(filtered_posts.count)")
-         print("\(myEvents.count)")
-        
     }
     
     //Called whenever awesome button is pressed
@@ -161,13 +156,17 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         let indexPath = tableView.indexPathForCell(sender)!
         var awesomeCount = filtered_posts[indexPath.row].awesome_count!
         let postObjectId = filtered_posts[indexPath.row].objectId
-        awesomeCount = awesomeCount+1
+        if (onApplaud) {
+            awesomeCount = awesomeCount+1
+        } else {
+            awesomeCount = awesomeCount-1
+        }
         filtered_posts[indexPath.row].awesome_count = awesomeCount
         sender.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
         
         print("Updating awesome count of post with objectId: \(postObjectId)")
         
-        var query = PFQuery(className:"Post")
+        let query = PFQuery(className:"Post")
         query.getObjectInBackgroundWithId(postObjectId!) {
             (post: PFObject?, error: NSError?) -> Void in
             if error == nil && post != nil {
@@ -179,21 +178,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
                 print("Error in saving awesome count: \(error)")
             }
         }
-        
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     
@@ -214,7 +199,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
         cell.awesomeCountLabel.text = "AWESOME X \(awesomeCount)"
         cell.delegate = self
         
-        for (var i = 0 ; i < subscribed_topics.count; i++) {
+        for i in 0 ..< subscribed_topics.count {
             if( filtered_posts[indexPath.row].feature_id == subscribed_topics[i].objectId) {
                 
                 let postImageURL = NSURL(string: subscribed_topics[i].image_url!)
@@ -235,7 +220,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filtered_posts.count
-       }
+    }
     
     
 }

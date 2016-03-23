@@ -142,11 +142,8 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
 //                        event.eventFeature = self.features[cnt%self.features.count]
 //                        cnt = cnt + 1
                         self.savedEventId.append("")
-                        print("Event feature: \(event.eventFeature)")
+                        
                     }
-                    print("Finished retrieving events")
-                    
-                    
                     self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
                     
@@ -203,7 +200,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         customView = refreshContents[0] as! UIView
         customView.frame = refreshControl.bounds
         
-        for var i=0; i<customView.subviews.count; ++i {
+        for i in 0 ..< customView.subviews.count {
             labelsArray.append(customView.viewWithTag(i + 1) as! UILabel)
         }
         
@@ -234,7 +231,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
                         }
                 })
         })
-        
         print("Done with Animation1")
     }
     
@@ -261,7 +257,8 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
                         else {
                             self.isAnimating = false
                             self.currentLabelIndex = 0
-                            for var i=0; i<self.labelsArray.count; ++i {
+//                            for var i=0; i<self.labelsArray.count; ++i {
+                            for i in 0..<self.labelsArray.count {
                                 self.labelsArray[i].textColor = UIColor.blackColor()
                                 self.labelsArray[i].transform = CGAffineTransformIdentity
                             }
@@ -280,7 +277,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate{
         }
         
         let returnColor = colorsArray[currentColorIndex]
-        ++currentColorIndex
+        currentColorIndex += 1
         
         return returnColor
     }
@@ -506,7 +503,6 @@ extension EventsViewController: UISearchBarDelegate {
                 return range.location != NSNotFound
             })
         }
-        
         print("Filtered count \(filtered.count) searchText = \(searchText)")
         
         if(filtered.count >= 0) {

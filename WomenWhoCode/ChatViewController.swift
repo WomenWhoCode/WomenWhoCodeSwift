@@ -13,7 +13,7 @@ class ChatViewController: SLKTextViewController {
     
     //CellID
     let messageCellId = "WWC_MessageCell"
-    let generalChannel = "C0PBTN49W"
+    var channelId: String!
     
     var messages:[Message] = []
     var usersDict:[String:SlackUser] = [:]
@@ -40,7 +40,7 @@ class ChatViewController: SLKTextViewController {
     
     func getMessages(){
         print("Get message for channel")
-        SlackAPI.sharedInstance.getChannelHistory(generalChannel, successCallback: loadMessages)
+        SlackAPI.sharedInstance.getChannelHistory(channelId, successCallback: loadMessages)
     }
     
     func loadUsers(users: [SlackUser]){
