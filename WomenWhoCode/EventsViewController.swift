@@ -526,7 +526,10 @@ extension EventsViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
         self.view.endEditing(true)
+        searchBar.text = ""
         searchBar.resignFirstResponder()
+        
+        tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -546,7 +549,7 @@ extension EventsViewController: UISearchBarDelegate {
                 return range.location != NSNotFound
             })
         }
-        print("Filtered count \(filtered.count) searchText = \(searchText)")
+        //print("Filtered count \(filtered.count) searchText = \(searchText)")
         
         if(filtered.count >= 0) {
             searchActive = true
