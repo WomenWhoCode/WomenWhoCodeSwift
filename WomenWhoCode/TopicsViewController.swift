@@ -92,7 +92,6 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     //When follow button is pressed on a cell
     func topicCellDelegate(sender: TopicCell, onFollow: Bool) {
         let indexPath = tableView.indexPathForCell(sender)!
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TopicCell
         let section = indexPath.section
         let row = indexPath.row
         
