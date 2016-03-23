@@ -93,6 +93,21 @@ class MeetupAPIClient {
         }
     }
     
+    func setOauthToken(){
+        if let user = User.currentUser{
+            user.meetupAuthToken = self.oauthToken
+            User.currentUser = user
+        }
+    }
+    
+    func getOauthTokenFromUser(){
+        if let user = User.currentUser{
+            if user.meetupAuthToken != nil && user.meetupAuthToken?.characters.count > 0{
+                self.oauthToken = user.meetupAuthToken!
+            }
+        }
+    }
+    
     
     //Logged in User Functions ***********************************************************************
     
@@ -112,6 +127,7 @@ class MeetupAPIClient {
             scope: "profile_edit rsvp ageless reporting", state:"MEETUP",
             success: { credential, response, parameters in
                 self.oauthToken = credential.oauth_token
+                self.setOauthToken()
                 print("Meetup Auth token: \(self.oauthToken)")
                 self.getUser()
             },

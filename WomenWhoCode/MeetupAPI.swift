@@ -19,6 +19,7 @@ class MeetupAPI{
     
     init(){
         httpClient = MeetupAPIClient()
+        httpClient.getOauthTokenFromUser()
         isOnline = false
     }
     

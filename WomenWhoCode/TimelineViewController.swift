@@ -29,7 +29,6 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         tableView.delegate = self
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
-        
         //Refresh Control
         setUpRefreshControl()
         
@@ -103,7 +102,6 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                
                 if let objects = objects {
                     for object in objects {
                         self.eventId = object["event_id"] as? String
