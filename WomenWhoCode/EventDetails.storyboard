@@ -85,7 +85,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="professional" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-Fv-l52">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-Fv-l52">
                                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -449,8 +449,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="default_user_icon" width="192" height="192"/>
         <image name="gg_bridge3" width="1024" height="684"/>
         <image name="meetup_icon" width="64" height="64"/>
-        <image name="professional" width="224" height="225"/>
     </resources>
 </document>
