@@ -13,14 +13,14 @@ import Parse
 
 class EventCell2: UITableViewCell {
     
-    var javaImage = "Java-60.png"
-    var iosImage = "iOS2-60.png"
-    var jsImage = "JS-60.png"
-    var rubyImage = "Ruby-60.png"
-    var pythonImage = "Python-60.png"
-    var mobileDevImage = "MobileDev-60.png"
-    var codeImage = "Code-60.png"
-    var androidImage = "Android-60.png"
+    var javaImage = "JavaTeal-60.png"
+    var iosImage = "iOSTeal-60.png"
+    var jsImage = "JSTeal-60.png"
+    var rubyImage = "RubyTeal-60.png"
+    var pythonImage = "PythonTeal-60.png"
+    var mobileDevImage = "MobileDevTeal-60.png"
+    var codeImage = "CodeTeal-60.png"
+    var androidImage = "AndroidTeal-60.png"
     var wwcImage = "wwc_icon.png"
     
     
@@ -67,7 +67,6 @@ class EventCell2: UITableViewCell {
     
     //["Java","Ruby","iOS","Android","JS","Python"]
     func setEventImage(feature: String) {
-        print("Feature: \(feature)")
         switch feature {
         case "iOS": eventImageView.image = UIImage(named: iosImage)
         case "Java": eventImageView.image = UIImage(named: javaImage)

@@ -139,11 +139,9 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
     
     //Retrieve Events from Parse DB
     func retrieveEvents() {
-        print("In retrieve Events")
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
             if error == nil {
                 if let events = events {
-                    
                     if self.isMoreDataLoading == true {
                         self.events = Event.mergeEvents(self.events, additionalEvents: events)
                         self.isMoreDataLoading = false
@@ -152,16 +150,12 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
                         self.events = events
                     }
                     
-                    var cnt = 0
-                    
-                    for event in self.events {
+                    for _ in self.events {
                         self.savedEventId.append("")
-                        
                     }
                     self.refreshControl.endRefreshing()
                     self.loadingMoreView!.stopAnimating()
                     self.tableView.reloadData()
-                    
                 }
                 
             }
@@ -195,8 +189,8 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
         refreshControl.backgroundColor = UIColor.clearColor()
         refreshControl.tintColor = UIColor.clearColor()
         
-        var refreshText = "Fetching new Events"
-        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        let refreshText = "Fetching new Events"
+        let attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
         
         self.refreshControl.attributedTitle = NSAttributedString(string: refreshText, attributes: attrs)
         self.refreshControl!.tintColor = Constants.Color.Teal.light
@@ -236,7 +230,7 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
                     self.labelsArray[self.currentLabelIndex].textColor = UIColor.blackColor()
                     
                     }, completion: { (finished) -> Void in
-                        ++self.currentLabelIndex
+                        self.currentLabelIndex += 1
                         
                         if self.currentLabelIndex < self.labelsArray.count {
                             self.animateRefreshStep1()
@@ -301,7 +295,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
     func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate)->String {
         
         let event = EKEvent(eventStore: eventStore)
-        var success = false
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
@@ -309,7 +302,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
         
         do {
             try eventStore.saveEvent(event, span: .ThisEvent, commit: true)
-            success = true
             return event.eventIdentifier
             
         } catch {

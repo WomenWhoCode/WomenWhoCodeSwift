@@ -17,6 +17,7 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     var other_topics :[Feature] = []
     var section_headers = ["Subscribed", "Recommended", "All Topics"]
     let loggedInUser = "h0VjEs2aql"
+    var topicSections:[[Feature]]!
     
     var subscription : [Subscribed] = []
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
+        topicSections = [subscribed_topics, recommended_topics, other_topics]
+        SlackAPI.sharedInstance.login()
         getTopics()
     }
     
@@ -65,13 +68,13 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     }
     
     func setSubscribedTopics() {
-        for(var i = 0 ; i < topics.count; i++) {
+        for i in 0 ..< topics.count {
             var added = false
             if ((topics[i].auto_subscribe != nil && topics[i].auto_subscribe!)) {
                 subscribed_topics.append(topics[i])
                 continue
             }
-            for (var j = 0 ; j < subscription.count; j++) {
+            for j in 0 ..< subscription.count{
                 if(subscription[j].feature_id == topics[i].objectId && subscription[j].subscribe != nil && subscription[j].subscribe!) {
                     subscribed_topics.append(topics[i])
                     added = true
@@ -85,28 +88,50 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
                 other_topics.append(topics[i])
             }
         }
+        topicSections = [subscribed_topics, recommended_topics, other_topics]
         print("subscribed: \(subscribed_topics.count), recommended:  \(recommended_topics.count),other:  \(other_topics.count)")
         tableView.reloadData()
     }
     
-    //When follow button is pressed on a cell
+    //When subscribe/unsubscribe button is pressed on a cell
     func topicCellDelegate(sender: TopicCell, onFollow: Bool) {
         let indexPath = tableView.indexPathForCell(sender)!
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TopicCell
         let section = indexPath.section
         let row = indexPath.row
+        var subscribed = true
+        var recommended = false
         
-        //Update recommended or other list accordingly
-        //Recommended section
+        
+        //Subscribed section
+        if section == 0 {
+            //On unsubscribe, move the topic to recommended list
+            let selectedTopic = subscribed_topics[row]
+            let featureId = selectedTopic.objectId
+            recommended_topics.append(selectedTopic)
+            subscribed = false
+            recommended = true
+            
+            //print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: { (success, error) -> () in
+                if success == true {
+                    //print("Added topic to subscribed list")
+                }
+            })
+            subscribed_topics.removeAtIndex(row)
+            
+        }
+        
         if section == 1 {
             let selectedTopic = recommended_topics[row]
             let featureId = selectedTopic.objectId
             subscribed_topics.append(selectedTopic)
+            subscribed = true
+            recommended = false
             
-            print("featureId: \(featureId)")
-            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+            //print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: { (success, error) -> () in
                 if success == true {
-                    print("Added topic to subscribed list")
+                    //print("Added topic to subscribed list")
                 }
             })
             recommended_topics.removeAtIndex(row)
@@ -115,16 +140,16 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
             let selectedTopic = other_topics[row]
             let featureId = other_topics[row].objectId
             subscribed_topics.append(selectedTopic)
+            subscribed = true
+            recommended = false
             
-            print("featureId: \(featureId)")
-            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended,completion: { (success, error) -> () in
                 if success == true {
-                    print("Added topic to subscribed list")
+                    //print("Added topic to subscribed list")
                 }
             })
             other_topics.removeAtIndex(row)
         }
-        
         tableView.reloadData()
     }
     
@@ -137,17 +162,14 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("TopicCell", forIndexPath: indexPath) as! TopicCell
         if(indexPath.section == 0) {
             cell.feature = subscribed_topics[indexPath.row]
-            cell.followButton.hidden = true
-            
-            
+            cell.followButton.titleLabel!.text = "Unsubscribe"
         } else if(indexPath.section == 1) {
             cell.feature = recommended_topics[indexPath.row]
-            cell.followButton.hidden = false
+            cell.followButton.titleLabel!.text = "Subscribe"
             
         } else {
             cell.feature = other_topics[indexPath.row]
-            cell.followButton.hidden = false
-            
+            cell.followButton.titleLabel!.text = "Subscribe"
         }
         cell.delegate = self
         
@@ -155,7 +177,8 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      //  showChannel(topics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
+        let selectedTopics = topicSections[indexPath.section]
+        showChannel(selectedTopics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -189,9 +212,6 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
                    titleForHeaderInSection section: Int) -> String? {
         return section_headers[section]
     }
-    
-    
-    
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import SlackTextViewController
 
 class ChatViewController: SLKTextViewController {
@@ -55,6 +56,13 @@ class ChatViewController: SLKTextViewController {
         self.tableView.reloadData()
     }
     
+    override func didPressRightButton(sender: AnyObject!) {
+        SlackAPI.sharedInstance.writeToChannel(self.channelId, textString: self.textView.text) { (message) in
+            self.messages.insert(message, atIndex: 0)
+            self.tableView.reloadData()
+        }
+        super.didPressRightButton(sender)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

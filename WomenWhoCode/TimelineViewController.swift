@@ -42,8 +42,8 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         refreshControl.backgroundColor = UIColor.clearColor()
         refreshControl.tintColor = UIColor.clearColor()
         
-        var refreshText = "Fetching new feed"
-        var attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        let refreshText = "Fetching new feed"
+        let attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
         
         self.refreshControl.attributedTitle = NSAttributedString(string: refreshText, attributes: attrs)
         self.refreshControl!.tintColor = Constants.Color.Teal.light
@@ -96,8 +96,8 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     
     
     func getMyEvents() {
-        var predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
-        var userEventsquery = PFQuery(className: "UserEvents", predicate: predicate)
+        let predicate = NSPredicate(format:"user_id == '\(loggedInUserId)'")
+        let userEventsquery = PFQuery(className: "UserEvents", predicate: predicate)
         
         userEventsquery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -106,7 +106,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
                 
                 if let objects = objects {
                     for object in objects {
-                        self.eventId = object["event_id"] as! String
+                        self.eventId = object["event_id"] as? String
                         
                         ParseAPI.sharedInstance.getEventWithEventId(self.eventId!, completion: { (event, error) -> () in
                             if error == nil {

@@ -25,10 +25,19 @@ class Message: NSObject {
     }
     
     init(dict: JSON){
+        super.init()
         type = dict["type"].string
         userId = dict["user"].string
         text = dict["text"].string
-        timestamp = dict["ts"].string
+        timestamp = getDate(dict["ts"].string!).formatTo("MMM dd, h:mma")
+    }
+    
+    func getDate(epoch: String)-> NSDate{
+        let epochTs = Double(epoch)
+        if let epochTs = epochTs{
+            return NSDate(timeIntervalSince1970: epochTs)
+        }
+        return NSDate()
     }
     
     //Class Functions

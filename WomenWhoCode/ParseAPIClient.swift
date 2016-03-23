@@ -287,12 +287,14 @@ class ParseAPIClient{
     }
     
     
-    func updateSubscriptionForUser(userId: String?, featureId: String?, completion: (success:Bool? , error: NSError?) -> ()) {
+    func updateSubscriptionForUser(userId: String?, featureId: String?, subscribed: Bool?, recommended: Bool?, completion: (success:Bool? , error: NSError?) -> ()) {
         let query = PFObject(className:"Subscribe")
         query["user_id"] = userId
         query["feature_id"] = featureId
+        query["subscribed"] = subscribed
+        query["recommended"] = recommended
         query["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
-        query["feature"] = PFObject(withoutDataWithClassName: "Feature", objectId: featureId)
+        query["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
         
         query.saveInBackgroundWithBlock { (success:Bool?, error: NSError?) -> Void in
             if success == true {
@@ -304,6 +306,51 @@ class ParseAPIClient{
         }
     }
 
+    func updateExistingSubscriptionForUser(userId: String?, featureId: String?, subscribed: Bool?, recommended: Bool?, completion: (success:Bool? , error: NSError?) -> ()) {
+        
+        //print("user_id = \(userId!), feature_id = \(featureId!)")
+        let subscription = PFObject(className:"Subscribe")
+        let predicate = NSPredicate(format:"user_id == '\(userId!)' AND feature_id == '\(featureId!)'")
+        let query = PFQuery(className: "Subscribe", predicate: predicate)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                //print("Successfully retrieved \(objects!.count) profiles.")
+                
+                if objects!.count == 0 {
+                    subscription["user_id"] = userId
+                    subscription["feature_id"] = featureId
+                    subscription["subscribed"] = subscribed
+                    subscription["recommended"] = recommended
+                    subscription["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+                    subscription["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
+                    // This will save both myPost and myComment
+                    subscription.saveInBackground()
+                    
+                }
+                else {
+                    //Update existing subscription
+                    for object in objects! {
+                        object["user_id"] = userId
+                        object["feature_id"] = featureId
+                        object["subscribed"] = subscribed
+                        object["recommended"] = recommended
+                        object["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+                        object["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
+                        object.saveInBackground()
+                    }
+
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!)")
+            }
+        }
+
+    }
     
     //Features ***********************************************************************
     
