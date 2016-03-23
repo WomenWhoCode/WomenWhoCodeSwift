@@ -117,6 +117,30 @@ class ParseAPIClient{
         }
     }
     
+    func getUserWithUserId(objectID: String, completion: (user: User?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"User")
+        query.whereKey("objectId", equalTo: objectID)
+        
+        var user: User?
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        user = User(object: object)
+                    }
+                }
+                completion(user: user, error: nil)
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+                completion(user: nil, error: error)
+            }
+        }
+        
+    }
+    
     
 
     
@@ -240,7 +264,6 @@ class ParseAPIClient{
     }
     
     //Subscriptions ***********************************************************************
-    
     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Subscribe")
         var subscriptions: [Subscribed] = []
@@ -261,6 +284,24 @@ class ParseAPIClient{
             }
         }
         
+    }
+    
+    
+    func updateSubscriptionForUser(userId: String?, featureId: String?, completion: (success:Bool? , error: NSError?) -> ()) {
+        let query = PFObject(className:"Subscribe")
+        query["user_id"] = userId
+        query["feature_id"] = featureId
+        query["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+        query["feature"] = PFObject(withoutDataWithClassName: "Feature", objectId: featureId)
+        
+        query.saveInBackgroundWithBlock { (success:Bool?, error: NSError?) -> Void in
+            if success == true {
+                completion(success: success, error: nil)
+            }
+            else {
+                completion(success: false, error: error)
+            }
+        }
     }
 
     
@@ -287,5 +328,30 @@ class ParseAPIClient{
         }
         
     }
+    
+    func getFeatureWithFeatureId(objectID: String, completion: (feature: Feature?, error: NSError?) -> ()) {
+        let query = PFQuery(className:"Feature")
+        query.whereKey("objectId", equalTo: objectID)
+        
+        var feature: Feature?
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        feature = Feature(object: object)
+                    }
+                }
+                completion(feature: feature, error: nil)
+            } else {
+                completion(feature: nil, error: error)
+            }
+        }
+        
+    }
+    
+    
 
 }
