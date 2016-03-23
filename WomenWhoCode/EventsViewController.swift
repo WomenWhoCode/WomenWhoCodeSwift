@@ -157,7 +157,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
                     self.refreshControl.endRefreshing()
                     self.loadingMoreView!.stopAnimating()
                     self.tableView.reloadData()
-                    
                 }
                 
             }
