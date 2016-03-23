@@ -53,16 +53,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
-                                                <rect key="frame" x="5" y="190" width="361.5" height="17"/>
-                                                <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="xbI-0e-Wsd" appends="YES" id="I7a-qE-4xz"/>
-                                                </connections>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41K-Yw-Um6">
                                                 <rect key="frame" x="326" y="81" width="41" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -129,14 +119,32 @@
                                                     <constraint firstAttribute="height" constant="60" id="x9R-k7-B1F"/>
                                                 </constraints>
                                             </view>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-ga-ZP5">
+                                                <rect key="frame" x="5" y="194" width="361" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="S8w-ri-BLh"/>
+                                                </constraints>
+                                            </mapView>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
+                                                <rect key="frame" x="5" y="300" width="361.5" height="17"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="xbI-0e-Wsd" appends="YES" id="I7a-qE-4xz"/>
+                                                </connections>
+                                            </label>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="xU2-ga-ZP5" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="2Bw-fX-t3s"/>
                                             <constraint firstItem="41K-Yw-Um6" firstAttribute="trailing" secondItem="4UP-V3-FFH" secondAttribute="trailing" id="3pl-tH-ORu"/>
                                             <constraint firstAttribute="trailing" secondItem="4UP-V3-FFH" secondAttribute="trailing" constant="7" id="4D6-lD-GFi"/>
                                             <constraint firstItem="exE-WQ-uSF" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="2" id="5SC-Vk-4Kk"/>
                                             <constraint firstItem="wQL-u5-2ZH" firstAttribute="top" secondItem="fmZ-dI-hv9" secondAttribute="bottom" constant="8" id="6WK-PQ-Bil"/>
                                             <constraint firstItem="wQL-u5-2ZH" firstAttribute="leading" secondItem="r7J-H3-ca2" secondAttribute="leading" id="71Q-ah-4pm"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5l-He-P1K" secondAttribute="bottom" constant="10" id="7U4-EN-Mnq"/>
+                                            <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="xU2-ga-ZP5" secondAttribute="trailing" id="84d-1l-RJN"/>
                                             <constraint firstItem="fmZ-dI-hv9" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="9Kl-lE-oeA"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5l-He-P1K" secondAttribute="bottom" constant="5" id="Dhh-PK-Dqt"/>
                                             <constraint firstAttribute="trailing" secondItem="f5l-He-P1K" secondAttribute="trailing" constant="4" id="Efc-fp-PgA"/>
@@ -144,6 +152,7 @@
                                             <constraint firstItem="k9q-YB-Zkd" firstAttribute="leading" secondItem="r7J-H3-ca2" secondAttribute="leading" id="ID9-rO-dcC"/>
                                             <constraint firstAttribute="trailing" secondItem="k9q-YB-Zkd" secondAttribute="trailing" constant="-1" id="PVZ-iS-O8e"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="2" id="Psm-fM-0bo"/>
+                                            <constraint firstItem="xU2-ga-ZP5" firstAttribute="top" secondItem="wQL-u5-2ZH" secondAttribute="bottom" constant="8" id="RjE-LE-h1l"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="f5l-He-P1K" secondAttribute="trailing" id="SBO-8g-Y3P"/>
                                             <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="wQL-u5-2ZH" secondAttribute="bottom" constant="4" id="Tre-3b-3ym"/>
                                             <constraint firstAttribute="height" priority="250" constant="617" id="WEe-fn-ldF"/>
@@ -156,6 +165,7 @@
                                             <constraint firstItem="gfr-qx-2cC" firstAttribute="centerX" secondItem="r7J-H3-ca2" secondAttribute="centerX" id="idu-2x-zpe"/>
                                             <constraint firstItem="vQM-sa-ocz" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="j0g-43-lfQ"/>
                                             <constraint firstItem="41K-Yw-Um6" firstAttribute="top" secondItem="4UP-V3-FFH" secondAttribute="bottom" constant="1" id="kjb-Jt-mZ8"/>
+                                            <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="xU2-ga-ZP5" secondAttribute="bottom" constant="6" id="l28-PH-L1W"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="baseline" secondItem="exE-WQ-uSF" secondAttribute="baseline" id="nup-Wf-Orn"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5l-He-P1K" secondAttribute="bottom" constant="5" id="pfE-hS-bjM"/>
                                             <constraint firstItem="exE-WQ-uSF" firstAttribute="leading" secondItem="r7J-H3-ca2" secondAttribute="leading" constant="5" id="rFP-Sd-1bo"/>
@@ -164,11 +174,12 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="SBO-8g-Y3P"/>
                                                 <exclude reference="7U4-EN-Mnq"/>
                                                 <exclude reference="Dhh-PK-Dqt"/>
                                                 <exclude reference="Efc-fp-PgA"/>
+                                                <exclude reference="Tre-3b-3ym"/>
                                                 <exclude reference="tD3-xy-hgz"/>
-                                                <exclude reference="SBO-8g-Y3P"/>
                                             </mask>
                                         </variation>
                                     </view>

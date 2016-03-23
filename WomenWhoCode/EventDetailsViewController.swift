@@ -60,12 +60,14 @@ class EventDetailsViewController: UIViewController {
     }
     
     func setMeetupDescription(){
+        let labelFont = descriptionLabel.font
         do{
             let attrStr = try NSAttributedString(
                 data: (event.meetupEvent?.eventDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             descriptionLabel.attributedText = attrStr
+            descriptionLabel.font = labelFont
         }catch{
             
         }
