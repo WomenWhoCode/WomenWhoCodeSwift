@@ -197,6 +197,8 @@ class ParseAPIClient{
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Profile")
         var profiles: [Profile] = []
+        query.orderByDescending("updatedAt")
+        //query.limit = 10
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
