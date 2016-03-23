@@ -21,6 +21,10 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
     var refreshControl: UIRefreshControl!
     
     @IBOutlet var tableView: UITableView!
+    
+    //Emitter layer support
+    let particleEmitter = CAEmitterLayer()
+    
     // filtered_posts and myEvents need to be added to timeleine
     
     override func viewDidLoad() {
@@ -32,6 +36,8 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         
         //Refresh Control
         setUpRefreshControl()
+        
+        createParticles()
         
         getMyEvents()
         getTopics()
@@ -135,6 +141,7 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         ParseAPI.sharedInstance.getPosts { (posts, error) -> () in
             self.posts = posts!
             self.getFilteredPosts()
+            self.particleEmitter.birthRate = 0.0
             self.refreshControl.endRefreshing()
             self.tableView.reloadData()
         }
@@ -178,6 +185,46 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
                 print("Error in saving awesome count: \(error)")
             }
         }
+    }
+    
+    
+    //EmitterLayer animation
+    func createParticles() {
+        particleEmitter.emitterPosition = CGPoint(x: view.center.x, y: -96)
+        particleEmitter.emitterShape = kCAEmitterLayerLine
+        particleEmitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+        
+        
+        
+        let red = makeEmitterCellWithColor(UIColor.redColor())
+        let green = makeEmitterCellWithColor(UIColor.greenColor())
+        let blue = makeEmitterCellWithColor(UIColor.blueColor())
+        
+        particleEmitter.emitterCells = [red, green, blue]
+        view.layer.addSublayer(particleEmitter)
+        
+    }
+    
+    
+    
+    func makeEmitterCellWithColor(color: UIColor) -> CAEmitterCell {
+        
+        let cell = CAEmitterCell()
+        cell.birthRate = 3
+        cell.lifetime = 7.0 //
+        cell.lifetimeRange = 0
+        cell.velocity = 200
+        cell.velocityRange = 50
+        cell.emissionLongitude = CGFloat(M_PI)
+        cell.emissionRange = CGFloat(M_PI_4)
+        cell.spin = 2
+        cell.spinRange = 3
+        cell.scaleRange = 0.5
+        cell.scaleSpeed = -0.05
+        cell.contents = UIImage(named: "Autumn-30")?.CGImage
+        
+        return cell
+        
     }
 }
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
