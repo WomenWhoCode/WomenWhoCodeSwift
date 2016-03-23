@@ -18,6 +18,7 @@ class Feature: NSObject {
     var desc : String?
     var hex_color : String?
     var image_url :String?
+    var slackChannelId: String?
     
     override init() {
         super.init()
@@ -29,6 +30,7 @@ class Feature: NSObject {
         desc = ""
         hex_color = ""
         image_url = ""
+        slackChannelId = ""
     }
     
     init(dictionary: NSDictionary) {
@@ -39,6 +41,7 @@ class Feature: NSObject {
         desc = dictionary["description"] as? String
         hex_color = dictionary["hex_color"] as? String
         image_url = dictionary["image_url"] as? String
+        slackChannelId = dictionary["slackchannel_id"] as? String
     }
     
     init(object: PFObject) {
@@ -50,6 +53,6 @@ class Feature: NSObject {
         desc = object["description"] as? String
         hex_color = object["hex_color"] as? String
         image_url = object["image_url"] as? String
-
+        slackChannelId = object["slackchannel_id"] as? String
     }
 }

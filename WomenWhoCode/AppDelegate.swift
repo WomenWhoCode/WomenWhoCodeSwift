@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-        //        SlackAPI.sharedInstance.login()
         initializeTabBar()
         return true
     }
@@ -60,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         //Timeline Page
         let timelineNavigationController = storyboard4.instantiateViewControllerWithIdentifier("timelineNavController") as! UINavigationController
         _ = timelineNavigationController.topViewController as! TimelineViewController
-        timelineNavigationController.tabBarItem.title = "Timeline"
+        timelineNavigationController.tabBarItem.title = "Feed"
         timelineNavigationController.tabBarItem.image = UIImage(named:"Timeline-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "timeline")
         
         let storyboard5 = UIStoryboard(name: "Topics", bundle: nil)
@@ -106,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
                 return false
             }
             
-            let fromIndex = tabViewController?.indexOf(tabBarController.selectedViewController!)
+            _ = tabViewController?.indexOf(tabBarController.selectedViewController!)
             let toIndex = tabViewController?.indexOf(viewController)
             
             UIView.transitionFromView(fromView, toView: toView, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (finished: Bool) -> Void in

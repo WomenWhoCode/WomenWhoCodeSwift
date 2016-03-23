@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Topics-->
@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pXZ-5j-c5G" id="Dbd-ct-qKE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFo-6x-56b">
@@ -44,16 +44,16 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
-                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddIcon" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-Dj-QDE">
-                                                            <rect key="frame" x="246" y="9" width="50" height="50"/>
+                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topic-subscribe-1" translatesAutoresizingMaskIntoConstraints="NO" id="PuN-Dj-QDE">
+                                                            <rect key="frame" x="269" y="21.5" width="25" height="25"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="iD1-xR-b0d"/>
-                                                                <constraint firstAttribute="width" constant="50" id="pm0-ki-Urb"/>
+                                                                <constraint firstAttribute="height" constant="25" id="iD1-xR-b0d"/>
+                                                                <constraint firstAttribute="width" constant="25" id="pm0-ki-Urb"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="PuN-Dj-QDE" secondAttribute="trailing" constant="8" id="5LQ-dg-R08"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PuN-Dj-QDE" secondAttribute="trailing" constant="10" id="5LQ-dg-R08"/>
                                                         <constraint firstItem="PuN-Dj-QDE" firstAttribute="centerY" secondItem="ZFo-6x-56b" secondAttribute="centerY" id="OC2-JK-Agy"/>
                                                         <constraint firstItem="dLr-24-ww4" firstAttribute="leading" secondItem="ZFo-6x-56b" secondAttribute="leading" constant="8" id="Rn5-YW-pKs"/>
                                                         <constraint firstItem="dLr-24-ww4" firstAttribute="centerY" secondItem="ZFo-6x-56b" secondAttribute="centerY" id="eGC-2b-Udd"/>
@@ -135,6 +135,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddIcon" width="256" height="256"/>
+        <image name="topic-subscribe-1" width="48" height="48"/>
     </resources>
 </document>

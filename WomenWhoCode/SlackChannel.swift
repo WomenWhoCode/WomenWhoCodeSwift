@@ -93,6 +93,10 @@ class SlackChannel: NSObject {
         }
         return slackChannels
     }
+    
+    override var description: String{
+        return "\(name) - \(channelId)"
+    }
 
     
 
