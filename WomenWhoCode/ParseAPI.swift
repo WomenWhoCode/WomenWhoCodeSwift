@@ -48,6 +48,10 @@ class ParseAPI{
         httpClient.getProfiles(completion)
     }
     
+    func getEventsForUser(userId: String, completion: (events: [Event]?, error: NSError?) -> ()){
+        httpClient.getEventsForUser(userId, completion: completion)
+    }
+    
     func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
         httpClient.getProfileWithUserId(objectID, completion: completion)
     }
