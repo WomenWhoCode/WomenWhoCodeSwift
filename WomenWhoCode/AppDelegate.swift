@@ -25,7 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         Parse.setApplicationId(appId, clientKey: clientKey)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         initializeTabBar()
+        initializeUser()
         return true
+    }
+    
+    func initializeUser(){
+        if User.currentUser == nil{
+            User.currentUser = User(basic: true)
+        }
     }
     
     func initializeTabBar() {

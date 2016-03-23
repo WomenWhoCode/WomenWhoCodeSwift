@@ -18,6 +18,7 @@ class SlackAPI{
     
     init(){
         httpClient = SlackAPIClient()
+        httpClient.getOauthTokenFromUser()
         isOnline = false
     }
     

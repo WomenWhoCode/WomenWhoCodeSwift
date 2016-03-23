@@ -29,8 +29,18 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
         topicSections = [subscribed_topics, recommended_topics, other_topics]
-        SlackAPI.sharedInstance.login()
+        connectSlack()
         getTopics()
+    }
+    
+    func connectSlack(){
+        if let user = User.currentUser{
+            if user.hasSlackAuth(){
+                print("Already authenticated User")
+            }else{
+                SlackAPI.sharedInstance.login()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
