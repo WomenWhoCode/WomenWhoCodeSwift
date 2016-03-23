@@ -46,6 +46,7 @@
 		CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC153611C9E23CD00000146 /* EventCell3.xib */; };
 		E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */; };
 		E44EF6131CA235CE00297B4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EF6121CA235CE00297B4D /* MapKit.framework */; };
+		E44EF6151CA2B19800297B4D /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44EF6141CA2B19800297B4D /* NSString+Extension.swift */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -141,6 +142,7 @@
 		CAC153611C9E23CD00000146 /* EventCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell3.xib; sourceTree = "<group>"; };
 		E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupLoginViewController.swift; sourceTree = "<group>"; };
 		E44EF6121CA235CE00297B4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E44EF6141CA2B19800297B4D /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				E4F4EFDA1C90F8BF00B480AC /* UIColor+extension.swift */,
 				E4F4EFDC1C90FC5A00B480AC /* Constants.swift */,
 				E4CF14031C95D0B100A271B9 /* RegexParser.swift */,
+				E44EF6141CA2B19800297B4D /* NSString+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				E4CF14161C9689D000A271B9 /* MeetupRsvp.swift in Sources */,
 				CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */,
 				CA62764A1C94F73A001C4C50 /* Feature.swift in Sources */,
+				E44EF6151CA2B19800297B4D /* NSString+Extension.swift in Sources */,
 				E4CF14181C9695DA00A271B9 /* EventDescriptionController.swift in Sources */,
 				CA0ABE4F1C8D177E00F2315D /* NSDate+extension.swift in Sources */,
 				100341261C957509005C2D3B /* Subscribed.swift in Sources */,

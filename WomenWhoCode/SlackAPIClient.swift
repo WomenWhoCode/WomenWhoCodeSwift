@@ -50,7 +50,7 @@ class SlackAPIClient {
         )
         oauthswift!.authorizeWithCallbackURL(
             NSURL(string: "womenwhocode://oauth-callback/slack")!,
-            scope: "channels:read,channels:history,users:read", state:"SLACK",
+            scope: "channels:read,channels:history,users:read,chat:write:user", state:"SLACK",
             success: { credential, response, parameters in
                 self.oauthToken = credential.oauth_token
             },
@@ -163,6 +163,29 @@ extension SlackAPIClient{
     }
     
     //Write to a channel
+    func writeToChannel(channelId: String, textString: String, successCallback: (Message?) -> Void){
+        oauthswift!.client.post("https://slack.com/api/chat.postMessage",
+                               parameters: ["token": oauthToken, "channel": channelId, "text": textString, "as_user": true],
+                               success: {
+                                data, response in
+                                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                                if let dataFromString = dataString!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                                    let jsonData = JSON(data: dataFromString)
+                                    //If json is .Dictionary
+                                    for (key,json):(String, JSON) in jsonData {
+                                        print("\(key): \(json)")
+//                                        if (key == "messages"){
+//                                            let messages = Message.initWithJSONArray(json.array!)
+//                                            successCallback(messages)
+//                                        }
+                                    }
+                                }
+            }
+            , failure: { error in
+                print(error)
+            }
+        )
+    }
     
     //Mentions and auto complete
     

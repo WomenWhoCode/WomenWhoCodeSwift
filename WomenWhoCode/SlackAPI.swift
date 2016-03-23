@@ -46,7 +46,9 @@ class SlackAPI{
     func getChannelHistory(channelId: String, successCallback: ([Message]) -> Void){
         httpClient.getChannelHistory(channelId, successCallback: successCallback)
     }
-
     
+    func writeToChannel(channelId: String, textString: String, successCallback: (Message?) -> Void){
+        httpClient.writeToChannel(channelId, textString: textString, successCallback: successCallback)
+    }
     
 }

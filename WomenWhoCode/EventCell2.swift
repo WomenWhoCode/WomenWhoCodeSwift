@@ -67,7 +67,6 @@ class EventCell2: UITableViewCell {
     
     //["Java","Ruby","iOS","Android","JS","Python"]
     func setEventImage(feature: String) {
-        print("Feature: \(feature)")
         switch feature {
         case "iOS": eventImageView.image = UIImage(named: iosImage)
         case "Java": eventImageView.image = UIImage(named: javaImage)
