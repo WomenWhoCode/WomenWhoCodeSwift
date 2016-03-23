@@ -54,9 +54,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5l-He-P1K">
-                                                <rect key="frame" x="5" y="190" width="361.5" height="16"/>
+                                                <rect key="frame" x="5" y="190" width="361.5" height="17"/>
                                                 <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <connections>
@@ -145,24 +145,30 @@
                                             <constraint firstAttribute="trailing" secondItem="k9q-YB-Zkd" secondAttribute="trailing" constant="-1" id="PVZ-iS-O8e"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="top" secondItem="k9q-YB-Zkd" secondAttribute="bottom" constant="2" id="Psm-fM-0bo"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="f5l-He-P1K" secondAttribute="trailing" id="SBO-8g-Y3P"/>
+                                            <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="wQL-u5-2ZH" secondAttribute="bottom" constant="4" id="Tre-3b-3ym"/>
                                             <constraint firstAttribute="height" priority="250" constant="617" id="WEe-fn-ldF"/>
                                             <constraint firstItem="gfr-qx-2cC" firstAttribute="centerY" secondItem="k9q-YB-Zkd" secondAttribute="centerY" id="Y5a-eS-1mt"/>
                                             <constraint firstAttribute="trailing" secondItem="wQL-u5-2ZH" secondAttribute="trailing" id="g2B-Vg-QEu"/>
                                             <constraint firstItem="fmZ-dI-hv9" firstAttribute="top" secondItem="vQM-sa-ocz" secondAttribute="bottom" constant="4" id="hKR-lQ-y0L"/>
+                                            <constraint firstItem="4UP-V3-FFH" firstAttribute="trailing" secondItem="f5l-He-P1K" secondAttribute="trailing" id="hL5-1E-Nxe"/>
                                             <constraint firstItem="k9q-YB-Zkd" firstAttribute="top" secondItem="r7J-H3-ca2" secondAttribute="top" id="hUJ-mz-JyR"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="trailing" constant="4" id="iK8-4R-DGl"/>
                                             <constraint firstItem="gfr-qx-2cC" firstAttribute="centerX" secondItem="r7J-H3-ca2" secondAttribute="centerX" id="idu-2x-zpe"/>
                                             <constraint firstItem="vQM-sa-ocz" firstAttribute="leading" secondItem="exE-WQ-uSF" secondAttribute="leading" id="j0g-43-lfQ"/>
                                             <constraint firstItem="41K-Yw-Um6" firstAttribute="top" secondItem="4UP-V3-FFH" secondAttribute="bottom" constant="1" id="kjb-Jt-mZ8"/>
                                             <constraint firstItem="4UP-V3-FFH" firstAttribute="baseline" secondItem="exE-WQ-uSF" secondAttribute="baseline" id="nup-Wf-Orn"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5l-He-P1K" secondAttribute="bottom" constant="5" id="pfE-hS-bjM"/>
                                             <constraint firstItem="exE-WQ-uSF" firstAttribute="leading" secondItem="r7J-H3-ca2" secondAttribute="leading" constant="5" id="rFP-Sd-1bo"/>
                                             <constraint firstItem="vQM-sa-ocz" firstAttribute="top" secondItem="exE-WQ-uSF" secondAttribute="bottom" constant="1" id="sMN-Ek-9gt"/>
-                                            <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="wQL-u5-2ZH" secondAttribute="bottom" constant="4" id="tD3-xy-hgz"/>
+                                            <constraint firstItem="f5l-He-P1K" firstAttribute="top" secondItem="wQL-u5-2ZH" secondAttribute="bottom" constant="5" id="tD3-xy-hgz"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="7U4-EN-Mnq"/>
+                                                <exclude reference="Dhh-PK-Dqt"/>
                                                 <exclude reference="Efc-fp-PgA"/>
+                                                <exclude reference="tD3-xy-hgz"/>
+                                                <exclude reference="SBO-8g-Y3P"/>
                                             </mask>
                                         </variation>
                                     </view>

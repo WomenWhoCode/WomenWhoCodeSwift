@@ -30,7 +30,6 @@ class EventDetailsViewController: UIViewController {
     let eventDescSegue = "eventDescSegue"
     let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)

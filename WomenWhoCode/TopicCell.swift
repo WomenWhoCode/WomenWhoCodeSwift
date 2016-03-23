@@ -25,8 +25,6 @@ class TopicCell: UITableViewCell {
             } else {
                 topicImage.image = UIImage(named: "languages")
             }
-          
-            print("feature title: \(feature.title!) hexcolor: \(feature.hex_color!)")
             topicCellView.backgroundColor = UIColor(hexString: feature.hex_color!)
             
             //self.backgroundColor = UIColor(hexString: feature.hex_color!)
