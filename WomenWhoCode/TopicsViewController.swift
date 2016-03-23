@@ -89,23 +89,45 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
         tableView.reloadData()
     }
     
-    //When follow button is pressed on a cell
+    //When subscribe/unsubscribe button is pressed on a cell
     func topicCellDelegate(sender: TopicCell, onFollow: Bool) {
         let indexPath = tableView.indexPathForCell(sender)!
         let section = indexPath.section
         let row = indexPath.row
+        var subscribed = true
+        var recommended = false
         
-        //Update recommended or other list accordingly
-        //Recommended section
+        
+        //Subscribed section
+        if section == 0 {
+            //On unsubscribe, move the topic to recommended list
+            let selectedTopic = subscribed_topics[row]
+            let featureId = selectedTopic.objectId
+            recommended_topics.append(selectedTopic)
+            subscribed = false
+            recommended = true
+            
+            //print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: { (success, error) -> () in
+                if success == true {
+                    //print("Added topic to subscribed list")
+                }
+            })
+            subscribed_topics.removeAtIndex(row)
+            
+        }
+        
         if section == 1 {
             let selectedTopic = recommended_topics[row]
             let featureId = selectedTopic.objectId
             subscribed_topics.append(selectedTopic)
+            subscribed = true
+            recommended = false
             
-            print("featureId: \(featureId)")
-            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+            //print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended, completion: { (success, error) -> () in
                 if success == true {
-                    print("Added topic to subscribed list")
+                    //print("Added topic to subscribed list")
                 }
             })
             recommended_topics.removeAtIndex(row)
@@ -114,10 +136,12 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
             let selectedTopic = other_topics[row]
             let featureId = other_topics[row].objectId
             subscribed_topics.append(selectedTopic)
+            subscribed = true
+            recommended = false
             
-            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+            ParseAPI.sharedInstance.updateExistingSubscriptionForUser(loggedInUser, featureId: featureId, subscribed: subscribed, recommended: recommended,completion: { (success, error) -> () in
                 if success == true {
-                    print("Added topic to subscribed list")
+                    //print("Added topic to subscribed list")
                 }
             })
             other_topics.removeAtIndex(row)
@@ -135,17 +159,14 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("TopicCell", forIndexPath: indexPath) as! TopicCell
         if(indexPath.section == 0) {
             cell.feature = subscribed_topics[indexPath.row]
-            cell.followButton.hidden = true
-            
-            
+            cell.followButton.titleLabel!.text = "Unsubscribe"
         } else if(indexPath.section == 1) {
             cell.feature = recommended_topics[indexPath.row]
-            cell.followButton.hidden = false
+            cell.followButton.titleLabel!.text = "Subscribe"
             
         } else {
             cell.feature = other_topics[indexPath.row]
-            cell.followButton.hidden = false
-            
+            cell.followButton.titleLabel!.text = "Subscribe"
         }
         cell.delegate = self
         
