@@ -192,8 +192,6 @@ class TimelineViewController: UIViewController, TimelineCellDelegate {
         particleEmitter.emitterShape = kCAEmitterLayerLine
         particleEmitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
         
-        
-        
         let red = makeEmitterCellWithColor(UIColor.redColor())
         let green = makeEmitterCellWithColor(UIColor.greenColor())
         let blue = makeEmitterCellWithColor(UIColor.blueColor())
@@ -229,6 +227,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.None;
         let row = indexPath.row
         let awesomeCount = filtered_posts[row].awesome_count!
         

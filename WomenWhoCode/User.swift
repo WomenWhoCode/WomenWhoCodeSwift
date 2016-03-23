@@ -77,7 +77,8 @@ class User: NSObject {
                 "username": self.username!,
                 "email": self.email!,
                 "slackAuthToken": self.slackAuthToken!,
-                "meetupAuthToken": self.meetupAuthToken!
+                "meetupAuthToken": self.meetupAuthToken!,
+                "particlesEnabled": "true"
         ]
     }
     
