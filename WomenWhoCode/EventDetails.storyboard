@@ -274,6 +274,7 @@
                         <outlet property="eventDate" destination="4UP-V3-FFH" id="wyy-LT-gB3"/>
                         <outlet property="eventImage" destination="k9q-YB-Zkd" id="uoG-NN-As6"/>
                         <outlet property="locationLabel" destination="vQM-sa-ocz" id="8Yd-p0-Gi2"/>
+                        <outlet property="mapView" destination="xU2-ga-ZP5" id="Qhh-3W-wdi"/>
                         <outlet property="nameLabel" destination="exE-WQ-uSF" id="jFy-ZZ-gwM"/>
                         <outlet property="networkLabel" destination="gfr-qx-2cC" id="5fj-m2-JHb"/>
                         <outlet property="rsvpView" destination="VPm-Oj-WHa" id="uZ7-04-bmE"/>
