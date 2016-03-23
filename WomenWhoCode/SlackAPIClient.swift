@@ -11,8 +11,7 @@ import OAuthSwift
 import SwiftyJSON
 
 class SlackAPIClient {
-    let clientId = "23398940453.26339368899"
-    let clientSecret = "143fc69c2b2c1007d1aa55f40c4d5e7b"
+    
     var oauthswift:OAuth2Swift?
     var oauthToken = ""
     let baseUrl = "https://slack.com/"
@@ -43,8 +42,8 @@ class SlackAPIClient {
     
     func login(){
             oauthswift = OAuth2Swift(
-            consumerKey:    clientId,
-            consumerSecret: clientSecret,
+            consumerKey:    Constants.Api.Slack.clientId,
+            consumerSecret: Constants.Api.Slack.clientSecret,
             authorizeUrl:   "https://slack.com/oauth/authorize",
             accessTokenUrl: "https://slack.com/api/oauth.access",
             responseType:   "code"

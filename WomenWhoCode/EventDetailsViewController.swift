@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class EventDetailsViewController: UIViewController {
+class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDelegate{
     
     
     @IBOutlet weak var userCollectionView: UICollectionView!
@@ -19,23 +21,27 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var rsvpView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     var event: Event!
     var rsvps:[MeetupMember] = []
+    var currentRegion:MKCoordinateRegion!
+    var mapManager:CLLocationManager!
+    var geocoder: CLGeocoder!
+    var eventAddress: String?
     
     //EventDescSegue
     let eventDescSegue = "eventDescSegue"
     let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         event.fetchMeetupEvent(setMeetupEvent)
         event.fetchEventRsvps(updateRsvps)
         initEvent()
+        setUpMap()
     }
     
     func initEvent(){
@@ -43,6 +49,26 @@ class EventDetailsViewController: UIViewController {
         descriptionLabel.text = event.eventDescription!
         locationLabel.text = event.location!
     }
+    
+    func setUpMap(){
+        geocoder = CLGeocoder()
+        
+        mapManager = CLLocationManager()
+        mapManager.delegate = self
+        checkLocationAuthorizationStatus()
+        mapManager.desiredAccuracy = kCLLocationAccuracyBest
+        mapManager.startUpdatingLocation()
+        
+        mapView.delegate = self
+        
+        let regionRadius: CLLocationDistance = 2000
+        //FixMe: Coordinate to User location
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(37.783333, -122.416667),
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
     
     func setMeetupEvent(meetupEvent: MeetupEvent){
         event.meetupEvent = meetupEvent
@@ -52,7 +78,27 @@ class EventDetailsViewController: UIViewController {
         networkLabel.text = meetupEvent.groupName
         eventDate.text = meetupEvent.eventDate
         setMeetupDescription()
+        showMeetupAddress()
         updateScrollheight()
+    }
+    
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            mapManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func showMeetupAddress(){
+        self.eventAddress = (self.event.meetupEvent?.venue?.description)!
+        geocoder.geocodeAddressString(eventAddress!,
+                                      completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                                        if let placemarks = placemarks{
+                                            self.mapView.addAnnotation(MKPlacemark(placemark: placemarks[0]))
+                                            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+                                        }
+        })
     }
     
     func updateRsvps(members: [MeetupMember]){
@@ -61,12 +107,14 @@ class EventDetailsViewController: UIViewController {
     }
     
     func setMeetupDescription(){
+        let labelFont = descriptionLabel.font
         do{
             let attrStr = try NSAttributedString(
                 data: (event.meetupEvent?.eventDescription!.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
             descriptionLabel.attributedText = attrStr
+            descriptionLabel.font = labelFont
         }catch{
             
         }
@@ -92,7 +140,6 @@ class EventDetailsViewController: UIViewController {
         
         self.scrollView.contentSize = self.contentView.frame.size
         self.scrollView.layoutIfNeeded()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +151,19 @@ class EventDetailsViewController: UIViewController {
         self.performSegueWithIdentifier(eventDescSegue, sender: sender)
     }
     
+    
+    @IBAction func onMapTap(sender: UITapGestureRecognizer) {
+        if let eventAddress = self.eventAddress{
+        let encodedAddress = eventAddress.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.symbolCharacterSet())!
+        let mapUrl = "http://maps.apple.com/?address=\(encodedAddress)"
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"http://maps.apple.com/")!)) {
+            UIApplication.sharedApplication().openURL(NSURL(string: mapUrl)!)
+        } else {
+            print("Error trying to open http://maps.apple.com/");
+        }
+        }
+    }
+    
     //Segue into Detail View
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == eventDescSegue {
@@ -113,8 +173,6 @@ class EventDetailsViewController: UIViewController {
             }
         }
     }
-    
-    
     
     func showEventDetails(event: Event){
         let eventDetailsStoryboard = UIStoryboard(name: "EventDetails", bundle: nil)
@@ -155,8 +213,6 @@ extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
             meetupController,
             animated: true,
             completion: nil)
-        
-        
     }
     
     func adaptivePresentationStyleForPresentationController(

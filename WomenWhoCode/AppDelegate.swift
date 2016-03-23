@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId(appId, clientKey: clientKey)
-//        SlackAPI.sharedInstance.login()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         initializeTabBar()
         return true
     }
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let connectNavigationController = storyboard2.instantiateViewControllerWithIdentifier("connectNavController") as! UINavigationController
         _ = connectNavigationController.topViewController as! UserSearchViewController
         connectNavigationController.tabBarItem.title = "User Search"
-        connectNavigationController.tabBarItem.image = UIImage(named:"Find User-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "search")
+        connectNavigationController.tabBarItem.image = UIImage(named:"UserSearch-30")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)//UIImage(named: "search")
         
         //Profile Page
         let storyboard3 = UIStoryboard(name: "Profile", bundle: nil)
@@ -90,8 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             UITabBar.appearance().tintColor = Constants.Color.Teal.light
             UITabBar.appearance().barTintColor = UIColor.blackColor()
         }
-        
-        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
@@ -116,9 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             }
             
         }
-        
         return true
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {

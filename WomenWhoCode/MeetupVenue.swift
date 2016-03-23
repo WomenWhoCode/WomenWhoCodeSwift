@@ -54,6 +54,8 @@ class MeetupVenue: NSObject {
     }
     
     override var description: String{
-        return "\(venueName), \(address1), \(city), \(state)"
+        let addressArray = [address1, city, state, localizedCountryName]
+        let cleanAddress = addressArray.flatMap { $0 }
+        return cleanAddress.joinWithSeparator(", ")
     }
 }
