@@ -139,7 +139,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
     
     //Retrieve Events from Parse DB
     func retrieveEvents() {
-        print("In retrieve Events")
         ParseAPI.sharedInstance.getEvents() {(events,error)-> () in
             if error == nil {
                 if let events = events {

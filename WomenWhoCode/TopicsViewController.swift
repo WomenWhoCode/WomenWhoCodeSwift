@@ -17,6 +17,7 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
     var other_topics :[Feature] = []
     var section_headers = ["Subscribed", "Recommended", "All Topics"]
     let loggedInUser = "h0VjEs2aql"
+    var topicSections:[[Feature]]!
     
     var subscription : [Subscribed] = []
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
+        topicSections = [subscribed_topics, recommended_topics, other_topics]
+        SlackAPI.sharedInstance.login()
         getTopics()
     }
     
@@ -85,6 +88,7 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
                 other_topics.append(topics[i])
             }
         }
+        topicSections = [subscribed_topics, recommended_topics, other_topics]
         print("subscribed: \(subscribed_topics.count), recommended:  \(recommended_topics.count),other:  \(other_topics.count)")
         tableView.reloadData()
     }
@@ -146,7 +150,6 @@ class TopicsViewController: UIViewController,TopicCellDelegate {
             })
             other_topics.removeAtIndex(row)
         }
-        
         tableView.reloadData()
     }
     
@@ -174,7 +177,8 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      //  showChannel(topics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
+        let selectedTopics = topicSections[indexPath.section]
+        showChannel(selectedTopics[indexPath.row]) //FixMe: I should move out of here and within the topic details page. Also without section this won't work. Needs some work here
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -208,9 +212,6 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
                    titleForHeaderInSection section: Int) -> String? {
         return section_headers[section]
     }
-    
-    
-    
 }
 
 
