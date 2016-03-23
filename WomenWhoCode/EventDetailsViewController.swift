@@ -30,6 +30,7 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
     var currentRegion:MKCoordinateRegion!
     var mapManager:CLLocationManager!
     var geocoder: CLGeocoder!
+    var eventAddress: String?
     
     //EventDescSegue
     let eventDescSegue = "eventDescSegue"
@@ -90,7 +91,8 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
     }
     
     func showMeetupAddress(){
-        geocoder.geocodeAddressString((self.event.meetupEvent?.venue?.description)!,
+        self.eventAddress = (self.event.meetupEvent?.venue?.description)!
+        geocoder.geocodeAddressString(eventAddress!,
                                       completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                                         if let placemarks = placemarks{
                                             self.mapView.addAnnotation(MKPlacemark(placemark: placemarks[0]))
@@ -138,7 +140,6 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
         
         self.scrollView.contentSize = self.contentView.frame.size
         self.scrollView.layoutIfNeeded()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,6 +149,19 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
     
     @IBAction func ondescTap(sender: UITapGestureRecognizer) {
         self.performSegueWithIdentifier(eventDescSegue, sender: sender)
+    }
+    
+    
+    @IBAction func onMapTap(sender: UITapGestureRecognizer) {
+        if let eventAddress = self.eventAddress{
+        let encodedAddress = eventAddress.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.symbolCharacterSet())!
+        let mapUrl = "http://maps.apple.com/?address=\(encodedAddress)"
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"http://maps.apple.com/")!)) {
+            UIApplication.sharedApplication().openURL(NSURL(string: mapUrl)!)
+        } else {
+            print("Error trying to open http://maps.apple.com/");
+        }
+        }
     }
     
     //Segue into Detail View
@@ -170,7 +184,6 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
     
     @IBAction func onRSVPYesTap(sender: UIButton) {
         showMeetupConnect(sender)
-        
     }
     
     @IBAction func onRSVPNoTap(sender: UIButton) {
@@ -200,8 +213,6 @@ extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
             meetupController,
             animated: true,
             completion: nil)
-        
-        
     }
     
     func adaptivePresentationStyleForPresentationController(
