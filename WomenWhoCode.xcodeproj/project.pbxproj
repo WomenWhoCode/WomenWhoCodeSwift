@@ -44,6 +44,7 @@
 		CAC153621C9E23CD00000146 /* EventCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC153601C9E23CD00000146 /* EventCell3.swift */; };
 		CAC153631C9E23CD00000146 /* EventCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC153611C9E23CD00000146 /* EventCell3.xib */; };
 		E44EF6111CA1D4A400297B4D /* MeetupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */; };
+		E44EF6131CA235CE00297B4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EF6121CA235CE00297B4D /* MapKit.framework */; };
 		E46EB5521C854C7000E9C41B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5511C854C7000E9C41B /* AppDelegate.swift */; };
 		E46EB5541C854C7000E9C41B /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5531C854C7000E9C41B /* LandingViewController.swift */; };
 		E46EB55A1C854C7000E9C41B /* WomenWhoCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46EB5581C854C7000E9C41B /* WomenWhoCode.xcdatamodeld */; };
@@ -137,6 +138,7 @@
 		CAC153601C9E23CD00000146 /* EventCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell3.swift; sourceTree = "<group>"; };
 		CAC153611C9E23CD00000146 /* EventCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell3.xib; sourceTree = "<group>"; };
 		E44EF6101CA1D4A400297B4D /* MeetupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupLoginViewController.swift; sourceTree = "<group>"; };
+		E44EF6121CA235CE00297B4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E46EB54E1C854C7000E9C41B /* WomenWhoCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenWhoCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46EB5511C854C7000E9C41B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46EB5531C854C7000E9C41B /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E44EF6131CA235CE00297B4D /* MapKit.framework in Frameworks */,
 				8A7A6F289034ED9D2D4F895D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +308,7 @@
 		D11BFB1F0A481A2AC249FB79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E44EF6121CA235CE00297B4D /* MapKit.framework */,
 				62852FA7CA4FCC1D8897D92B /* Pods.framework */,
 			);
 			name = Frameworks;

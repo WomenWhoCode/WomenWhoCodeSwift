@@ -11,13 +11,8 @@ import Parse
 
 class ParseAPIClient{
     
-    //API KEYS
-    
-    var appId = "sW8VXwGAEeq8FYaKMgcbPfliodb8XA7wx0QXLdx9"
-    var clientKey = "HTVvl8X9szeaOlXzI8jEUx0MENGlzDTrCIrPCnIy"
-    
     init(){
-        Parse.setApplicationId(appId, clientKey: clientKey)
+        Parse.setApplicationId(Constants.Api.Parse.appId, clientKey: Constants.Api.Parse.clientKey)
     }
     
     func query(className: String) -> PFQuery{
