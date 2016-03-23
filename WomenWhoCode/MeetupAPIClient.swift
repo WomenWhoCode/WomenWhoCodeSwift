@@ -24,7 +24,7 @@ class MeetupAPIClient {
     //Get Event Group
     func fetchGroup(groupName: String = "Women-Who-Code-SF", successCallback: (MeetupGroup) -> Void){
         let requestUrl = "\(baseUrl)/\(groupName)"
-
+        
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in
@@ -42,8 +42,8 @@ class MeetupAPIClient {
     }
     
     func fetchEvent(urlParams: [String: String], successCallback: (MeetupEvent) -> Void){
-        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/ngchrlyvfbcc"
-//        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
+        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/227524966"
+        //        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in
@@ -60,7 +60,7 @@ class MeetupAPIClient {
     }
     
     func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
-        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/ngchrlyvfbcc/rsvps"
+        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/227524966/rsvps"
         //        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
@@ -77,11 +77,50 @@ class MeetupAPIClient {
         }
         
     }
-}
-
-//Calls for Logged in User
-extension MeetupAPIClient{
-    func loginUser(){
-        
+    
+    
+    func getUser(){
+        let requestUrl = "https://api.meetup.com/2/member/self/?access_token=\(self.oauthToken)"
+        Alamofire.request(.GET, requestUrl, parameters: parameters)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .Success:
+                    print(response.result.value)
+                case .Failure(let error):
+                    print("Error in fetchEventRsvp: \(error)")
+                }
+        }
     }
+    
+    
+    //Logged in User Functions ***********************************************************************
+    
+    func login(){
+        print("MeetupLogin Connect LOGIN")
+        print("AUTH BEFOERE: \(self.oauthToken)")
+        oauthswift = OAuth2Swift(
+            consumerKey:    Constants.Api.Meetup.Consumer.key,
+            consumerSecret: Constants.Api.Meetup.Consumer.secret,
+            authorizeUrl:   "https://secure.meetup.com/oauth2/authorize",
+            accessTokenUrl: "https://secure.meetup.com/oauth2/access",
+            responseType:   "code"
+        )
+        oauthswift!.authorizeWithCallbackURL(
+            NSURL(string: "womenwhocode://oauth-callback/meetup")!,
+//            scope: "basic, group_join_edit, profile_edit, reporting, rsvp", state:"MEETUP",
+            scope: "profile_edit rsvp ageless reporting", state:"MEETUP",
+            success: { credential, response, parameters in
+                self.oauthToken = credential.oauth_token
+                print("Meetup Auth token: \(self.oauthToken)")
+                self.getUser()
+            },
+            failure: { error in
+                print(error.localizedDescription, terminator: "")
+                
+            }
+        )
+    }
+    
+    //Logged in User Functions ***********************************************************************
 }

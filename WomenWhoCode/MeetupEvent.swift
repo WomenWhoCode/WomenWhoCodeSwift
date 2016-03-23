@@ -94,7 +94,6 @@ class MeetupEvent: NSObject {
         waitlistCount = dict["waitlist_count"] as? Int
         eventDescription = dict["description"] as? String
         eventVisibility = dict["visibility"] as? String
-        print(dict["venue"])
         venue = MeetupVenue(dictionary: dict["venue"] as? NSDictionary)
         if let group = dict["group"] as? NSDictionary{
             groupName = group["name"] as? String
