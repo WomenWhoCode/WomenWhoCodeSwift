@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicsViewController: UIViewController {
+class TopicsViewController: UIViewController,TopicCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     var topics :[Feature] = []
@@ -16,6 +16,7 @@ class TopicsViewController: UIViewController {
     var recommended_topics :[Feature] = []
     var other_topics :[Feature] = []
     var section_headers = ["Subscribed", "Recommended", "All Topics"]
+    let loggedInUser = "h0VjEs2aql"
     
     var subscription : [Subscribed] = []
     override func viewDidLoad() {
@@ -87,6 +88,46 @@ class TopicsViewController: UIViewController {
         print("subscribed: \(subscribed_topics.count), recommended:  \(recommended_topics.count),other:  \(other_topics.count)")
         tableView.reloadData()
     }
+    
+    //When follow button is pressed on a cell
+    func topicCellDelegate(sender: TopicCell, onFollow: Bool) {
+        let indexPath = tableView.indexPathForCell(sender)!
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TopicCell
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        //Update recommended or other list accordingly
+        //Recommended section
+        if section == 1 {
+            let selectedTopic = recommended_topics[row]
+            let featureId = selectedTopic.objectId
+            subscribed_topics.append(selectedTopic)
+            
+            print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+                if success == true {
+                    print("Added topic to subscribed list")
+                }
+            })
+            recommended_topics.removeAtIndex(row)
+        }
+        if(section == 2) {
+            let selectedTopic = other_topics[row]
+            let featureId = other_topics[row].objectId
+            subscribed_topics.append(selectedTopic)
+            
+            print("featureId: \(featureId)")
+            ParseAPI.sharedInstance.updateSubscriptionForUser(loggedInUser, featureId: featureId, completion: { (success, error) -> () in
+                if success == true {
+                    print("Added topic to subscribed list")
+                }
+            })
+            other_topics.removeAtIndex(row)
+        }
+        
+        tableView.reloadData()
+    }
+    
 }
 
 extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
@@ -96,17 +137,19 @@ extension TopicsViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("TopicCell", forIndexPath: indexPath) as! TopicCell
         if(indexPath.section == 0) {
             cell.feature = subscribed_topics[indexPath.row]
-            cell.followImage.hidden = true
+            cell.followButton.hidden = true
+            
             
         } else if(indexPath.section == 1) {
             cell.feature = recommended_topics[indexPath.row]
-            cell.followImage.hidden = false
+            cell.followButton.hidden = false
             
         } else {
             cell.feature = other_topics[indexPath.row]
-            cell.followImage.hidden = false
+            cell.followButton.hidden = false
             
         }
+        cell.delegate = self
         
         return cell
     }

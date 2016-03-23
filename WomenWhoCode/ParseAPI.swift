@@ -52,6 +52,10 @@ class ParseAPI{
         httpClient.getEventsForUser(userId, completion: completion)
     }
     
+    func getUserWithUserId(objectID: String, completion: (user: User?, error: NSError?) -> ()) {
+        httpClient.getUserWithUserId(objectID, completion: completion)
+    }
+    
     func getProfileWithUserId (objectID: String, completion: (profile: Profile?, error: NSError?) -> ()) {
         httpClient.getProfileWithUserId(objectID, completion: completion)
     }
@@ -59,6 +63,10 @@ class ParseAPI{
     
     func getFeatures(completion: (feature: [Feature]?, error: NSError?) -> ()) {
         httpClient.getFeatures(completion)
+    }
+    
+    func getFeatureWithFeatureId(objectID: String, completion: (feature: Feature?, error: NSError?) -> ()) {
+        httpClient.getFeatureWithFeatureId(objectID, completion: completion)
     }
     
     func getNetworks(completion: (networks: [Network]?, error: NSError?) -> ()) {
@@ -74,7 +82,13 @@ class ParseAPI{
     func getSubscriptions(completion: (subscribed: [Subscribed]?, error: NSError?) -> ()) {
         httpClient.getSubscriptions(completion)
     }
-      func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
+    
+    func updateSubscriptionForUser(userId: String?, featureId: String?, completion: (success:Bool? , error: NSError?) -> ()) {
+        httpClient.updateSubscriptionForUser(userId, featureId: featureId, completion: completion)
+    }
+    
+    
+    func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
         httpClient.getPosts(completion)
     }
 }
