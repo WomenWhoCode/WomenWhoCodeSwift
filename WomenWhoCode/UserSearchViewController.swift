@@ -155,7 +155,9 @@ extension UserSearchViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
         self.view.endEditing(true)
+        userSearchBar.text = ""
         userSearchBar.resignFirstResponder()
+        self.userSearchTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {

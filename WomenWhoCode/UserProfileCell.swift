@@ -26,8 +26,12 @@ class UserProfileCell: UITableViewCell {
             nameLabel.text = profile.fullName ?? " "
             networkLabel.text = profile.networkName! ?? " "
             
-            if(profile.imageUrl != nil) {
-                profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
+            if let imageURL = profile.imageUrl {
+                //print("profileName: \(nameLabel.text) imageURL: \(profile.imageUrl)")
+                profileImage.setImageWithURL(NSURL(string: imageURL)!)
+            }
+            else {
+                profileImage.image = UIImage(named:"default_user_icon")
             }
         }
     }

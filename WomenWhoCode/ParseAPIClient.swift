@@ -197,6 +197,8 @@ class ParseAPIClient{
     func getProfiles(completion: (profiles: [Profile]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Profile")
         var profiles: [Profile] = []
+        query.orderByDescending("updatedAt")
+        //query.limit = 10
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
@@ -293,8 +295,8 @@ class ParseAPIClient{
         query["feature_id"] = featureId
         query["subscribed"] = subscribed
         query["recommended"] = recommended
-        query["user"] = PFObject(outDataWithClassName: "_User", objectId: userId)
-        query["feature"] = PFObject(outDataWithClassName:  "Feature", objectId: featureId)
+        query["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+        query["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
         
         query.saveInBackgroundWithBlock { (success:Bool?, error: NSError?) -> Void in
             if success == true {
@@ -325,8 +327,8 @@ class ParseAPIClient{
                     subscription["feature_id"] = featureId
                     subscription["subscribed"] = subscribed
                     subscription["recommended"] = recommended
-                    subscription["user"] = PFObject(outDataWithClassName: "_User", objectId: userId)
-                    subscription["feature"] = PFObject(outDataWithClassName:  "Feature", objectId: featureId)
+                    subscription["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+                    subscription["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
                     // This will save both myPost and myComment
                     subscription.saveInBackground()
                     
@@ -338,8 +340,8 @@ class ParseAPIClient{
                         object["feature_id"] = featureId
                         object["subscribed"] = subscribed
                         object["recommended"] = recommended
-                        object["user"] = PFObject(outDataWithClassName: "_User", objectId: userId)
-                        object["feature"] = PFObject(outDataWithClassName:  "Feature", objectId: featureId)
+                        object["user"] = PFObject(withoutDataWithClassName: "_User", objectId: userId)
+                        object["feature"] = PFObject(withoutDataWithClassName:  "Feature", objectId: featureId)
                         object.saveInBackground()
                     }
 
