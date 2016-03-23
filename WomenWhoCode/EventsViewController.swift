@@ -55,7 +55,6 @@ class EventsViewController: UIViewController,EventsFilterViewControllerDelegate,
         
         tableView.estimatedRowHeight = 320
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorStyle = .None
         
         //searchBar functions
         searchBar.delegate = self

@@ -118,7 +118,6 @@ class ProfileViewController: UIViewController {
     func populateFields() {
         
         name.text = profile.fullName! ?? ""
-        print("Populated Field for Profile: \(name.text)")
         jobDescription.text = profile.jobTitle! ?? ""
         
         
@@ -149,7 +148,7 @@ class ProfileViewController: UIViewController {
         if(profile.imageUrl != nil) {
             profileImage.setImageWithURL(NSURL(string: profile.imageUrl!)!)
         } else {
-            profileImage.image = UIImage(named: "professional")
+            profileImage.image = UIImage(named: "default_user_icon")
         }
         
         print("Network for selected profile: \(profile.networkName), objectId: \(profile.network.objectId)")
