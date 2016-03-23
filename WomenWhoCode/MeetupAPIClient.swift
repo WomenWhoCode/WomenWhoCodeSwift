@@ -42,8 +42,8 @@ class MeetupAPIClient {
     }
     
     func fetchEvent(urlParams: [String: String], successCallback: (MeetupEvent) -> Void){
-        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/227524966"
-        //        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
+        let requestUrl = "\(baseUrl)/\(urlParams["urlName"]!)/events/\(urlParams["eventId"]!)"
+        print("FetchEvent:\(requestUrl)")
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in
@@ -60,8 +60,7 @@ class MeetupAPIClient {
     }
     
     func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
-        let requestUrl = "https://api.meetup.com/Women-Who-Code-SF/events/227524966/rsvps"
-        //        let requestUrl = "\(baseUrl)/\(urlParams["urlName"])/events/\(["eventId"])"
+        let requestUrl = "\(baseUrl)/\(urlParams["urlName"]!)/events/\(urlParams["eventId"]!)"
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in

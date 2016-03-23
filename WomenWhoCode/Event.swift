@@ -38,6 +38,7 @@ class Event: NSObject {
     var eventDateForEvent: String?
     var meetupEvent: MeetupEvent?
     var network: Network?
+    var meetupEventId: String?
     var eventTags:[String] = []
     
     override init() {
@@ -81,6 +82,7 @@ class Event: NSObject {
         rsvpCount = object["subscribe_count"] as? Int //FIXME: Should we have a separate name or use subscribe_count
         chapter = object["chapter"] as? String
         eventDateString = object["event_date"] as? String
+        meetupEventId = object["meetup_event_id"] as? String
         
         if object.objectForKey("network") != nil{
             self.network = Network(object: (object.objectForKey("network") as? PFObject)!)
@@ -92,8 +94,9 @@ class Event: NSObject {
             let feature = Feature(object: (object.objectForKey("feature") as? PFObject!)!)
             self.eventFeature = feature.title
         }
-        
-        eventTags = (object["event_tags"] as? [String])!
+        if object["event_tags"] != nil{
+            eventTags = (object["event_tags"] as? [String])!
+        }
         setDerivedValues()
     }
     
@@ -125,7 +128,11 @@ class Event: NSObject {
         }
         else {
             waitlistCount = 0
-            openSpotsCount = attendeeLimit! - rsvpCount!
+            if attendeeLimit != nil && rsvpCount != nil{
+                openSpotsCount = attendeeLimit! - rsvpCount!
+            }else{
+                openSpotsCount = 0
+            }
         }
     }
     
@@ -142,6 +149,20 @@ class Event: NSObject {
         return combinedEvents
     }
     
+    class func eventFromMeetupEvent(meetup: MeetupEvent) -> NSDictionary{
+        
+        return [ "title": meetup.meetupName!,
+                 "event_date": meetup.parseFormatDate(),
+                 "event_tags":[],
+                 "description": meetup.description,
+                 "location": (meetup.venue?.venueName)!,
+                 "meetup_event_id": meetup.meetupId!,
+                 "network": meetup.groupName!,
+                 "subscribe_count": meetup.yesRsvpCount!,
+                 "url": meetup.meetupLink!,
+        ]
+    }
+    
     
     
     
@@ -151,11 +172,15 @@ class Event: NSObject {
 extension Event{
     
     func fetchMeetupEvent(successCallback: (MeetupEvent) -> Void){
-        MeetupAPI.sharedInstance.fetchEvent(["hey":"test"], successCallback: successCallback)
+        if self.network?.meetupUrlName != nil && self.meetupEventId != nil{
+            MeetupAPI.sharedInstance.fetchEvent(["urlName": (self.network?.meetupUrlName)!, "eventId": self.meetupEventId!], successCallback: successCallback)
+        }
     }
     
     func fetchEventRsvps(successCallback: [MeetupMember] -> Void){
-        MeetupAPI.sharedInstance.fetchEventRsvps(["hey":"test"], successCallback: successCallback)
+        if self.network?.meetupUrlName != nil && self.meetupEventId != nil{
+            MeetupAPI.sharedInstance.fetchEventRsvps(["urlName": (self.network?.meetupUrlName)!, "eventId": self.meetupEventId!], successCallback: successCallback)
+        }
     }
     
 }
