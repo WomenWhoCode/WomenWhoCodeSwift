@@ -60,7 +60,7 @@ class MeetupAPIClient {
     }
     
     func fetchEventRsvps(urlParams: [String: String], successCallback: ([MeetupMember]) -> Void){
-        let requestUrl = "\(baseUrl)/\(urlParams["urlName"]!)/events/\(urlParams["eventId"]!)"
+        let requestUrl = "\(baseUrl)/\(urlParams["urlName"]!)/events/\(urlParams["eventId"]!)/rsvps"
         Alamofire.request(.GET, requestUrl, parameters: parameters)
             .validate()
             .responseJSON { response in
@@ -68,6 +68,7 @@ class MeetupAPIClient {
                 case .Success:
                     if let JSON = response.result.value as? [NSDictionary] {
                         let members = MeetupMember.initWithArray(JSON)
+                        print("members: \(members.count)")
                         successCallback(members)
                     }
                 case .Failure(let error):

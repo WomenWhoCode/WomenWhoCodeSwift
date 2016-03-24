@@ -149,7 +149,7 @@ class EventDetailsViewController: UIViewController,CLLocationManagerDelegate, MK
     
     
     @IBAction func ondescTap(sender: UITapGestureRecognizer) {
-        self.performSegueWithIdentifier(eventDescSegue, sender: sender)
+//        self.performSegueWithIdentifier(eventDescSegue, sender: sender)
     }
     
     
@@ -226,10 +226,16 @@ extension EventDetailsViewController: UIPopoverPresentationControllerDelegate{
 extension EventDetailsViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        for i in 0 ..< rsvps.count{
-            print(rsvps[i].thumbImage!)
+        if(rsvps.count > 10){
+            return rsvps.count
+        }else{
+            let needed = 10 - rsvps.count
+            for _ in 0 ..< needed{
+                rsvps.append(MeetupMember())
+            }
+            return rsvps.count
         }
-        return rsvps.count
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -58,7 +58,7 @@ class MessageCell: UITableViewCell {
     
     var user: SlackUser!{
         didSet{
-            nameLabel.text = user.name
+            nameLabel.text = "Codepath user"//user.name
             userImage.setImageWithURL(NSURL(string:user.image48!)!)
         }
     }

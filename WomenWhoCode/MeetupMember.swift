@@ -42,6 +42,10 @@ class MeetupMember: NSObject {
         }
     }
     
+    init(url: String = "https://pixabay.com/static/uploads/photo/2015/08/27/10/14/icon-909830_960_720.png"){
+        thumbImage = url
+    }
+    
     //Class Functions
     class func initWithArray(array: [NSDictionary]) -> [MeetupMember]{
         var members:[MeetupMember] = []
