@@ -51,7 +51,20 @@ class ProfileViewController: UIViewController {
     func fetchUserEvents(){
         ParseAPI.sharedInstance.getEventsForUser(loggedInUserId, completion: { (events, error) in
             if let events = events{
-                self.userEvents = events
+                if(self.profile.user?.objectId == self.loggedInUserId){
+                    self.userEvents = events
+                }else{
+                    var cnt = 0;
+                    for event in events {
+                        self.userEvents.append(event)
+                        cnt += 1
+                        
+                        if cnt == 3 {
+                            break
+                        }
+                    }
+                    
+                }
                 self.tableView.reloadData()
             }
             

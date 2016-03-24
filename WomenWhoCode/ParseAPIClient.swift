@@ -246,6 +246,7 @@ class ParseAPIClient{
     func getPosts(completion: (posts: [Post]?, error: NSError?) -> ()) {
         let query = PFQuery(className:"Post")
         var posts: [Post] = []
+        query.orderByDescending("updatedAt")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
